@@ -15,12 +15,14 @@ sidebar_position: 1
 
 <!-- Image placeholder: OpsiMate dashboard preview -->
 
-:::tip What's New in v2.5
-**Enhanced Multi-Tag Alerts** - Services now show alerts for all their tags with proper deduplication
+:::tip 🎉 What's New in v2.5
+🏷️ **Enhanced Multi-Tag Alerts** - Services now show alerts for all their tags with proper deduplication
 
-**Kibana Integration** - Connect to Kibana for powerful log visualization and search
+📊 **Kibana Integration** - Connect to Kibana for powerful log visualization and search
 
-**Improved External Links Dropdown** - Fixed auto-closing issues with controlled state management
+🔗 **Improved External Links Dropdown** - Fixed auto-closing issues with controlled state management
+
+⚡ **Performance Improvements** - Faster dashboard loading and better resource management
 :::
 
 ## Platform Overview
