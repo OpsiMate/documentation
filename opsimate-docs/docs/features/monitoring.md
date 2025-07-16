@@ -1,32 +1,57 @@
 ---
 sidebar_position: 2
+title: 📊 Monitoring
 ---
 
-# Monitoring
+# 📊 Monitoring
 
-## Overview
+## 🔍 Overview
 
 OpsiMate provides comprehensive monitoring capabilities for your entire infrastructure. The platform collects metrics, logs, and health status information from all your services, giving you complete visibility into your system's performance and health.
 
-## Key Monitoring Features
+:::tip 🎯 360° Visibility
+Get complete observability across your entire infrastructure with real-time metrics, logs, and health checks.
+:::
 
-### Real-time Metrics
+## ✨ Key Monitoring Features
 
-- **System Metrics** - CPU, memory, disk usage, network traffic
-- **Service Metrics** - Service-specific metrics like request rates, error rates, response times
-- **Custom Metrics** - Define and collect custom metrics important to your business
+### 📊 Real-time Metrics
 
-### Log Aggregation
+| Metric Type | Description | Use Case |
+|-------------|-------------|----------|
+| **💻 System Metrics** | CPU, memory, disk usage, network traffic | Infrastructure health monitoring |
+| **🚀 Service Metrics** | Request rates, error rates, response times | Application performance tracking |
+| **🎯 Custom Metrics** | Business-specific metrics and KPIs | Custom monitoring requirements |
 
-- **Centralized Logging** - Collect logs from all services in one place
-- **Log Search** - Powerful search capabilities to find relevant log entries
-- **Log Analysis** - Identify patterns and anomalies in your logs
+:::info 📈 Real-time Updates
+All metrics are updated in real-time, giving you instant visibility into your system's performance.
+:::
 
-### Health Checks
+### 📜 Log Aggregation
 
-- **Service Health** - Monitor the health status of all services
-- **Dependency Health** - Understand how dependencies affect service health
-- **Custom Health Checks** - Define custom health checks for your specific needs
+| Feature | Description | Benefit |
+|---------|-------------|----------|
+| **📎 Centralized Logging** | Collect logs from all services in one place | Single source of truth for all logs |
+| **🔍 Log Search** | Powerful search capabilities across all logs | Quick troubleshooting and analysis |
+| **📊 Log Analysis** | Identify patterns and anomalies | Proactive issue detection |
+
+:::tip 🔍 Pro Search Tips
+Use filters, regex patterns, and time ranges to quickly find the logs you need.
+:::
+
+### ❤️‍🩹 Health Checks
+
+| Check Type | Description | Frequency |
+|------------|-------------|----------|
+| **🚀 Service Health** | Monitor the health status of all services | Every 30 seconds |
+| **🔗 Dependency Health** | Track how dependencies affect service health | Continuous |
+| **🎯 Custom Health Checks** | Define custom health checks for specific needs | Configurable |
+
+:::warning ⚠️ Health Check Best Practices
+- Keep health checks lightweight and fast
+- Include dependency checks in your health endpoints
+- Set appropriate timeout values
+:::
 
 ## Multi-Tag Alert System
 
