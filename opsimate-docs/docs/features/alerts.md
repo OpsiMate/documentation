@@ -1,22 +1,36 @@
 ---
 sidebar_position: 3
+title: 🚨 Alerts
 ---
 
-# Alerts
+# 🚨 Alerts
 
-## Overview
+## 🔍 Overview
 
 OpsiMate's alert system provides real-time notifications about issues in your infrastructure. The platform collects alerts from various monitoring tools and presents them in a unified interface, making it easy to identify and respond to problems quickly.
 
-## Multi-Tag Alert System
+:::tip 🎯 Key Benefits
+- ⚡ **Real-time notifications** for immediate issue awareness
+- 🔗 **Unified interface** across all monitoring tools
+- 🏷️ **Multi-tag support** for comprehensive coverage
+- 🚫 **Smart deduplication** to reduce noise
+:::
+
+## 🏷️ Multi-Tag Alert System
 
 OpsiMate features an advanced multi-tag alert system that ensures comprehensive visibility:
 
-### Key Features
+### ✨ Key Features
 
-- **Multi-Tag Support**: Each service receives alerts for ALL its associated tags
-- **Alert Deduplication**: Alerts are properly deduplicated if they match multiple tags of the same service
-- **Cross-Service Visibility**: If an alert is associated with multiple services (via shared tags), it appears under all relevant services
+| Feature | Description | Benefit |
+|---------|-------------|----------|
+| **🏷️ Multi-Tag Support** | Each service receives alerts for ALL its associated tags | Complete visibility across all service aspects |
+| **🚫 Alert Deduplication** | Alerts are properly deduplicated if they match multiple tags | Reduced noise and cleaner interface |
+| **🔗 Cross-Service Visibility** | Alerts appear under all relevant services via shared tags | Better correlation and context |
+
+:::info 💡 How This Helps
+This system ensures that no alert goes unnoticed, while keeping your dashboard clean and organized.
+:::
 
 ### How It Works
 

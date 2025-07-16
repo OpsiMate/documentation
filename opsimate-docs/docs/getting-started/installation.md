@@ -1,38 +1,112 @@
 ---
 id: installation
-title: Installation
+title: 🚀 Installation
 sidebar_position: 1
 ---
 
-# Installing OpsiMate
+# 🚀 Installing OpsiMate
 
 OpsiMate is designed to be easy to install and configure. Follow these steps to get started with your OpsiMate deployment.
 
-## System Requirements
+:::info 📋 Before You Begin
+Make sure you have the necessary permissions to install software on your system and that your firewall allows traffic on the required ports.
+:::
 
-- **Operating System**: Linux (Ubuntu 20.04+ or CentOS 8+)
-- **CPU**: 2+ cores recommended
-- **Memory**: 4GB RAM minimum, 8GB recommended
-- **Disk Space**: 20GB minimum
-- **Node.js**: v18.0.0 or higher
-- **Database**: Built-in SQLite (no additional setup required)
+## 💻 System Requirements
 
-## Installation Methods
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| **🖥️ Operating System** | Linux (Ubuntu 20.04+ or CentOS 8+) | Ubuntu 22.04 LTS |
+| **⚡ CPU** | 2 cores | 4+ cores |
+| **🧠 Memory** | 4GB RAM | 8GB+ RAM |
+| **💾 Disk Space** | 20GB | 50GB+ SSD |
+| **🟢 Node.js** | v18.0.0+ | v20.0.0+ |
+| **🗄️ Database** | Built-in SQLite | PostgreSQL (optional) |
 
-### Docker Installation (Recommended)
+:::tip 🎯 Performance Tip
+For production environments, we recommend using SSD storage and at least 8GB of RAM for optimal performance.
+:::
+
+## 📦 Installation Methods
+
+### 🐳 Docker Installation (Recommended)
 
 The easiest way to get started with OpsiMate is using Docker:
+
+:::warning 🔒 Prerequisites
+Make sure Docker is installed on your system. [Install Docker](https://docs.docker.com/get-docker/)
+:::
+
+#### Step 1: Pull the OpsiMate Image
 
 ```bash
 # Pull the latest OpsiMate image
 docker pull opsimate/opsimate:latest
+```
 
-# Run OpsiMate container
+#### Step 2: Run OpsiMate Container
+
+```bash
+# Run OpsiMate container with recommended settings
 docker run -d \
   --name opsimate \
   -p 3000:3000 \
+  -p 8080:8080 \
   -v opsimate-data:/app/data \
+  -v opsimate-config:/app/config \
+  --restart unless-stopped \
   opsimate/opsimate:latest
+```
+
+#### Step 3: Verify Installation
+
+```bash
+# Check if container is running
+docker ps | grep opsimate
+
+# View logs
+docker logs opsimate
+```
+
+:::success 🎉 Success!
+OpsiMate should now be running at `http://localhost:3000`
+:::
+
+#### 🔧 Advanced Docker Configuration
+
+For production deployments, use Docker Compose:
+
+```yaml title="docker-compose.yml"
+version: '3.8'
+services:
+  opsimate:
+    image: opsimate/opsimate:latest
+    container_name: opsimate
+    ports:
+      - "3000:3000"
+      - "8080:8080"
+    volumes:
+      - opsimate-data:/app/data
+      - opsimate-config:/app/config
+      - ./logs:/app/logs
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  opsimate-data:
+  opsimate-config:
+```
+
+```bash
+# Start with Docker Compose
+docker-compose up -d
 ```
 
 ### Manual Installation

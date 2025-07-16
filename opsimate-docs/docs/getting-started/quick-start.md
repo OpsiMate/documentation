@@ -1,40 +1,69 @@
 ---
 sidebar_position: 1
+title: ⚡ Quick Start Guide
 ---
 
-# Quick Start Guide
+# ⚡ Quick Start Guide
 
 This guide will help you get up and running with OpsiMate in just a few minutes.
 
-## Prerequisites
+:::tip 🎯 Goal
+By the end of this guide, you'll have OpsiMate monitoring your first server and displaying real-time metrics!
+:::
+
+## 📋 Prerequisites
 
 Before you begin, make sure you have:
 
-- Access to the OpsiMate platform
-- SSH access to at least one server or VM you want to monitor
-- SSH private key for authentication
+- ✅ Access to the OpsiMate platform
+- ✅ SSH access to at least one server or VM you want to monitor  
+- ✅ SSH private key for authentication
+- ✅ Basic knowledge of your server's IP address and SSH configuration
 
-## Step 1: Log in to OpsiMate
+:::info ⏱️ Estimated Time
+This setup should take approximately **5-10 minutes** to complete.
+:::
+
+## 🔑 Step 1: Log in to OpsiMate
 
 Access the OpsiMate dashboard by navigating to your instance URL and logging in with your credentials.
 
-<!-- Image placeholder: OpsiMate login screen -->
+```
+🌐 https://your-opsimate-instance.com
+```
 
-## Step 2: Add Your First Provider
+:::note 📝 Login Credentials
+If you don't have login credentials yet, contact your system administrator or check your welcome email.
+:::
 
-1. Navigate to the **My Integrations** page from the sidebar
-2. Click the **Add Provider** button
-3. Fill in the required information:
-   - **Name**: A descriptive name for your provider (e.g., "Production VM")
-   - **Provider IP**: The IP address of your server
-   - **Username**: SSH username
-   - **Private Key Filename**: Path to your SSH private key
-   - **SSH Port**: Usually 22 (default)
-   - **Provider Type**: Select VM or K8S
+---
 
-<!-- Image placeholder: Adding a provider form -->
+## 🔗 Step 2: Add Your First Provider
 
-4. Click **Save** to add your provider
+:::info 📊 What's a Provider?
+A provider is a server, VM, or Kubernetes cluster that you want to monitor with OpsiMate.
+:::
+
+### 📝 Configuration Steps:
+
+1. 📊 Navigate to the **My Integrations** page from the sidebar
+2. ➕ Click the **Add Provider** button
+3. 📝 Fill in the required information:
+
+| Field | Description | Example |
+|-------|-------------|----------|
+| **🏷️ Name** | A descriptive name for your provider | `Production VM` |
+| **🌐 Provider IP** | The IP address of your server | `192.168.1.100` |
+| **👤 Username** | SSH username | `ubuntu` or `root` |
+| **🔐 Private Key Filename** | Path to your SSH private key | `/path/to/key.pem` |
+| **🚪 SSH Port** | Usually 22 (default) | `22` |
+| **💻 Provider Type** | Select VM or K8S | `VM` |
+
+4. 💾 Click **Save** to add your provider
+
+:::tip 🔒 Security Best Practice
+Ensure your SSH private key has proper permissions (`chmod 600`) and is stored securely.
+:::
 
 ## Step 3: Discover Services
 
