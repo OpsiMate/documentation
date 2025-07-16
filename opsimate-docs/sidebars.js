@@ -13,11 +13,12 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
-  docs: [
+  tutorialSidebar: [
     'intro',
     {
       type: 'category',
-      label: 'Getting Started',
+      label: '🚀 Getting Started',
+      collapsed: false,
       items: [
         'getting-started/installation',
         'getting-started/adding-providers',
@@ -27,25 +28,25 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Features',
+      label: '⚡ Core Features',
+      collapsed: false,
       items: [
         'features/infrastructure-management',
         'features/monitoring',
         'features/alerts',
-        'features/integrations',
         'features/actions',
         'features/incident-response',
+        'features/integrations',
       ],
     },
     {
       type: 'category',
-      label: 'Services',
-      items: ['services/managing-services'],
-    },
-    {
-      type: 'category',
-      label: 'Providers',
-      items: ['providers/provider-types'],
+      label: '🔧 Services & Providers',
+      collapsed: true,
+      items: [
+        'services/managing-services',
+        'providers/provider-types',
+      ],
     },
     {
       type: 'category',

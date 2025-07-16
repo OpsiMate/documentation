@@ -2,6 +2,12 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// Custom CSS for enhanced styling
+const customCss = [
+  './src/css/custom.css',
+  './static/css/custom.css',
+];
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
@@ -50,10 +56,11 @@ const config: Config = {
         blog: false, // Disable blog to avoid route conflicts
         pages: false, // Disable pages to avoid route conflicts
         theme: {
-          customCss: [
-            './src/css/custom.css',
-            './static/css/custom.css',
-          ],
+          customCss: customCss,
+        },
+        gtag: {
+          trackingID: 'G-XXXXXXXXXX', // Replace with your Google Analytics ID
+          anonymizeIP: true,
         },
       } satisfies Preset.Options,
     ],
@@ -62,27 +69,55 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/opsimate-social-card.jpg',
+    metadata: [
+      {name: 'keywords', content: 'opsimate, monitoring, management, devops, infrastructure'},
+      {name: 'twitter:card', content: 'summary_large_image'},
+    ],
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    announcementBar: {
+      id: 'support_us',
+      content:
+        '⭐️ If you like OpsiMate, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/Fifaboyz/OpsiMate">GitHub</a> and join our <a target="_blank" rel="noopener noreferrer" href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA">Slack community</a>! ⭐️',
+      backgroundColor: '#fafbfc',
+      textColor: '#091E42',
+      isCloseable: true,
+    },
     navbar: {
       title: 'OpsiMate',
       logo: {
         alt: 'OpsiMate Logo',
-        src: 'img/logo.svg',
+        src: 'img/opsimate-logo.svg',
+        srcDark: 'img/opsimate-logo.svg',
+        width: 32,
+        height: 32,
       },
+      hideOnScroll: true,
       items: [
         {
-          to: '/',
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Documentation',
         },
         {
-          href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA',
-          label: 'Slack Community',
+          type: 'search',
           position: 'right',
         },
         {
-          href: 'https://github.com/Fifaboyz/OpsiMate',
-          label: 'GitHub',
+          href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA',
           position: 'right',
+          className: 'header-slack-link',
+          'aria-label': 'Slack Community',
+        },
+        {
+          href: 'https://github.com/Fifaboyz/OpsiMate',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
@@ -117,6 +152,27 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['bash', 'diff', 'json', 'yaml', 'docker', 'javascript', 'typescript'],
+    },
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'YOUR_APP_ID',
+      // Public API key: it is safe to commit it
+      apiKey: 'YOUR_SEARCH_API_KEY',
+      indexName: 'YOUR_INDEX_NAME',
+      // Optional: see doc section below
+      contextualSearch: true,
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push
+      externalUrlRegex: 'external\\.com|domain\\.com',
+      // Optional: Replace parts of the item URLs from Algolia
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+      // Optional: Algolia search parameters
+      searchParameters: {},
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
     },
   } satisfies Preset.ThemeConfig,
 };

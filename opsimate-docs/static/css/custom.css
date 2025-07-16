@@ -1,5 +1,153 @@
 /* OpsiMate Custom Styles */
 
+/* Header Icons */
+.header-github-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z'/%3E%3C/svg%3E") no-repeat;
+}
+
+.header-slack-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z'/%3E%3C/svg%3E") no-repeat;
+}
+
+.navbar__item--right .header-github-link,
+.navbar__item--right .header-slack-link {
+  padding: 0;
+  margin: 0 0.5rem;
+}
+
+.navbar__item--right .header-github-link:hover,
+.navbar__item--right .header-slack-link:hover {
+  opacity: 0.6;
+}
+
+/* Enhanced navbar styling */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.navbar__logo {
+  margin-right: 1rem;
+}
+
+/* Announcement bar styling */
+.announcement {
+  background: linear-gradient(90deg, #4FC3F7, #2196F3);
+  color: white;
+}
+
+.announcement a {
+  color: white;
+  text-decoration: underline;
+}
+
+.announcement a:hover {
+  color: #e3f2fd;
+}
+
+/* Enhanced content styling */
+.markdown h1 {
+  background: linear-gradient(90deg, #1976D2, #2196F3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.markdown h2 {
+  color: #1976D2;
+  border-bottom: 2px solid #e3f2fd;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.markdown h3 {
+  color: #1565C0;
+  margin-top: 1.5rem;
+}
+
+/* Code blocks enhancement */
+.prism-code {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar enhancements */
+.theme-doc-sidebar-container {
+  border-right: 1px solid #e3f2fd;
+}
+
+.menu__link {
+  border-radius: 6px;
+  margin: 2px 0;
+  transition: all 0.2s ease;
+}
+
+.menu__link:hover {
+  background: linear-gradient(90deg, #e3f2fd, #f3e5f5);
+  transform: translateX(4px);
+}
+
+.menu__link--active {
+  background: linear-gradient(90deg, #2196F3, #1976D2);
+  color: white;
+}
+
+/* Admonitions enhancement */
+.alert {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+.alert--tip {
+  background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+  border-left: 4px solid #4caf50;
+}
+
+.alert--info {
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  border-left: 4px solid #2196f3;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: 2rem 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading animation for better UX */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.markdown > * {
+  animation: fadeIn 0.6s ease-out;
+}
+
 /* Hero Banner */
 .hero-banner {
   background: linear-gradient(135deg, #0a2540 0%, #1e4d8c 100%);
