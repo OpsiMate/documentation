@@ -51,7 +51,7 @@ The following sections provide detailed setup instructions for each supported in
 
 Select an integration to learn how to set it up:
 
-- [Setting up Grafana Integration](/docs/integrations/grafana)
-- [Setting up Prometheus Integration](/docs/integrations/prometheus)
-- [Setting up Coralogix Integration](/docs/integrations/coralogix)
-- [Setting up Kibana Integration](/docs/integrations/kibana)
+- [[Setting up Grafana Integration](/docs/](/integrations/grafana)
+- [[Setting up Prometheus Integration](/docs/](/integrations/prometheus)
+- [[Setting up Coralogix Integration](/docs/](/integrations/coralogix)
+- [[Setting up Kibana Integration](/docs/](/integrations/kibana)

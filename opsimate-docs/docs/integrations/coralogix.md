@@ -221,7 +221,7 @@ If Coralogix alerts are not being imported:
 
 After setting up your Coralogix integration:
 
-1. [Set up other integrations](/docs/integrations/overview) like Grafana or Prometheus
-2. [Create custom dashboards](/docs/dashboards/creating-dashboards) that include log data
-3. [Configure advanced alerts](/docs/monitoring/setting-up-alerts) based on log patterns
-4. [Set up automated actions](/docs/advanced/actions) triggered by log-based alerts
+1. [[Set up other integrations](/docs/](/integrations/overview) like Grafana or Prometheus
+2. [[Create custom dashboards](/docs/](/dashboards/creating-dashboards) that include log data
+3. [[Configure advanced alerts](/docs/](/monitoring/setting-up-alerts) based on log patterns
+4. [[Set up automated actions](/docs/](/advanced/actions) triggered by log-based alerts

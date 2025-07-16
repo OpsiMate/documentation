@@ -176,6 +176,6 @@ OpsiMate keeps a history of all alerts:
 
 After setting up alerts, consider:
 
-1. [Creating custom dashboards](/docs/dashboards/creating-dashboards) to visualize service health
-2. [Setting up incident response workflows](/docs/advanced/incident-response)
-3. [Integrating with external monitoring tools](/docs/integrations/overview)
+1. [[Creating custom dashboards](/docs/](/dashboards/creating-dashboards) to visualize service health
+2. [[Setting up incident response workflows](/docs/](/advanced/incident-response)
+3. [[Integrating with external monitoring tools](/docs/](/integrations/overview)

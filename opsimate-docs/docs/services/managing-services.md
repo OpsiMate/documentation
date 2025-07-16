@@ -197,6 +197,6 @@ Services often depend on each other. To check related services:
 
 After learning how to manage services:
 
-1. [Set up alerts](/docs/monitoring/setting-up-alerts) for critical services
-2. [Create custom dashboards](/docs/dashboards/creating-dashboards) to visualize service health
-3. [Configure automated actions](/docs/advanced/incident-response) for common issues
+1. [[Set up alerts](/docs/](/monitoring/setting-up-alerts) for critical services
+2. [[Create custom dashboards](/docs/](/dashboards/creating-dashboards) to visualize service health
+3. [[Configure automated actions](/docs/](/advanced/incident-response) for common issues

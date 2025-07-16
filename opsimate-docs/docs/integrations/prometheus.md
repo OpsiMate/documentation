@@ -211,7 +211,7 @@ If Prometheus alerts are not being imported:
 
 After setting up your Prometheus integration:
 
-1. [Set up Grafana integration](/docs/integrations/grafana) for enhanced visualization
-2. [Create custom dashboards](/docs/dashboards/creating-dashboards) with Prometheus metrics
-3. [Configure advanced alerts](/docs/monitoring/setting-up-alerts) based on Prometheus data
-4. [Set up automated actions](/docs/advanced/actions) triggered by Prometheus alerts
+1. [[Set up Grafana integration](/docs/](/integrations/grafana) for enhanced visualization
+2. [[Create custom dashboards](/docs/](/dashboards/creating-dashboards) with Prometheus metrics
+3. [[Configure advanced alerts](/docs/](/monitoring/setting-up-alerts) based on Prometheus data
+4. [[Set up automated actions](/docs/](/advanced/actions) triggered by Prometheus alerts

@@ -1,0 +1,13 @@
+{
+  "name": "documentation-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "opsimate-docs"
+  ],
+  "scripts": {
+    "dev": "cd opsimate-docs && npm start",
+    "build": "cd opsimate-docs && npm run build",
+    "start": "cd opsimate-docs && npm start"
+  }
+}

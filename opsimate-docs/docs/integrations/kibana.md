@@ -151,6 +151,6 @@ If you encounter a 500 Internal Server Error when creating a Kibana integration,
 
 After setting up Kibana integration:
 
-1. [Set up log-based alerts](/docs/monitoring/setting-up-alerts) to monitor for critical issues
-2. [Create custom dashboards](/docs/dashboards/creating-dashboards) that incorporate log data
-3. [Configure incident response workflows](/docs/advanced/incident-response) based on log patterns
+1. [[Set up log-based alerts](/docs/](/monitoring/setting-up-alerts) to monitor for critical issues
+2. [[Create custom dashboards](/docs/](/dashboards/creating-dashboards) that incorporate log data
+3. [[Configure incident response workflows](/docs/](/advanced/incident-response) based on log patterns

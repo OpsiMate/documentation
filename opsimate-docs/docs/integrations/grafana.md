@@ -131,6 +131,6 @@ If you encounter issues with your Grafana integration:
 
 After setting up Grafana integration:
 
-1. [Set up Prometheus integration](/docs/integrations/prometheus) to enhance your metrics collection
-2. [Create custom dashboards](/docs/dashboards/creating-dashboards) in OpsiMate
-3. [Configure advanced alerts](/docs/monitoring/setting-up-alerts) using Grafana metrics
+1. [[Set up Prometheus integration](/docs/](/integrations/prometheus) to enhance your metrics collection
+2. [[Create custom dashboards](/docs/](/dashboards/creating-dashboards) in OpsiMate
+3. [[Configure advanced alerts](/docs/](/monitoring/setting-up-alerts) using Grafana metrics

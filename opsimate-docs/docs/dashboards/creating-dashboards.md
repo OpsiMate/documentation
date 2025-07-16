@@ -177,6 +177,6 @@ As you add or remove tags from services, your dashboard will automatically updat
 
 After creating your custom dashboards:
 
-1. [Set up alerts](/docs/monitoring/setting-up-alerts) for critical services
-2. [Configure integrations](/docs/integrations/overview) to enhance your dashboards
-3. [Share your views](/docs/dashboards/sharing-dashboards) with your team
+1. [[Set up alerts](/docs/](/monitoring/setting-up-alerts) for critical services
+2. [[Configure integrations](/docs/](/integrations/overview) to enhance your dashboards
+3. [[Share your views](/docs/](/dashboards/sharing-dashboards) with your team

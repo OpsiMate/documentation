@@ -220,6 +220,6 @@ Mark frequently used actions as favorites:
 
 After setting up actions:
 
-1. [Create incident response workflows](/docs/advanced/incident-response) that utilize your actions
-2. [Set up monitoring](/docs/monitoring/setting-up-alerts) to trigger your actions
-3. [Configure notifications](/docs/advanced/notifications) for action results
+1. [[Create incident response workflows](/docs/](/advanced/incident-response) that utilize your actions
+2. [[Set up monitoring](/docs/](/monitoring/setting-up-alerts) to trigger your actions
+3. [[Configure notifications](/docs/](/advanced/notifications) for action results

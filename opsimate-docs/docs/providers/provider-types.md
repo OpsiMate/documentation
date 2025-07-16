@@ -326,6 +326,6 @@ For K8S providers, this will discover pods, deployments, and services.
 
 After setting up your providers:
 
-1. [Discover services](/docs/getting-started/discovering-services) running on your providers
-2. [Set up monitoring](/docs/monitoring/setting-up-alerts) for your services
-3. [Create custom dashboards](/docs/dashboards/creating-dashboards) to visualize your infrastructure
+1. [[Discover services](/docs/](/getting-started/discovering-services) running on your providers
+2. [[Set up monitoring](/docs/](/monitoring/setting-up-alerts) for your services
+3. [[Create custom dashboards](/docs/](/dashboards/creating-dashboards) to visualize your infrastructure

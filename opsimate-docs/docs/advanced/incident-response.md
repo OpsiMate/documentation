@@ -1251,6 +1251,6 @@ pie title Incidents by Service Type
 
 After setting up incident response:
 
-1. [Create runbooks](/docs/advanced/runbooks) for common scenarios
-2. [Configure integrations](/docs/integrations/overview) with incident management tools
-3. [Set up on-call rotations](/docs/advanced/on-call-management) for your team
+1. [[Create runbooks](/docs/](/advanced/runbooks) for common scenarios
+2. [[Configure integrations](/docs/](/integrations/overview) with incident management tools
+3. [[Set up on-call rotations](/docs/](/advanced/on-call-management) for your team

@@ -344,30 +344,30 @@ The External Links dropdown now behaves professionally:
     <div className="card-number">1</div>
     <h3>Add Providers</h3>
     <p>Connect your infrastructure providers to OpsiMate</p>
-    <a href="/docs/getting-started/adding-providers" className="card-link">Learn how →</a>
+    <a href="/getting-started/adding-providers" className="card-link">Learn how →</a>
   </div>
   <div className="getting-started-card">
     <div className="card-number">2</div>
     <h3>Discover Services</h3>
     <p>Automatically find and monitor your running services</p>
-    <a href="/docs/getting-started/discovering-services" className="card-link">Learn how →</a>
+    <a href="/getting-started/discovering-services" className="card-link">Learn how →</a>
   </div>
   <div className="getting-started-card">
     <div className="card-number">3</div>
     <h3>Set Up Integrations</h3>
     <p>Connect your monitoring tools for enhanced visibility</p>
-    <a href="/docs/integrations/overview" className="card-link">Learn how →</a>
+    <a href="/integrations/overview" className="card-link">Learn how →</a>
   </div>
   <div className="getting-started-card">
     <div className="card-number">4</div>
     <h3>Create Dashboards</h3>
     <p>Build custom views to monitor what matters most</p>
-    <a href="/docs/dashboards/creating-dashboards" className="card-link">Learn how →</a>
+    <a href="/dashboards/creating-dashboards" className="card-link">Learn how →</a>
   </div>
 </div>
 
 <div className="cta-container">
-  <a href="/docs/getting-started/quick-start" className="primary-button">
+  <a href="/getting-started/quick-start" className="primary-button">
     Quick Start Guide
   </a>
   <a href="https://github.com/opsimate/opsimate" className="secondary-button">
@@ -381,7 +381,7 @@ The External Links dropdown now behaves professionally:
   <div className="community-card">
     <h3>Documentation</h3>
     <p>Comprehensive guides and API references</p>
-    <a href="/docs/category/getting-started">Browse Docs →</a>
+    <a href="/category/getting-started">Browse Docs →</a>
   </div>
   <div className="community-card">
     <h3>GitHub</h3>

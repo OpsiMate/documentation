@@ -66,9 +66,9 @@ Once your provider is added:
 
 Now that you have OpsiMate up and running, you can:
 
-- [Set up integrations](/docs/integrations/overview) with Grafana, Prometheus, etc.
-- [Configure advanced alerts](/docs/monitoring/setting-up-alerts)
-- [Create custom dashboards](/docs/dashboards/creating-dashboards)
-- [Set up incident response workflows](/docs/advanced/incident-response)
+- [[Set up integrations](/docs/](/integrations/overview) with Grafana, Prometheus, etc.
+- [[Configure advanced alerts](/docs/](/monitoring/setting-up-alerts)
+- [[Create custom dashboards](/docs/](/dashboards/creating-dashboards)
+- [[Set up incident response workflows](/docs/](/advanced/incident-response)
 
 Congratulations! You've successfully set up OpsiMate and started monitoring your first services.

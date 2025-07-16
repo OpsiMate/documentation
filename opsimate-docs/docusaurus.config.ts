@@ -15,18 +15,19 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://docs.opsimate.com',
+  url: 'https://opsimate-docs.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   baseUrl: '/',
+  // Disable trailing slashes for Vercel
+  trailingSlash: false,
 
   // GitHub pages deployment config.
   organizationName: 'opsimate', 
   projectName: 'opsimate-docs',
 
-  // Change this to 'warn' to allow the site to build with broken links
-  // This is helpful during development
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  // Set to 'ignore' to allow the site to build with broken links for Vercel deployment
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you

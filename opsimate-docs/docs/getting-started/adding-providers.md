@@ -46,7 +46,7 @@ All providers connect to OpsiMate via **SSH**, allowing secure communication and
 <div className="provider-selection-tip">
   <div className="tip-icon">💡</div>
   <div className="tip-content">
-    <strong>Not sure which provider type to choose?</strong> Use VM for individual servers and K8S for Kubernetes clusters. See <a href="/docs/providers/provider-types">Provider Types</a> for detailed information.
+    <strong>Not sure which provider type to choose?</strong> Use VM for individual servers and K8S for Kubernetes clusters. See <a href="/providers/provider-types">Provider Types</a> for detailed information.
   </div>
 </div>
 
@@ -314,21 +314,21 @@ ssh -i /path/to/private_key username@provider_ip "kubectl get nodes"
     <div className="step-number">1</div>
     <h3>Discover Services</h3>
     <p>After adding your providers, discover services running on them to start monitoring.</p>
-    <a href="/docs/getting-started/discovering-services" className="next-link">Discover Services Guide →</a>
+    <a href="/getting-started/discovering-services" className="next-link">Discover Services Guide →</a>
   </div>
   
   <div className="next-step-card">
     <div className="step-number">2</div>
     <h3>Set Up Integrations</h3>
     <p>Connect monitoring tools like Grafana, Prometheus, or Kibana to enhance visibility.</p>
-    <a href="/docs/integrations/overview" className="next-link">Integrations Overview →</a>
+    <a href="/integrations/overview" className="next-link">Integrations Overview →</a>
   </div>
   
   <div className="next-step-card">
     <div className="step-number">3</div>
     <h3>Configure Alerts</h3>
     <p>Set up alerting to be notified when issues occur with your services.</p>
-    <a href="/docs/monitoring/setting-up-alerts" className="next-link">Alert Configuration →</a>
+    <a href="/monitoring/setting-up-alerts" className="next-link">Alert Configuration →</a>
   </div>
 </div>
 4. **Verify Username**: Confirm the username has sufficient permissions on the provider
@@ -338,6 +338,6 @@ ssh -i /path/to/private_key username@provider_ip "kubectl get nodes"
 
 After adding your providers, you can:
 
-1. [Discover services](/docs/getting-started/discovering-services) running on your providers
-2. [Set up monitoring](/docs/monitoring/setting-up-alerts) for your services
-3. [Configure integrations](/docs/integrations/overview) with third-party tools
+1. [[Discover services](/docs/](/getting-started/discovering-services) running on your providers
+2. [[Set up monitoring](/docs/](/monitoring/setting-up-alerts) for your services
+3. [[Configure integrations](/docs/](/integrations/overview) with third-party tools

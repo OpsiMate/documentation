@@ -112,6 +112,6 @@ OpsiMate automatically refreshes service status every 30 seconds, but you can ma
 
 Now that you've discovered your services, you can:
 
-1. [Set up monitoring](/docs/monitoring/setting-up-alerts) for critical services
-2. [Create custom dashboards](/docs/dashboards/creating-dashboards) to visualize service health
-3. [Configure integrations](/docs/integrations/overview) with monitoring tools
+1. [[Set up monitoring](/docs/](/monitoring/setting-up-alerts) for critical services
+2. [[Create custom dashboards](/docs/](/dashboards/creating-dashboards) to visualize service health
+3. [[Configure integrations](/docs/](/integrations/overview) with monitoring tools
