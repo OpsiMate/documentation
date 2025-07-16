@@ -104,10 +104,6 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          type: 'search',
-          position: 'right',
-        },
-        {
           href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA',
           position: 'right',
           className: 'header-slack-link',
@@ -154,26 +150,8 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
       additionalLanguages: ['bash', 'diff', 'json', 'yaml', 'docker', 'javascript', 'typescript'],
     },
-    algolia: {
-      // The application ID provided by Algolia
-      appId: 'YOUR_APP_ID',
-      // Public API key: it is safe to commit it
-      apiKey: 'YOUR_SEARCH_API_KEY',
-      indexName: 'YOUR_INDEX_NAME',
-      // Optional: see doc section below
-      contextualSearch: true,
-      // Optional: Specify domains where the navigation should occur through window.location instead on history.push
-      externalUrlRegex: 'external\\.com|domain\\.com',
-      // Optional: Replace parts of the item URLs from Algolia
-      replaceSearchResultPathname: {
-        from: '/docs/', // or as RegExp: /\/docs\//
-        to: '/',
-      },
-      // Optional: Algolia search parameters
-      searchParameters: {},
-      // Optional: path for search page that enabled by default (`false` to disable it)
-      searchPagePath: 'search',
-    },
+    // Search will be enabled when you set up Algolia or other search providers
+    // For now, we'll use the default Docusaurus search
   } satisfies Preset.ThemeConfig,
 };
 
