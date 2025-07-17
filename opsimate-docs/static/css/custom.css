@@ -401,6 +401,161 @@ hr {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* COMPREHENSIVE MOBILE FIXES */
+
+/* Mobile Menu and Sidebar Fixes */
+@media (max-width: 996px) {
+  /* Mobile sidebar improvements */
+  .theme-doc-sidebar-container {
+    border-right: none;
+    background: var(--ifm-background-color);
+  }
+  
+  .theme-doc-sidebar-menu {
+    padding: 1rem 0;
+  }
+  
+  .menu__list {
+    padding: 0;
+  }
+  
+  .menu__list-item {
+    margin: 0;
+  }
+  
+  .menu__link {
+    padding: 0.75rem 1rem;
+    margin: 0;
+    border-radius: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .menu__link:hover {
+    background-color: var(--ifm-menu-color-background-hover);
+    border-left-color: var(--ifm-color-primary);
+    transform: none;
+  }
+  
+  .menu__link--active {
+    background-color: var(--ifm-menu-color-background-active);
+    border-left-color: var(--ifm-color-primary);
+    font-weight: 600;
+  }
+  
+  .menu__list-item--collapsed .menu__list {
+    display: none;
+  }
+  
+  .menu__list-item--collapsed .menu__caret:before {
+    transform: rotate(90deg);
+  }
+  
+  /* Mobile navbar improvements */
+  .navbar {
+    padding: 0.5rem 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar__toggle {
+    color: var(--ifm-navbar-link-color);
+    margin-right: 0.5rem;
+  }
+  
+  .navbar__brand {
+    margin-right: auto;
+  }
+  
+  .navbar__items--right {
+    flex-shrink: 0;
+  }
+  
+  /* Mobile content adjustments */
+  .main-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .theme-doc-sidebar-container {
+    display: none;
+  }
+  
+  .theme-doc-sidebar-container[data-hidden="false"] {
+    display: block;
+    position: fixed;
+    top: var(--ifm-navbar-height);
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - var(--ifm-navbar-height));
+    background: var(--ifm-background-color);
+    z-index: 200;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .docusaurus-highlight-code-line {
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+  
+  /* Mobile content wrapper */
+  .theme-doc-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .theme-doc-main {
+    flex: 1;
+    padding: 0;
+  }
+  
+  /* Mobile breadcrumbs */
+  .theme-doc-breadcrumbs {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+  }
+  
+  .breadcrumbs__item {
+    font-size: 0.85rem;
+  }
+  
+  /* Mobile TOC (Table of Contents) */
+  .theme-doc-toc-mobile {
+    background: var(--ifm-background-color);
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+    padding: 0.75rem 1rem;
+  }
+  
+  .theme-doc-toc-desktop {
+    display: none;
+  }
+  
+  /* Mobile pagination */
+  .theme-doc-paginator {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .pagination-nav__item {
+    margin: 0.5rem 0;
+  }
+  
+  .pagination-nav__link {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--ifm-color-emphasis-200);
+  }
+  
+  /* Mobile edit page link */
+  .theme-edit-this-page {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid var(--ifm-color-emphasis-200);
+  }
+}
+
 /* Enhanced mobile responsiveness */
 @media (max-width: 768px) {
   /* Navbar mobile optimizations */
@@ -492,6 +647,45 @@ hr {
   
   .col {
     padding: 0 0.5rem;
+  }
+  
+  /* Main content area mobile fixes */
+  .theme-doc-markdown {
+    padding: 1rem;
+  }
+  
+  .markdown > h1:first-child {
+    margin-top: 0;
+  }
+  
+  /* Mobile article wrapper */
+  article {
+    padding: 0;
+  }
+  
+  /* Mobile content spacing */
+  .theme-doc-version-badge {
+    margin-bottom: 1rem;
+  }
+  
+  /* Mobile-specific layout fixes */
+  .theme-doc-footer {
+    padding: 1rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--ifm-color-emphasis-200);
+  }
+  
+  /* Mobile hamburger menu styling */
+  .navbar__toggle {
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    margin-right: 0.5rem;
+  }
+  
+  .navbar__toggle svg {
+    width: 22px;
+    height: 22px;
   }
   
   /* Feature cards mobile */
@@ -1369,5 +1563,37 @@ hr {
   
   .cta-container {
     flex-direction: column;
+  }
+}
+
+/* Dark mode mobile improvements */
+@media (max-width: 768px) {
+  [data-theme='dark'] .theme-doc-sidebar-container[data-hidden="false"] {
+    background: var(--ifm-background-color);
+    border-right: 1px solid var(--ifm-color-emphasis-200);
+  }
+  
+  [data-theme='dark'] .menu__link {
+    color: var(--ifm-font-color-base);
+  }
+  
+  [data-theme='dark'] .menu__link:hover {
+    background-color: var(--ifm-menu-color-background-hover);
+    color: var(--ifm-font-color-base);
+  }
+  
+  [data-theme='dark'] .menu__link--active {
+    background-color: var(--ifm-menu-color-background-active);
+    color: var(--ifm-color-primary);
+  }
+  
+  [data-theme='dark'] .navbar {
+    background-color: var(--ifm-navbar-background-color);
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  }
+  
+  [data-theme='dark'] .theme-doc-toc-mobile {
+    background: var(--ifm-background-color);
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
   }
 }
