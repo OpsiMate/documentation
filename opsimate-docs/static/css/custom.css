@@ -1,5 +1,58 @@
 /* OpsiMate Custom Styles */
 
+/* Mobile Hamburger Menu Fix */
+.navbar__toggle {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .navbar__toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    margin-right: 0.5rem;
+    background: transparent;
+    border: 2px solid var(--ifm-color-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .navbar__toggle:hover {
+    background: var(--ifm-color-primary-lightest);
+    transform: scale(1.05);
+  }
+  
+  .navbar__toggle svg {
+    width: 24px;
+    height: 24px;
+    color: var(--ifm-color-primary);
+  }
+  
+  /* Ensure sidebar is hidden by default on mobile */
+  .theme-doc-sidebar-container {
+    display: none;
+  }
+  
+  /* Show sidebar when menu is open */
+  .theme-doc-sidebar-container[data-hidden="false"] {
+    display: block !important;
+    position: fixed;
+    top: var(--ifm-navbar-height);
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - var(--ifm-navbar-height));
+    background: var(--ifm-background-color);
+    z-index: 1000;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border-top: 1px solid var(--ifm-color-emphasis-200);
+  }
+}
+
 /* Header Icons */
 .header-github-link:before {
   content: '';
@@ -1566,6 +1619,135 @@ hr {
   }
 }
 
+/* Mobile Button Improvements */
+@media (max-width: 768px) {
+  /* Enhanced CTA buttons for mobile */
+  .primary-button, .secondary-button {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .primary-button {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+  }
+  
+  .primary-button:hover,
+  .primary-button:active {
+    background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(33, 150, 243, 0.4);
+    color: white;
+  }
+  
+  .secondary-button {
+    background: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+    border: 2px solid #2196F3;
+  }
+  
+  .secondary-button:hover,
+  .secondary-button:active {
+    background: rgba(33, 150, 243, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(33, 150, 243, 0.2);
+    color: #1976D2;
+  }
+  
+  /* Mobile CTA container */
+  .cta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
+  
+  /* Mobile hero banner buttons */
+  .hero-banner .cta-container {
+    margin-top: 2rem;
+  }
+  
+  /* Mobile card buttons */
+  .card-link {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    color: white !important;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+  }
+  
+  .card-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+    text-decoration: none;
+    color: white !important;
+  }
+  
+  /* Mobile navigation buttons */
+  .pagination-nav__link {
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 2px solid var(--ifm-color-emphasis-200);
+    background: var(--ifm-background-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pagination-nav__link:hover {
+    border-color: var(--ifm-color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Mobile feature cards */
+  .feature-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--ifm-color-emphasis-200);
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Mobile getting started cards */
+  .getting-started-card {
+    padding: 2rem 1.5rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--ifm-color-emphasis-200);
+  }
+  
+  .getting-started-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
 /* Dark mode mobile improvements */
 @media (max-width: 768px) {
   [data-theme='dark'] .theme-doc-sidebar-container[data-hidden="false"] {
@@ -1595,5 +1777,41 @@ hr {
   [data-theme='dark'] .theme-doc-toc-mobile {
     background: var(--ifm-background-color);
     border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  }
+  
+  /* Dark mode button improvements */
+  [data-theme='dark'] .primary-button {
+    background: linear-gradient(135deg, #58a6ff 0%, #4493f8 100%);
+    color: #0d1117;
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+  }
+  
+  [data-theme='dark'] .primary-button:hover,
+  [data-theme='dark'] .primary-button:active {
+    background: linear-gradient(135deg, #4493f8 0%, #3182f6 100%);
+    color: #0d1117;
+    box-shadow: 0 6px 16px rgba(88, 166, 255, 0.4);
+  }
+  
+  [data-theme='dark'] .secondary-button {
+    background: rgba(88, 166, 255, 0.1);
+    color: #58a6ff;
+    border: 2px solid #58a6ff;
+  }
+  
+  [data-theme='dark'] .secondary-button:hover,
+  [data-theme='dark'] .secondary-button:active {
+    background: rgba(88, 166, 255, 0.2);
+    color: #79b8ff;
+    border-color: #79b8ff;
+  }
+  
+  [data-theme='dark'] .card-link {
+    background: linear-gradient(135deg, #58a6ff 0%, #4493f8 100%);
+    color: #0d1117 !important;
+  }
+  
+  [data-theme='dark'] .card-link:hover {
+    color: #0d1117 !important;
   }
 }
