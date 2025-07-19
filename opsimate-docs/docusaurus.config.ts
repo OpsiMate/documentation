@@ -153,6 +153,11 @@ const config: Config = {
     // Search will be enabled when you set up Algolia or other search providers
     // For now, we'll use the default Docusaurus search
   } satisfies Preset.ThemeConfig,
+
+  // Client modules for analytics
+  clientModules: [
+    require.resolve('./src/clientModules/vercelAnalytics.ts'),
+  ],
 };
 
 export default config;
