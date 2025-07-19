@@ -40,9 +40,29 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Services & Providers',
+      label: 'Providers & Services',
       collapsed: true,
       items: [
+        'providers-services/overview',
+        {
+          type: 'category',
+          label: 'Providers',
+          collapsed: true,
+          items: [
+            'providers-services/providers/add-provider',
+            'providers-services/providers/server-provider',
+            'providers-services/providers/kubernetes-provider',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Services',
+          collapsed: true,
+          items: [
+            'providers-services/services/add-services',
+            'providers-services/services/container-services',
+          ],
+        },
         'services/managing-services',
         'providers/provider-types',
       ],

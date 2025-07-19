@@ -32,7 +32,8 @@ docker run -d \
 ```
 
 :::success
-OpsiMate is now running at `http://localhost:3001`
+OpsiMate is now running at `http://localhost:8080`
+Register a user for the first time - it will be the first admin user
 :::
 
 ### Verify Deployment
@@ -45,14 +46,14 @@ docker ps | grep service-peek-app
 docker logs service-peek-app
 
 # Check health status
-curl http://localhost:3001/health
+curl http://localhost:8080/health
 ```
 
 ## Next Steps
 
 After deployment:
 
-1. **Access OpsiMate** at `http://localhost:3001`
+1. **Access OpsiMate** at `http://localhost:8080`
 2. **Configure your settings** - [See configuration guide](configuration)
 3. **Check system requirements** - [System requirements](system-requirements)
 
