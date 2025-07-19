@@ -2,185 +2,119 @@
 sidebar_position: 1
 ---
 
-# Managing Services
+# 🚀 Managing Services
 
-Services are the core components that OpsiMate helps you monitor and manage. This guide explains how to effectively work with services in the OpsiMate platform.
+Discover how Service Peek transforms your infrastructure monitoring with intelligent service management and real-time insights.
 
-## Understanding Services in OpsiMate
+## 🎯 What Are Services?
 
-In OpsiMate, a service represents any application, process, or container running on your infrastructure. Services can be:
+Services in Service Peek represent any monitored component in your infrastructure:
 
-- **SYSTEMD Services**: System services managed by systemd on Linux
-- **Docker Containers**: Containerized applications
-- **Kubernetes Resources**: Deployments, pods, and other Kubernetes resources
+<div style={{display: 'flex', gap: '20px', margin: '20px 0'}}>
+  <div style={{flex: 1, padding: '20px', border: '2px solid #e1e5e9', borderRadius: '8px'}}>
+    <h3>🐳 Containers</h3>
+    <p>Docker containers with real-time status monitoring</p>
+  </div>
+  <div style={{flex: 1, padding: '20px', border: '2px solid #e1e5e9', borderRadius: '8px'}}>
+    <h3>⚙️ System Services</h3>
+    <p>Linux systemd services and background processes</p>
+  </div>
+  <div style={{flex: 1, padding: '20px', border: '2px solid #e1e5e9', borderRadius: '8px'}}>
+    <h3>☸️ Kubernetes</h3>
+    <p>Pods, deployments, and cluster resources</p>
+  </div>
+</div>
 
-Each service has properties like:
-- Name
-- Status (running, stopped, failed)
-- IP address
-- Provider information
-- Tags for organization and filtering
+## 📊 Service Dashboard
 
-## Viewing Your Services
+Your command center for monitoring all services at a glance.
 
-### Dashboard View
+:::tip Video Tutorial
+📹 **Coming Soon**: Watch our interactive dashboard walkthrough
+:::
 
-The main dashboard provides an overview of all your services:
+### Key Features
 
-1. Navigate to the **Dashboard** page
-2. View services displayed according to your selected view
-3. Each service card shows:
-   - Service name
-   - Current status with color indicator
-   - Provider name
-   - Alert count (if any)
+- **🔍 Real-time Status**: Live updates every few seconds
+- **🏷️ Smart Tagging**: Organize services with custom labels
+- **⚡ Quick Actions**: Start, stop, restart services instantly
+- **📈 Health Metrics**: CPU, memory, and network usage
 
-<!-- Image placeholder: Dashboard service view showing service cards -->
+<!-- 🖼️ Image Placeholder: Service Dashboard Overview -->
+*Screenshot: Service dashboard showing multiple service cards with status indicators*
 
-### Service Details
+## 🔧 Service Management
 
-To view detailed information about a service:
+### Quick Actions
 
-1. Click on any service in the dashboard
-2. The service details panel will open, showing:
-   - Status and uptime
-   - Provider details
-   - Service IP
-   - Container details (for containerized services)
-   - Tags
-   - Associated alerts
-   - Logs (if available)
+Manage services directly from the dashboard:
 
-<!-- Image placeholder: Service details panel with status and properties -->
+```bash
+# Service Peek automatically detects these operations
+sudo systemctl start nginx
+docker restart my-app
+kubectl scale deployment/api --replicas=3
+```
 
-## Service Tags
+### Service Details Panel
 
-Tags are a powerful way to organize and filter your services. They also play a crucial role in alert management and dashboard organization.
+Click any service to reveal:
 
-### Adding Tags to Services
+- 📊 **Performance Metrics**
+- 🔗 **Network Information** 
+- 📝 **Configuration Details**
+- 📋 **Recent Logs**
 
-1. Select a service from the dashboard
-2. Click the **Edit** button in the service details panel
-3. Add tags in the tags field (comma-separated)
-4. Click **Save** to apply the tags
+<!-- 🖼️ Image Placeholder: Service Details Panel -->
+*Screenshot: Detailed service information panel*
 
-### Using Tags for Filtering
+## 🏷️ Smart Tagging System
 
-1. In the dashboard, click the **Filter** button
-2. Select the **Tags** filter
-3. Choose the tags you want to filter by
-4. Click **Apply** to show only services with those tags
+Organize your services with intelligent tagging for better monitoring and alerting.
 
-### Tag-Based Alerts
+:::info Pro Tip
+Use tags like `production`, `database`, `api` to create logical service groups
+:::
 
-OpsiMate supports advanced tag-based alerting:
+### Tag Benefits
+- **🎯 Targeted Alerts**: Set alerts for specific service groups
+- **🔍 Quick Filtering**: Find services instantly
+- **📊 Group Metrics**: Monitor service categories together
 
-1. Services with multiple tags receive alerts for ALL their tags
-2. Alerts are deduplicated if they match multiple tags of the same service
-3. If an alert is associated with multiple services (via shared tags), it appears under all relevant services
-4. Each service maintains its own alert list based on its specific tags
-5. Alert counts are calculated per service based on their unique tag combinations
+<!-- 🖼️ Image Placeholder: Service Tagging Interface -->
+*Screenshot: Service tagging and filtering interface*
 
-This ensures that:
-- Each service shows exactly the alerts relevant to its tags
-- No alerts are missed due to tag complexity
-- Shared alerts appear under all relevant services
-- Real-time updates maintain consistency across all service views
+## 📈 Monitoring & Insights
 
-## Service Status Monitoring
+### Real-time Status Tracking
 
-OpsiMate automatically monitors the status of your services:
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px', margin: '20px 0'}}>
+  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+    <strong>🟢 Healthy Services</strong><br/>
+    Real-time monitoring with instant status updates
+  </div>
+  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+    <strong>🔴 Critical Alerts</strong><br/>
+    Immediate notifications for service failures
+  </div>
+</div>
 
-### Status Types
+### Performance Metrics
+- **⚡ Response Times**: Track service performance
+- **💾 Resource Usage**: Monitor CPU and memory
+- **🌐 Network Health**: Check connectivity status
 
-- **Running**: Service is operational
-- **Stopped**: Service is not running
-- **Failed**: Service attempted to start but failed
-- **Unknown**: Status cannot be determined
+:::tip Video Demo
+📹 **Coming Soon**: Watch our service monitoring walkthrough
+:::
 
-### Status Refresh
+## 🚀 Next Steps
 
-Service status is automatically refreshed:
-- Every 30 seconds in the frontend
-- Every 10 minutes via server jobs (refresh-job.ts)
+Ready to dive deeper? Explore these advanced features:
 
-To manually refresh:
-1. Click the **Refresh** button in the dashboard toolbar
-2. Or click the refresh icon next to an individual service
-
-## Service Actions
-
-OpsiMate allows you to perform various actions on your services:
-
-### Basic Actions
-
-1. Select a service from the dashboard
-2. In the service details panel, click the **Actions** button
-3. Choose from available actions:
-   - **Restart Service**: Restart the service
-   - **Stop Service**: Stop the service
-   - **Start Service**: Start a stopped service
-   - **View Logs**: View service logs
-
-### Custom Actions
-
-You can also create custom actions for services:
-
-1. Navigate to the **Actions** page
-2. Click **Create Action**
-3. Configure the action with specific commands
-4. Associate the action with services or tags
-
-## Service Logs
-
-View logs for your services directly in OpsiMate:
-
-1. Select a service from the dashboard
-2. Click the **Logs** tab in the service details panel
-3. View the most recent logs for the service
-4. Use filters to find specific log entries:
-   - By time period
-   - By log level
-   - By text content
-
-<!-- Image placeholder: Service logs view with filtering options -->
-
-## External Links
-
-OpsiMate integrates with external monitoring tools to provide enhanced visibility:
-
-1. Select a service from the dashboard
-2. Click the **External Links** dropdown in the service details panel
-3. Choose from available dashboards:
-   - Grafana dashboards
-   - Prometheus dashboards
-   - Kibana dashboards
-   - Coralogix dashboards
-
-The dropdown will stay open during your session and won't auto-close during background data updates, providing a smooth user experience.
-
-## Service Troubleshooting
-
-When a service has issues, OpsiMate provides tools to help you troubleshoot:
-
-### Viewing Service Details
-
-1. Check the service status and any error messages
-2. Review recent logs for error patterns
-3. Check for active alerts related to the service
-
-### Running Diagnostics
-
-1. Select the problematic service
-2. Click the **Actions** button
-3. Choose **Run Diagnostics**
-4. Review the diagnostic results for common issues
-
-### Checking Related Services
-
-Services often depend on each other. To check related services:
-
-1. Look for services with similar tags
+- [🔔 Set up Alerts](../features/alerts) for proactive monitoring
+- [📊 Create Dashboards](../dashboards/creating-dashboards) for custom views
+- [🔗 Configure Integrations](../integrations/overview) with your tools
 2. Check the status of services on the same provider
 3. Use the service dependency map (if configured)
 
