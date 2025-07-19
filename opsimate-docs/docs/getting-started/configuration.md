@@ -41,11 +41,12 @@ client:
 
 # Database configuration
 database:
-  path: "/Users/idanlodzki/code/windsurf_projects/service-peek/apps/server/data/service_peek.db2"  # SQLite database file path
+  path: "/app/data/database/service_peek.db"  # SQLite database file path (mounted volume)
 
 # Security configuration
 security:
-  private_keys_path: "/Users/idanlodzki/code/windsurf_projects/service-peek/apps/server/data/private-keys"  # SSH private keys directory
+  private_keys_path: "/app/data/private-keys"  # SSH private keys directory (mounted volume)
+
 ```
 
 ## Next Steps
