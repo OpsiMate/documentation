@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # Configuration
 
-Service Peek uses a YAML configuration file to manage application settings. This guide covers all available configuration options.
+OpsiMate uses a YAML configuration file to manage application settings. This guide covers all available configuration options.
 
 ## Configuration File Location
 
@@ -26,7 +26,7 @@ docker run -d \
 ### Minimal Configuration
 
 ```yaml title="configfile.yml"
-# Service Peek Configuration
+# OpsiMate Configuration
 # Simple configuration file with essential settings
 
 # Server configuration
@@ -51,7 +51,7 @@ security:
 
 ## Next Steps
 
-After configuring Service Peek:
+After configuring OpsiMate:
 
 1. **Restart the container** to apply changes
 2. **Add providers** - [Learn how](adding-providers)

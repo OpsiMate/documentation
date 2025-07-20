@@ -2,221 +2,115 @@
 sidebar_position: 1
 ---
 
-# ➕ Adding Services
+# Add Services
 
-Fine-tune which services to monitor and how to monitor them.
+Add and configure services for monitoring across your providers.
 
-## 🎯 Service Discovery vs Manual Addition
+## Basic Flow
 
-Service Peek offers two ways to add services:
+Adding services is done using the **Add Services** button in the menu that opens when clicking the three-dots icon.
 
-### 🔍 Automatic Discovery (Recommended)
-When you add a provider, services are automatically discovered and imported. This is the fastest way to get started.
-
-### ➕ Manual Addition
-Add specific services that weren't auto-discovered or configure custom monitoring for existing services.
-
-## 🚀 Adding Services Manually
-
-### Step 1: Navigate to Services
-
-1. Go to **"Services"** in the sidebar
-2. Click **"Add Service"** button
-3. Choose your provider from the dropdown
-
-### Step 2: Select Service Type
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px', margin: '20px 0'}}>
-  <div style={{padding: '15px', backgroundColor: '#e3f2fd', borderRadius: '8px', border: '1px solid #2196f3'}}>
-    <strong>🐳 Container Service</strong><br/>
-    <small>Docker containers running applications</small>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', margin: '30px 0'}}>
+  <div style={{padding: '20px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: '12px', color: 'white', textAlign: 'center'}}>
+    <div style={{fontSize: '24px', marginBottom: '10px'}}>1</div>
+    <strong>Access Menu</strong>
+    <div style={{fontSize: '14px', marginTop: '8px'}}>Click the three-dots icon</div>
   </div>
-  <div style={{padding: '15px', backgroundColor: '#f3e5f5', borderRadius: '8px', border: '1px solid #9c27b0'}}>
-    <strong>⚙️ Systemd Service</strong><br/>
-    <small>Linux system services managed by systemd</small>
+  <div style={{padding: '20px', background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', borderRadius: '12px', color: 'white', textAlign: 'center'}}>
+    <div style={{fontSize: '24px', marginBottom: '10px'}}>2</div>
+    <strong>Add Services</strong>
+    <div style={{fontSize: '14px', marginTop: '8px'}}>Click Add Services button</div>
   </div>
-  <div style={{padding: '15px', backgroundColor: '#e8f5e8', borderRadius: '8px', border: '1px solid #4caf50'}}>
-    <strong>🎯 Kubernetes Pod</strong><br/>
-    <small>Containerized applications in K8s</small>
+  <div style={{padding: '20px', background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', borderRadius: '12px', color: 'white', textAlign: 'center'}}>
+    <div style={{fontSize: '24px', marginBottom: '10px'}}>3</div>
+    <strong>Select Services</strong>
+    <div style={{fontSize: '14px', marginTop: '8px'}}>Choose relevant services</div>
+  </div>
+  <div style={{padding: '20px', background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)', borderRadius: '12px', color: 'white', textAlign: 'center'}}>
+    <div style={{fontSize: '24px', marginBottom: '10px'}}>4</div>
+    <strong>Start Monitoring</strong>
+    <div style={{fontSize: '14px', marginTop: '8px'}}>Begin service monitoring</div>
   </div>
 </div>
 
-### Step 3: Configure Service Details
+Based on the provider, you can select the services that are relevant to that specific provider.
 
-#### 🐳 Container Service Configuration
+## Adding
 
-```yaml
-name: "nginx-web-server"
-provider: "production-server"
-container_name: "nginx"
-port: 80
-health_check: "http://localhost:80/health"
-restart_policy: "unless-stopped"
-```
+### Systemd Services
+**Manual Entry**: Added manually by entering the service name.
 
-#### ⚙️ Systemd Service Configuration
+### Docker Containers
+**Automatic Detection**: OpsiMate checks for existing containers, and you can add them directly from the add screen.
 
-```yaml
-name: "postgresql-database"
-provider: "database-server"
-service_name: "postgresql"
-port: 5432
-health_check: "systemctl is-active postgresql"
-auto_restart: true
-```
+### Kubernetes Pods
+**Automatic Detection**: Works the same way as Docker containers.
 
-#### 🎯 Kubernetes Pod Configuration
+## Control
 
-```yaml
-name: "api-backend"
-provider: "k8s-cluster"
-namespace: "production"
-deployment: "api-deployment"
-port: 3000
-health_check: "/api/health"
-replicas: 3
-```
+### Systemd Services
+**SSH Commands**: Controlled via SSH commands using `service start`, `stop`, `restart`, and `logs` to manage the service.
 
-### Step 4: Set Monitoring Options
+### Docker Containers
+**Docker Commands**: Controlled via SSH commands with Docker.
 
-Configure how Service Peek monitors your service:
+### Kubernetes Pods
+**Kubectl Commands**: Controlled using kubectl commands.
 
-#### Health Checks
+## Step 1: Select Service Type
+
+Choose the type of service you want to add:
+
+* **Systemd Services**
+* **Docker Containers**
+* **Kubernetes Pods**
+
+## Step 2: Configure Service
+
+Configure the service based on the selected type:
+
+### Systemd Services
+
+* **Service Name**: Enter the name of the systemd service.
+* **Port**: Enter the port number used by the service.
+
+### Docker Containers
+
+* **Container Name**: Enter the name of the Docker container.
+* **Port**: Enter the port number used by the container.
+
+### Kubernetes Pods
+
+* **Pod Name**: Enter the name of the Kubernetes pod.
+* **Namespace**: Enter the namespace where the pod is running.
+
+## Step 3: Set Monitoring Options
+
+Configure how OpsiMate monitors your service:
+
+### Health Checks
 - **HTTP/HTTPS**: Check web endpoints
 - **TCP**: Check port connectivity  
 - **Command**: Run custom health check commands
 - **Process**: Monitor process existence and resource usage
 
-#### Monitoring Frequency
+### Monitoring Frequency
 - **High**: Every 30 seconds (critical services)
 - **Normal**: Every 2 minutes (standard services)
 - **Low**: Every 5 minutes (background services)
 
-#### Alert Thresholds
+### Alert Thresholds
 - **CPU Usage**: Alert when > 80%
 - **Memory Usage**: Alert when > 85%
 - **Response Time**: Alert when > 5 seconds
 - **Downtime**: Alert after 3 failed checks
 
-## 🔧 Advanced Service Configuration
+## Step 4: Review and Add
 
-### Custom Health Checks
-
-Create sophisticated health checks for complex services:
-
-```bash
-# Database connection check
-#!/bin/bash
-psql -h localhost -U app_user -d app_db -c "SELECT 1;" > /dev/null 2>&1
-echo $?
-```
-
-```bash
-# API endpoint with authentication
-#!/bin/bash
-response=$(curl -s -o /dev/null -w "%{http_code}" \
-  -H "Authorization: Bearer $API_TOKEN" \
-  http://localhost:3000/api/health)
-[ "$response" = "200" ] && echo 0 || echo 1
-```
-
-### Resource Monitoring
-
-Configure resource monitoring thresholds:
-
-```yaml
-resources:
-  cpu:
-    warning: 70%
-    critical: 90%
-  memory:
-    warning: 80%
-    critical: 95%
-  disk:
-    warning: 85%
-    critical: 95%
-  network:
-    warning: "100MB/s"
-    critical: "500MB/s"
-```
-
-### Dependencies
-
-Define service dependencies for better alerting:
-
-```yaml
-dependencies:
-  - service: "postgresql-database"
-    type: "hard"  # This service can't work without the dependency
-  - service: "redis-cache"
-    type: "soft"  # This service can work without the dependency
-```
-
-## 📊 Service Groups
-
-Organize related services into groups for easier management:
-
-### Creating Service Groups
-
-1. Go to **"Services"** → **"Groups"**
-2. Click **"Create Group"**
-3. Add services to the group
-
-### Example Groups
-
-```yaml
-# Web Application Stack
-group: "web-app"
-services:
-  - "nginx-proxy"
-  - "nodejs-api"
-  - "postgresql-db"
-  - "redis-cache"
-
-# Monitoring Stack  
-group: "monitoring"
-services:
-  - "prometheus"
-  - "grafana"
-  - "alertmanager"
-```
-
-## 🚨 Troubleshooting
-
-### Service Not Discovered
-
-**Check Service Status**
-```bash
-# For systemd services
-systemctl status service-name
-
-# For Docker containers
-docker ps | grep container-name
-
-# For Kubernetes pods
-kubectl get pods -n namespace
-```
-
-**Verify Permissions**
-- Ensure Service Peek can access the service
-- Check SSH key permissions for remote services
-- Verify kubectl access for Kubernetes services
-
-### Health Check Failures
-
-**Test Health Checks Manually**
-```bash
-# Test HTTP health check
-curl -f http://localhost:8080/health
-
-# Test TCP connectivity
-nc -zv localhost 5432
+Review the service configuration and add the service to OpsiMate.
 
 # Test custom command
 /path/to/health-check-script.sh
-```
-
-**Common Issues**
 - Wrong port numbers
 - Incorrect health check URLs
 - Missing authentication tokens

@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # System Requirements
 
-Service Peek is lightweight and runs efficiently on minimal hardware.
+OpsiMate is lightweight and runs efficiently on minimal hardware.
 
 ## 💻 Hardware Requirements
 

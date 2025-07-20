@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 🎯 Providers & Services Overview
 
-Understanding the relationship between providers and services is key to effectively using Service Peek for infrastructure monitoring.
+Understanding the relationship between providers and services is key to effectively using OpsiMate for infrastructure monitoring.
 
 ## 🏗️ What are Providers?
 
@@ -63,42 +63,6 @@ Understanding the relationship between providers and services is key to effectiv
   </div>
 </div>
 
-## 🔄 The Provider-Service Relationship
-
-```mermaid
-graph TD
-    A[Provider: Web Server] --> B[Service: Nginx]
-    A --> C[Service: Node.js App]
-    A --> D[Service: Redis]
-    
-    E[Provider: K8S Cluster] --> F[Service: Frontend Pod]
-    E --> G[Service: API Pod]
-    E --> H[Service: Database Pod]
-    
-    I[Provider: AWS EC2 Group] --> J[Service: Load Balancer]
-    I --> K[Service: App Server 1]
-    I --> L[Service: App Server 2]
-```
-
-## 🎯 Why This Matters
-
-Understanding this relationship helps you:
-
-- **🔍 Organize Monitoring**: Group related services under their infrastructure
-- **🚨 Set Smart Alerts**: Alert on provider issues vs individual service issues  
-- **📊 View Dependencies**: See how services relate across your infrastructure
-- **⚡ Quick Actions**: Restart services or entire providers as needed
-
-## 🔄 Automatic Service Discovery
-
-When you add a provider, Service Peek automatically discovers services:
-
-:::info Auto-Discovery Process
-1. **Connect** to your provider via SSH
-2. **Scan** for running services (systemd, Docker, K8s)
-3. **Import** discovered services into your dashboard
-4. **Monitor** service health and status continuously
-:::
 
 ## 🚀 Getting Started
 
@@ -106,8 +70,8 @@ Ready to set up your infrastructure monitoring?
 
 1. **[Add Providers](providers/add-provider)** - Connect your infrastructure
 2. **[Discover Services](services/add-services)** - Find and import your applications  
-3. **[Monitor Everything](../services/managing-services)** - Keep your services healthy
+3. **[Monitor Everything](../dashboards/overview)** - Keep your services healthy
 
 :::tip Pro Tip
-Start with one provider and let Service Peek discover its services automatically. You can always add more providers and manually add specific services later!
+Start with one provider and let OpsiMate discover its services automatically. You can always add more providers and manually add specific services later!
 :::

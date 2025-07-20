@@ -4,50 +4,51 @@ sidebar_position: 1
 
 # Integrations Overview
 
-OpsiMate provides seamless integration with popular monitoring and observability tools to give you a unified view of your infrastructure.
+Integrations are the way to connect external tools to OpsiMate. The goal is to leverage existing tools to enable monitoring, control, and interaction with other interfaces.
 
-## Supported Integrations
+## Integration Layers
 
-OpsiMate currently supports the following integrations:
+Each integration can add multiple layers of functionality:
 
-- **Grafana**: Connect to your Grafana dashboards for visualization
-- **Prometheus**: Pull metrics and alerts from Prometheus
-- **Coralogix**: Integrate with Coralogix for log analysis
-- **Kibana**: Connect to Kibana for log visualization and analysis
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px', margin: '20px 0'}}>
+  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+    <strong>🚨 Receiving Alerts</strong><br/>
+    <small>Get alerts from external monitoring systems</small>
+  </div>
+  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+    <strong>🔗 External Links</strong><br/>
+    <small>Link external URLs and dashboards to services</small>
+  </div>
+  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+    <strong>📊 Monitoring Data</strong><br/>
+    <small>Add logs, metrics, and performance data</small>
+  </div>
+  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+    <strong>⚡ Actions</strong><br/>
+    <small>Use tools to control services and run actions</small>
+  </div>
+</div>
 
-<!-- Image placeholder: Integrations overview page -->
+## Available Integrations
 
-## Benefits of Integrations
+### Grafana
+Visualization and dashboarding platform for metrics and monitoring data.
 
-By connecting OpsiMate to your existing monitoring tools, you can:
+### Prometheus  
+Open-source monitoring system with dimensional data model and powerful query language.
 
-- **Centralize Monitoring**: View all your metrics, logs, and alerts in one place
-- **Correlate Data**: Connect service status with metrics and logs
-- **Streamline Workflows**: Access dashboards directly from service details
-- **Enhance Alerting**: Combine alerts from multiple sources
-- **Simplify Management**: Manage all your monitoring connections in one interface
+### Kibana
+Data visualization dashboard for Elasticsearch, used for log analysis and search.
 
-## Integration Architecture
+### Coralogix
+Cloud-native observability platform for logs, metrics, and traces.
 
-OpsiMate uses a secure connection model for integrations:
+## Getting Started
 
-1. **API Keys**: Secure authentication with your monitoring tools
-2. **Scheduled Syncs**: Regular updates to keep data fresh (every 10 minutes)
-3. **Real-time Updates**: Critical alerts are pushed in real-time
-4. **Data Filtering**: Only relevant data is pulled based on your services
-
-## Getting Started with Integrations
-
-To set up your first integration, follow these steps:
-
-1. Navigate to the **My Integrations** page
-2. Click on the **External Integrations** tab
-3. Choose the integration type you want to set up
-4. Follow the specific setup instructions for that integration
-
-The following sections provide detailed setup instructions for each supported integration.
-
-## Next Steps
+1. Navigate to **My Integrations** page
+2. Click **External Integrations** tab  
+3. Choose your integration type
+4. Follow the setup instructions
 
 Select an integration to learn how to set it up:
 

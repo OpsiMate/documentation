@@ -32,27 +32,6 @@ To transform how teams monitor and manage their infrastructure by providing a un
 **Our Solution:**
 OpsiMate unifies your entire infrastructure ecosystem into one intelligent platform that not only monitors but actively helps you manage and optimize your services.
 
-## ✨ What Makes OpsiMate Different
-
-<div className="feature-grid">
-  <div className="feature-card">
-    <h3>🌍 One Platform, Everything Connected</h3>
-    <p>No more jumping between tools. Your entire infrastructure ecosystem in one place.</p>
-  </div>
-  <div className="feature-card">
-    <h3>🧠 Intelligent, Not Just Reactive</h3>
-    <p>Proactive insights and automated responses that prevent issues before they happen.</p>
-  </div>
-  <div className="feature-card">
-    <h3>🚀 Built for Modern Teams</h3>
-    <p>Intuitive design that scales with your team, from startups to enterprise.</p>
-  </div>
-  <div className="feature-card">
-    <h3>🔗 Extensible by Design</h3>
-    <p>Integrate with your existing tools and workflows seamlessly.</p>
-  </div>
-</div>
-
 ## 🌱 Getting Started
 
 Ready to transform your infrastructure management? OpsiMate is designed to get you up and running quickly:

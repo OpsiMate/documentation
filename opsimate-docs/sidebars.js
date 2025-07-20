@@ -15,27 +15,15 @@
 const sidebars = {
   tutorialSidebar: [
     'intro',
+    'core-features',
     {
       type: 'category',
       label: 'Getting Started',
-      collapsed: false,
+      collapsed: true,
       items: [
         'getting-started/deploy',
         'getting-started/configuration',
         'getting-started/system-requirements',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Core Features',
-      collapsed: true,
-      items: [
-        'features/infrastructure-management',
-        'features/monitoring',
-        'features/alerts',
-        'features/actions',
-        'features/incident-response',
-        'features/integrations',
       ],
     },
     {
@@ -52,6 +40,7 @@ const sidebars = {
             'providers-services/providers/add-provider',
             'providers-services/providers/server-provider',
             'providers-services/providers/kubernetes-provider',
+            'providers-services/providers/aws-ec2-provider',
           ],
         },
         {
@@ -61,10 +50,20 @@ const sidebars = {
           items: [
             'providers-services/services/add-services',
             'providers-services/services/container-services',
+            'providers-services/services/systemd-services',
+            'providers-services/services/kubernetes-pods',
           ],
         },
-        'services/managing-services',
-        'providers/provider-types',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Dashboard',
+      collapsed: true,
+      items: [
+        'dashboards/overview',
+        'dashboards/service-menu',
+        'dashboards/saving-views',
       ],
     },
     {
@@ -72,12 +71,6 @@ const sidebars = {
       label: 'Monitoring',
       collapsed: true,
       items: ['monitoring/setting-up-alerts'],
-    },
-    {
-      type: 'category',
-      label: 'Dashboards',
-      collapsed: true,
-      items: ['dashboards/creating-dashboards'],
     },
     {
       type: 'category',
