@@ -1,0 +1,68 @@
+---
+sidebar_position: 1
+---
+
+# Dashboard Overview
+
+The main interface for monitoring and controlling your services.
+
+## Service Control
+
+Control services directly from the dashboard interface.
+
+<div style={{display: 'flex', gap: '20px', margin: '20px 0'}}>
+  <div style={{flex: 1, padding: '20px', border: '1px solid #e0e0e0', borderRadius: '8px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white'}}>
+    <h3 style={{marginTop: 0, color: 'white'}}>Start/Stop Services</h3>
+    <p style={{marginBottom: 0, color: 'white'}}>Control service lifecycle with one-click actions</p>
+  </div>
+  <div style={{flex: 1, padding: '20px', border: '1px solid #e0e0e0', borderRadius: '8px', background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', color: 'white'}}>
+    <h3 style={{marginTop: 0, color: 'white'}}>Restart Services</h3>
+    <p style={{marginBottom: 0, color: 'white'}}>Restart services when issues are detected</p>
+  </div>
+</div>
+
+<div style={{display: 'flex', gap: '20px', margin: '20px 0'}}>
+  <div style={{flex: 1, padding: '20px', border: '1px solid #e0e0e0', borderRadius: '8px', background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', color: 'white'}}>
+    <h3 style={{marginTop: 0, color: 'white'}}>View Logs</h3>
+    <p style={{marginBottom: 0, color: 'white'}}>Access real-time service logs and diagnostics</p>
+  </div>
+  <div style={{flex: 1, padding: '20px', border: '1px solid #e0e0e0', borderRadius: '8px', background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)', color: 'white'}}>
+    <h3 style={{marginTop: 0, color: 'white'}}>Monitor Status</h3>
+    <p style={{marginBottom: 0, color: 'white'}}>Real-time service health and performance metrics</p>
+  </div>
+</div>
+
+## Service Filtering
+
+Filter and organize services for better visibility.
+
+### Filter Options
+- **By Status**: Active, inactive, failed services
+- **By Provider**: Group services by their hosting provider
+- **By Service Type**: Systemd, Docker, Kubernetes pods
+- **By Tags**: Custom labels and categories
+
+### Search Functionality
+- **Quick Search**: Find services by name or description
+- **Advanced Filters**: Combine multiple filter criteria
+- **Saved Searches**: Store frequently used filter combinations
+
+## Dashboard Customization
+
+Personalize your monitoring experience.
+
+### Layout Options
+- **Grid View**: Card-based service overview
+- **List View**: Detailed tabular service information
+- **Compact View**: Condensed service status display
+
+### Widget Configuration
+- **Status Widgets**: Service health summaries
+- **Performance Widgets**: Resource utilization charts
+- **Alert Widgets**: Active alerts and notifications
+- **Custom Widgets**: User-defined monitoring displays
+
+### Theme Settings
+- **Light/Dark Mode**: Choose your preferred interface theme
+- **Color Schemes**: Customize status and alert colors
+- **Dashboard Layouts**: Arrange widgets and panels
