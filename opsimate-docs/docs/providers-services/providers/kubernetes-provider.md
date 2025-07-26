@@ -18,21 +18,13 @@ Kubernetes providers require kubeconfig file access to establish cluster monitor
 
 ### Kubeconfig Configuration
 
-Place your kubeconfig file in the `data/private-keys/` directory and reference only the filename:
+Place your kubeconfig files in the `data/private-keys/` directory and reference only the filename:
 
-```yaml
-kubeconfig_file: "cluster-config.yaml"
-```
 
 ## Types of Services
 
-Kubernetes providers support automatic pod discovery and monitoring:
+Kubernetes providers support automatic pod discovery.
 
 ### Pods
 
-**Automatic Discovery**: OpsiMate automatically detects and monitors all pods within the configured cluster context.
-
-**Monitoring Capabilities**:
-- Pod status and lifecycle events
-- Resource utilization (CPU, memory, storage)
-- Container logs and application events
+**Automatic Discovery**: OpsiMate automatically detects all pods within the configured cluster context and you can add them as a services directly from the my providers page.

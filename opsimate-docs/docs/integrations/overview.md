@@ -34,14 +34,8 @@ Each integration can add multiple layers of functionality:
 ### Grafana
 Visualization and dashboarding platform for metrics and monitoring data.
 
-### Prometheus  
-Open-source monitoring system with dimensional data model and powerful query language.
-
 ### Kibana
 Data visualization dashboard for Elasticsearch, used for log analysis and search.
-
-### Coralogix
-Cloud-native observability platform for logs, metrics, and traces.
 
 ## Getting Started
 
@@ -52,7 +46,5 @@ Cloud-native observability platform for logs, metrics, and traces.
 
 Select an integration to learn how to set it up:
 
-- [[Setting up Grafana Integration](/docs/](/integrations/grafana)
-- [[Setting up Prometheus Integration](/docs/](/integrations/prometheus)
-- [[Setting up Coralogix Integration](/docs/](/integrations/coralogix)
-- [[Setting up Kibana Integration](/docs/](/integrations/kibana)
+- [Setting up Grafana Integration](/integrations/grafana)
+- [Setting up Kibana Integration](/integrations/kibana)

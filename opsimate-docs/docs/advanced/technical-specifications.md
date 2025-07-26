@@ -141,7 +141,7 @@ CREATE TABLE services (
 CREATE TABLE integrations (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
-  type TEXT NOT NULL CHECK (type IN ('Grafana', 'Prometheus', 'Coralogix', 'Kibana')),
+  type TEXT NOT NULL CHECK (type IN ('Grafana', 'Kibana')),
   url TEXT NOT NULL,
   api_key TEXT NOT NULL,
   created_at TEXT DEFAULT CURRENT_TIMESTAMP

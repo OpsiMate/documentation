@@ -1421,14 +1421,6 @@ hr {
   background: linear-gradient(135deg, #f05a28 0%, #fbca0a 100%);
 }
 
-.integration-card.prometheus {
-  background: linear-gradient(135deg, #e6522c 0%, #f86734 100%);
-}
-
-.integration-card.coralogix {
-  background: linear-gradient(135deg, #3023ae 0%, #53a0fd 100%);
-}
-
 .integration-card.kibana {
   background: linear-gradient(135deg, #00bfb3 0%, #0077cc 100%);
 }

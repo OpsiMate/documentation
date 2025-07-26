@@ -54,9 +54,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'integrations/overview',
         'integrations/grafana',
-        'integrations/prometheus',
-        'integrations/kibana',
-        'integrations/coralogix',
+        'integrations/kibana',  
       ],
     },
     {

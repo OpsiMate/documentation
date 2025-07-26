@@ -40,7 +40,6 @@ const sidebars = {
             'providers-services/providers/add-provider',
             'providers-services/providers/server-provider',
             'providers-services/providers/kubernetes-provider',
-            'providers-services/providers/aws-ec2-provider',
           ],
         },
         {
@@ -58,6 +57,16 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Integrations',
+      collapsed: true,
+      items: [
+        'integrations/overview',
+        'integrations/grafana',
+        'integrations/kibana',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Dashboard',
       collapsed: true,
       items: [
@@ -71,18 +80,6 @@ const sidebars = {
       label: 'Monitoring',
       collapsed: true,
       items: ['monitoring/setting-up-alerts'],
-    },
-    {
-      type: 'category',
-      label: 'Integrations',
-      collapsed: true,
-      items: [
-        'integrations/overview',
-        'integrations/grafana',
-        'integrations/prometheus',
-        'integrations/kibana',
-        'integrations/coralogix',
-      ],
     },
     {
       type: 'category',

@@ -19,15 +19,6 @@ Connect OpsiMate to your Grafana instances to:
 
 [Learn more about Grafana integration](../integrations/grafana)
 
-### Prometheus
-
-Connect OpsiMate to Prometheus to:
-- Collect and visualize metrics
-- Import alerts from Prometheus Alert Manager
-- Configure custom metrics and alerts
-
-[Learn more about Prometheus integration](../integrations/prometheus)
-
 ### Kibana
 
 Connect OpsiMate to Kibana for:
@@ -36,15 +27,6 @@ Connect OpsiMate to Kibana for:
 - Log-based alerting
 
 [Learn more about Kibana integration](../integrations/kibana)
-
-### Coralogix
-
-Connect OpsiMate to Coralogix for:
-- Advanced log analysis
-- Machine learning-based anomaly detection
-- Log-based alerting
-
-[Learn more about Coralogix integration](../integrations/coralogix)
 
 ## External Links Dropdown
 

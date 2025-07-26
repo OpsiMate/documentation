@@ -8,7 +8,7 @@ OpsiMate allows you to create custom dashboards to visualize your services and t
 
 ## Understanding Dashboard Views
 
-In OpsiMate, dashboards are organized as "views" that can be customized and saved for future use. Each view can display different services, metrics, and visualizations based on your needs.
+In OpsiMate, dashboards are organized as "views" that can be customized and saved with specific filters and search criteria for future use. Each view can display different services, metrics, and visualizations based on your needs.
 
 ## Creating a New Dashboard View
 
@@ -19,10 +19,11 @@ In OpsiMate, dashboards are organized as "views" that can be customized and save
 
 ### Step 2: Create a New View
 
-1. In the dashboard, locate the **Views** dropdown in the top navigation bar
-2. Click on the **+ New View** button
-3. Enter a name for your new view (e.g., "Production Services")
-4. Click **Create** to generate the new view
+1. search and filter the services you want to include in the dashboard
+2. In the dashboard, locate the **Views** dropdown in the top navigation bar
+3. Click on the **+ New View** button
+4. Enter a name for your new view (e.g., "Production Services")
+5. Click **Create** to generate the new view
 
 <!-- Image placeholder: Creating a new dashboard view -->
 
@@ -109,69 +110,11 @@ To remove a view you no longer need:
 3. Select **Delete View**
 4. Confirm deletion when prompted
 
-## Adding Widgets to Dashboards
-
-OpsiMate allows you to add various widgets to your dashboard for enhanced visualization:
-
-### Step 1: Enter Edit Mode
-
-1. Select the view you want to enhance
-2. Click the **Edit Layout** button to enter edit mode
-
-### Step 2: Add Widgets
-
-1. Click the **+ Add Widget** button
-2. Choose from available widget types:
-   - **Status Summary**: Overview of service statuses
-   - **Alert Summary**: Summary of active alerts
-   - **Metric Chart**: Line, bar, or pie charts of key metrics
-   - **Service List**: Filtered list of specific services
-   - **External Dashboard**: Embedded view from integrated tools
-
-<!-- Image placeholder: Adding widgets to a dashboard -->
-
-### Step 3: Configure the Widget
-
-1. Set the widget title
-2. Configure data sources and parameters
-3. Set refresh interval
-4. Choose visualization options
-5. Click **Save** to add the widget to your dashboard
-
-### Step 4: Arrange Widgets
-
-1. Drag and drop widgets to position them
-2. Resize widgets by dragging the corners
-3. Click **Save Layout** when finished
-
-## Creating Service-Specific Dashboards
-
-To create a dashboard focused on specific services:
-
-1. Create a new view
-2. Apply filters to show only the services you're interested in
-3. Add relevant widgets that display metrics for these services
-4. Save the view with an appropriate name
-
-## Using Tags for Dynamic Dashboards
-
-Tags provide a powerful way to create dynamic dashboards:
-
-1. Ensure your services are properly tagged
-2. Create a new view
-3. Add a filter based on tags
-4. Save the view
-
-As you add or remove tags from services, your dashboard will automatically update to include or exclude those services.
-
 ## Best Practices for Dashboards
 
 - **Keep It Focused**: Create separate views for different purposes
-- **Use Consistent Naming**: Adopt a naming convention for your views
-- **Leverage Tags**: Use tags to create dynamic, self-updating views
-- **Prioritize Information**: Place the most important widgets at the top
 - **Review and Refine**: Regularly update your views as your needs change
-- **Create Role-Based Views**: Design different views for different team roles
+- **Create Team-Based Views**: Design different views for different teams
 
 ## Next Steps
 

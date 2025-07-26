@@ -14,11 +14,11 @@ The configuration file should be mounted to `/app/config/configfile.yml` inside 
 
 ```bash
 docker run -d \
-  --name service-peek-app \
+  --name opsimate \
   -p 3001:3001 \
   -p 8080:8080 \
   -v $(pwd)/config/configfile.yml:/app/config/configfile.yml \
-  opsimate/opsimate:0.0.2
+  opsimate/opsimate:0.0.4
 ```
 
 ## Basic Configuration
@@ -41,7 +41,7 @@ client:
 
 # Database configuration
 database:
-  path: "/app/data/database/service_peek.db"  # SQLite database file path (mounted volume)
+  path: "/app/data/database/opsimate.db"  # SQLite database file path (mounted volume)
 
 # Security configuration
 security:

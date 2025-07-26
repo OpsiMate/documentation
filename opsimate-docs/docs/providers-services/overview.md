@@ -2,11 +2,11 @@
 sidebar_position: 1
 ---
 
-# 🎯 Providers & Services Overview
+# Providers & Services Overview
 
 Understanding the relationship between providers and services is key to effectively using OpsiMate for infrastructure monitoring.
 
-## 🏗️ What are Providers?
+## What are Providers?
 
 **Providers** are the infrastructure platforms where your applications run. Think of them as the "containers" that host your services:
 
@@ -30,21 +30,11 @@ Understanding the relationship between providers and services is key to effectiv
       <li>Services & ingress</li>
     </ul>
   </div>
-  
-  <div style={{padding: '20px', background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', borderRadius: '12px', color: 'white'}}>
-    <h3 style={{color: 'white', margin: '0 0 10px 0'}}>☁️ AWS EC2 (Dynamic)</h3>
-    <p style={{margin: '0 0 10px 0', fontSize: '14px'}}>Auto-scaling group of multiple servers</p>
-    <ul style={{margin: 0, paddingLeft: '20px', fontSize: '14px'}}>
-      <li>Multiple EC2 instances</li>
-      <li>Auto-discovered services</li>
-      <li>Dynamic scaling</li>
-    </ul>
-  </div>
 </div>
 
-## 🚀 What are Services?
+## What are Services?
 
-**Services** are the actual applications and processes that deliver value to your users. These are what you really care about monitoring:
+**Services** are the core applications and processes within your system—delivering value or enabling critical capabilities, not necessarily only for end‑users. These are the components you need to both monitor and control to ensure smooth operation and effective management.
 
 ### Service Types
 
@@ -64,7 +54,7 @@ Understanding the relationship between providers and services is key to effectiv
 </div>
 
 
-## 🚀 Getting Started
+## Getting Started
 
 Ready to set up your infrastructure monitoring?
 

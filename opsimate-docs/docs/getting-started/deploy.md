@@ -21,14 +21,14 @@ Deploy OpsiMate with a single Docker command:
 ```bash
 # Deploy OpsiMate
 docker run -d \
-  --name service-peek-app \
+  --name opsimate \
   -p 3001:3001 \
   -p 8080:8080 \
   -v $(pwd)/data/database:/app/data/database \
   -v $(pwd)/data/private-keys:/app/data/private-keys \
   -v /path/to/configfile.yml:/app/config/configfile.yml \
   --restart unless-stopped \
-  opsimate/opsimate:0.0.2
+  opsimate/opsimate:0.0.4
 ```
 
 :::success
@@ -40,10 +40,10 @@ Register a user for the first time - it will be the first admin user
 
 ```bash
 # Check container status
-docker ps | grep service-peek-app
+docker ps | grep opsimate
 
 # View application logs
-docker logs service-peek-app
+docker logs opsimate
 
 # Check health status
 curl http://localhost:8080/health

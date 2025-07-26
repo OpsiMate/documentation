@@ -77,9 +77,7 @@ OpsiMate features an advanced multi-tag alert system that ensures comprehensive 
 OpsiMate integrates with popular monitoring tools:
 
 - **Grafana** - Visualize metrics and create dashboards
-- **Prometheus** - Collect and store metrics
 - **Kibana** - Search and analyze logs
-- **Coralogix** - Advanced log analysis and correlation
 
 ## Best Practices
 

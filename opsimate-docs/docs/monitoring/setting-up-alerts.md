@@ -36,8 +36,6 @@ These alerts trigger when performance metrics cross defined thresholds:
 
 These alerts come from integrated monitoring tools:
 - **Grafana Alerts**: Imported from your Grafana dashboards
-- **Prometheus Alerts**: Based on Prometheus alert rules
-- **Coralogix Alerts**: Log-based alerts from Coralogix
 - **Kibana Alerts**: Alerts defined in Kibana
 
 ## Setting Up Basic Service Alerts
