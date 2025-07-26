@@ -37,6 +37,9 @@ Visualization and dashboarding platform for metrics and monitoring data.
 ### Kibana
 Data visualization dashboard for Elasticsearch, used for log analysis and search.
 
+### DataDog
+Cloud monitoring and analytics platform for infrastructure, applications, and logs.
+
 ## Getting Started
 
 1. Navigate to **My Integrations** page

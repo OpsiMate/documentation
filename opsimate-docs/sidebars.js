@@ -63,6 +63,7 @@ const sidebars = {
         'integrations/overview',
         'integrations/grafana',
         'integrations/kibana',
+        'integrations/datadog',
       ],
     },
     {
@@ -74,12 +75,6 @@ const sidebars = {
         'dashboards/service-menu',
         'dashboards/saving-views',
       ],
-    },
-    {
-      type: 'category',
-      label: 'Monitoring',
-      collapsed: true,
-      items: ['monitoring/setting-up-alerts'],
     },
     {
       type: 'category',

@@ -36,13 +36,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Monitoring',
-      items: [
-        'monitoring/setting-up-alerts',
-      ],
-    },
-    {
-      type: 'category',
       label: 'Dashboards',
       items: [
         'dashboards/creating-dashboards',
