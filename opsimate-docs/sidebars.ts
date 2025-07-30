@@ -52,12 +52,22 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Advanced',
+      label: 'Alerts',
       items: [
-        'advanced/actions',
-        'advanced/incident-response',
+        'alerts/adding-alerts',
+        'alerts/alert-management',
       ],
     },
+    {
+      type: 'category',
+      label: 'User Management & Security',
+      items: [
+        'user-management/register-login',
+        'user-management/admin-panel',
+        'user-management/audit-logs',
+      ],
+    },
+    'development',
   ],
 };
 

@@ -78,10 +78,17 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Advanced',
+      label: 'Alerts',
       collapsed: true,
-      items: ['advanced/technical-specifications', 'advanced/actions', 'advanced/incident-response'],
+      items: ['alerts/adding-alerts', 'alerts/alert-management'],
     },
+    {
+      type: 'category',
+      label: 'User Management & Security',
+      collapsed: true,
+      items: ['user-management/register-login', 'user-management/admin-panel', 'user-management/audit-logs'],
+    },
+    'development',
   ],
 };
 
