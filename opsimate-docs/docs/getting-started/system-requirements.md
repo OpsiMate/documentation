@@ -27,13 +27,6 @@ OpsiMate is lightweight and runs efficiently on minimal hardware.
 - **Port 22**: SSH access to monitored servers
 - Internet access for Docker images
 
-## ✅ Quick Check
-
-```bash
-# Verify Docker is ready
-docker --version && docker run hello-world
-```
-
 :::tip Ready to Deploy?
 Once your system meets these requirements, head to the [deployment guide](deploy) to get started!
 :::

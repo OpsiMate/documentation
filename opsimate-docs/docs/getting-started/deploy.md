@@ -49,6 +49,14 @@ docker logs opsimate
 curl http://localhost:8080/health
 ```
 
+## First Login
+
+When you first access OpsiMate at `http://localhost:8080`, you'll be prompted to create your first admin user:
+
+<img src="/img/first-login.png" alt="First Login Screen" style={{width: '400px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+
+Simply fill in your email, full name, and password to create the initial admin account. This user will have full administrative privileges to configure providers, manage services, and access all OpsiMate features.
+
 ## Next Steps
 
 After deployment:
