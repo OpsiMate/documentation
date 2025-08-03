@@ -24,6 +24,10 @@ Adding a provider to OpsiMate is simple and takes just a few steps:
 4. **Enable Monitoring**  
    Save your configuration and start adding services.
 
+<div style={{textAlign: 'center', margin: '30px 0'}}>
+  <img src="/img/myprovider-page.png" alt="My Providers Dashboard" style={{width: '600px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
+  <p style={{fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic'}}>My Providers page showing configured infrastructure providers and their services</p>
+</div>
 
 ## Next Steps
 

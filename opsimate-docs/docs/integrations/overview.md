@@ -47,6 +47,13 @@ Cloud monitoring and analytics platform for infrastructure, applications, and lo
 3. Choose your integration type
 4. Follow the setup instructions
 
+
+<div style={{textAlign: 'center', margin: '20px 0'}}>
+  <img src="/img/adding-grafana-integration.png" alt="Grafana Integration Setup" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <p style={{fontSize: '14px', color: '#666', marginTop: '8px', fontStyle: 'italic'}}>Setting up Grafana integration in OpsiMate</p>
+</div>
+
+
 Select an integration to learn how to set it up:
 
 - [Setting up Grafana Integration](/integrations/grafana)
