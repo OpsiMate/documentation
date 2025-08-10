@@ -19,17 +19,33 @@ Make sure your system meets the [system requirements](system-requirements) and t
 Deploy OpsiMate with a single Docker command:
 
 ```bash
-# Deploy OpsiMate
+# Create a config file from one of the examples under configuration_example
+vim config.yml
+
+# Create required directories
+mkdir -p data/database data/private-keys
+
+# Copy your SSH private keys
+cp ~/.ssh/id_rsa data/private-keys/
+
+# Run the container
 docker run -d \
   --name opsimate \
   --rm \
-  -p 3001:3001 \
-  -p 8080:8080 \
+  -p 3001:3001 -p 8080:8080 \
   -v $(pwd)/data/database:/app/data/database \
   -v $(pwd)/data/private-keys:/app/data/private-keys \
-  -v /path/to/configfile.yml:/app/config/configfile.yml \
-  opsimate/opsimate:0.0.6
+  -v $(pwd)/config.yml:/app/config/config.yml \
+  opsimate/opsimate
 ```
+
+### Volume Mounts
+
+| Volume | Purpose |
+|--------|---------|
+| `/app/data/database` | SQLite database persistence |
+| `/app/data/private-keys` | SSH private keys for authentication |
+| `/app/config/config.yml` | Custom configuration |
 
 :::success
 OpsiMate is now running at `http://localhost:8080`

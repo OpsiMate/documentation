@@ -33,13 +33,14 @@ npm install
 npm run build
 ```
 
-### 4. Start Development Server
+### 4. Start client and server
 
 ```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:3000`
+The Client will be available at `http://localhost:8080`
+The Server will be available at `http://localhost:3001`
 
 ## Development Commands
 
