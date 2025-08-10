@@ -8,19 +8,6 @@ sidebar_position: 3
 
 OpsiMate uses a YAML configuration file to manage application settings. This guide covers all available configuration options.
 
-## Configuration File Location
-
-The configuration file should be mounted to `/app/config/configfile.yml` inside the container:
-
-```bash
-docker run -d \
-  --name opsimate \
-  -p 3001:3001 \
-  -p 8080:8080 \
-  -v $(pwd)/config/configfile.yml:/app/config/configfile.yml \
-  opsimate/opsimate:0.0.4
-```
-
 ## Basic Configuration
 
 ### Minimal Configuration
