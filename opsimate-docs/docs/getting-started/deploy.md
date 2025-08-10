@@ -22,13 +22,13 @@ Deploy OpsiMate with a single Docker command:
 # Deploy OpsiMate
 docker run -d \
   --name opsimate \
+  --rm \
   -p 3001:3001 \
   -p 8080:8080 \
   -v $(pwd)/data/database:/app/data/database \
   -v $(pwd)/data/private-keys:/app/data/private-keys \
   -v /path/to/configfile.yml:/app/config/configfile.yml \
-  --restart unless-stopped \
-  opsimate/opsimate:0.0.4
+  opsimate/opsimate:0.0.6
 ```
 
 :::success
