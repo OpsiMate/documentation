@@ -33,9 +33,6 @@ docker run -d \
   --name opsimate \
   --rm \
   -p 3001:3001 -p 8080:8080 \
-  -v $(pwd)/data/database:/app/data/database \
-  -v $(pwd)/data/private-keys:/app/data/private-keys \
-  -v $(pwd)/config.yml:/app/config/config.yml \
   opsimate/opsimate
 ```
 
