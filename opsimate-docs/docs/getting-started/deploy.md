@@ -19,16 +19,6 @@ Make sure your system meets the [system requirements](system-requirements) and t
 Deploy OpsiMate with a single Docker command:
 
 ```bash
-# Create a config file from one of the examples under configuration_example
-vim config.yml
-
-# Create required directories
-mkdir -p data/database data/private-keys
-
-# Copy your SSH private keys
-cp ~/.ssh/id_rsa data/private-keys/
-
-# Run the container
 docker run -d \
   --name opsimate \
   --rm \
