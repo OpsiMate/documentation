@@ -34,7 +34,7 @@ Adding a provider to OpsiMate is simple and takes just a few steps:
 Once your provider is added:
 
 1. **[Configure Services](../services/add-services)** - Fine-tune service monitoring
-2. **[Set Up Alerts](../../monitoring/setting-up-alerts)** - Get notified of issues
+2. **[Set Up Alerts](../../alerts/adding-alerts)** - Get notified of issues
 3. **[Create Dashboards](../../dashboards/creating-dashboards)** - Visualize your infrastructure
 
 :::info Provider Types

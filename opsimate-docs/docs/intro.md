@@ -36,9 +36,8 @@ OpsiMate unifies your entire infrastructure ecosystem into one intelligent platf
 
 Ready to transform your infrastructure management? OpsiMate is designed to get you up and running quickly:
 
-1. **📝 [Installation Guide](./getting-started/installation)** - Set up OpsiMate in minutes
-2. **⚡ [Quick Start](./getting-started/quick-start)** - Monitor your first service in under 10 minutes
-3. **📚 [Explore Features](./features/monitoring)** - Discover what OpsiMate can do for your team
+1. **📝 [Installation Guide](./getting-started/deploy)** - Set up OpsiMate in minutes
+2. **📚 [Explore Features](./core-features)** - Discover what OpsiMate can do for your team
 
 :::info 👥 Join Our Community
 Have questions? Join our [Slack Community](https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA) or check out our [GitHub](https://github.com/Fifaboyz/OpsiMate) repository.
