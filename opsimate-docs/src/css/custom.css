@@ -1,30 +1,136 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Custom CSS for OpsiMate blue and black theme
  */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #2196f3;
+  --ifm-color-primary-dark: #0d8aee;
+  --ifm-color-primary-darker: #0c80e0;
+  --ifm-color-primary-darkest: #0a6abb;
+  --ifm-color-primary-light: #38a1f4;
+  --ifm-color-primary-lighter: #44a7f5;
+  --ifm-color-primary-lightest: #67b7f7;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #111111;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* Header and navigation */
+.navbar {
+  background-color: #000000;
+  border-bottom: 1px solid #333333;
+}
+
+.navbar__link--active {
+  color: #2196f3 !important;
+}
+
+.navbar__link:hover {
+  color: #2196f3 !important;
+}
+
+/* Sidebar */
+.menu {
+  background-color: #000000;
+}
+
+.menu__link--active {
+  color: #2196f3 !important;
+  background-color: #111111;
+}
+
+.menu__link:hover {
+  color: #2196f3 !important;
+  background-color: #111111;
+}
+
+/* Footer */
+.footer {
+  background-color: #000000;
+  border-top: 1px solid #333333;
+}
+
+.footer__link-item:hover {
+  color: #2196f3 !important;
+}
+
+/* Links throughout the site */
+a {
+  color: #2196f3;
+}
+
+a:hover {
+  color: #67b7f7;
+}
+
+/* Code blocks and syntax highlighting */
+code {
+  background-color: #111111;
+  border: 1px solid #333333;
+  color: #2196f3;
+}
+
+/* Buttons */
+.button--primary {
+  background-color: #2196f3;
+  border-color: #2196f3;
+  color: white;
+}
+
+.button--primary:hover {
+  background-color: #0d8aee;
+  border-color: #0d8aee;
+  color: white;
+}
+
+/* Doc card links */
+.card:hover {
+  border-color: #2196f3;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+/* Search bar */
+.DocSearch {
+  --docsearch-primary-color: #2196f3;
+  --docsearch-text-color: #ffffff;
+  --docsearch-muted-color: #bbbbbb;
+}
+
+/* Breadcrumbs */
+.breadcrumbs__link--active {
+  color: #2196f3;
+}
+
+/* Pagination */
+.pagination-nav__link:hover {
+  border-color: #2196f3;
+  color: #2196f3;
+}
+
+/* Table of contents */
+.table-of-contents__link--active {
+  color: #2196f3;
+  font-weight: 600;
+}
+
+.table-of-contents__link:hover {
+  color: #2196f3;
+}
+
+/* Announcement bar */
+div[class*="announcementBar"] {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+}
+
+/* Highlight color for selected text */
+::selection {
+  background: #2196f3;
+  color: white;
+}
+
+::-moz-selection {
+  background: #2196f3;
+  color: white;
 }
