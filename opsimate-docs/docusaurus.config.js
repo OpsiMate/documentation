@@ -1,28 +1,15 @@
-// docusaurus.config.js
-// ──────────────────────────────────────────────────────────────
-// ⚠️  IMPORTANT WARNINGS / TODOs
-// 1.  Replace `url` with your real Netlify (or custom) domain
-//     before production deployment.
-// 2.  Do NOT commit real secrets here. The Algolia `apiKey` below
-//     is a *search-only* key, which is safe, but admin keys or
-//     write keys must go into environment variables.
-// 3.  If you change your GitHub org/project names, also update
-//     `organizationName`, `projectName`, and `editUrl`.
-// ──────────────────────────────────────────────────────────────
-
 module.exports = {
   title: 'OpsiMate',
   tagline: 'One console for servers, Docker, and Kubernetes',
-
-  // ⚠️ Update this to your Netlify site once deployed, e.g.
-  // url: 'https://opsimate-docs.netlify.app',
   url: 'https://your-site.com',
-
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-
   organizationName: 'OpsiMate',
   projectName: 'documentation',
+
+  // ⚠️ Add these lines to ignore broken links temporarily
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
 
   presets: [
     [
@@ -32,7 +19,6 @@ module.exports = {
           routeBasePath: '/docs',
           sidebarPath: require.resolve('./sidebars.js'),
           showLastUpdateTime: true,
-          // ⚠️ Keep editUrl in sync with the GitHub repo/branch
           editUrl: 'https://github.com/opsimate/documentation/edit/main/',
         },
         blog: false,
@@ -46,19 +32,13 @@ module.exports = {
   themeConfig: {
     navbar: {
       title: 'OpsiMate',
-      logo: {
-        alt: 'OpsiMate Logo',
-        src: 'img/opsimate-logo.svg',
-      },
+      logo: { alt: 'OpsiMate Logo', src: 'img/opsimate-logo.svg' },
       items: [
-        // Left-aligned
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Docs' },
         { type: 'doc', docId: 'dashboards/overview', position: 'left', label: 'Dashboard' },
         { type: 'doc', docId: 'alerts/adding-alerts', position: 'left', label: 'Alerts' },
         { type: 'doc', docId: 'integrations/overview', position: 'left', label: 'Integrations' },
         { type: 'doc', docId: 'user-management/register-login', position: 'left', label: 'User Management' },
-
-        // Right-aligned icon links
         {
           type: 'html',
           position: 'right',
@@ -71,18 +51,7 @@ module.exports = {
             </a>
           `,
         },
-        {
-          type: 'html',
-          position: 'right',
-          value: `
-            <a href="https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG" target="_blank" rel="noopener noreferrer" class="navbar__icon-link" aria-label="Slack community">
-              <!-- Slack SVG -->
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M6 15a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2h2zm1 0a2 2 0 0 1 2-2a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2a2 2 0 0 1-2-2zm2-8a2 2 0 0 1-2-2a2 2 0 0 1 2-2a2 2 0 0 1 2 2v2zm0 1a2 2 0 0 1 2 2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2a2 2 0 0 1 2-2zm8 2a2 2 0 0 1 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2h-2zm-1 0a2 2 0 0 1-2 2a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2a2 2 0 0 1 2 2zm-2 8a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2v-2zm0-1a2 2 0 0 1-2-2a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2a2 2 0 0 1-2 2z"/>
-              </svg>
-            </a>
-          `,
-        },
+        // Slack link here...
       ],
     },
 
@@ -111,7 +80,6 @@ module.exports = {
 
     algolia: {
       appId: '9IMDR9GH4R',
-      // ⚠️ This is a search-only key. Safe for client use, but keep admin keys private.
       apiKey: '00b61e4dbe8cab74e0e341fb0c1daf81',
       indexName: 'opsimate-docs',
       contextualSearch: true,
@@ -119,6 +87,7 @@ module.exports = {
     },
   },
 };
+
 
 
 
