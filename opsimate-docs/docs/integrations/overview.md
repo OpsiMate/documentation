@@ -10,20 +10,20 @@ Integrations are the way to connect external tools to OpsiMate. The goal is to l
 
 Each integration can add multiple layers of functionality:
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px', margin: '20px 0'}}>
-  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+<div class="integration-grid">
+  <div class="integration-card">
     <strong>🚨 Receiving Alerts</strong><br/>
     <small>Get alerts from external monitoring systems</small>
   </div>
-  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+  <div class="integration-card">
     <strong>🔗 External Links</strong><br/>
     <small>Link external URLs and dashboards to services</small>
   </div>
-  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+  <div class="integration-card">
     <strong>📊 Monitoring Data</strong><br/>
     <small>Add logs, metrics, and performance data</small>
   </div>
-  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
+  <div class="integration-card">
     <strong>⚡ Actions</strong><br/>
     <small>Use tools to control services and run actions</small>
   </div>
@@ -47,14 +47,12 @@ Cloud monitoring and analytics platform for infrastructure, applications, and lo
 3. Choose your integration type
 4. Follow the setup instructions
 
-
-<div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/adding-grafana-integration.png" alt="Grafana Integration Setup" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
-  <p style={{fontSize: '14px', color: '#666', marginTop: '8px', fontStyle: 'italic'}}>Setting up Grafana integration in OpsiMate</p>
+<div class="image-container">
+  <img src="/img/adding-grafana-integration.png" alt="Grafana Integration Setup" />
+  <p>Setting up Grafana integration in OpsiMate</p>
 </div>
-
 
 Select an integration to learn how to set it up:
 
-- [Setting up Grafana Integration](/integrations/grafana)
-- [Setting up Kibana Integration](/integrations/kibana)
+- [Setting up Grafana Integration](/docs/integrations/grafana)
+- [Setting up Kibana Integration](/docs/integrations/kibana)

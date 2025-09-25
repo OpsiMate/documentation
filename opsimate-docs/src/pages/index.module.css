@@ -3,41 +3,19 @@
  * and scoped locally.
  */
 
-/* ---------- CSS Variables for Themes ---------- */
-:root {
-  /* Light mode variables - Blue/White/Black theme */
-  --hero-bg-light: linear-gradient(135deg, #2196f3 0%, #1976d2 50%, #0d47a1 100%);
-  --card-bg-light: #ffffff;
-  --card-border-light: #e0e0e0;
-  --text-primary-light: #000000;
-  --text-secondary-light: #424242;
-  --section-bg-light: #f5f5f5;
-  --opsimate-blue: #2196f3;
-  --opsimate-blue-dark: #1976d2;
-  --opsimate-blue-light: #64b5f6;
-}
-
-[data-theme='dark'] {
-  /* Dark mode variables - Blue/Black theme */
-  --hero-bg-dark: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
-  --card-bg-dark: #000000;
-  --card-border-dark: #333333;
-  --text-primary-dark: #ffffff;
-  --text-secondary-dark: #e0e0e0;
-  --section-bg-dark: #111111;
-}
-
-/* ---------- Hero Section ---------- */
+/* ---------- Hero Section (Darker Blue-Indigo gradient) ---------- */
 .hero {
   padding: 4rem 0 2rem;
   text-align: center;
   color: white;
   min-height: 100vh;
-  background: var(--hero-bg-light);
+  background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
 }
 
+/* Force the hero section to always have dark blue-indigo background */
+.hero,
 [data-theme='dark'] .hero {
-  background: var(--hero-bg-dark);
+  background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%) !important;
 }
 
 .heroContent {
@@ -67,19 +45,19 @@
   margin: 0 auto;
 }
 
-/* ---------- Features Section ---------- */
+/* ---------- Features Section (White background in light mode) ---------- */
 .featuresSection {
   padding: 4rem 0;
   border-radius: 12px;
   margin: 2rem auto;
   max-width: 1200px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background: var(--card-bg-light);
+  background: white;
 }
 
 [data-theme='dark'] .featuresSection {
-  background: var(--card-bg-dark);
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+  background: #000000;
+  box-shadow: 0 2px 8px rgba(51, 103, 214, 0.2);
 }
 
 .featuresTitle {
@@ -87,11 +65,11 @@
   font-weight: 600;
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--text-primary-light);
+  color: #1a237e; /* Dark blue-indigo for headings */
 }
 
 [data-theme='dark'] .featuresTitle {
-  color: var(--text-primary-dark);
+  color: #ffffff;
 }
 
 .featuresGrid {
@@ -109,30 +87,30 @@
   text-decoration: none;
   transition: all 0.3s ease;
   height: 100%;
-  background: var(--card-bg-light);
-  border: 1px solid var(--card-border-light);
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
 }
 
 [data-theme='dark'] .featureCard {
-  background: var(--card-bg-dark);
-  border: 1px solid var(--card-border-dark);
+  background: #111111;
+  border: 1px solid #333333;
 }
 
 .featureCard:hover {
-  border-color: var(--opsimate-blue);
+  border-color: #3949ab; /* Darker blue for hover */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+  box-shadow: 0 4px 12px rgba(57, 73, 171, 0.15);
   text-decoration: none;
 }
 
 [data-theme='dark'] .featureCard:hover {
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+  box-shadow: 0 4px 12px rgba(57, 73, 171, 0.3);
 }
 
 .cardIcon {
   width: 48px;
   height: 48px;
-  background: var(--opsimate-blue);
+  background: #3949ab; /* Darker blue-indigo for icons */
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -156,21 +134,21 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--text-primary-light);
+  color: #1a237e; /* Dark blue-indigo for card titles */
 }
 
 [data-theme='dark'] .cardTitle {
-  color: var(--text-primary-dark);
+  color: #ffffff;
 }
 
 .cardDescription {
   line-height: 1.5;
   margin: 0;
-  color: var(--text-secondary-light);
+  color: #424242;
 }
 
 [data-theme='dark'] .cardDescription {
-  color: var(--text-secondary-dark);
+  color: #bbbbbb;
 }
 
 /* ---------- Community Section ---------- */
@@ -180,35 +158,35 @@
   border-radius: 12px;
   margin: 2rem auto;
   max-width: 800px;
-  background: var(--section-bg-light);
-  border: 1px solid var(--card-border-light);
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
 }
 
 [data-theme='dark'] .communitySection {
-  background: var(--section-bg-dark);
-  border: 1px solid var(--card-border-dark);
+  background: #111111;
+  border: 1px solid #333333;
 }
 
 .communityTitle {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--text-primary-light);
+  color: #1a237e; /* Dark blue-indigo for community title */
 }
 
 [data-theme='dark'] .communityTitle {
-  color: var(--text-primary-dark);
+  color: #ffffff;
 }
 
 .communityDescription {
   font-size: 1.1rem;
   margin-bottom: 2rem;
   line-height: 1.6;
-  color: var(--text-secondary-light);
+  color: #424242;
 }
 
 [data-theme='dark'] .communityDescription {
-  color: var(--text-secondary-dark);
+  color: #bbbbbb;
 }
 
 .communityButtons {
@@ -222,24 +200,24 @@
   display: inline-flex;
   align-items: center;
   padding: 0.75rem 2rem;
-  background: var(--opsimate-blue);
+  background: #3949ab; /* Darker blue-indigo for buttons */
   color: white;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 500;
   transition: all 0.3s ease;
-  border: 2px solid var(--opsimate-blue);
+  border: 2px solid #3949ab;
 }
 
 .communityButton:hover {
   background: transparent;
-  color: var(--opsimate-blue);
+  color: #3949ab;
   text-decoration: none;
 }
 
 [data-theme='dark'] .communityButton:hover {
   background: transparent;
-  color: var(--opsimate-blue-light);
+  color: #5c6bc0;
 }
 
 /* ---------- Responsive Design ---------- */

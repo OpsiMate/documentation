@@ -1,136 +1,330 @@
 /**
- * Custom CSS for OpsiMate blue and black theme
+ * OpsiMate – Darker Blue-Indigo Theme
  */
 
+/* ---------- Base Colors with Darker Blue-Indigo ---------- */
 :root {
-  --ifm-color-primary: #2196f3;
-  --ifm-color-primary-dark: #0d8aee;
-  --ifm-color-primary-darker: #0c80e0;
-  --ifm-color-primary-darkest: #0a6abb;
-  --ifm-color-primary-light: #38a1f4;
-  --ifm-color-primary-lighter: #44a7f5;
-  --ifm-color-primary-lightest: #67b7f7;
+  --ifm-color-primary: #3949ab;
+  --ifm-color-primary-dark: #303f9f;
+  --ifm-color-primary-darker: #283593;
+  --ifm-color-primary-light: #5c6bc0;
+  --ifm-color-primary-lighter: #7986cb;
   --ifm-code-font-size: 95%;
-  --ifm-background-color: #000000;
-  --ifm-background-surface-color: #111111;
+
+  /* Light mode defaults */
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f8f9fa;
+  --ifm-font-color-base: #000000;
+  --ifm-heading-color: #1a237e; /* Dark blue-indigo for headings */
+  --ifm-navbar-background-color: #1a237e; /* Dark blue-indigo navbar */
+  --ifm-footer-background-color: #3949ab;
 }
 
-/* Header and navigation */
+[data-theme='dark'] {
+  /* Dark mode overrides */
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #111111;
+  --ifm-font-color-base: #e6eef6;
+  --ifm-heading-color: #ffffff;
+  --ifm-navbar-background-color: #1a237e;
+  --ifm-footer-background-color: #3949ab;
+}
+
+/* ---------- Global Font & Typography ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+body, .markdown {
+  font-family: var(--ifm-font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ifm-heading-color);
+  font-weight: 700;
+}
+
+/* ---------- Navbar (Darker Blue-Indigo) ---------- */
 .navbar {
-  background-color: #000000;
-  border-bottom: 1px solid #333333;
+  background-color: var(--ifm-navbar-background-color) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar__title, .navbar__brand, .navbar__link {
+  color: white !important;
 }
 
 .navbar__link--active {
-  color: #2196f3 !important;
+  color: #bbdefb !important;
 }
 
 .navbar__link:hover {
-  color: #2196f3 !important;
+  color: #90caf9 !important;
 }
 
-/* Sidebar */
+/* ---------- Sidebar (Adapts to light/dark) ---------- */
 .menu {
-  background-color: #000000;
+  background-color: var(--ifm-background-color);
+}
+
+.menu__link {
+  color: var(--ifm-font-color-base);
 }
 
 .menu__link--active {
-  color: #2196f3 !important;
-  background-color: #111111;
+  color: #3949ab !important;
+  background-color: rgba(57, 73, 171, 0.1);
 }
 
 .menu__link:hover {
-  color: #2196f3 !important;
-  background-color: #111111;
+  color: #3949ab !important;
+  background-color: rgba(57, 73, 171, 0.05);
 }
 
-/* Footer */
+/* ---------- Footer (Darker Blue-Indigo) ---------- */
 .footer {
-  background-color: #000000;
-  border-top: 1px solid #333333;
+  background-color: var(--ifm-footer-background-color) !important;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__link-item {
+  color: #e3f2fd !important;
 }
 
 .footer__link-item:hover {
-  color: #2196f3 !important;
+  color: white !important;
 }
 
-/* Links throughout the site */
+/* ---------- Documentation Content Area ---------- */
+.theme-doc-markdown {
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  line-height: 1.6;
+}
+
+/* ---------- Integration Grid Styles ---------- */
+.integration-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.integration-card {
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .integration-card {
+  border: 1px solid #333333;
+  background: #111111;
+}
+
+.integration-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(57, 73, 171, 0.15);
+  border-color: #3949ab;
+}
+
+.integration-card strong {
+  color: inherit;
+  font-size: 1.1em;
+}
+
+.integration-card small {
+  color: #666666;
+  line-height: 1.4;
+}
+
+[data-theme='dark'] .integration-card small {
+  color: #bbbbbb;
+}
+
+/* ---------- Links ---------- */
 a {
-  color: #2196f3;
+  color: #3949ab;
 }
 
 a:hover {
-  color: #67b7f7;
+  color: #303f9f;
 }
 
-/* Code blocks and syntax highlighting */
+/* ---------- Code Blocks ---------- */
 code {
-  background-color: #111111;
-  border: 1px solid #333333;
-  color: #2196f3;
+  background-color: var(--ifm-background-surface-color);
+  border: 1px solid #ddd;
+  color: #3949ab;
 }
 
-/* Buttons */
+[data-theme='dark'] code {
+  border: 1px solid #333333;
+}
+
+/* ---------- Buttons ---------- */
 .button--primary {
-  background-color: #2196f3;
-  border-color: #2196f3;
+  background-color: #3949ab;
+  border-color: #3949ab;
   color: white;
 }
 
 .button--primary:hover {
-  background-color: #0d8aee;
-  border-color: #0d8aee;
+  background-color: #303f9f;
+  border-color: #303f9f;
   color: white;
 }
 
-/* Doc card links */
-.card:hover {
-  border-color: #2196f3;
-  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+/* ---------- GitHub & Slack icon links ---------- */
+.navbar__icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 0.25rem;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  color: white !important;
 }
 
-/* Search bar */
-.DocSearch {
-  --docsearch-primary-color: #2196f3;
-  --docsearch-text-color: #ffffff;
-  --docsearch-muted-color: #bbbbbb;
+.navbar__icon-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #bbdefb !important;
+  text-decoration: none;
 }
 
-/* Breadcrumbs */
-.breadcrumbs__link--active {
-  color: #2196f3;
+.navbar__icon-link svg {
+  width: 24px;
+  height: 24px;
 }
 
-/* Pagination */
-.pagination-nav__link:hover {
-  border-color: #2196f3;
-  color: #2196f3;
+.navbar__items--right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Table of contents */
-.table-of-contents__link--active {
-  color: #2196f3;
-  font-weight: 600;
+/* ---------- Mobile Navigation ---------- */
+@media (max-width: 1024px) {
+  .navbar__toggle {
+    display: block;
+    color: #fff;
+  }
+  
+  .navbar__items--left {
+    display: none;
+  }
+  
+  .navbar__icon-link {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
+
 }
 
-.table-of-contents__link:hover {
-  color: #2196f3;
+/* ===== TOP NAVIGATION FIXES ===== */
+/* Fix for top navigation bar - targeting Docusaurus navbar */
+.navbar {
+    background-color: #000000 !important;
+    border-bottom: none !important;
 }
 
-/* Announcement bar */
-div[class*="announcementBar"] {
-  background-color: #2196f3;
-  color: white;
-  border: none;
+/* Ensure all text in navbar is white */
+.navbar,
+.navbar__brand,
+.navbar__link,
+.navbar__title {
+    color: #ffffff !important;
 }
 
-/* Highlight color for selected text */
-::selection {
-  background: #2196f3;
-  color: white;
+/* Style icons with your brand color */
+.navbar__icon {
+    color: #3949ab !important; /* Using your primary color from the theme */
 }
 
-::-moz-selection {
-  background: #2196f3;
-  color: white;
+/* Specific styling for navigation items */
+.navbar__item,
+.navbar__link {
+    color: #ffffff !important;
 }
+
+/* Hover effects for navigation items */
+.navbar__link:hover {
+    color: #5c6bc0 !important; /* Using your primary-light color */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure the GitHub/Slack icons are properly styled */
+.navbar__icon-link {
+    color: #ffffff !important;
+}
+
+.navbar__icon-link:hover {
+    color: #5c6bc0 !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Fix for mobile menu toggle */
+.navbar__toggle {
+    color: #ffffff !important;
+}
+
+/* ===== TOP NAVIGATION FIXES ===== */
+/* Fix for top navigation bar - targeting Docusaurus navbar */
+.navbar {
+    background-color: #000000 !important;
+    border-bottom: none !important;
+}
+
+/* Ensure all text in navbar is white */
+.navbar,
+.navbar__brand,
+.navbar__link,
+.navbar__title {
+    color: #ffffff !important;
+}
+
+/* Style icons with your brand color */
+.navbar__icon {
+    color: #3949ab !important; /* Using your primary color from the theme */
+}
+
+/* Specific styling for navigation items */
+.navbar__item,
+.navbar__link {
+    color: #ffffff !important;
+}
+
+/* Hover effects for navigation items */
+.navbar__link:hover {
+    color: #5c6bc0 !important; /* Using your primary-light color */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure the GitHub/Slack icons are properly styled */
+.navbar__icon-link {
+    color: #ffffff !important;
+}
+
+.navbar__icon-link:hover {
+    color: #5c6bc0 !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Fix for mobile menu toggle */
+.navbar__toggle {
+    color: #ffffff !important;
+}
+
+
