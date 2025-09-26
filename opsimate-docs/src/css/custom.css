@@ -198,5 +198,12 @@ html[data-theme='light'] .navbar__link:hover {
   color: var(--ifm-color-primary-light) !important;
 }
 
+.navbar__icon-link img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+
 
 
