@@ -8,24 +8,22 @@ Integrations are the way to connect external tools to OpsiMate. The goal is to l
 
 ## Integration Layers
 
-Each integration can add multiple layers of functionality:
-
 <div class="integration-grid">
   <div class="integration-card">
-    <strong>🚨 Receiving Alerts</strong><br/>
-    <small>Get alerts from external monitoring systems</small>
+    <strong>🚨 Receiving Alerts</strong>
+    <p>Get alerts from external monitoring systems</p>
   </div>
   <div class="integration-card">
-    <strong>🔗 External Links</strong><br/>
-    <small>Link external URLs and dashboards to services</small>
+    <strong>🔗 External Links</strong>
+    <p>Link external URLs and dashboards to services</p>
   </div>
   <div class="integration-card">
-    <strong>📊 Monitoring Data</strong><br/>
-    <small>Add logs, metrics, and performance data</small>
+    <strong>📊 Monitoring Data</strong>
+    <p>Add logs, metrics, and performance data</p>
   </div>
   <div class="integration-card">
-    <strong>⚡ Actions</strong><br/>
-    <small>Use tools to control services and run actions</small>
+    <strong>⚡ Actions</strong>
+    <p>Use tools to control services and run actions</p>
   </div>
 </div>
 

@@ -286,3 +286,49 @@
     padding: 1.2rem;
   }
 }
+
+/* ---------- Make 'Explore the Docs' button match main indigo theme ---------- */
+.communityButton,
+.homepage__cta {
+  background-color: #3949ab !important;  /* main indigo */
+  border-color: #3949ab !important;
+  color: white !important;
+}
+
+.communityButton:hover,
+.homepage__cta:hover {
+  background-color: #303f9f !important;  /* darker indigo on hover */
+  border-color: #303f9f !important;
+  color: white !important;
+}
+
+/* Add to the bottom of src/pages/index.module.css (or merge) */
+
+/* Make the "Explore the Docs" heading use the main indigo theme */
+.featuresTitle {
+  color: var(--ifm-color-primary) !important;
+}
+
+/* Make the "Join Our Community" heading use the main indigo theme */
+.communityTitle {
+  color: var(--ifm-color-primary) !important;
+}
+
+/* If the homepage CTA uses a custom class, ensure the CTA styling is indigo too */
+.communityButton,
+.homepage__cta,
+.communityButton a,
+.homepage__cta a {
+  background-color: var(--ifm-color-primary) !important;
+  border-color: var(--ifm-color-primary) !important;
+  color: #fff !important;
+}
+
+.communityButton:hover,
+.homepage__cta:hover {
+  background-color: var(--ifm-color-primary-dark) !important;
+  border-color: var(--ifm-color-primary-dark) !important;
+  color: #fff !important;
+}
+
+
