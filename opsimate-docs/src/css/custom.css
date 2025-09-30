@@ -1,30 +1,835 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * OpsiMate – Darker Blue-Indigo Theme
  */
 
-/* You can override the default Infima variables here. */
+/* ---------- Base Colors ---------- */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #3949ab;
+  --ifm-color-primary-dark: #303f9f;
+  --ifm-color-primary-darker: #283593;
+  --ifm-color-primary-light: #5c6bc0;
+  --ifm-color-primary-lighter: #7986cb;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f8f9fa;
+  --ifm-font-color-base: #000000;
+  --ifm-heading-color: #1a237e;
+  --ifm-navbar-background-color: #000000;
+  --ifm-footer-background-color: #3949ab;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #111111;
+  --ifm-font-color-base: #e6eef6;
+  --ifm-heading-color: #ffffff;
+  --ifm-navbar-background-color: #000000;
+  --ifm-footer-background-color: #3949ab;
+}
+
+/* ---------- Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+:root {
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+body, .markdown {
+  font-family: var(--ifm-font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ifm-heading-color);
+  font-weight: 700;
+}
+
+/* ---------- Navbar Icons ---------- */
+.navbar-icons-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 10px;
+}
+
+.navbar-icon-link, .footer-community-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: #ffffff !important;
+}
+
+.navbar-icon, .footer-community-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
+}
+
+.navbar-icon-link:hover, .footer-community-icon-link:hover {
+  background-color: rgba(57, 73, 171, 0.3);
+  transform: translateY(-1px);
+}
+
+.navbar-icon-link:hover .navbar-icon,
+.footer-community-icon-link:hover .footer-community-icon {
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
+}
+
+/* Navbar text links */
+.navbar__title, .navbar__brand, .navbar__link { color: white !important; }
+.navbar__link--active { color: #bbdefb !important; }
+.navbar__link:hover { color: #5c6bc0 !important; background-color: rgba(57, 73, 171, 0.1); }
+.navbar { background-color: #000000 !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* ---------- Footer ---------- */
+.footer { background-color: var(--ifm-footer-background-color) !important; color: white; border-top: 1px solid rgba(255,255,255,0.1); padding: 3rem 0 1.5rem !important; }
+
+.footer__container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; }
+
+.footer__links { display: flex; gap: 3rem; flex-wrap: wrap; }
+.footer__col { flex: 1; min-width: 200px; }
+.footer__title { color: #ffffff !important; font-size: 1.1rem !important; font-weight: 600 !important; margin-bottom: 1.5rem !important; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; }
+
+.footer__link-item { color: #e3f2fd !important; transition: all 0.3s ease !important; padding: 0.3rem 0; display: block; text-decoration: none !important; }
+.footer__link-item:hover { color: #bbdefb !important; transform: translateX(5px); text-decoration: none !important; background: rgba(255,255,255,0.05); }
+
+/* ---------- Footer Community Icons ---------- */
+.footer-community-icons { display: flex; align-items: center; gap: 12px; margin-top: 0.5rem; }
+
+/* Footer bottom / Vercel card remains unchanged (from your original CSS) */
+
+/* ---------- Responsive adjustments (navbar + footer icons included) ---------- */
+@media (max-width: 1024px) {
+  .navbar-icon-link, .footer-community-icon-link { width: 36px; height: 36px; }
+  .navbar-icon, .footer-community-icon { width: 20px; height: 20px; }
+  .navbar-icons-container, .footer-community-icons { gap: 12px; }
+}
+
+/* ---------- Remove old conflicting hidden classes ---------- */
+/* removed: .footer-icons-container, .footer-community-section, etc. */
+
+/* ===== VERCEL CARD - SLEEK RECTANGULAR DESIGN (INCREASED SIZE) ===== */
+.vercel-card-container {
+  text-decoration: none;
+  display: block;
+}
+
+.vercel-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem; /* Increased gap */
+  padding: 0.9rem 1.5rem; /* Increased padding */
+  background: #000000;
+  border: 1.75px solid #334155; /* Slightly thicker border */
+  border-radius: 7px; /* Slightly larger radius */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 175px; /* Increased min-width */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35); /* Enhanced shadow */
+  position: relative;
+  overflow: hidden;
+}
+
+.vercel-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(79, 70, 229, 0.18) 0%, /* Slightly stronger gradient */
+    rgba(0, 0, 0, 0.85) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vercel-card:hover {
+  background: #111827;
+  border-color: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(79, 70, 229, 0.3); /* Enhanced hover shadow */
+  text-decoration: none;
+}
+
+.vercel-card:hover::before {
+  opacity: 1;
+}
+
+.vercel-card-logo {
+  width: 22px; /* Increased logo size */
+  height: 22px; /* Increased logo size */
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.vercel-card:hover .vercel-card-logo {
+  transform: scale(1.15); /* Slightly larger hover scale */
+}
+
+.vercel-card-text {
+  color: #ffffff;
+  font-size: 0.95rem; /* Increased font size */
+  font-weight: 700; /* Bolder font weight */
+  letter-spacing: 0.4px; /* Slightly more letter spacing */
+  opacity: 0.95; /* Increased opacity */
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.vercel-card:hover .vercel-card-text {
+  opacity: 1;
+  transform: translateX(1px); /* Subtle text movement on hover */
+}
+
+/* ===== FOOTER BOTTOM LAYOUT ===== */
+.footer-bottom {
+  width: 100%;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-copyright {
+  color: #e3f2fd;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ===== COMMUNITY SECTION - ICONS ONLY ===== */
+.footer-community-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 0.5rem;
+}
+
+.footer-community-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.footer-community-icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.footer-community-icon-link:hover {
+  background-color: rgba(57, 73, 171, 0.3);
+  transform: translateY(-1px);
+}
+
+.footer-community-icon-link:hover .footer-community-icon {
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 996px) {
+  .footer__container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer__links {
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .footer__col {
+    min-width: 180px;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .footer-community-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1rem !important;
+  }
+  
+  .footer__links {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .vercel-card {
+    min-width: 165px; /* Adjusted for mobile */
+    padding: 0.85rem 1.3rem; /* Adjusted for mobile */
+  }
+  
+  .footer-copyright {
+    order: 2;
+  }
+  
+  .vercel-card-container {
+    order: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-bottom-content {
+    padding: 0 15px;
+  }
+  
+  .vercel-card {
+    min-width: 155px; /* Adjusted for small mobile */
+    padding: 0.75rem 1.1rem; /* Adjusted for small mobile */
+  }
+  
+  .vercel-card-text {
+    font-size: 0.88rem; /* Slightly smaller on very small screens */
+  }
+  
+  .vercel-card-logo {
+    width: 20px; /* Slightly smaller on very small screens */
+    height: 20px;
+  }
+  
+  .footer-community-icons {
+    gap: 12px;
+  }
+  
+  .footer-community-icon-link {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .footer-community-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ===== Integration Layers Tiles with Indigo Borders ===== */
+.integration-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.integration-card {
+  background-color: var(--ifm-background-surface-color);
+  border-radius: 12px;
+  border: 2px solid var(--ifm-color-primary); /* Indigo border */
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.integration-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--ifm-color-primary-light); /* Lighter indigo on hover */
+}
+
+.integration-card strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.integration-card p {
+  font-size: 0.95rem;
+  color: var(--ifm-font-color-base);
+  line-height: 1.4;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .integration-grid {
+    grid-template-columns: 1fr 1fr; /* 2 per row on tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .integration-grid {
+    grid-template-columns: 1fr; /* 1 per row on mobile */
+  }
+}
+
+/* ===== INTEGRATIONS SECTION ===== */
+.footer-integrations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.integration-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.integration-link:hover {
+  background: rgba(57, 73, 171, 0.2);
+  border-color: rgba(57, 73, 171, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(57, 73, 171, 0.2);
+}
+
+.integration-icon {
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+  filter: brightness(0) invert(1) opacity(0.8);
+}
+
+.integration-link:hover .integration-icon {
+  filter: brightness(0) invert(1) opacity(1);
+  transform: scale(1.1);
+}
+
+/* ===== INTEGRATIONS SECTION WITH LABELS ===== */
+.footer-integrations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.integration-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 1rem 0.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 90px;
+}
+
+.integration-item:hover {
+  background: rgba(57, 73, 171, 0.2);
+  border-color: rgba(57, 73, 171, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(57, 73, 171, 0.25);
+  text-decoration: none;
+}
+
+.integration-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.integration-icon {
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+  filter: brightness(0) invert(1) opacity(0.9);
+}
+
+.integration-item:hover .integration-icon {
+  filter: brightness(0) invert(1) opacity(1);
+  transform: scale(1.15);
+}
+
+.integration-name {
+  color: #e3f2fd;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.integration-item:hover .integration-name {
+  color: #bbdefb;
+}
+
+/* ===== RESPONSIVE INTEGRATIONS WITH LABELS ===== */
+@media (max-width: 996px) {
+  .footer-integrations {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .integration-item {
+    padding: 0.75rem 0.25rem;
+    min-width: 80px;
+  }
+  
+  .integration-icon-container {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .integration-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .integration-name {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-integrations {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .integration-item {
+    padding: 0.5rem 0.25rem;
+    min-width: 70px;
+  }
+  
+  .integration-icon-container {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .integration-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .integration-name {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-integrations {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .integration-item {
+    padding: 0.4rem 0.2rem;
+    min-width: 65px;
+  }
+  
+  .integration-icon-container {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .integration-icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .integration-name {
+    font-size: 0.65rem;
+  }
+}
+
+/* ===== LIGHT/DARK MODE TOGGLE VISIBILITY ===== */
+
+/* Ensure toggle is visible in light mode */
+.navbar__toggle {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  margin-right: 8px;
+}
+
+/* Light mode styling */
+html[data-theme='light'] .navbar__toggle {
+  color: #3949ab !important; /* Indigo color */
+  background: transparent;
+  border: 1px solid rgba(57, 73, 171, 0.2);
+}
+
+html[data-theme='light'] .navbar__toggle:hover {
+  color: #283593 !important; /* Darker indigo */
+  background: rgba(57, 73, 171, 0.1);
+  border-color: #3949ab;
+}
+
+/* Dark mode styling */
+html[data-theme='dark'] .navbar__toggle {
+  color: #bbdefb !important; /* Light blue for contrast */
+  background: transparent;
+  border: 1px solid rgba(187, 222, 251, 0.3);
+}
+
+html[data-theme='dark'] .navbar__toggle:hover {
+  color: #ffffff !important;
+  background: rgba(187, 222, 251, 0.1);
+  border-color: #bbdefb;
+}
+
+/* Toggle icon sizing */
+.navbar__toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Ensure proper spacing with other navbar icons */
+.navbar-icons-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Reduced gap to accommodate toggle */
+}
+
+/* If the toggle is still not appearing, force its display */
+button[class*="toggle"] {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Additional fallback for toggle visibility */
+.navbar .react-toggle,
+.navbar .toggle_vylO {
+  display: flex !important;
+  visibility: visible !important;
+}
+
+/* Remove indigo left borders from homepage cards */
+.homepage-section {
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  border-left: none; /* Remove the indigo left border */
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Add subtle border */
+}
+
+[data-theme='dark'] .homepage-section {
+  background: #111111;
+  border-left: none; /* Remove for dark mode too */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for dark mode */
+}
+
+.homepage-section:hover {
+  background: rgba(57, 73, 171, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(57, 73, 171, 0.1);
+  border-color: #3949ab; /* Indigo border on hover */
+}
+
+[data-theme='dark'] .homepage-section:hover {
+  background: rgba(57, 73, 171, 0.1);
+  border-color: #5c6bc0; /* Lighter indigo for dark mode */
+}
+
+/* Remove specific indigo borders from community and feature cards */
+.communitySection.homepage-section,
+.featureCard.homepage-section {
+  border-left: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .communitySection.homepage-section,
+[data-theme='dark'] .featureCard.homepage-section {
+  border-left: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.communitySection.homepage-section:hover,
+.featureCard.homepage-section:hover {
+  border-left: none !important;
+  border-color: #3949ab;
+}
+
+[data-theme='dark'] .communitySection.homepage-section:hover,
+[data-theme='dark'] .featureCard.homepage-section:hover {
+  border-left: none !important;
+  border-color: #5c6bc0;
+}
+
+/* ===== NAVBAR BACKGROUND COLORS ===== */
+
+/* Light mode - Indigo background */
+html[data-theme='light'] .navbar {
+  background-color: #3949ab !important; /* Indigo background */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode - Keep black background */
+html[data-theme='dark'] .navbar {
+  background-color: #000000 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== LIGHT MODE TOGGLE VISIBILITY ON INDIGO BACKGROUND ===== */
+
+/* Light mode toggle styling - White on indigo */
+html[data-theme='light'] .navbar__toggle {
+  color: #ffffff !important; /* White color for contrast on indigo */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+}
+
+html[data-theme='light'] .navbar__toggle:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Dark mode toggle styling - Keep existing */
+html[data-theme='dark'] .navbar__toggle {
+  color: #bbdefb !important;
+  background: transparent;
+  border: 1px solid rgba(187, 222, 251, 0.3);
+  border-radius: 6px;
+}
+
+html[data-theme='dark'] .navbar__toggle:hover {
+  color: #ffffff !important;
+  background: rgba(187, 222, 251, 0.1);
+  border-color: #bbdefb;
+}
+
+/* ===== NAVBAR TEXT COLORS FOR LIGHT MODE ===== */
+
+/* Light mode - White text on indigo */
+html[data-theme='light'] .navbar__title,
+html[data-theme='light'] .navbar__brand,
+html[data-theme='light'] .navbar__link {
+  color: #ffffff !important;
+}
+
+html[data-theme='light'] .navbar__link--active {
+  color: #bbdefb !important; /* Light blue for active state */
+}
+
+html[data-theme='light'] .navbar__link:hover {
+  color: #bbdefb !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== RESTORE ORIGINAL DARK MODE HOVER EFFECTS ===== */
+
+/* Dark mode - Keep original indigo hover effects */
+html[data-theme='dark'] .navbar__link--active {
+  color: #bbdefb !important;
+}
+
+html[data-theme='dark'] .navbar__link:hover {
+  color: #5c6bc0 !important;
+  background-color: rgba(57, 73, 171, 0.1);
+}
+
+/* ===== NAVBAR ICONS FOR LIGHT MODE ===== */
+
+/* Light mode - White icons on indigo */
+html[data-theme='light'] .navbar-icon {
+  filter: brightness(0) invert(1); /* White icons */
+}
+
+html[data-theme='light'] .navbar-icon-link:hover .navbar-icon {
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg) brightness(2); /* Brighter indigo on hover */
+}
+
+html[data-theme='light'] .navbar-icon-link {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme='light'] .navbar-icon-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #bbdefb !important;
+}
+
+/* Dark mode - Keep existing icon styles with indigo hover */
+html[data-theme='dark'] .navbar-icon {
+  filter: brightness(0) invert(1);
+}
+
+html[data-theme='dark'] .navbar-icon-link:hover .navbar-icon {
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
+}
+
+html[data-theme='dark'] .navbar-icon-link:hover {
+  background-color: rgba(57, 73, 171, 0.3);
+  color: #bbdefb !important;
+}
+
+/* ===== ENSURE TOGGLE IS VISIBLE ===== */
+
+/* Make sure toggle container is visible */
+.navbar__toggle {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  margin-right: 8px;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Toggle icon sizing */
+.navbar__toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Force toggle display if still hidden */
+button[class*="toggle"] {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.navbar .react-toggle {
+  display: flex !important;
+  visibility: visible !important;
 }

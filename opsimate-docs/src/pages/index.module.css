@@ -1,23 +1,277 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * src/pages/index.module.css
+ * Scoped CSS module for homepage sections (Hero, Features, Community)
  */
 
-.heroBanner {
-  padding: 4rem 0;
+/* ---------- Hero Section (Darker Indigo Gradient) ---------- */
+.hero {
+  padding: 4rem 0 2rem;
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  color: white;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+[data-theme='dark'] .hero {
+  background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%) !important;
 }
 
-.buttons {
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: #e3f2fd;
+}
+
+.heroDescription {
+  font-size: 1.1rem;
+  color: #bbdefb;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ---------- Features Section ---------- */
+.featuresSection {
+  padding: 4rem 0;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 1200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+[data-theme='dark'] .featuresSection {
+  background: #000000;
+  box-shadow: 0 2px 8px rgba(51, 103, 214, 0.2);
+}
+
+.featuresTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--ifm-color-primary) !important;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.featureCard {
+  display: flex;
+  align-items: flex-start;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  height: 100%;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+}
+
+[data-theme='dark'] .featureCard {
+  background: #111111;
+  border: 1px solid #333333;
+}
+
+.featureCard:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(83, 109, 254, 0.15); /* subtle indigo shadow */
+}
+
+/* Card Icon */
+.cardIcon {
+  width: 48px;
+  height: 48px;
+  background: var(--ifm-color-primary); /* unified indigo */
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
 }
+
+.cardIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cardContent {
+  flex: 1;
+  text-align: left;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .cardTitle {
+  color: #ffffff;
+}
+
+.cardDescription {
+  line-height: 1.5;
+  margin: 0;
+  color: #424242;
+}
+
+[data-theme='dark'] .cardDescription {
+  color: #bbbbbb;
+}
+
+/* ---------- Community Section ---------- */
+.communitySection {
+  padding: 3rem 0;
+  text-align: center;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 800px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+}
+
+[data-theme='dark'] .communitySection {
+  background: #111111;
+  border: 1px solid #333333;
+}
+
+.communityTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .communityTitle {
+  color: #ffffff;
+}
+
+.communityDescription {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: #424242;
+}
+
+[data-theme='dark'] .communityDescription {
+  color: #bbbbbb;
+}
+
+/* Buttons */
+.communityButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.communityButton,
+.homepage__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background-color: var(--ifm-color-primary) !important;
+  border: 2px solid var(--ifm-color-primary) !important;
+  color: #fff !important;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.communityButton:hover,
+.homepage__cta:hover {
+  background-color: var(--ifm-color-primary-dark) !important;
+  border-color: var(--ifm-color-primary-dark) !important;
+  color: #fff !important;
+}
+
+/* ---------- Responsive Design ---------- */
+@media screen and (max-width: 996px) {
+  .hero {
+    padding: 2rem 0 1rem;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.3rem;
+  }
+  
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .featureCard {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cardIcon {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .communityButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .communityButton {
+    width: 200px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .featuresTitle {
+    font-size: 2rem;
+  }
+  
+  .communityTitle {
+    font-size: 1.5rem;
+  }
+  
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featureCard {
+    padding: 1.2rem;
+  }
+}
+
