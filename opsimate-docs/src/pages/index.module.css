@@ -1,9 +1,9 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * src/pages/index.module.css
+ * Scoped CSS module for homepage sections (Hero, Features, Community)
  */
 
-/* ---------- Hero Section (Darker Blue-Indigo gradient) ---------- */
+/* ---------- Hero Section (Darker Indigo Gradient) ---------- */
 .hero {
   padding: 4rem 0 2rem;
   text-align: center;
@@ -12,8 +12,6 @@
   background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
 }
 
-/* Force the hero section to always have dark blue-indigo background */
-.hero,
 [data-theme='dark'] .hero {
   background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%) !important;
 }
@@ -45,7 +43,7 @@
   margin: 0 auto;
 }
 
-/* ---------- Features Section (White background in light mode) ---------- */
+/* ---------- Features Section ---------- */
 .featuresSection {
   padding: 4rem 0;
   border-radius: 12px;
@@ -65,11 +63,7 @@
   font-weight: 600;
   text-align: center;
   margin-bottom: 3rem;
-  color: #1a237e; /* Dark blue-indigo for headings */
-}
-
-[data-theme='dark'] .featuresTitle {
-  color: #ffffff;
+  color: var(--ifm-color-primary) !important;
 }
 
 .featuresGrid {
@@ -97,20 +91,16 @@
 }
 
 .featureCard:hover {
-  border-color: #3949ab; /* Darker blue for hover */
+  border-color: var(--ifm-color-primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(57, 73, 171, 0.15);
-  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(83, 109, 254, 0.15); /* subtle indigo shadow */
 }
 
-[data-theme='dark'] .featureCard:hover {
-  box-shadow: 0 4px 12px rgba(57, 73, 171, 0.3);
-}
-
+/* Card Icon */
 .cardIcon {
   width: 48px;
   height: 48px;
-  background: #3949ab; /* Darker blue-indigo for icons */
+  background: var(--ifm-color-primary); /* unified indigo */
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -134,7 +124,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #1a237e; /* Dark blue-indigo for card titles */
+  color: var(--ifm-color-primary);
 }
 
 [data-theme='dark'] .cardTitle {
@@ -171,7 +161,7 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #1a237e; /* Dark blue-indigo for community title */
+  color: var(--ifm-color-primary) !important;
 }
 
 [data-theme='dark'] .communityTitle {
@@ -189,6 +179,7 @@
   color: #bbbbbb;
 }
 
+/* Buttons */
 .communityButtons {
   display: flex;
   gap: 1rem;
@@ -196,28 +187,25 @@
   flex-wrap: wrap;
 }
 
-.communityButton {
+.communityButton,
+.homepage__cta {
   display: inline-flex;
   align-items: center;
   padding: 0.75rem 2rem;
-  background: #3949ab; /* Darker blue-indigo for buttons */
-  color: white;
-  text-decoration: none;
+  background-color: var(--ifm-color-primary) !important;
+  border: 2px solid var(--ifm-color-primary) !important;
+  color: #fff !important;
   border-radius: 6px;
   font-weight: 500;
   transition: all 0.3s ease;
-  border: 2px solid #3949ab;
-}
-
-.communityButton:hover {
-  background: transparent;
-  color: #3949ab;
   text-decoration: none;
 }
 
-[data-theme='dark'] .communityButton:hover {
-  background: transparent;
-  color: #5c6bc0;
+.communityButton:hover,
+.homepage__cta:hover {
+  background-color: var(--ifm-color-primary-dark) !important;
+  border-color: var(--ifm-color-primary-dark) !important;
+  color: #fff !important;
 }
 
 /* ---------- Responsive Design ---------- */
@@ -286,49 +274,4 @@
     padding: 1.2rem;
   }
 }
-
-/* ---------- Make 'Explore the Docs' button match main indigo theme ---------- */
-.communityButton,
-.homepage__cta {
-  background-color: #3949ab !important;  /* main indigo */
-  border-color: #3949ab !important;
-  color: white !important;
-}
-
-.communityButton:hover,
-.homepage__cta:hover {
-  background-color: #303f9f !important;  /* darker indigo on hover */
-  border-color: #303f9f !important;
-  color: white !important;
-}
-
-/* Add to the bottom of src/pages/index.module.css (or merge) */
-
-/* Make the "Explore the Docs" heading use the main indigo theme */
-.featuresTitle {
-  color: var(--ifm-color-primary) !important;
-}
-
-/* Make the "Join Our Community" heading use the main indigo theme */
-.communityTitle {
-  color: var(--ifm-color-primary) !important;
-}
-
-/* If the homepage CTA uses a custom class, ensure the CTA styling is indigo too */
-.communityButton,
-.homepage__cta,
-.communityButton a,
-.homepage__cta a {
-  background-color: var(--ifm-color-primary) !important;
-  border-color: var(--ifm-color-primary) !important;
-  color: #fff !important;
-}
-
-.communityButton:hover,
-.homepage__cta:hover {
-  background-color: var(--ifm-color-primary-dark) !important;
-  border-color: var(--ifm-color-primary-dark) !important;
-  color: #fff !important;
-}
-
 

@@ -19,17 +19,22 @@ module.exports = {
           routeBasePath: '/docs',
           sidebarPath: require.resolve('./sidebars.js'),
           showLastUpdateTime: true,
-          editUrl: 'https://github.com/opsimate/documentation/edit/main/',
+          editUrl: 'https://github.com/OpsiMate/documentation/edit/main/',
         },
         blog: false,
-        theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
+        theme: { customCss: require.resolve('./src/css/custom.css') },
       },
     ],
   ],
 
   themeConfig: {
+    // Color mode configuration - THIS ENABLES THE TOGGLE
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false, // This enables the toggle!
+      respectPrefersColorScheme: true,
+    },
+
     navbar: {
       title: 'OpsiMate',
       logo: { alt: 'OpsiMate Logo', src: 'img/opsimate-logo.svg' },
@@ -40,18 +45,26 @@ module.exports = {
         { type: 'doc', docId: 'integrations/overview', position: 'left', label: 'Integrations' },
         { type: 'doc', docId: 'user-management/register-login', position: 'left', label: 'User Management' },
 
-        // --- Right-side icon links (GitHub + Slack) ---
+        // --- Right-side icons (GitHub + Slack) ---
         {
-          href: 'https://github.com/OpsiMate/documentation',
+          type: 'html',
           position: 'right',
-          className: 'navbar__icon-link github-icon',
-          html: '<img src="/img/github-icon.svg" alt="GitHub" />',
-        },
-        {
-          href: 'https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG',
-          position: 'right',
-          className: 'navbar__icon-link slack-icon',
-          html: '<img src="/img/slack-icon.svg" alt="Slack" />',
+          value: `
+            <div class="navbar-icons-container">
+              <a href="https://github.com/OpsiMate/documentation"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="GitHub repository"
+                 class="navbar-icon-link">
+                <img src="/img/github.svg" alt="GitHub" class="navbar-icon" />
+              </a>
+              <a href="https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Slack community"
+                 class="navbar-icon-link">
+                <img src="/img/slack.svg" alt="Slack" class="navbar-icon" />
+              </a>
+            </div>
+          `,
         },
       ],
     },
@@ -60,23 +73,96 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Documentation',
+          title: 'Integrate with',
           items: [
-            { label: 'Dashboard', to: '/docs/dashboards/overview' },
-            { label: 'Alerts', to: '/docs/alerts/adding-alerts' },
-            { label: 'Integrations', to: '/docs/integrations/overview' },
-            { label: 'User Management & Security', to: '/docs/user-management/register-login' },
+            {
+              html: `
+                <div class="footer-integrations">
+                  <a href="/docs/integrations/grafana" class="integration-item" aria-label="Grafana Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/grafana.svg" alt="Grafana" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Grafana</span>
+                  </a>
+                  <a href="/docs/integrations/kibana" class="integration-item" aria-label="Kibana Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/kibana.svg" alt="Kibana" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Kibana</span>
+                  </a>
+                  <a href="/docs/integrations/docker" class="integration-item" aria-label="Docker Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/docker.svg" alt="Docker" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Docker</span>
+                  </a>
+                  <a href="/docs/integrations/kubernetes" class="integration-item" aria-label="Kubernetes Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/kubernetes.svg" alt="Kubernetes" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Kubernetes</span>
+                  </a>
+                  <a href="/docs/integrations/systemd" class="integration-item" aria-label="Systemd Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/systemd.svg" alt="Systemd" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Systemd</span>
+                  </a>
+                  <a href="/docs/integrations/datadog" class="integration-item" aria-label="Datadog Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/datadog.svg" alt="Datadog" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Datadog</span>
+                  </a>
+                </div>
+              `,
+            },
           ],
         },
         {
-          title: 'More',
+          title: 'Community',
           items: [
-            { label: 'GitHub', href: 'https://github.com/OpsiMate/documentation' },
-            { label: 'Slack Community', href: 'https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG' },
+            {
+              html: `
+                <div class="footer-community-icons">
+                  <a href="https://github.com/OpsiMate/documentation"
+                     target="_blank" rel="noopener noreferrer"
+                     aria-label="GitHub repository"
+                     class="footer-community-icon-link">
+                    <img src="/img/github.svg" alt="GitHub" class="footer-community-icon" />
+                  </a>
+                  <a href="https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG"
+                     target="_blank" rel="noopener noreferrer"
+                     aria-label="Slack community"
+                     class="footer-community-icon-link">
+                    <img src="/img/slack.svg" alt="Slack" class="footer-community-icon" />
+                  </a>
+                </div>
+              `,
+            },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} OpsiMate. All rights reserved.`,
+      // --- VERCEL CARD FOOTER BOTTOM ---
+      copyright: `
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <div class="footer-copyright">
+              Copyright © ${new Date().getFullYear()} OpsiMate. All rights reserved.
+            </div>
+            
+            <a href="https://vercel.com"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="vercel-card-container">
+              <div class="vercel-card">
+                <span class="vercel-card-text">Deployed on</span>
+                <img src="/img/vercel.svg" alt="Vercel" class="vercel-card-logo" />
+              </div>
+            </a>
+          </div>
+        </div>
+      `,
     },
 
     algolia: {
@@ -84,24 +170,8 @@ module.exports = {
       apiKey: 'cc7b48e597d80aa85aad4c50df82812f',
       indexName: 'OpsiMate Docs',
       contextualSearch: true,
-      searchParameters: {},
     },
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
