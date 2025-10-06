@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Privacy Policy & Cookie Policy
 
-Last updated: {CURRENT_DATE}
+Last updated: January 2025
 
 ## Cookie Usage
 
@@ -41,3 +41,6 @@ You can manage your cookie preferences at any time by clearing your browser cook
 
 ### Data Protection
 We are committed to protecting your privacy and securing your data.
+
+### Contact Us
+For privacy-related questions, contact our team.
