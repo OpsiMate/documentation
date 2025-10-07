@@ -1,0 +1,145 @@
+/* src/components/CookieConsent.css */
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  color: white;
+  padding: 1.5rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  border-top: 1px solid #333;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.cookie-consent-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cookie-text {
+  flex: 1;
+}
+
+.cookie-text h4 {
+  margin: 0 0 0.5rem 0;
+  color: #bbdefb;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.cookie-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #e3f2fd;
+}
+
+.cookie-text a {
+  color: #bbdefb;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.cookie-text a:hover {
+  color: #90caf9;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  min-width: 120px;
+}
+
+.cookie-btn-reject {
+  background: transparent;
+  color: #bbdefb;
+  border: 1px solid #bbdefb;
+}
+
+.cookie-btn-reject:hover {
+  background: rgba(187, 222, 251, 0.1);
+  transform: translateY(-1px);
+}
+
+.cookie-btn-accept {
+  background: #3949ab;
+  color: white;
+  border: 1px solid #3949ab;
+}
+
+.cookie-btn-accept:hover {
+  background: #303f9f;
+  border-color: #303f9f;
+  transform: translateY(-1px);
+}
+
+/* Responsive design */
+@media (max-width: 996px) {
+  .cookie-consent-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .cookie-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .cookie-consent-banner {
+    padding: 1rem;
+  }
+  
+  .cookie-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .cookie-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cookie-text h4 {
+    font-size: 1rem;
+  }
+  
+  .cookie-text p {
+    font-size: 0.85rem;
+  }
+  
+  .cookie-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
