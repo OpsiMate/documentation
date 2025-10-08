@@ -7,7 +7,7 @@ sidebar_position: 3
 OpsiMate maintains comprehensive audit logs for all provider-related activities and system changes.
 
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/auditlog.png" alt="Audit Log Dashboard" style={{width: '700px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
+  <img src="/img/auditlog.png" alt="Screenshot of audit log dashboard" style={{width: '700px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
   <p style={{fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic'}}>Comprehensive audit log showing all system activities and user actions</p>
 </div>
 

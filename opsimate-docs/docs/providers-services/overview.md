@@ -33,7 +33,7 @@ Understanding the relationship between providers and services is key to effectiv
 </div>
 
 <div style={{textAlign: 'center', margin: '30px 0'}}>
-  <img src="/img/provider-overview.png" alt="Provider Overview Dashboard" style={{width: '600px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
+  <img src="/img/provider-overview.png" alt="Screenshot of provider overview dashboard" style={{width: '600px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
   <p style={{fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic'}}>OpsiMate provider overview showing connected infrastructure</p>
 </div>
 
@@ -58,13 +58,12 @@ Understanding the relationship between providers and services is key to effectiv
   </div>
 </div>
 
-
 ## Getting Started
 
 Ready to set up your infrastructure monitoring?
 
 1. **[Add Providers](providers/add-provider)** - Connect your infrastructure
-2. **[Discover Services](services/add-services)** - Find and import your applications  
+2. **[Discover Services](services/add-services)** - Find and import your applications
 3. **[Monitor Everything](../dashboards/overview)** - Keep your services healthy
 
 :::tip Pro Tip

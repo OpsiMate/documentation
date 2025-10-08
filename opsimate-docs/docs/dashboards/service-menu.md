@@ -11,7 +11,7 @@ Access service-specific options and controls through the right-side menu.
 Click on any service in the dashboard to open the service-specific menu panel.
 
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/service-sidebar.png" alt="Service Menu Sidebar" style={{width: '400px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <img src="/img/service-sidebar.png" alt="Screenshot of service menu sidebar" style={{width: '400px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
   <p style={{fontSize: '14px', color: '#666', marginTop: '8px', fontStyle: 'italic'}}>Service menu sidebar with detailed controls and information</p>
 </div>
 
@@ -29,30 +29,35 @@ Click on any service in the dashboard to open the service-specific menu panel.
 ## Menu Options
 
 ### Service Control
+
 - **Start Service**: Activate inactive services
 - **Stop Service**: Gracefully stop running services
 - **Restart Service**: Restart services to resolve issues
 - **Force Stop**: Emergency service termination
 
 ### Monitoring & Alerts
+
 - **Configure Alerts**: Set up service-specific notifications
 - **View Metrics**: Access detailed performance data
 - **Health Checks**: Configure and view service health status
 - **Threshold Settings**: Set resource usage alerts
 
 ### Logs & Diagnostics
+
 - **View Logs**: Access real-time service logs
 - **Download Logs**: Export log files for analysis
 - **Log Filtering**: Search and filter log entries
 - **Error Analysis**: Identify and analyze service errors
 
 ### Service Configuration
+
 - **Edit Settings**: Modify service configuration
 - **Environment Variables**: Manage service environment
 - **Resource Limits**: Set CPU and memory constraints
 - **Dependency Management**: Configure service dependencies
 
 ### Tags & Organization
+
 - **Add Tags**: Label services for better organization
 - **Edit Description**: Update service descriptions
 - **Group Assignment**: Assign services to logical groups
@@ -63,16 +68,19 @@ Click on any service in the dashboard to open the service-specific menu panel.
 Menu options adapt based on service type and current status.
 
 ### For Running Services
+
 - Stop and restart options available
 - Real-time metrics and logs accessible
 - Performance monitoring active
 
 ### For Stopped Services
+
 - Start option prominently displayed
 - Configuration editing enabled
 - Historical data available
 
 ### Service Type Specific
+
 - **Systemd Services**: Systemctl command options
 - **Docker Containers**: Container management commands
 - **Kubernetes Pods**: Kubectl operations and namespace management

@@ -12,16 +12,16 @@ Kubernetes providers require kubeconfig file access to establish cluster monitor
 
 ### Connection Parameters
 
-| Parameter | Type | Description | Required |
-|-----------|------|-------------|----------|
-| **Kubeconfig File** | String | Kubeconfig filename for cluster access | Yes |
+| Parameter           | Type   | Description                            | Required |
+| ------------------- | ------ | -------------------------------------- | -------- |
+| **Kubeconfig File** | String | Kubeconfig filename for cluster access | Yes      |
 
 ### Kubeconfig Configuration
 
 Place your kubeconfig files in the `data/private-keys/` directory and reference only the filename:
 
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/kubernetes-provider-add.png" alt="Adding Kubernetes Provider" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <img src="/img/kubernetes-provider-add.png" alt="Screenshot showing adding a Kubernetes provider" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
   <p style={{fontSize: '14px', color: '#666', marginTop: '8px', fontStyle: 'italic'}}>Kubernetes provider configuration form</p>
 </div>
 
