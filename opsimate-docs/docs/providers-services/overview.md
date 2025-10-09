@@ -44,18 +44,24 @@ Understanding the relationship between providers and services is key to effectiv
 ### Service Types
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px', margin: '20px 0'}}>
-  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
-    <strong>🐳 Containers</strong><br/>
-    <small>Docker containers running your applications</small>
-  </div>
-  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
-    <strong>⚙️ Systemd Services</strong><br/>
-    <small>Linux system services managed by systemd</small>
-  </div>
-  <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef'}}>
-    <strong>🎯 Kubernetes Pods</strong><br/>
-    <small>Containerized apps in Kubernetes clusters</small>
-  </div>
+  <a href="/docs/providers-services/services/container-services" style={{textDecoration: 'none', color: 'inherit'}}>
+    <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef', cursor: 'pointer', transition: 'all 0.2s'}}>
+      <strong>🐳 Containers</strong><br/>
+      <small>Docker containers running your applications</small>
+    </div>
+  </a>
+  <a href="/docs/providers-services/services/systemd-services" style={{textDecoration: 'none', color: 'inherit'}}>
+    <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef', cursor: 'pointer', transition: 'all 0.2s'}}>
+      <strong>⚙️ Systemd Services</strong><br/>
+      <small>Linux system services managed by systemd</small>
+    </div>
+  </a>
+  <a href="/docs/providers-services/services/kubernetes-pods" style={{textDecoration: 'none', color: 'inherit'}}>
+    <div style={{padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px', border: '1px solid #e9ecef', cursor: 'pointer', transition: 'all 0.2s'}}>
+      <strong>🎯 Kubernetes Pods</strong><br/>
+      <small>Containerized apps in Kubernetes clusters</small>
+    </div>
+  </a>
 </div>
 
 

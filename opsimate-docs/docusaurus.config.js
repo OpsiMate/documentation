@@ -8,8 +8,8 @@ module.exports = {
   organizationName: 'OpsiMate',
   projectName: 'documentation',
 
-  onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'ignore',
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
 
   presets: [
     [
@@ -90,19 +90,19 @@ module.exports = {
                     </div>
                     <span class="integration-name">Kibana</span>
                   </a>
-                  <a href="/docs/integrations/docker" class="integration-item" aria-label="Docker Integration">
+                  <a href="/docs/providers-services/services/container-services" class="integration-item" aria-label="Docker Integration">
                     <div class="integration-icon-container">
                       <img src="/img/docker.svg" alt="Docker" class="integration-icon" />
                     </div>
                     <span class="integration-name">Docker</span>
                   </a>
-                  <a href="/docs/integrations/kubernetes" class="integration-item" aria-label="Kubernetes Integration">
+                  <a href="/docs/providers-services/services/kubernetes-pods" class="integration-item" aria-label="Kubernetes Integration">
                     <div class="integration-icon-container">
                       <img src="/img/kubernetes.svg" alt="Kubernetes" class="integration-icon" />
                     </div>
                     <span class="integration-name">Kubernetes</span>
                   </a>
-                  <a href="/docs/integrations/systemd" class="integration-item" aria-label="Systemd Integration">
+                  <a href="/docs/providers-services/services/systemd-services" class="integration-item" aria-label="Systemd Integration">
                     <div class="integration-icon-container">
                       <img src="/img/systemd.svg" alt="Systemd" class="integration-icon" />
                     </div>
