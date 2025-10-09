@@ -1,4 +1,5 @@
 <h1 align="center">OpsiMate - documentation repo!</h1>
+<p align="center"><b>The official website of OpsiMate - https://www.opsimate.com/</b></p>
 <p align="center"><b>One console for servers, Docker, and Kubernetes—discover, monitor, and act.</b></p>
 <p align="center">
   Built for DevOps/NOC/IT teams that need a single place to see service health,
