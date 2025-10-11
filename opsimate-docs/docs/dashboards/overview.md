@@ -7,7 +7,7 @@ sidebar_position: 1
 The main interface for monitoring and controlling your services.
 
 <div style={{textAlign: 'center', margin: '30px 0'}}>
-  <img src="/img/dashboard-fullview.png" alt="OpsiMate Dashboard" style={{width: '800px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
+  <img src="/img/dashboard-fullview.png" alt="Screenshot of OpsiMate dashboard full view" style={{width: '800px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
   <p style={{fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic'}}>OpsiMate main dashboard showing service overview and controls</p>
 </div>
 
@@ -42,5 +42,6 @@ Control services directly from the dashboard interface.
 Filter and organize services for better visibility.
 
 ### Search Functionality
+
 - **Quick Search**: Find services by name or description
 - **Saved Searches**: Store frequently used filter combinations
