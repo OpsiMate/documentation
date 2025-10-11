@@ -11,7 +11,7 @@ Access service-specific options and controls through the right-side menu.
 Click on any service in the dashboard to open the service-specific menu panel.
 
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/service-sidebar.png" alt="Service Menu Sidebar" style={{width: '400px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <img src="/img/service-sidebar.png" alt="Service Menu Sidebar" class="doc-image" />
   <p style={{fontSize: '14px', color: '#666', marginTop: '8px', fontStyle: 'italic'}}>Service menu sidebar with detailed controls and information</p>
 </div>
 

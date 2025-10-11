@@ -18,7 +18,7 @@ Monitor Docker containers running on your servers.
 5. Choose from detected containers
 
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/adding-container-service.png" alt="Adding Container Service" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <img src="/img/adding-container-service.png" alt="Adding Container Service" class="doc-image" />
   <p style={{fontSize: '14px', color: '#666', marginTop: '8px', fontStyle: 'italic'}}>Adding a Docker container service to OpsiMate</p>
 </div>
 
