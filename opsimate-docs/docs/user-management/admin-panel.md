@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The Admin Panel allows administrators to manage users and system settings.
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/user-management.png" alt="User Management Interface" style={{width: '600px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <img src="/img/user-management.png" alt="User Management Interface" class="doc-image" />
   <p style={{fontSize: '14px', color: '#666', marginTop: '8px', fontStyle: 'italic'}}>User management dashboard for adding and configuring team members</p>
 </div>
 

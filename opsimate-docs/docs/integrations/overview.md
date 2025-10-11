@@ -46,7 +46,7 @@ Cloud monitoring and analytics platform for infrastructure, applications, and lo
 4. Follow the setup instructions
 
 <div class="image-container">
-  <img src="/img/adding-grafana-integration.png" alt="Grafana Integration Setup" />
+  <img src="/img/adding-grafana-integration.png" alt="Grafana Integration Setup" class="doc-image" />
   <p>Setting up Grafana integration in OpsiMate</p>
 </div>
 

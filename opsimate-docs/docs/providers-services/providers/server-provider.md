@@ -30,7 +30,7 @@ ssh_key_file: "server_key.pem"
 ```
 
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/serverprovider.png" alt="Audit Log Dashboard" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <img src="/img/serverprovider.png" alt="Audit Log Dashboard" class="doc-image" />
   <p style={{fontSize: '14px', color: '#666', marginTop: '5px', fontStyle: 'italic'}}>Adding a server provider to OpsiMate</p>
 </div>
 

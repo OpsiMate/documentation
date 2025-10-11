@@ -18,7 +18,7 @@ Monitor Linux system services managed by systemd.
 5. Enter the service name (e.g., "nginx", "postgresql")
 
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/systemd_service.png" alt="Systemd Service Configuration" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <img src="/img/systemd_service.png" alt="Systemd Service Configuration" class="doc-image" />
   <p style={{fontSize: '14px', color: '#666', marginTop: '8px', fontStyle: 'italic'}}>Adding a systemd service to OpsiMate</p>
 </div>
 
