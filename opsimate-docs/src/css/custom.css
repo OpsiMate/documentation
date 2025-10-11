@@ -833,3 +833,11 @@ button[class*="toggle"] {
   display: flex !important;
   visibility: visible !important;
 }
+
+@media (min-width: 1025px) {
+    .navbar .navbar__toggle {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
