@@ -46,6 +46,25 @@ npm run dev
 ```
 now the docs are available at http://localhost:8080/
 
+
+## Docker
+
+You can build and run the OpsiMate documentation inside a Docker container for a clean and reproducible environment.
+
+### Build the Docker image
+
+```bash
+cd opsimate-docs
+docker build -t opsimate-docs .
+
+```
+
+### Run the Container
+
+```bash
+docker run -p 3000:3000 --env-file .env opsimate-docs
+```
+
 ## Support
 
 - **[Documentation](https://opsimate.vercel.app/)** - Comprehensive guides and API reference
