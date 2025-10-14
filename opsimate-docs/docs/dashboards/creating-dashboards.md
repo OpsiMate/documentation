@@ -116,10 +116,11 @@ To remove a view you no longer need:
 - **Review and Refine**: Regularly update your views as your needs change
 - **Create Team-Based Views**: Design different views for different teams
 
+
 ## Next Steps
 
 After creating your custom dashboards:
 
-1. [[Set up alerts](/docs/](/monitoring/setting-up-alerts) for critical services
-2. [[Configure integrations](/docs/](/integrations/overview) to enhance your dashboards
-3. [[Share your views](/docs/](/dashboards/sharing-dashboards) with your team
+1. [Set up alerts](../alerts/adding-alerts) for critical services.
+2. [Configure integrations](../integrations/overview)to enhance your dashboards.
+3. [Share your views](../dashboards/saving-views) with your team.
