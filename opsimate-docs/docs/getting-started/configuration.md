@@ -41,9 +41,9 @@ security:
 After configuring OpsiMate:
 
 1. **Restart the container** to apply changes
-2. **Add providers** - [Learn how](adding-providers)
-3. **Set up monitoring** - [Configure alerts](../features/alerts)
-4. **Start discovering services** - [Quick start guide](quick-start)
+2. **Add providers** - [Learn how](../providers-services/providers/add-provider)
+3. **Set up monitoring** - [Configure alerts](../alerts/adding-alerts.md)
+4. **Start discovering services** - [Quick start guide](../providers-services/services/add-services)
 
 ## Support
 
