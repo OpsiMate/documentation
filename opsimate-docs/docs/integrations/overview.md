@@ -30,23 +30,26 @@ Integrations are the way to connect external tools to OpsiMate. The goal is to l
 ## Available Integrations
 
 ### Grafana
+
 Visualization and dashboarding platform for metrics and monitoring data.
 
 ### Kibana
+
 Data visualization dashboard for Elasticsearch, used for log analysis and search.
 
 ### DataDog
+
 Cloud monitoring and analytics platform for infrastructure, applications, and logs.
 
 ## Getting Started
 
 1. Navigate to **My Integrations** page
-2. Click **External Integrations** tab  
+2. Click **External Integrations** tab
 3. Choose your integration type
 4. Follow the setup instructions
 
 <div class="image-container">
-  <img src="/img/adding-grafana-integration.png" alt="Grafana Integration Setup" />
+  <img src="/img/adding-grafana-integration.png" alt="Grafana Integration Setup" className="doc-image" />
   <p>Setting up Grafana integration in OpsiMate</p>
 </div>
 
