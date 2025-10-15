@@ -1,0 +1,19 @@
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files first
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy the rest of the code
+COPY . .
+
+# Expose port
+EXPOSE 3000
+
+# Use npm script via npx for Docusaurus
+CMD ["npm", "run", "start"]
