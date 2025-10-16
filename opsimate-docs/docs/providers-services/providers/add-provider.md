@@ -35,7 +35,6 @@ Once your provider is added:
 
 1. **[Configure Services](../services/add-services)** - Fine-tune service monitoring
 2. **[Set Up Alerts](../../alerts/adding-alerts)** - Get notified of issues
-3. **[Create Dashboards](../../dashboards/creating-dashboards)** - Visualize your infrastructure
 
 :::info Provider Types
 You can find detailed guides for specific provider types in the other pages in this folder:
