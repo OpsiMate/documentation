@@ -6,13 +6,33 @@ sidebar_position: 2
 
 # Deploy OpsiMate
 
-OpsiMate is designed for easy deployment using Docker. This guide will walk you through deploying OpsiMate using Docker run commands.
+OpsiMate is designed for easy deployment using Docker. This guide will walk you through deploying OpsiMate using Docker Compose or Docker run commands.
 
 :::info Before You Begin
 Make sure your system meets the [system requirements](system-requirements) and that Docker is installed and running.
 :::
 
-## Quick Deployment
+## Quick Start (Recommended)
+
+The easiest way to get started with OpsiMate is using our one-line installation script:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/OpsiMate/OpsiMate/main/scripts/start-docker.sh | sh
+```
+
+This script will:
+- Download the latest OpsiMate Docker Compose configuration
+- Set up the necessary directories and permissions
+- Start OpsiMate using Docker Compose
+- Verify that all services are running correctly
+
+:::tip What happens next?
+Once the script completes, OpsiMate will be running at `http://localhost:8080`. You'll be able to register your first admin user and start managing your infrastructure right away!
+:::
+
+## Alternative Deployment Methods
+
+If you prefer more control over your deployment or need to customize the setup, you can use the Docker run command below.
 
 ### Docker Run Command
 
