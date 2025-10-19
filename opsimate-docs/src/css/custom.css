@@ -63,7 +63,8 @@ h6 {
 }
 
 .navbar-icon-link,
-.footer-community-icon-link {
+.footer-community-icon-link,
+.navbar__items button.clean-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,6 +76,11 @@ h6 {
   color: #ffffff !important;
 }
 
+.navbar__items button.clean-btn {
+  position: relative;
+  top: -4px;
+}
+
 .navbar-icon,
 .footer-community-icon {
   width: 24px;
@@ -84,7 +90,8 @@ h6 {
 }
 
 .navbar-icon-link:hover,
-.footer-community-icon-link:hover {
+.footer-community-icon-link:hover,
+.navbar__items button.clean-btn:hover {
   background-color: rgba(57, 73, 171, 0.3);
   transform: translateY(-1px);
 }
@@ -175,7 +182,8 @@ h6 {
 /* ---------- Responsive adjustments (navbar + footer icons included) ---------- */
 @media (max-width: 1024px) {
   .navbar-icon-link,
-  .footer-community-icon-link {
+  .footer-community-icon-link,
+  .navbar__items button.clean-btn {
     width: 36px;
     height: 36px;
   }
@@ -847,30 +855,34 @@ html[data-theme="dark"] .navbar__link:hover {
 /* ===== NAVBAR ICONS FOR LIGHT MODE ===== */
 
 /* Light mode - White icons on indigo */
-html[data-theme="light"] .navbar-icon {
-  filter: brightness(0) invert(1); /* White icons */
+html[data-theme="light"] .navbar-icon{
+  filter: brightness(0) invert(1);
+  /* White icons */
 }
 
-html[data-theme="light"] .navbar-icon-link:hover .navbar-icon {
-  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg)
-    brightness(2); /* Brighter indigo on hover */
+html[data-theme="light"] .navbar-icon-link:hover .navbar-icon{
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg) brightness(2);
+  /* Brighter indigo on hover */
 }
 
-html[data-theme="light"] .navbar-icon-link {
+html[data-theme="light"] .navbar-icon-link,
+html[data-theme="light"] .navbar__items button.clean-btn {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-html[data-theme="light"] .navbar-icon-link:hover {
+html[data-theme="light"] .navbar-icon-link:hover,
+html[data-theme="light"] .navbar__items button.clean-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color: #bbdefb !important;
 }
 
 /* Dark mode - Keep existing icon styles with indigo hover */
-html[data-theme="dark"] .navbar-icon {
+html[data-theme="dark"] .navbar-icon{
   filter: brightness(0) invert(1);
 }
 
-html[data-theme="dark"] .navbar-icon-link:hover .navbar-icon {
+html[data-theme="dark"] .navbar-icon-link:hover .navbar-icon,
+.navbar__items button.clean-btn:hover svg {
   filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
 }
 
