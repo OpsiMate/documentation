@@ -17,22 +17,38 @@ A Server Provider represents a single server that hosts multiple services. This 
 - SSH key authentication (recommended) or password access
 - Server running Linux, macOS, or Windows with SSH server
 
-### Basic Configuration
+### Configuration with Secrets
 
-```yaml
-name: "Production Web Server"
-type: "server"
-host: "192.168.1.100"
-port: 22
+OpsiMate now uses Secrets to securely manage provider credentials and configurations. This eliminates the need to manage configuration files locally.
 
-```yaml
-ssh_key_file: "server_key.pem"
-```
+1. **Create Required Secrets**
+   - Navigate to **Settings** > **Secrets**
+   - Click **Add New Secret**
+   - Create the following secrets:
+     - `SSH_KEY`: Your SSH private key
+     - `SSH_PASSPHRASE`: (Optional) If your SSH key is password-protected
+     - `SERVER_HOST`: Your server's hostname or IP address
+     - `SERVER_PORT`: SSH port (usually 22)
+
+2. **Link Secrets to Provider**
+   When adding a new Server Provider:
+   - Enter the provider name
+   - Select the appropriate secrets from the dropdown menus
+   - Click "Test Connection" to verify
+   - Save the provider configuration
 
 <div style={{textAlign: 'center', margin: '20px 0'}}>
-  <img src="/img/serverprovider.png" alt="Audit Log Dashboard" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
-  <p style={{fontSize: '14px', color: '#666', marginTop: '5px', fontStyle: 'italic'}}>Adding a server provider to OpsiMate</p>
+  <img src="/img/server-provider-secrets.png" alt="Server Provider Secrets Configuration" style={{width: '500px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}} />
+  <p style={{fontSize: '14px', color: '#666', marginTop: '5px', fontStyle: 'italic'}}>Configuring a server provider using Secrets in OpsiMate</p>
 </div>
+
+:::tip Security Best Practice
+Using Secrets provides enhanced security through:
+- Encrypted storage of sensitive data
+- Access control and audit logging
+- No local configuration files to manage
+- Automatic secret rotation support
+:::
 
 ## Types of Services
 
