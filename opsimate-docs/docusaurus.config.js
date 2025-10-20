@@ -37,7 +37,7 @@ module.exports = {
 
     navbar: {
       title: 'OpsiMate',
-      logo: { alt: 'OpsiMate Logo', src: 'img/opsimate-logo.svg' },
+      logo: { alt: 'OpsiMate Logo', src: 'img/logo.png' },
       items: [
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Docs' },
         { type: 'doc', docId: 'dashboards/overview', position: 'left', label: 'Dashboard' },
