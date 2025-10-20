@@ -16,10 +16,10 @@ const CookieConsent = () => {
   const handleAccept = () => {
     localStorage.setItem("opsimateCookieConsent", "accepted");
     setShowBanner(false);
-    // You can trigger additional analytics scripts here
     if (typeof window !== "undefined") {
-      // Add your analytics scripts here when accepted
       console.log("Cookies accepted - analytics enabled");
+      // 🚀 Tell GA component to inject the scripts
+      window.dispatchEvent(new Event("cookie-consent-accepted"));
     }
   };
 
@@ -45,7 +45,9 @@ const CookieConsent = () => {
             are required for the site to function and cannot be turned off. Update your 
             preferences any time by selecting the "Privacy Choices" link. By accepting, 
             you agree to the OpsiMate{" "}
-            <a href="/docs/legal/privacy" target="_blank" rel="noopener noreferrer">Cookie Policy</a>.
+            <a href="/docs/legal/privacy" target="_blank" rel="noopener noreferrer">
+              Cookie Policy
+            </a>.
           </p>
         </div>
         <div className="cookie-actions">
