@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import Link from '@docusaurus/Link';
 import "./CookieConsent.css";
 
 const CookieConsent = () => {
@@ -8,31 +9,47 @@ const CookieConsent = () => {
   useEffect(() => {
     try {
       const consentGiven = localStorage.getItem("opsimateCookieConsent");
-      if (!consentGiven) {
+      if (consentGiven) {
+        const data = JSON.parse(consentGiven);
+        const expiryMonths = 12; // 12-month expiration (standard)
+        const isExpired = Date.now() - data.timestamp > expiryMonths * 30 * 24 * 60 * 60 * 1000;
+        if (isExpired || data.status !== 'accepted') {
+          setShowBanner(true);
+        }
+      } else {
         setShowBanner(true);
       }
     } catch (error) {
-      // If localStorage is unavailable, don't show banner (fail silently)
-      console.error("localStorage unavailable:", error);
+      // If localStorage is unavailable, show banner to be GDPR-safe
+      setShowBanner(true);
     }
   }, []);
 
   const handleAccept = () => {
     try {
-      localStorage.setItem("opsimateCookieConsent", "accepted");
+      const consentData = {
+        status: 'accepted',
+        timestamp: Date.now()
+      };
+      localStorage.setItem("opsimateCookieConsent", JSON.stringify(consentData));
+      setShowBanner(false);
+      // Tell GA component to inject the scripts
+      window.dispatchEvent(new Event("cookie-consent-accepted"));
     } catch (error) {
-      console.error("Failed to save consent:", error);
+      // Cannot persist consent - do not enable analytics
+      setShowBanner(false);
     }
-    setShowBanner(false);
-    // Tell GA component to inject the scripts
-    window.dispatchEvent(new Event("cookie-consent-accepted"));
   };
 
   const handleReject = () => {
     try {
-      localStorage.setItem("opsimateCookieConsent", "rejected");
+      const consentData = {
+        status: 'rejected',
+        timestamp: Date.now()
+      };
+      localStorage.setItem("opsimateCookieConsent", JSON.stringify(consentData));
     } catch (error) {
-      console.error("Failed to save consent:", error);
+      // If storage fails, banner will reappear on next visit (acceptable fallback)
     }
     setShowBanner(false);
   };
@@ -52,9 +69,9 @@ const CookieConsent = () => {
           <p>
             We use cookies to understand how visitors interact with our documentation. 
             By accepting, you agree to the OpsiMate{" "}
-            <a href="/docs/legal/privacy" target="_blank" rel="noopener noreferrer">
+            <Link to="/docs/legal/privacy">
               Privacy Policy
-            </a>.
+            </Link>.
           </p>
         </div>
         <div className="cookie-actions">
