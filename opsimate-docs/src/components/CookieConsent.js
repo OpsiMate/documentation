@@ -6,21 +6,34 @@ const CookieConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
-    const consentGiven = localStorage.getItem("opsimateCookieConsent");
-    if (!consentGiven) {
-      setShowBanner(true);
+    try {
+      const consentGiven = localStorage.getItem("opsimateCookieConsent");
+      if (!consentGiven) {
+        setShowBanner(true);
+      }
+    } catch (error) {
+      // If localStorage is unavailable, don't show banner (fail silently)
+      console.error("localStorage unavailable:", error);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("opsimateCookieConsent", "accepted");
+    try {
+      localStorage.setItem("opsimateCookieConsent", "accepted");
+    } catch (error) {
+      console.error("Failed to save consent:", error);
+    }
     setShowBanner(false);
     // Tell GA component to inject the scripts
     window.dispatchEvent(new Event("cookie-consent-accepted"));
   };
 
   const handleReject = () => {
-    localStorage.setItem("opsimateCookieConsent", "rejected");
+    try {
+      localStorage.setItem("opsimateCookieConsent", "rejected");
+    } catch (error) {
+      console.error("Failed to save consent:", error);
+    }
     setShowBanner(false);
   };
 
