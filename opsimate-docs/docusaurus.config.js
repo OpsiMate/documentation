@@ -44,6 +44,11 @@ module.exports = {
         { type: 'doc', docId: 'alerts/adding-alerts', position: 'left', label: 'Alerts' },
         { type: 'doc', docId: 'integrations/overview', position: 'left', label: 'Integrations' },
         { type: 'doc', docId: 'user-management/register-login', position: 'left', label: 'User Management' },
+        { 
+          href: 'https://www.opsimate.com/', 
+          label: 'Website', 
+          position: 'left' 
+         },
 
         // --- Right-side icons (GitHub + Slack) ---
         {
@@ -119,7 +124,9 @@ module.exports = {
             },
           ],
         },
+        
         {
+         
           title: 'Community',
           items: [
             {
@@ -139,6 +146,19 @@ module.exports = {
                   </a>
                 </div>
               `,
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'Main Website',
+              href: 'https://www.opsimate.com/',
+            },
+            {
+              label: 'Documentation',
+              href: '/',
             },
           ],
         },
