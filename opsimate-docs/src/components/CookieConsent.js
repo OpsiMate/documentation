@@ -27,10 +27,15 @@ const CookieConsent = () => {
   if (!showBanner) return null;
 
   return (
-    <div className="cookie-consent-banner">
+    <div 
+      className="cookie-consent-banner" 
+      role="dialog" 
+      aria-labelledby="cookie-banner-title" 
+      aria-live="polite"
+    >
       <div className="cookie-consent-content">
         <div className="cookie-text">
-          <h4>🍪 We use cookies</h4>
+          <h4 id="cookie-banner-title">🍪 We use cookies</h4>
           <p>
             We use cookies to understand how visitors interact with our documentation. 
             By accepting, you agree to the OpsiMate{" "}
