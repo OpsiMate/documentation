@@ -8,6 +8,7 @@ const GettingStartedIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16h-2v-6h2v6zm3 0h-2v-8h2v8zm3 0h-2v-4h2v4z"/>
   </svg>
+  
 );
 
 const IntegrationsIcon = () => (
