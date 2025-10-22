@@ -45,29 +45,35 @@ Secrets can be used in:
 Instead of hardcoding a key in a YAML configuration, you reference the secret by its name using the `${secret.NAME}` syntax.
 
 **BEFORE (Insecure):**
+
 ```yaml
 integrations:
   grafana:
-    url: "[http://my-grafana.com](http://my-grafana.com)"
+    url: "http://my-grafana.com"
     api_key: "gl_THIS_IS_A_VERY_LONG_AND_SECRET_API_KEY_abc123"
+```
 
-AFTER (Secure):
+**AFTER (Secure):**
 
-First, add a secret in the OpsiMate UI with the name GRAFANA_API_KEY.
+First, add a secret in the OpsiMate UI with the name `GRAFANA_API_KEY`.
 
 Then, reference it in your configuration:
+
+```yaml
 integrations:
   grafana:
-    url: "[http://my-grafana.com](http://my-grafana.com)"
+    url: "http://my-grafana.com"
     api_key: "${secret.GRAFANA_API_KEY}"
+```
 
-OpsiMate will resolve ${secret.GRAFANA_API_KEY} to its stored, encrypted value when the integration is used.
+OpsiMate will resolve `${secret.GRAFANA_API_KEY}` to its stored, encrypted value when the integration is used.
 
-Security Best Practices
-Never Hardcode Secrets: Always use the secret management system for credentials. Never commit passwords or API keys to Git.
+## Security Best Practices
 
-Use Specific Names: Give secrets clear, specific names (e.g., PROD_DB_PASSWORD instead of MY_PASS) to avoid confusion.
+- **Never Hardcode Secrets**: Always use the secret management system for credentials. Never commit passwords or API keys to Git.
 
-Principle of Least Privilege: Create secrets that have only the minimum permissions necessary for their intended task.
+- **Use Specific Names**: Give secrets clear, specific names (e.g., `PROD_DB_PASSWORD` instead of `MY_PASS`) to avoid confusion.
 
-Rotate Keys: Regularly update your external API keys and passwords, and then update their values in the OpsiMate secrets manager.
+- **Principle of Least Privilege**: Create secrets that have only the minimum permissions necessary for their intended task.
+
+- **Rotate Keys**: Regularly update your external API keys and passwords, and then update their values in the OpsiMate secrets manager.
