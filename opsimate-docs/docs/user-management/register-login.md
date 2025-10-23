@@ -32,9 +32,5 @@ Existing users can log in to access their dashboard:
     <img src="/img/login.png" alt="OpsiMate Dashboard" style={{ width: '350px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }} />
     <p style={{ fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic' }}>OpsiMate user login</p>
   </div>
-
-  <div style={{ textAlign: 'center' }}>
-    <img src="/img/login-error.png" alt="OpsiMate Dashboard" style={{ width: '350px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }} />
-    <p style={{ fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic' }}>OpsiMate user login failed</p>
-  </div>
 </div>
+
