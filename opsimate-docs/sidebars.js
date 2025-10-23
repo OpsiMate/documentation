@@ -86,7 +86,7 @@ const sidebars = {
       type: 'category',
       label: 'User Management & Security',
       collapsed: true,
-      items: ['user-management/register-login', 'user-management/admin-panel', 'user-management/audit-logs'],
+      items: ['user-management/register-login', 'user-management/admin-panel', 'user-management/audit-logs', 'secrets'],
     },
     'development',
   ],
