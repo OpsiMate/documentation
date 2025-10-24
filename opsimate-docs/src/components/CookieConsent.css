@@ -8,11 +8,10 @@
   color: white;
   padding: 1.5rem;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  z-index: var(--ifm-z-index-overlay); /* updated from 1000 */
   border-top: 1px solid #333;
   animation: slideUp 0.3s ease-out;
 }
-
 @keyframes slideUp {
   from {
     transform: translateY(100%);

@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Privacy Policy & Cookie Policy
 
-Last updated: January 2025
+Last updated: October 2025
 
 ## Cookie Usage
 

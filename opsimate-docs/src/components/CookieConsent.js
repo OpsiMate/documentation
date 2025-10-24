@@ -1,59 +1,85 @@
 import React, { useState, useEffect } from "react";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import Link from '@docusaurus/Link';
 import "./CookieConsent.css";
 
 const CookieConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const consentGiven = localStorage.getItem("opsimateCookieConsent");
-    if (!consentGiven) {
+    try {
+      const consentGiven = localStorage.getItem("opsimateCookieConsent");
+      if (consentGiven) {
+        const data = JSON.parse(consentGiven);
+        const expiryMonths = 12; // 12-month expiration (standard)
+        const isExpired = Date.now() - data.timestamp > expiryMonths * 30 * 24 * 60 * 60 * 1000;
+        if (isExpired || data.status !== 'accepted') {
+          setShowBanner(true);
+        }
+      } else {
+        setShowBanner(true);
+      }
+    } catch (error) {
+      // If localStorage is unavailable, show banner to be GDPR-safe
       setShowBanner(true);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("opsimateCookieConsent", "accepted");
-    setShowBanner(false);
-    // You can trigger additional analytics scripts here
-    if (typeof window !== "undefined") {
-      // Add your analytics scripts here when accepted
-      console.log("Cookies accepted - analytics enabled");
+    try {
+      const consentData = {
+        status: 'accepted',
+        timestamp: Date.now()
+      };
+      localStorage.setItem("opsimateCookieConsent", JSON.stringify(consentData));
+      setShowBanner(false);
+      // Tell GA component to inject the scripts
+      window.dispatchEvent(new Event("cookie-consent-accepted"));
+    } catch (error) {
+      // Cannot persist consent - do not enable analytics
+      setShowBanner(false);
     }
   };
 
   const handleReject = () => {
-    localStorage.setItem("opsimateCookieConsent", "rejected");
+    try {
+      const consentData = {
+        status: 'rejected',
+        timestamp: Date.now()
+      };
+      localStorage.setItem("opsimateCookieConsent", JSON.stringify(consentData));
+    } catch (error) {
+      // If storage fails, banner will reappear on next visit (acceptable fallback)
+    }
     setShowBanner(false);
-    // Ensure analytics scripts are not loaded
-    console.log("Cookies rejected - analytics disabled");
   };
 
   if (!showBanner) return null;
 
   return (
-    <div className="cookie-consent-banner">
+    <div 
+      className="cookie-consent-banner" 
+      role="dialog" 
+      aria-labelledby="cookie-banner-title" 
+      aria-live="polite"
+    >
       <div className="cookie-consent-content">
         <div className="cookie-text">
-          <h4>🍪 We use cookies</h4>
+          <h4 id="cookie-banner-title">🍪 We use cookies</h4>
           <p>
-            We, our service providers and third-party partners use cookies and other 
-            technologies to personalize content, measure usage, support marketing efforts 
-            (including cross-contextual and behavioral targeting advertising efforts) and 
-            provide an optimal experience as permitted by applicable law. Some cookies 
-            are required for the site to function and cannot be turned off. Update your 
-            preferences any time by selecting the "Privacy Choices" link. By accepting, 
-            you agree to the OpsiMate{" "}
-            <a href="/docs/legal/privacy" target="_blank" rel="noopener noreferrer">Cookie Policy</a>.
+            We use cookies to understand how visitors interact with our documentation. 
+            By accepting, you agree to the OpsiMate{" "}
+            <Link to="/docs/legal/privacy">
+              Privacy Policy
+            </Link>.
           </p>
         </div>
         <div className="cookie-actions">
           <button className="cookie-btn cookie-btn-reject" onClick={handleReject}>
-            Reject All
+            Reject
           </button>
           <button className="cookie-btn cookie-btn-accept" onClick={handleAccept}>
-            Accept All Cookies
+            Accept
           </button>
         </div>
       </div>
@@ -61,7 +87,6 @@ const CookieConsent = () => {
   );
 };
 
-// Wrap in BrowserOnly to avoid SSR issues
 export default function CookieConsentWrapper() {
   return (
     <BrowserOnly>
@@ -69,3 +94,4 @@ export default function CookieConsentWrapper() {
     </BrowserOnly>
   );
 }
+
