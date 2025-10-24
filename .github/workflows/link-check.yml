@@ -1,0 +1,73 @@
+name: Documentation Link Check
+
+on:
+  push:
+    branches: [main, master, develop]
+    paths:
+      - 'opsimate-docs/docs/**/*.md'
+      - 'opsimate-docs/docs/**/*.mdx'
+  pull_request:
+    branches: [main, master, develop]
+    paths:
+      - 'opsimate-docs/docs/**/*.md'
+      - 'opsimate-docs/docs/**/*.mdx'
+  schedule:
+    # Run weekly on Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  link-check:
+    name: Check Documentation Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'opsimate-docs/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: ./opsimate-docs
+        run: npm ci
+
+      - name: Build documentation
+        working-directory: ./opsimate-docs
+        run: npm run build
+        env:
+          # Fail on broken links
+          NODE_ENV: production
+
+      - name: Check internal links with markdown-link-check
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          config-file: '.github/workflows/link-check-config.json'
+          base-branch: 'main'
+          use-quiet-mode: 'no'
+          use-verbose-mode: 'yes'
+          folder-path: 'opsimate-docs/docs/'
+          file-extension: '.md,.mdx'
+
+      - name: Generate link check report
+        if: failure()
+        run: |
+          echo "## Link Check Failed ❌" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Some documentation links are broken. Please review the logs above." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Common Issues:" >> $GITHUB_STEP_SUMMARY
+          echo "- Renamed or moved files without updating references" >> $GITHUB_STEP_SUMMARY
+          echo "- Typos in file paths" >> $GITHUB_STEP_SUMMARY
+          echo "- Missing documentation pages" >> $GITHUB_STEP_SUMMARY
+
+      - name: Success message
+        if: success()
+        run: |
+          echo "## Link Check Passed ✅" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All documentation links are valid!" >> $GITHUB_STEP_SUMMARY

@@ -8,8 +8,8 @@ module.exports = {
   organizationName: 'OpsiMate',
   projectName: 'documentation',
 
-  onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'ignore',
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
 
   presets: [
     [
@@ -38,13 +38,18 @@ module.exports = {
 
     navbar: {
       title: 'OpsiMate',
-      logo: { alt: 'OpsiMate Logo', src: 'img/opsimate-logo.svg' },
+      logo: { alt: 'OpsiMate Logo', src: 'img/logo.png' },
       items: [
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Docs' },
         { type: 'doc', docId: 'dashboards/overview', position: 'left', label: 'Dashboard' },
         { type: 'doc', docId: 'alerts/adding-alerts', position: 'left', label: 'Alerts' },
         { type: 'doc', docId: 'integrations/overview', position: 'left', label: 'Integrations' },
         { type: 'doc', docId: 'user-management/register-login', position: 'left', label: 'User Management' },
+        { 
+          href: 'https://www.opsimate.com/', 
+          label: 'Website', 
+          position: 'left' 
+         },
 
         // --- Right-side icons (GitHub + Slack) ---
         {
@@ -91,19 +96,19 @@ module.exports = {
                     </div>
                     <span class="integration-name">Kibana</span>
                   </a>
-                  <a href="/docs/integrations/docker" class="integration-item" aria-label="Docker Integration">
+                  <a href="/docs/providers-services/services/container-services" class="integration-item" aria-label="Docker Integration">
                     <div class="integration-icon-container">
                       <img src="/img/docker.svg" alt="Docker" class="integration-icon" />
                     </div>
                     <span class="integration-name">Docker</span>
                   </a>
-                  <a href="/docs/integrations/kubernetes" class="integration-item" aria-label="Kubernetes Integration">
+                  <a href="/docs/providers-services/services/kubernetes-pods" class="integration-item" aria-label="Kubernetes Integration">
                     <div class="integration-icon-container">
                       <img src="/img/kubernetes.svg" alt="Kubernetes" class="integration-icon" />
                     </div>
                     <span class="integration-name">Kubernetes</span>
                   </a>
-                  <a href="/docs/integrations/systemd" class="integration-item" aria-label="Systemd Integration">
+                  <a href="/docs/providers-services/services/systemd-services" class="integration-item" aria-label="Systemd Integration">
                     <div class="integration-icon-container">
                       <img src="/img/systemd.svg" alt="Systemd" class="integration-icon" />
                     </div>
@@ -117,29 +122,45 @@ module.exports = {
                   </a>
                 </div>
               `,
-            },
+            },  
           ],
         },
+        
         {
+         
           title: 'Community',
           items: [
             {
               html: `
-                <div class="footer-community-icons">
-                  <a href="https://github.com/OpsiMate/documentation"
-                     target="_blank" rel="noopener noreferrer"
-                     aria-label="GitHub repository"
-                     class="footer-community-icon-link">
-                    <img src="/img/github.svg" alt="GitHub" class="footer-community-icon" />
-                  </a>
-                  <a href="https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG"
-                     target="_blank" rel="noopener noreferrer"
-                     aria-label="Slack community"
-                     class="footer-community-icon-link">
-                    <img src="/img/slack.svg" alt="Slack" class="footer-community-icon" />
-                  </a>
-                </div>
-              `,
+                  <div class="footer-community-icons">
+                    <a href="https://github.com/OpsiMate/documentation"
+                      target="_blank" rel="noopener noreferrer"
+                      aria-label="GitHub repository"
+                      class="footer-community-icon-link">
+                      <img src="/img/github.svg" alt="GitHub" class="footer-community-icon" />
+                    </a>
+                    <a href="https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG"
+                      target="_blank" rel="noopener noreferrer"
+                      aria-label="Slack community"
+                      class="footer-community-icon-link">
+                      <img src="/img/slack.svg" alt="Slack" class="footer-community-icon" />
+                    </a>
+                  </div>
+                `,
+              },
+            ],
+          },
+        ],
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'Main Website',
+              href: 'https://www.opsimate.com/',
+            },
+            {
+              label: 'Documentation',
+              href: '/',
             },
           ],
         },

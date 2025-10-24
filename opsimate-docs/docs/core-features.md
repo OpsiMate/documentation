@@ -49,7 +49,7 @@ Ready to explore OpsiMate's capabilities? Start with:
 1. **[Deploy OpsiMate](getting-started/deploy)** - Set up your monitoring platform
 2. **[Add Providers](providers-services/providers/add-provider)** - Connect your infrastructure
 3. **[Configure Services](providers-services/services/add-services)** - Set up service monitoring
-4. **[Create Alerts](monitoring/setting-up-alerts)** - Get notified of issues
+4. **[Create Alerts](alerts/adding-alerts)** - Get notified of issues
 
 :::tip
 OpsiMate automatically discovers services when you add providers, making setup fast and comprehensive.

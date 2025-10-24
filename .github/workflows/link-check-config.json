@@ -1,0 +1,35 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://github.com/opsimate/opsimate"
+    },
+    {
+      "pattern": "^https://join.slack.com"
+    },
+    {
+      "pattern": "^https://opsimate.slack.com"
+    },
+    {
+      "pattern": "^http://localhost"
+    }
+  ],
+  "replacementPatterns": [
+    {
+      "pattern": "^/docs/",
+      "replacement": "{{BASEURL}}/opsimate-docs/docs/"
+    }
+  ],
+  "httpHeaders": [
+    {
+      "urls": ["https://grafana.com", "https://www.datadoghq.com", "https://www.elastic.co"],
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (compatible; documentation-link-checker)"
+      }
+    }
+  ],
+  "timeout": "10s",
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "5s",
+  "aliveStatusCodes": [200, 206, 301, 302, 307, 308, 403, 429]
+}

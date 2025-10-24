@@ -25,7 +25,7 @@ Adding a provider to OpsiMate is simple and takes just a few steps:
    Save your configuration and start adding services.
 
 <div style={{textAlign: 'center', margin: '30px 0'}}>
-  <img src="/img/myprovider-page.png" alt="My Providers Dashboard" style={{width: '600px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
+  <img src="/img/myprovider-page.png" alt="My Providers Dashboard" style={{width: '600px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} className="doc-image" />
   <p style={{fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic'}}>My Providers page showing configured infrastructure providers and their services</p>
 </div>
 
@@ -35,13 +35,13 @@ Once your provider is added:
 
 1. **[Configure Services](../services/add-services)** - Fine-tune service monitoring
 2. **[Set Up Alerts](../../alerts/adding-alerts)** - Get notified of issues
-3. **[Create Dashboards](../../dashboards/creating-dashboards)** - Visualize your infrastructure
 
 :::info Provider Types
 You can find detailed guides for specific provider types in the other pages in this folder:
+
 - **[Server Provider](server-provider)** - SSH-based server monitoring
 - **[Kubernetes Provider](kubernetes-provider)** - K8s cluster integration
-:::
+  :::
 
 :::tip Best Practice
 Start with one provider and ensure it's working perfectly before adding more. This makes troubleshooting much easier!
