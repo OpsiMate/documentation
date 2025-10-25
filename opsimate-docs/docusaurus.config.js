@@ -121,35 +121,32 @@ module.exports = {
                   </a>
                 </div>
               `,
-            },  
+            },
           ],
         },
-        
         {
-         
           title: 'Community',
           items: [
             {
               html: `
-                  <div class="footer-community-icons">
-                    <a href="https://github.com/OpsiMate/documentation"
-                      target="_blank" rel="noopener noreferrer"
-                      aria-label="GitHub repository"
-                      class="footer-community-icon-link">
-                      <img src="/img/github.svg" alt="GitHub" class="footer-community-icon" />
-                    </a>
-                    <a href="https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG"
-                      target="_blank" rel="noopener noreferrer"
-                      aria-label="Slack community"
-                      class="footer-community-icon-link">
-                      <img src="/img/slack.svg" alt="Slack" class="footer-community-icon" />
-                    </a>
-                  </div>
-                `,
-              },
-            ],
-          },
-        ],
+                <div class="footer-community-icons">
+                  <a href="https://github.com/OpsiMate/documentation"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub repository"
+                    class="footer-community-icon-link">
+                    <img src="/img/github.svg" alt="GitHub" class="footer-community-icon" />
+                  </a>
+                  <a href="https://app.slack.com/client/T096DF2LNBS/C096DF2UDLG"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="Slack community"
+                    class="footer-community-icon-link">
+                    <img src="/img/slack.svg" alt="Slack" class="footer-community-icon" />
+                  </a>
+                </div>
+              `,
+            },
+          ],
+        },
         {
           title: 'Resources',
           items: [
