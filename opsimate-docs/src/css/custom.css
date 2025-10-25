@@ -864,3 +864,30 @@ button[class*="toggle"] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   margin: 1rem 0;
 }
+/* ===== NAVBAR SIZE & SPACING ===== */
+.navbar {
+  min-height: 80px !important;          /* taller navbar */
+  padding: 1rem 2rem !important;        /* increase spacing */
+}
+
+.navbar__logo img {
+  height: 50px !important;              /* bigger logo */
+  width: auto;
+}
+
+.navbar__title,
+.navbar__brand {
+  font-size: 1.2rem !important;         /* slightly bigger text */
+  font-weight: 700 !important;
+}
+
+.navbar__link {
+  font-size: 1rem !important;           /* larger menu items */
+  padding: 0.8rem 1rem !important;      /* more spacing around links */
+}
+
+/* Adjust icons spacing for bigger navbar */
+.navbar-icons-container {
+  gap: 12px !important;
+  align-items: center;
+}
