@@ -94,6 +94,23 @@
   border-color: var(--ifm-color-primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(83, 109, 254, 0.15); /* subtle indigo shadow */
+  text-decoration: none;
+}
+
+.featureCard:hover .cardTitle {
+  color: var(--ifm-color-primary-dark); /* Makes title a darker blue */
+}
+
+.featureCard:hover .cardDescription {
+  color: #212121; /* Makes description text slightly darker */
+}
+
+[data-theme='dark'] .featureCard:hover .cardTitle {
+  color: var(--ifm-color-primary-light); /* Makes title a lighter blue in dark mode */
+}
+
+[data-theme='dark'] .featureCard:hover .cardDescription {
+  color: #ffffff; /* Makes description text full white in dark mode */
 }
 
 /* Card Icon */
