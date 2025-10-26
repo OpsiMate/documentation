@@ -150,7 +150,6 @@ module.exports = {
               },
             ],
           },
-        ],
         {
           title: 'Resources',
           items: [
