@@ -22,6 +22,12 @@ The Admin Panel allows administrators to manage users and system settings.
    - Full name
    - Role (Admin, User, Viewer)
 
+
+<div style={{textAlign: 'center', margin: '30px 0'}}>
+  <img src="/img/create-user.png" alt="OpsiMate Adding User" style={{width: '350px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
+  <p style={{fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic'}}>OpsiMate user adding</p>
+</div>
+
 ## User Roles
 
 - **Admin**: Full system access and user management
