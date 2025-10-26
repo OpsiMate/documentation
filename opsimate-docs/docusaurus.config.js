@@ -23,6 +23,7 @@ module.exports = {
         },
         blog: false,
         theme: { customCss: require.resolve('./src/css/custom.css') },
+        // REMOVE gtag config here - we're using custom component instead
       },
     ],
   ],
@@ -194,5 +195,6 @@ module.exports = {
     },
   },
 };
+
 
 
