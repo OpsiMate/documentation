@@ -15,7 +15,7 @@ const GoogleAnalytics = () => {
       if (window.gtag) return;
 
       // Hardcode the GA ID to avoid environment variable issues in browser
-      const GA_MEASUREMENT_ID = 'G-60FKG0TFT5';
+      const GA_MEASUREMENT_ID = 'G-2HEWHT0LDN';
 
       // Load GA4 script with error handling
       const script1 = document.createElement("script");
