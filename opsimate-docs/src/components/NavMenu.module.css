@@ -1,0 +1,93 @@
+.navMenu {
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  background-color: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 🔗 Menu links (default desktop) */
+.menuList {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menuList a {
+  text-decoration: none;
+  color: var(--ifm-font-color-base);
+  font-weight: 500;
+  transition: color 0.2s ease, border-bottom 0.2s ease;
+  padding-bottom: 3px;
+}
+
+.menuList a:hover {
+  color: var(--ifm-color-primary);
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+/* 🍔 Hamburger button (hidden on desktop) */
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.bar {
+  width: 22px;
+  height: 2px;
+  background-color: var(--ifm-font-color-base);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* 📱 Responsive styles */
+@media (max-width: 768px) {
+  .navMenu {
+    justify-content: space-between;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .menuList {
+    display: none;
+    position: absolute;
+    top: calc(var(--ifm-navbar-height) + 50px);
+    left: 0;
+    right: 0;
+    background-color: var(--ifm-background-surface-color);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+  }
+
+  .menuList.open {
+    display: flex;
+  }
+
+  .menuList li {
+    margin: 0.75rem 0;
+  }
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}

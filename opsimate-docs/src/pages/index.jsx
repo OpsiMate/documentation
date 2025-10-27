@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import styles from './index.module.css';
+import NavMenu from '../components/NavMenu';
 
 // Icons with OpsiMate blue theme
 const GettingStartedIcon = () => (
@@ -90,6 +91,7 @@ export default function Home() {
 
   return (
     <Layout title="OpsiMate" description="Unified Service Monitoring & Management Platform">
+       <NavMenu />  
       <main className={styles.hero}>
         <div className="container">
           <div className={styles.heroContent}>
@@ -101,7 +103,7 @@ export default function Home() {
           </div>
 
           {/* Feature Cards Section */}
-          <div className={styles.featuresSection}>
+          <div id="features" className={styles.featuresSection}>
             <h2 className={styles.featuresTitle}>Explore the Docs</h2>
             <div className={styles.featuresGrid}>
               {features.map((feature, index) => (
@@ -111,7 +113,7 @@ export default function Home() {
           </div>
 
           {/* Community Section with icons */}
-          <div className={styles.communitySection}>
+          <div  id="community"  className={styles.communitySection}>
             <h2 className={styles.communityTitle}>Join Our Community</h2>
             <p className={styles.communityDescription}>
               Have questions? Join our Slack Community or check out our GitHub repository.
