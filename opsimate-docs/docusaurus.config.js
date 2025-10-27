@@ -19,7 +19,8 @@ module.exports = {
           routeBasePath: '/docs',
           sidebarPath: require.resolve('./sidebars.js'),
           showLastUpdateTime: true,
-          editUrl: 'https://github.com/OpsiMate/documentation/edit/main/',
+          editUrl: 'https://github.com/OpsiMate/documentation/edit/main/opsimate-docs/',
+
         },
         blog: false,
         theme: { customCss: require.resolve('./src/css/custom.css') },
