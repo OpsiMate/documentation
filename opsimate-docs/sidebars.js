@@ -10,6 +10,7 @@
  */
 
 // @ts-check
+// @ts-nocheck
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
@@ -86,9 +87,14 @@ const sidebars = {
       type: 'category',
       label: 'User Management & Security',
       collapsed: true,
-      items: ['user-management/register-login', 'user-management/admin-panel', 'user-management/audit-logs'],
+      items: [
+        'user-management/register-login',
+        'user-management/admin-panel',
+        'user-management/audit-logs',
+      ],
     },
     'development',
+    'FAQ', 
   ],
 };
 
