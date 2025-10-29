@@ -8,8 +8,10 @@ sidebar_position: 1
 
 <div className="hero-banner">
   <div className="hero-content">
-    <h1 className="hero-title">Simplify Your Infrastructure Management</h1>
-    <p className="hero-subtitle">One platform to monitor, manage, and optimize your entire infrastructure</p>
+    
+    <p className="!text-xl !text-gray-600 dark:!text-gray-400 mt-2">
+      One platform to monitor, manage, and optimize your entire infrastructure
+    </p>
   </div>
 </div>
 

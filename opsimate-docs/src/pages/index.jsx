@@ -93,12 +93,11 @@ export default function Home() {
       <main className={styles.hero}>
         <div className="container">
           <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>Welcome to OpsiMate</h1>
-            <p className={styles.heroSubtitle}>Simplify Your Infrastructure Management</p>
-            <p className={styles.heroDescription}>
-              One platform to monitor, manage, and optimize your entire infrastructure
-            </p>
-          </div>
+           <h1 className={styles.heroTitle}>Welcome to OpsiMate</h1>
+           <p className="text-xl text-gray-600 dark:text-gray-400 mt-2">
+             One platform to monitor, manage, and optimize your entire infrastructure
+           </p>
+         </div>
 
           {/* Feature Cards Section */}
           <div className={styles.featuresSection}>
