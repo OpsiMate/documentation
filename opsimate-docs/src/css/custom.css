@@ -867,3 +867,14 @@ button[class*="toggle"] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   margin: 1rem 0;
 }
+
+.admonitionContent_pbrs p a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  font-weight: 500;
+  transition: text-decoration-color 0.3s ease-in-out;
+}
+
+.admonitionContent_pbrs p a:hover {
+  text-decoration-color: currentColor;
+}
