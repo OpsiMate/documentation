@@ -6,9 +6,9 @@ export default function NavMenu() {
 
   const sections = [
     { id: 'features', label: 'Features' },
-    { id: 'integrations', label: 'Integrations' },
+    // { id: 'integrations', label: 'Integrations' },
     { id: 'community', label: 'Community' },
-    { id: 'contact', label: 'Contact' },
+    // { id: 'contact', label: 'Contact' },
   ];
 
   return (
