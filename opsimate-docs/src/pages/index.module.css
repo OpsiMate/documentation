@@ -90,6 +90,11 @@
   border: 1px solid #333333;
 }
 
+.featureCard .cardTitle,
+.featureCard .cardDescription {
+  transition: color 0.3s ease-in-out;
+}
+
 .featureCard:hover {
   border-color: var(--ifm-color-primary);
   transform: translateY(-2px);
