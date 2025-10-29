@@ -9,7 +9,7 @@ sidebar_position: 1
 <div className="hero-banner">
   <div className="hero-content">
     
-    <p className="!text-xl !text-gray-600 dark:!text-gray-400 mt-2">
+    <p>
       One platform to monitor, manage, and optimize your entire infrastructure
     </p>
   </div>

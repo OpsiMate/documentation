@@ -28,12 +28,11 @@
   color: white;
 }
 
-.heroSubtitle {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 1rem;
-  color: #e3f2fd;
-}
+css.heroSubtitle { 
+  font-size: 1.5rem; 
+  font-weight: 400; 
+  margin-bottom: 1rem; 
+  color: #aeb4e7;}
 
 .heroDescription {
   font-size: 1.1rem;
