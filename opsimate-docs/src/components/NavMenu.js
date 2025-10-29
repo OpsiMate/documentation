@@ -5,9 +5,9 @@ export default function NavMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const sections = [
-    { id: 'features', label: 'Features'},
+    { id: 'features', label: 'Features' },
     // { id: 'integrations', label: 'Integrations' },
-    { id: 'community', label: 'Community'},
+    { id: 'community', label: 'Community' },
     // { id: 'contact', label: 'Contact' },
   ];
 
@@ -16,7 +16,9 @@ export default function NavMenu() {
       {/* Mobile Toggle Button */}
       <button
         className={styles.menuToggle}
+        type="button"
         aria-label="Toggle menu"
+        aria-expanded={menuOpen}
         onClick={() => setMenuOpen(!menuOpen)}
       >
         <span className={styles.bar}></span>
