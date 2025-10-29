@@ -5,9 +5,9 @@ export default function NavMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const sections = [
-    { id: 'features', label: 'Features' },
+    { id: 'features', label: 'Features'},
     // { id: 'integrations', label: 'Integrations' },
-    { id: 'community', label: 'Community' },
+    { id: 'community', label: 'Community'},
     // { id: 'contact', label: 'Contact' },
   ];
 
