@@ -174,7 +174,6 @@ h6 {
 
 .footer__link-item:hover {
   color: #bbdefb !important;
-  transform: translateX(3px);
   text-decoration: none !important;
   background: rgba(255, 255, 255, 0.05);
 }
