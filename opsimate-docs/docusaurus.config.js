@@ -58,7 +58,7 @@ module.exports = {
           position: 'right',
           value: `
             <div class="navbar-icons-container">
-              <a href="https://github.com/OpsiMate/documentation"
+              <a href="https://github.com/OpsiMate/OpsiMate"
                  target="_blank" rel="noopener noreferrer"
                  aria-label="GitHub repository"
                  class="navbar-icon-link">
@@ -134,7 +134,7 @@ module.exports = {
             {
               html: `
                   <div class="footer-community-icons">
-                    <a href="https://github.com/OpsiMate/documentation"
+                    <a href="https://github.com/OpsiMate/OpsiMate"
                       target="_blank" rel="noopener noreferrer"
                       aria-label="GitHub repository"
                       class="footer-community-icon-link">
