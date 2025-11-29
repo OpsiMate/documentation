@@ -4,28 +4,13 @@ sidebar_position: 1
 
 # Integrations Overview
 
-Integrations are the way to connect external tools to OpsiMate. The goal is to leverage existing tools to enable monitoring, control, and interaction with other interfaces.
+Integrations are how you **add alerts into OpsiMate**.
 
-## Integration Layers
+Some integrations **pull alerts** from external systems (like monitoring or cloud platforms), while others **receive pushed alerts** directly from those tools.
 
-<div class="integration-grid">
-  <div class="integration-card">
-    <strong>🚨 Receiving Alerts</strong>
-    <p>Get alerts from external monitoring systems</p>
-  </div>
-  <div class="integration-card">
-    <strong>🔗 External Links</strong>
-    <p>Link external URLs and dashboards to services</p>
-  </div>
-  <div class="integration-card">
-    <strong>📊 Monitoring Data</strong>
-    <p>Add logs, metrics, and performance data</p>
-  </div>
-  <div class="integration-card">
-    <strong>⚡ Actions</strong>
-    <p>Use tools to control services and run actions</p>
-  </div>
-</div>
+Alerts that arrive via integrations are shown in the **alerts table**, together with the **icon of the integration** they came from, so you always know which source generated each alert.
+
+
 
 ## Available Integrations
 
@@ -33,9 +18,9 @@ Integrations are the way to connect external tools to OpsiMate. The goal is to l
 
 Visualization and dashboarding platform for metrics and monitoring data.
 
-### Kibana
+### GCP
 
-Data visualization dashboard for Elasticsearch, used for log analysis and search.
+Push-based alerts from Google Cloud Platform into OpsiMate via webhooks.
 
 ### DataDog
 
@@ -56,4 +41,4 @@ Cloud monitoring and analytics platform for infrastructure, applications, and lo
 Select an integration to learn how to set it up:
 
 - [Setting up Grafana Integration](/docs/integrations/grafana)
-- [Setting up Kibana Integration](/docs/integrations/kibana)
+- [Setting up GCP Integration](/docs/integrations/gcp)
