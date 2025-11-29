@@ -8,38 +8,28 @@ Learn how to set up alerts for your services through integration providers like 
 
 ## How It Works
 
-Alerts in OpsiMate are created through integrations with external alert providers. When you configure an integration like Grafana, alerts from that system are automatically pulled into OpsiMate and associated with your services.
+Alerts in OpsiMate are created by **connecting integrations** to your alert sources.
 
-## Setting Up Alerts
+There are **two types of integrations**, depending on how alerts flow into OpsiMate:
 
-### 1. Tag Your Services
-First, ensure your services have proper tags that match your alert configuration:
+- **Pull integrations** (for example Grafana):
+  - Once configured, OpsiMate automatically **pulls alerts** from the source.
+  - New alerts appear in OpsiMate without extra setup.
+  - When the alert status changes in the source (e.g., resolves), the status is **updated in OpsiMate** as well.
+- **Push integrations** (for example GCP webhook):
+  - The external system **pushes alerts** to OpsiMate, usually via a webhook URL.
+  - Each alert event is sent directly from the source into OpsiMate.
 
-- Navigate to your service in the dashboard
-- Add relevant tags that correspond to your alert rules
-- Common tags include: `environment`, `team`, `criticality`, `component`
-
-### 2. Configure Integration
-Set up your alert provider integration:
-
-- Go to **Integrations** → **External Integrations**
-- Configure your alert provider (e.g., Grafana)
-- Ensure the integration has access to your alert rules
-- Map alert tags to service tags for proper association
-
-### 3. Alert Association
-OpsiMate automatically associates alerts with services based on:
-
-**Tag matching**: Alerts with tags that match service tags
+For an overview of all supported integrations and how they behave, see the
+**[Integrations Overview](/docs/integrations/overview)** page.
 
 ## Viewing Alerts
 
-Once configured, you can view alerts directly in the **Service Menu** within the dashboard:
+Once your integrations are configured, you can view alerts from the **Alerts tab**:
 
-- Navigate to any service in your dashboard
-- Click on the service to open the Service Menu
-- Alerts will appear in the alerts section
-- View alert status, severity, and details
+- Open the **Alerts** tab in OpsiMate
+- Use the **alerts table** to see all active alerts
+- Filter and sort by status, source, or service
 
 ## Alert States
 
