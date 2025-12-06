@@ -42,7 +42,6 @@ module.exports = {
       logo: { alt: 'OpsiMate Logo', src: 'img/logo.png' },
       items: [
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Docs' },
-        { type: 'doc', docId: 'dashboards/overview', position: 'left', label: 'Dashboard' },
         { type: 'doc', docId: 'alerts/adding-alerts', position: 'left', label: 'Alerts' },
         { type: 'doc', docId: 'integrations/overview', position: 'left', label: 'Integrations' },
         { type: 'doc', docId: 'user-management/register-login', position: 'left', label: 'User Management' },
