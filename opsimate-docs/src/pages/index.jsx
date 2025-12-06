@@ -81,11 +81,11 @@ const FeatureCard = ({ icon: Icon, title, description, to }) => (
 export default function Home() {
   const features = [
     { icon: GettingStartedIcon, title: 'Getting Started', description: 'Deploy and configure OpsiMate with our comprehensive setup guide', to: '/docs/getting-started/deploy' },
-    { icon: DashboardIcon, title: 'Dashboard', description: 'Create custom dashboards and save views for your services', to: '/docs/dashboards/overview' },
     { icon: AlertsIcon, title: 'Alerts', description: 'Configure intelligent alerts and manage notifications effectively', to: '/docs/alerts/adding-alerts' },
     { icon: IntegrationsIcon, title: 'Integrations', description: 'Connect with Grafana, Kibana, Datadog and other monitoring tools', to: '/docs/integrations/overview' },
     { icon: UserManagementIcon, title: 'User Management & Security', description: 'Manage users, admin panels, and audit logs for secure operations', to: '/docs/user-management/register-login' },
-    { icon: DevelopmentIcon, title: 'Development', description: 'Extend and customize OpsiMate for your specific needs', to: '/docs/development' }
+    { icon: DevelopmentIcon, title: 'Development', description: 'Extend and customize OpsiMate for your specific needs', to: '/docs/development' },
+    { icon: DashboardIcon, title: 'Core Features', description: 'View real-time metrics, manage services, and monitor system health from one centralized dashboard', to: '/docs/core-features' },
   ];
 
   return (
