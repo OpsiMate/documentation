@@ -1,0 +1,60 @@
+---
+sidebar_position: 5
+tags: [Alerts]
+---
+
+# Uptime Kuma Integration
+
+The **Uptime Kuma integration** lets you send alerts from Uptime Kuma into OpsiMate using **webhook-based push notifications**.
+
+Instead of OpsiMate pulling status from Uptime Kuma, your Uptime Kuma notifications **push alerts** directly to OpsiMate.
+
+## Webhook URL
+
+Configure your Uptime Kuma notification to send alerts to your OpsiMate server.
+
+Use your OpsiMate alerts webhook endpoint, for example:
+
+```text
+http://localhost:3001/api/v1/alerts/custom/uptime-kuma?api_token={your_api_token}
+```
+
+Replace `{your_api_token}` with the API token configured in your OpsiMate server.
+
+> The exact path segment (for example `uptime-kuma`) should match how the Uptime Kuma integration is configured in your OpsiMate backend.
+
+## API Token Configuration
+
+The API token used in the webhook URL is managed by OpsiMate through an environment variable:
+
+- **Env var**: `API_TOKEN`
+- **Default value**: `opsimate`
+
+This value is also used as the default for the `api_token` query parameter in the webhook URL.
+
+If you are using the **simple deployment** (via the provided `docker-compose.yml`), the `API_TOKEN` environment variable is already defined there for you.
+
+Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the default), and use the same value in the Uptime Kuma webhook URL.
+
+## Setting Up the Webhook in Uptime Kuma
+
+To send alerts from Uptime Kuma to OpsiMate via webhook:
+
+1. In **Uptime Kuma**, go to **Settings → Notifications**.
+2. Click **Add New Notification**.
+3. Choose **Webhook** as the notification type.
+4. Set the **URL** to your OpsiMate endpoint, for example:
+   - `http://your-opsimate-host/api/v1/alerts/custom/uptime-kuma?api_token={your_api_token}`
+5. Keep the **HTTP method** as `POST`.
+6. (Optional) Adjust the **payload/template** only if you have customized parsing on the OpsiMate side; otherwise, use the default JSON payload from Uptime Kuma.
+7. Save the notification.
+8. Attach this notification to the monitors you want to forward to OpsiMate.
+
+## Important Disclaimer
+
+Uptime Kuma sends webhooks to **publicly reachable HTTP endpoints**.
+
+- If you are running OpsiMate locally (for example at `http://localhost:3001`), Uptime Kuma running on a different machine or in the cloud may **not** be able to call this URL directly.
+- For production use, deploy OpsiMate behind a **reachable URL** (or expose it securely via tunneling / reverse proxy) so that Uptime Kuma can reach the webhook endpoint.
+
+Once configured, alerts pushed from Uptime Kuma will appear in the **alerts table** in OpsiMate with the **Uptime Kuma integration icon**, so you can easily identify their source.

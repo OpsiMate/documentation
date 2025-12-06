@@ -26,6 +26,10 @@ The API token used in the webhook URL is managed by OpsiMate through an environm
 - **Env var**: `API_TOKEN`
 - **Default value**: `opsimate`
 
+This value is also used as the default for the `api_token` query parameter in the webhook URL.
+
+If you are using the **simple deployment** (via the provided `docker-compose.yml`), the `API_TOKEN` environment variable is already defined there for you.
+
 Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the default), and use the same value in the GCP webhook URL.
 
 ## Setting Up the Webhook in GCP

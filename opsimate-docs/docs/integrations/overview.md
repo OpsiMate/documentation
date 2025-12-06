@@ -26,6 +26,10 @@ Push-based alerts from Google Cloud Platform into OpsiMate via webhooks.
 
 Cloud monitoring and analytics platform for infrastructure, applications, and logs.
 
+### Uptime Kuma
+
+Self-hosted monitoring tool that can push uptime and incident alerts into OpsiMate via webhooks.
+
 ## Getting Started
 
 1. Navigate to **My Integrations** page
@@ -42,3 +46,4 @@ Select an integration to learn how to set it up:
 
 - [Setting up Grafana Integration](/docs/integrations/grafana)
 - [Setting up GCP Integration](/docs/integrations/gcp)
+- [Setting up Uptime Kuma Integration](/docs/integrations/uptime-kuma)

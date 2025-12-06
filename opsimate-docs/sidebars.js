@@ -63,6 +63,7 @@ const sidebars = {
         'integrations/overview',
         'integrations/grafana',
         'integrations/gcp',
+        'integrations/uptime-kuma',
         'integrations/datadog',
       ],
     },
