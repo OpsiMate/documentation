@@ -1,0 +1,30 @@
+---
+sidebar_position: 4
+---
+
+# Saved Dashboards
+
+Saved Dashboards lets you store and reuse a dashboard configuration so you can quickly return to the same view.
+
+A saved dashboard includes:
+- **Name**
+- **Description**
+- **Saved filters/search**
+- **Table columns** (the selected/visible columns)
+- **Tags** (for organization and filtering)
+
+<div style={{textAlign: 'center', margin: '30px 0'}}>
+  <img src="/img/saved-dashboards.png" alt="Saved Dashboards" style={{width: '900px', maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)'}} />
+  <p style={{fontSize: '14px', color: '#666', marginTop: '10px', fontStyle: 'italic'}}>Saved Dashboards page with favorites, tags, search, and actions</p>
+</div>
+
+
+### How to Save a Dashboard
+
+1. Click **New Dashboard** in the top-right corner.
+2. You will be redirected back to the **Alerts** screen.
+3. From there, you can filter or modify the search to shape your dashboard.
+4. Update the dashboard name.
+5. Save the dashboard.
+
+Once the process is complete, you will be able to see your saved dashboard.
