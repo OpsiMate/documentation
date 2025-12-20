@@ -26,35 +26,7 @@ const sidebars = {
         'getting-started/system-requirements',
       ],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Providers & Services',
-    //   collapsed: true,
-    //   items: [
-    //     'providers-services/overview',
-    //     {
-    //       type: 'category',
-    //       label: 'Providers',
-    //       collapsed: true,
-    //       items: [
-    //         'providers-services/providers/add-provider',
-    //         'providers-services/providers/server-provider',
-    //         'providers-services/providers/kubernetes-provider',
-    //       ],
-    //     },
-    //     {
-    //       type: 'category',
-    //       label: 'Services',
-    //       collapsed: true,
-    //       items: [
-    //         'providers-services/services/add-services',
-    //         'providers-services/services/container-services',
-    //         'providers-services/services/systemd-services',
-    //         'providers-services/services/kubernetes-pods',
-    //       ],
-    //     },
-    //   ],
-    // },
+
     {
       type: 'category',
       label: 'Integrations',
@@ -67,19 +39,17 @@ const sidebars = {
         'integrations/datadog',
       ],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Dashboard',
-    //   collapsed: true,
-    //   items: [
-    //     'dashboards/overview',
-    //     'dashboards/service-menu',
-    //     'dashboards/saving-views',
-    //   ],
-    // },
     {
       type: 'category',
-      label: 'Alerts Dashboard',
+      label: 'Dashboard',
+      collapsed: true,
+      items: [
+        'dashboards/saved-dashboards',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Alerts',
       collapsed: true,
       items: ['alerts/adding-alerts', 'alerts/alert-management', 'alerts/archived-alerts', 'alerts/tv-mode'],
     },

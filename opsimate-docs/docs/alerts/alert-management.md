@@ -43,6 +43,15 @@ Use **group by** to organize alerts based on what matters to you:
 - Group by **nested fields** inside the alert payload for more advanced views
 - Quickly spot patterns, noisy sources, or services with repeated issues
 
+### Ownership Management
+
+You can assign ownership to alerts to track responsibility and ensure timely resolution by adding the owner field to the column configuration.
+
+- Assign users to specific alerts for clear accountability
+- Track ownership history and handovers for better collaboration
+- Set escalation rules based on ownership assignments for timely resolution
+- Filter alerts by ownership status for better accountability
+
 ### Alert Details Sidebar
 
 Click any alert row to open a **details sidebar** on the right:
@@ -50,5 +59,6 @@ Click any alert row to open a **details sidebar** on the right:
 - See full alert information, including labels, payload, and timestamps
 - Follow a direct **link to the source** alert in the original monitoring tool
 - Use a **runbook link** to jump straight to the documentation or procedure for handling that alert
+- Set and view ownership information for better accountability
 
 Each alert shows its source integration for easy traceability back to the original monitoring system.
