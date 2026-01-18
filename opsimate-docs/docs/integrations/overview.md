@@ -30,6 +30,10 @@ Cloud monitoring and analytics platform for infrastructure, applications, and lo
 
 Self-hosted monitoring tool that can push uptime and incident alerts into OpsiMate via webhooks.
 
+### Zabbix
+
+Enterprise-class monitoring solution that can push alerts into OpsiMate via webhooks with auto-resolve and deep linking support.
+
 ## Getting Started
 
 1. Navigate to **My Integrations** page
@@ -47,3 +51,4 @@ Select an integration to learn how to set it up:
 - [Setting up Grafana Integration](/docs/integrations/grafana)
 - [Setting up GCP Integration](/docs/integrations/gcp)
 - [Setting up Uptime Kuma Integration](/docs/integrations/uptime-kuma)
+- [Setting up Zabbix Integration](/docs/integrations/zabbix)

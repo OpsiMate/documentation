@@ -37,6 +37,7 @@ const sidebars = {
         'integrations/gcp',
         'integrations/uptime-kuma',
         'integrations/datadog',
+        'integrations/zabbix',
       ],
     },
     {
