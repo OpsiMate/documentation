@@ -15,6 +15,8 @@
   --ifm-background-surface-color: #f8f9fa;
   --ifm-font-color-base: #000000;
   --ifm-heading-color: #1a237e;
+  --ifm-navbar-height: 5rem;
+  --ifm-navbar-link-hover-color: white;
   --ifm-navbar-background-color: #000000;
   --ifm-footer-background-color: #3949ab;
 }
@@ -76,6 +78,29 @@ h6 {
   color: #ffffff !important;
 }
 
+.navbar__items {
+  justify-content: center;
+  margin-right: 100px;
+}
+.navbar__items--right > :last-child {
+    padding-left: 20px;
+}
+
+.DocSearch-Button-Placeholder {
+  display: none !important;
+}
+.DocSearch-Button-Keys {
+  display: none !important;
+}
+.DocSearch-Button {
+  padding: 3px 12px !important;
+  border-radius: 50px !important;
+  border-color: rgb(162, 162, 162) !important;
+}
+.DocSearch-Button-Container {
+  justify-content: center;
+}
+
 .navbar__items button.clean-btn {
   position: relative;
   top: -4px;
@@ -92,28 +117,19 @@ h6 {
 .navbar-icon-link:hover,
 .footer-community-icon-link:hover,
 .navbar__items button.clean-btn:hover {
-  background-color: rgba(57, 73, 171, 0.3);
+  background-color: rgb(0, 0, 0);
   transform: translateY(-1px);
 }
 
-.navbar-icon-link:hover .navbar-icon,
-.footer-community-icon-link:hover .footer-community-icon {
-  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
-}
-
 /* Navbar text links */
-.navbar__title,
-.navbar__brand,
 .navbar__link {
-  color: white !important;
+  color: rgb(162, 162, 162) !important;
+  font-size: 14px;
 }
 .navbar__link--active {
   color: #bbdefb !important;
 }
-.navbar__link:hover {
-  color: #5c6bc0 !important;
-  background-color: rgba(57, 73, 171, 0.1);
-}
+
 .navbar {
   background-color: #000000 !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -716,7 +732,7 @@ html[data-theme="light"] .navbar {
 /* Dark mode - Keep black background */
 html[data-theme="dark"] .navbar {
   background-color: #000000 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 /* ===== LIGHT MODE TOGGLE VISIBILITY ON INDIGO BACKGROUND ===== */
@@ -775,8 +791,7 @@ html[data-theme="dark"] .navbar__link--active {
 }
 
 html[data-theme="dark"] .navbar__link:hover {
-  color: #5c6bc0 !important;
-  background-color: rgba(57, 73, 171, 0.1);
+  color: #ffffff !important;
 }
 
 /* ===== NAVBAR ICONS FOR LIGHT MODE ===== */
@@ -804,17 +819,9 @@ html[data-theme="light"] .navbar__items button.clean-btn:hover {
 }
 
 /* Dark mode - Keep existing icon styles with indigo hover */
-html[data-theme="dark"] .navbar-icon{
-  filter: brightness(0) invert(1);
-}
 
-html[data-theme="dark"] .navbar-icon-link:hover .navbar-icon,
-.navbar__items button.clean-btn:hover svg {
-  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
-}
-
-html[data-theme="dark"] .navbar-icon-link:hover {
-  background-color: rgba(57, 73, 171, 0.3);
+html[data-theme="dark"] .navbar-icon-link: {
+  background-color: rgb(0, 0, 0);
   color: #bbdefb !important;
 }
 
