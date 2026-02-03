@@ -3,17 +3,9 @@ title: Contributing Guide
 sidebar_position: 1
 ---
 
-# Contributing Guide
-
----
-title: Contributing to Opsimate
----
-
 # Contributing to Opsimate
 
 We welcome contributions to the Opsimate documentation. Whether you are fixing typos, adding new guides, or improving existing content, your contributions help make Opsimate better for everyone.
-
----
 
 ## Add Documentation
 
