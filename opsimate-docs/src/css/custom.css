@@ -15,16 +15,16 @@
   --ifm-background-surface-color: #f8f9fa;
   --ifm-font-color-base: #000000;
   --ifm-heading-color: #1a237e;
-  --ifm-navbar-background-color: var(--ifm-font-color-base);
+  --ifm-navbar-background-color: #000000;
   --ifm-footer-background-color: #3949ab;
 }
 
 [data-theme="dark"] {
-  --ifm-background-color: var(--ifm-font-color-base);
+  --ifm-background-color: #000000;
   --ifm-background-surface-color: #111111;
   --ifm-font-color-base: #e6eef6;
   --ifm-heading-color: #ffffff;
-  --ifm-navbar-background-color: var(--ifm-font-color-base);
+  --ifm-navbar-background-color: #000000;
   --ifm-footer-background-color: #3949ab;
 }
 
@@ -877,6 +877,7 @@ button[class*="toggle"] {
 .admonitionContent_pbrs p a:hover {
   text-decoration-color: currentColor;
 }
+
 
 
 
