@@ -16,7 +16,7 @@ Welcome to the OpsiMate glossary! This page explains the key terms and concepts 
 
 #### Active Alert
 An alert in **Active** state is currently firing and requires your attention.  
-- See also [TV Mode](http://localhost:3000/docs/alerts/tv-mode-view) for full-screen monitoring.
+- See also [TV Mode](/docs/docs/alerts/tv-mode-view) for full-screen monitoring.
 
 #### Alerts
 Notifications generated when service health or metrics cross predefined thresholds.  
@@ -39,7 +39,7 @@ A status indicating that an alert has been acknowledged or resolved.
 #### Dashboard
 A visual interface displaying alerts, service status, and metrics.  
 - Can be saved, tagged, and filtered for quick access.  
-- Related guide: [Saved Dashboards](http://localhost:3000/docs/dashboards/saved-dashboards).
+- Related guide: [Saved Dashboards](/docs/docs/dashboards/saved-dashboards).
 
 #### Docker Commands
 SSH-based commands used to control Docker containers monitored by OpsiMate:  
@@ -93,7 +93,7 @@ Providers represent the infrastructure where your services live—such as server
 Providers are the **starting point** when connecting your infrastructure to OpsiMate.
 
 Learn more:
-- [Adding Providers](http://localhost:3000/docs/providers-services/providers/add-provider)
+- [Adding Providers](/docs/docs/providers-services/providers/add-provider)
 
 ### M–O
 
@@ -156,7 +156,7 @@ It shows:
 - Real-time service health at a glance
 
 Learn more:
-- [TV Mode View](http://localhost:3000/docs/alerts/tv-mode-view)
+- [TV Mode View](/docs/docs/alerts/tv-mode-view)
 
 #### Webhook
 A **webhook** is an HTTP callback that allows external systems to push alerts to OpsiMate in real time.

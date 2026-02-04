@@ -17,8 +17,8 @@ Instead of OpsiMate pulling alerts from GCP, your GCP alerting policies push ale
 
 Configure your GCP notification channel to send alerts to your OpsiMate server:
 
-```pgsql
-http://localhost:3001/api/v1/alerts/custom/gcp?api_token={your_api_token}
+```text
+/api/v1/alerts/custom/gcp?api_token={your_api_token}
 ```
 
 > Replace `{your_api_token}` with the API token configured in your OpsiMate server.
@@ -45,7 +45,7 @@ To send alerts from GCP to OpsiMate via webhook:
 3. Create or edit a **Webhook notification channel**.
 4. Set the **Webhook URL** to your OpsiMate endpoint, for example:
 
-```pgsql
+```text
 http://your-opsimate-host/api/v1/alerts/custom/gcp?api_token={your_api_token}
 ```
 
@@ -56,7 +56,7 @@ http://your-opsimate-host/api/v1/alerts/custom/gcp?api_token={your_api_token}
 
 GCP sends alerts via webhook **only to publicly reachable HTTP endpoints**.
 
-- If you are running OpsiMate locally (for example at `http://localhost:3001`), GCP cannot call this URL directly from the internet.
+- If you are running OpsiMate locally (for example at ``), GCP cannot call this URL directly from the internet.
 - For production use, deploy OpsiMate behind a publicly accessible URL (or expose it securely via tunneling / reverse proxy) so that GCP can reach the webhook endpoint.
 
 Once configured, alerts pushed from GCP will appear in the **alerts table** in OpsiMate with the **GCP integration icon**, so you can easily identify their source.
