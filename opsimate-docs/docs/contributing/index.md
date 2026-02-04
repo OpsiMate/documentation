@@ -3,21 +3,21 @@ title: Contributing Guide
 sidebar_position: 1
 ---
 
-# Contributing to Opsimate
+# Contributing to OpsiMate
 
-We welcome contributions to the Opsimate documentation. Whether you are fixing typos, adding new guides, or improving existing content, your contributions help make Opsimate better for everyone.
+We welcome contributions to the OpsiMate documentation. Whether you are fixing typos, adding new guides, or improving existing content, your contributions help make OpsiMate better for everyone.
 
 ## Add Documentation
 
-To contribute new documentation to Opsimate, follow these steps:
+To contribute new documentation to OpsiMate, follow these steps:
 
 1. **Identify your audience and purpose**  
    Consider who will read your content and what they need to know. This will guide the scope, depth, and style of your contribution.
 
 2. **Select a content type**  
-   - **Concepts**: Explain key Opsimate principles, features, or workflows. Link to related guides when needed.  
+   - **Concepts**: Explain key OpsiMate principles, features, or workflows. Link to related guides when needed.  
    - **Guides**: Provide step-by-step instructions for a task, such as setting up alerts or configuring pipelines.  
-   - **Setup pages**: Focus on installing, configuring, and deploying Opsimate.  
+   - **Setup pages**: Focus on installing, configuring, and deploying OpsiMate.  
    - **Reference pages**: Detailed technical information, like API references or configuration parameters.  
    - **FAQs**: Quick answers to common questions.
 
@@ -34,7 +34,7 @@ sidebar_label: Your Page Title
 ```
 4. **Write your content**
 
-Follow the Opsimate style guide (see below) for language, tone, and formatting. Use Docusaurus MDX components for rich content, for example:
+Follow the OpsiMate style guide (see below) for language, tone, and formatting. Use Docusaurus MDX components for rich content, for example:
 
 ```mdx
 import Callout from '@site/src/components/Callout';
@@ -54,18 +54,18 @@ npm install
 npm run build
 npm run dev
 ```
-- The documentation will be available at http://localhost:8080
+- The documentation will be available at http://localhost:3000
 
 **Using Docker**
 You can also use Docker for a clean, reproducible environment:
 1. Build the Docker image:
 ```bash
-cd opsimate-docs
-docker build -t opsimate-docs .
+cd OpsiMate-docs
+docker build -t OpsiMate-docs .
 ```
 2. Run the container:
 ```bash
-docker run -p 3000:3000 --env-file .env opsimate-docs
+docker run -p 3000:3000 --env-file .env OpsiMate-docs
 ```
 - The documentation will be accessible at http://localhost:3000.
 
@@ -93,29 +93,30 @@ Follow these guidelines when writing content:
 
 ## Docusaurus Components and Tools
 
-Opsimate uses Docusaurus MDX components for rich content:
+OpsiMate uses Docusaurus MDX components for rich content:
 
 - **Tabs**: Show multiple options in tabbed content.  
 - **Callouts**: Highlight important information.  
 - **Code blocks**: Syntax-highlighted examples.  
 - **Links**: Use relative linking between docs pages.  
 
-Refer to existing Opsimate docs for examples of MDX usage.
+Refer to existing OpsiMate docs for examples of MDX usage.
 
 ## Support and Community
 
 If you need help contributing or have questions:
 
-- **[Documentation](https://opsimate.vercel.app/)** – Comprehensive guides and API references.  
+- **[Documentation](https://OpsiMate.vercel.app/)** – Comprehensive guides and API references.  
 - **[GitHub Issues](https://github.com/OpsiMate/documentation/issues)** – Bug reports and feature requests.  
-- **[Slack Community](https://opsimate.slack.com/ssb/redirect)** – Join discussions and get help.  
-- **[Website](https://www.opsimate.com/)** – Learn more about Opsimate.
+- **[Slack Community](https://OpsiMate.slack.com/ssb/redirect)** – Join discussions and get help.  
+- **[Website](https://www.OpsiMate.com/)** – Learn more about OpsiMate.
 
 ## Review Process
 
-All contributions are reviewed by Opsimate documentation maintainers to ensure clarity, accuracy, and consistency. Once reviewed and approved, your changes will be merged and appear on the documentation site.
+All contributions are reviewed by OpsiMate documentation maintainers to ensure clarity, accuracy, and consistency. Once reviewed and approved, your changes will be merged and appear on the documentation site.
 
 ## Generated Docs
 
 Some content, like API references, may be automatically generated. Check the repository for details on contributing to these sections.
+
 
