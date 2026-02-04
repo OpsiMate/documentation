@@ -33,6 +33,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'integrations/overview',
+        'integrations/custom-alerts',
         'integrations/grafana',
         'integrations/gcp',
         'integrations/uptime-kuma',
