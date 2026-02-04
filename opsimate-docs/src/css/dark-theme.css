@@ -1,0 +1,162 @@
+/* Dark mode styles */
+[data-theme="dark"] {
+  --ifm-background-color: #111111;
+  --ifm-background-surface-color: #1a1a1a;
+  --ifm-font-color-base: #e6eef6;
+  --ifm-heading-color: #ffffff;
+  --ifm-navbar-background-color: #000000;
+  --ifm-footer-background-color: #000000;
+}
+
+html[data-theme="dark"] .navbar {
+  background-color: #000000 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] .navbar__link {
+  color: #a2a2a2 !important;
+}
+
+html[data-theme="dark"] .navbar__title,
+html[data-theme="dark"] .navbar__brand {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .navbar__title:hover,
+html[data-theme="dark"] .navbar__brand:hover {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+html[data-theme="dark"] .navbar__link--active {
+  color: #bbdefb !important;
+}
+
+html[data-theme="dark"] .navbar__link:hover {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] .navbar__items button.clean-btn {
+  filter: invert(1);  
+}
+
+html[data-theme="dark"] .navbar-icon,
+html[data-theme="dark"] .navbar__toggle svg {
+  filter: invert(1);
+}
+
+html[data-theme="dark"] .navbar-icon-link:hover .navbar-icon,
+html[data-theme="dark"] .navbar__toggle:hover svg {
+  color: #bbdefb !important;
+  fill: #bbdefb !important;
+}
+
+html[data-theme="dark"] .navbar__toggle {
+  color: #bbdefb !important;
+  background: transparent;
+  border: 1px solid rgba(187, 222, 251, 0.3);
+  border-radius: 6px;
+}
+
+html[data-theme="dark"] .navbar__toggle:hover {
+  color: #ffffff !important;
+  background: rgba(187, 222, 251, 0.1);
+  border-color: #bbdefb;
+}
+
+[data-theme="dark"] .homepage-section {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .homepage-section:hover {
+  background: rgba(57, 73, 171, 0.1);
+  border-color: #5c6bc0;
+}
+
+[data-theme="dark"] .communitySection.homepage-section,
+[data-theme="dark"] .featureCard.homepage-section {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .communitySection.homepage-section:hover,
+[data-theme="dark"] .featureCard.homepage-section:hover {
+  border-color: #5c6bc0;
+}
+
+[data-theme="dark"] .footer {
+  background-color: #000000 !important;
+  color: #e6eef6;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .footer__title {
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .footer__link-item {
+  color: #e3f2fd !important;
+}
+
+[data-theme="dark"] .footer__link-item:hover {
+  color: #bbdefb !important;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .footer-copyright {
+  color: #e3f2fd;
+}
+
+[data-theme="dark"] .integration-icon {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .footer-community-icon {
+    filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .vercel-card {
+    background: #000000;
+    border: 1px solid #334155;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .vercel-card:hover {
+    background: #111827;
+    border-color: #4f46e5;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+[data-theme="dark"] .vercel-card-logo {
+    filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .vercel-card-text {
+    color: #ffffff;
+}
+
+/* Footer Icons Dark Mode */
+.integration-icon {
+  filter: brightness(0) invert(1); /* White icons */
+}
+
+.integration-item:hover .integration-icon {
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg); /* Indigo on hover */
+}
+
+.footer-community-icon {
+  filter: brightness(0) invert(1); /* White icons */
+}
+
+.footer-community-icon-link:hover {
+  background-color: rgba(57, 73, 171, 0.3);
+  transform: translateY(-1px);
+}
+
+.footer-community-icon-link:hover .footer-community-icon {
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg); /* Indigo on hover */
+}

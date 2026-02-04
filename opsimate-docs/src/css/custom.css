@@ -15,17 +15,10 @@
   --ifm-background-surface-color: #f8f9fa;
   --ifm-font-color-base: #000000;
   --ifm-heading-color: #1a237e;
-  --ifm-navbar-background-color: #000000;
-  --ifm-footer-background-color: #3949ab;
-}
-
-[data-theme="dark"] {
-  --ifm-background-color: #000000;
-  --ifm-background-surface-color: #111111;
-  --ifm-font-color-base: #e6eef6;
-  --ifm-heading-color: #ffffff;
-  --ifm-navbar-background-color: #000000;
-  --ifm-footer-background-color: #3949ab;
+  --ifm-navbar-height: 5rem;
+  --ifm-navbar-link-hover-color: white;
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-footer-background-color: #ffffff;
 }
 
 /* ---------- Fonts ---------- */
@@ -54,7 +47,17 @@ h6 {
   font-weight: 700;
 }
 
-/* ---------- Navbar Icons ---------- */
+/* ---------- Navbar ---------- */
+.navbar {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  transition: all 0.3s ease; /* Added for smoother transitions */
+}
+
+.navbar__link {
+  font-size: 14px;
+}
+
 .navbar-icons-container {
   display: flex;
   align-items: center;
@@ -73,7 +76,29 @@ h6 {
   border-radius: 6px;
   transition: all 0.3s ease;
   background-color: transparent;
-  color: #ffffff !important;
+}
+
+.navbar__items {
+  justify-content: center;
+  margin-right: 100px;
+}
+.navbar__items--right > :last-child {
+    padding-left: 20px;
+}
+
+.DocSearch-Button-Placeholder {
+  display: none !important;
+}
+.DocSearch-Button-Keys {
+  display: none !important;
+}
+.DocSearch-Button {
+  padding: 3px 12px !important;
+  border-radius: 50px !important;
+  border-color: rgb(162, 162, 162) !important;
+}
+.DocSearch-Button-Container {
+  justify-content: center;
 }
 
 .navbar__items button.clean-btn {
@@ -85,48 +110,25 @@ h6 {
 .footer-community-icon {
   width: 24px;
   height: 24px;
-  filter: brightness(0) invert(1);
   transition: all 0.3s ease;
 }
 
 .navbar-icon-link:hover,
 .footer-community-icon-link:hover,
 .navbar__items button.clean-btn:hover {
-  background-color: rgba(57, 73, 171, 0.3);
   transform: translateY(-1px);
 }
 
-.navbar-icon-link:hover .navbar-icon,
-.footer-community-icon-link:hover .footer-community-icon {
-  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
-}
-
-/* Navbar text links */
 .navbar__title,
-.navbar__brand,
-.navbar__link {
-  color: white !important;
-}
-.navbar__link--active {
-  color: #bbdefb !important;
-}
-.navbar__link:hover {
-  color: #5c6bc0 !important;
-  background-color: rgba(57, 73, 171, 0.1);
-}
-.navbar {
-  background-color: #000000 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  transition: all 0.3s ease; /* Added for smoother transitions */
+.navbar__brand {
+  color: var(--ifm-font-color-base) !important;
 }
 
 /* ---------- Compact Footer ---------- */
 .footer {
   background-color: var(--ifm-footer-background-color) !important;
-  color: white;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--ifm-font-color-base);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1.5rem 0 0.75rem !important; /* Reduced padding */
 }
 
@@ -155,16 +157,16 @@ h6 {
 }
 
 .footer__title {
-  color: #ffffff !important;
+  color: var(--ifm-heading-color) !important;
   font-size: 0.95rem !important; /* Smaller font */
   font-weight: 600 !important;
   margin-bottom: 0.75rem !important; /* Reduced margin */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Thinner border */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Thinner border */
   padding-bottom: 0.25rem; /* Less padding */
 }
 
 .footer__link-item {
-  color: #e3f2fd !important;
+  color: var(--ifm-font-color-base) !important;
   transition: all 0.2s ease !important;
   padding: 0.2rem 0; /* Reduced padding */
   display: block;
@@ -173,9 +175,9 @@ h6 {
 }
 
 .footer__link-item:hover {
-  color: #bbdefb !important;
+  color: var(--ifm-color-primary-dark) !important;
   text-decoration: none !important;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* ===== SIMPLE INTEGRATION ICONS (Compact) ===== */
@@ -213,16 +215,7 @@ h6 {
   height: 100%;
 }
 
-.integration-icon {
-  width: 18px; /* Smaller icons */
-  height: 18px; /* Smaller icons */
-  transition: all 0.2s ease;
-  filter: brightness(0) invert(1);
-}
 
-.integration-item:hover .integration-icon {
-  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
-}
 
 /* Hide the integration names */
 .integration-name {
@@ -248,28 +241,14 @@ h6 {
   background-color: transparent;
 }
 
-.footer-community-icon {
-  width: 18px; /* Smaller */
-  height: 18px; /* Smaller */
-  transition: all 0.2s ease;
-  filter: brightness(0) invert(1);
-}
 
-.footer-community-icon-link:hover {
-  background-color: rgba(57, 73, 171, 0.3);
-  transform: translateY(-1px);
-}
-
-.footer-community-icon-link:hover .footer-community-icon {
-  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
-}
 
 /* ===== COMPACT FOOTER BOTTOM ===== */
 .footer-bottom {
   width: 100%;
   margin-top: 1rem; /* Reduced from 3rem */
   padding-top: 0.75rem; /* Reduced from 2rem */
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .footer-bottom-content {
@@ -282,7 +261,7 @@ h6 {
 }
 
 .footer-copyright {
-  color: #e3f2fd;
+  color: var(--ifm-font-color-base);
   font-size: 0.8rem; /* Smaller font */
   opacity: 0.8;
 }
@@ -298,26 +277,26 @@ h6 {
   align-items: center;
   gap: 0.5rem; /* Reduced gap */
   padding: 0.5rem 0.75rem; /* Reduced padding */
-  background: #000000;
-  border: 1px solid #334155; /* Thinner border */
+  background: #ffffff;
+  border: 1px solid #e5e7eb; /* Thinner border */
   border-radius: 5px; /* Smaller radius */
   transition: all 0.2s ease;
   min-width: 140px; /* Smaller min-width */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* Reduced shadow */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Reduced shadow */
 }
 
 .vercel-card:hover {
-  background: #111827;
-  border-color: #4f46e5;
+  background: #f8f9fa;
+  border-color: #d1d5db;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
 
 .vercel-card-logo {
   width: 16px; /* Smaller logo */
   height: 16px; /* Smaller logo */
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(0);
   transition: transform 0.2s ease;
 }
 
@@ -326,7 +305,7 @@ h6 {
 }
 
 .vercel-card-text {
-  color: #ffffff;
+  color: #000000;
   font-size: 0.8rem; /* Smaller font */
   font-weight: 600;
   opacity: 0.9;
@@ -422,74 +401,74 @@ h6 {
   }
   
   .footer__container {
-    padding: 0 0.5rem;
-    gap: 0.5rem;
+  padding: 0 0.5rem;
+  gap: 0.5rem;
   }
   
   .footer__links {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0;
-    margin: 0;
-    flex-direction: column;
-    gap: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  gap: 0.75rem;
   }
   
   .footer__col {
-    min-width: 160px;
-    max-width: 700px;
+  min-width: 160px;
+  max-width: 700px;
   }
   
   .footer__title {
-    font-size: 0.9rem !important;
-    margin-bottom: 0.5rem !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 0.5rem !important;
   }
   
   .footer__link-item {
-    font-size: 0.8rem;
-    padding: 0.15rem 0;
+  font-size: 0.8rem;
+  padding: 0.15rem 0;
   }
   
   .footer-bottom {
-    margin-top: 0.75rem;
-    padding-top: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
   }
   
   .footer-bottom-content {
-    gap: 0.5rem;
+  gap: 0.5rem;
   }
   
   .footer-integrations,
   .footer-community-icons {
-    gap: 4px;
+  gap: 4px;
   }
   
   .integration-item,
   .footer-community-icon-link {
-    width: 28px;
-    height: 28px;
+  width: 28px;
+  height: 28px;
   }
   
   .integration-icon,
   .footer-community-icon {
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
   }
   
   .vercel-card {
-    min-width: 120px;
-    padding: 0.4rem 0.6rem;
-    gap: 0.4rem;
+  min-width: 120px;
+  padding: 0.4rem 0.6rem;
+  gap: 0.4rem;
   }
   
   .vercel-card-text {
-    font-size: 0.75rem;
+  font-size: 0.75rem;
   }
   
   .vercel-card-logo {
-    width: 14px;
-    height: 14px;
+  width: 14px;
+  height: 14px;
   }
 }
 
@@ -573,17 +552,6 @@ h6 {
   bottom: -3px;
 }
 
-/* Remove old integration styles that are no longer needed */
-/* Remove these sections:
-   - .integration-grid
-   - .integration-card  
-   - .integration-link
-   - Old .footer-integrations with grid layout
-   - Old responsive integrations with labels
-*/
-
-/* ---------- Compact Footer ---------- */
-
 /* ===== LIGHT/DARK MODE TOGGLE VISIBILITY ===== */
 
 /* Ensure toggle is visible in light mode */
@@ -596,32 +564,6 @@ h6 {
   border-radius: 6px;
   transition: all 0.3s ease;
   margin-right: 8px;
-}
-
-/* Light mode styling */
-html[data-theme="light"] .navbar__toggle {
-  color: #3949ab !important; /* Indigo color */
-  background: transparent;
-  border: 1px solid rgba(57, 73, 171, 0.2);
-}
-
-html[data-theme="light"] .navbar__toggle:hover {
-  color: #283593 !important; /* Darker indigo */
-  background: rgba(57, 73, 171, 0.1);
-  border-color: #3949ab;
-}
-
-/* Dark mode styling */
-html[data-theme="dark"] .navbar__toggle {
-  color: #bbdefb !important; /* Light blue for contrast */
-  background: transparent;
-  border: 1px solid rgba(187, 222, 251, 0.3);
-}
-
-html[data-theme="dark"] .navbar__toggle:hover {
-  color: #ffffff !important;
-  background: rgba(187, 222, 251, 0.1);
-  border-color: #bbdefb;
 }
 
 /* Toggle icon sizing */
@@ -647,207 +589,6 @@ button[class*="toggle"] {
 /* Additional fallback for toggle visibility */
 .navbar .react-toggle,
 .navbar .toggle_vylO {
-  display: flex !important;
-  visibility: visible !important;
-}
-
-/* Remove indigo left borders from homepage cards */
-.homepage-section {
-  background: var(--ifm-background-surface-color);
-  border-radius: 8px;
-  padding: 20px;
-  margin: 15px 0;
-  border-left: none; /* Remove the indigo left border */
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.1); /* Add subtle border */
-}
-
-[data-theme="dark"] .homepage-section {
-  background: #111111;
-  border-left: none; /* Remove for dark mode too */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for dark mode */
-}
-
-.homepage-section:hover {
-  background: rgba(57, 73, 171, 0.05);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(57, 73, 171, 0.1);
-  border-color: #3949ab; /* Indigo border on hover */
-}
-
-[data-theme="dark"] .homepage-section:hover {
-  background: rgba(57, 73, 171, 0.1);
-  border-color: #5c6bc0; /* Lighter indigo for dark mode */
-}
-
-/* Remove specific indigo borders from community and feature cards */
-.communitySection.homepage-section,
-.featureCard.homepage-section {
-  border-left: none !important;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="dark"] .communitySection.homepage-section,
-[data-theme="dark"] .featureCard.homepage-section {
-  border-left: none !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.communitySection.homepage-section:hover,
-.featureCard.homepage-section:hover {
-  border-left: none !important;
-  border-color: #3949ab;
-}
-
-[data-theme="dark"] .communitySection.homepage-section:hover,
-[data-theme="dark"] .featureCard.homepage-section:hover {
-  border-left: none !important;
-  border-color: #5c6bc0;
-}
-
-/* ===== NAVBAR BACKGROUND COLORS ===== */
-
-/* Light mode - Indigo background */
-html[data-theme="light"] .navbar {
-  background-color: #3949ab !important; /* Indigo background */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Dark mode - Keep black background */
-html[data-theme="dark"] .navbar {
-  background-color: #000000 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* ===== LIGHT MODE TOGGLE VISIBILITY ON INDIGO BACKGROUND ===== */
-
-/* Light mode toggle styling - White on indigo */
-html[data-theme="light"] .navbar__toggle {
-  color: #ffffff !important; /* White color for contrast on indigo */
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
-}
-
-html[data-theme="light"] .navbar__toggle:hover {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-/* Dark mode toggle styling - Keep existing */
-html[data-theme="dark"] .navbar__toggle {
-  color: #bbdefb !important;
-  background: transparent;
-  border: 1px solid rgba(187, 222, 251, 0.3);
-  border-radius: 6px;
-}
-
-html[data-theme="dark"] .navbar__toggle:hover {
-  color: #ffffff !important;
-  background: rgba(187, 222, 251, 0.1);
-  border-color: #bbdefb;
-}
-
-/* ===== NAVBAR TEXT COLORS FOR LIGHT MODE ===== */
-
-/* Light mode - White text on indigo */
-html[data-theme="light"] .navbar__title,
-html[data-theme="light"] .navbar__brand,
-html[data-theme="light"] .navbar__link {
-  color: #ffffff !important;
-}
-
-html[data-theme="light"] .navbar__link--active {
-  color: #bbdefb !important; /* Light blue for active state */
-}
-
-html[data-theme="light"] .navbar__link:hover {
-  color: #bbdefb !important;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* ===== RESTORE ORIGINAL DARK MODE HOVER EFFECTS ===== */
-
-/* Dark mode - Keep original indigo hover effects */
-html[data-theme="dark"] .navbar__link--active {
-  color: #bbdefb !important;
-}
-
-html[data-theme="dark"] .navbar__link:hover {
-  color: #5c6bc0 !important;
-  background-color: rgba(57, 73, 171, 0.1);
-}
-
-/* ===== NAVBAR ICONS FOR LIGHT MODE ===== */
-
-/* Light mode - White icons on indigo */
-html[data-theme="light"] .navbar-icon{
-  filter: brightness(0) invert(1);
-  /* White icons */
-}
-
-html[data-theme="light"] .navbar-icon-link:hover .navbar-icon{
-  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg) brightness(2);
-  /* Brighter indigo on hover */
-}
-
-html[data-theme="light"] .navbar-icon-link,
-html[data-theme="light"] .navbar__items button.clean-btn {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-html[data-theme="light"] .navbar-icon-link:hover,
-html[data-theme="light"] .navbar__items button.clean-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #bbdefb !important;
-}
-
-/* Dark mode - Keep existing icon styles with indigo hover */
-html[data-theme="dark"] .navbar-icon{
-  filter: brightness(0) invert(1);
-}
-
-html[data-theme="dark"] .navbar-icon-link:hover .navbar-icon,
-.navbar__items button.clean-btn:hover svg {
-  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg);
-}
-
-html[data-theme="dark"] .navbar-icon-link:hover {
-  background-color: rgba(57, 73, 171, 0.3);
-  color: #bbdefb !important;
-}
-
-/* ===== ENSURE TOGGLE IS VISIBLE ===== */
-
-/* Make sure toggle container is visible */
-.navbar__toggle {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  margin-right: 8px;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-/* Toggle icon sizing */
-.navbar__toggle svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* Force toggle display if still hidden */
-button[class*="toggle"] {
-  display: inline-flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.navbar .react-toggle {
   display: flex !important;
   visibility: visible !important;
 }
@@ -879,3 +620,5 @@ button[class*="toggle"] {
 }
 
 
+@import "./light-theme.css";
+@import "./dark-theme.css";

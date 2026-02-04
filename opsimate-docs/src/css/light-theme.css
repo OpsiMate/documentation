@@ -1,0 +1,96 @@
+/* Light mode styles */
+html[data-theme="light"] .navbar {
+  background-color: #ffffff !important; /* white background */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="light"] .navbar__title,
+html[data-theme="light"] .navbar__brand {
+  color: #000000 !important;
+}
+
+html[data-theme="light"] .navbar__title:hover,
+html[data-theme="light"] .navbar__brand:hover {
+  color: #000000 !important;
+  text-decoration: none;
+}
+
+html[data-theme="light"] .navbar__link--active {
+  color: #283593 !important; /* Darker indigo for active state */
+}
+
+html[data-theme="light"] .navbar__link:hover {
+  color: var(--ifm-color-primary-dark);
+}
+
+html[data-theme="light"] .navbar-icon,
+html[data-theme="light"] .navbar__toggle svg {
+  color: var(--ifm-color-primary) !important;
+  fill: var(--ifm-color-primary) !important;
+}
+
+html[data-theme="light"] .navbar-icon-link:hover .navbar-icon,
+html[data-theme="light"] .navbar__toggle:hover svg {
+  color: var(--ifm-color-primary-dark) !important;
+  fill: var(--ifm-color-primary-dark) !important;
+}
+
+html[data-theme="light"] .navbar__toggle {
+  color: var(--ifm-color-primary) !important; /* Indigo color */
+  background: transparent;
+  border: 1px solid rgba(57, 73, 171, 0.2);
+}
+
+html[data-theme="light"] .navbar__toggle:hover {
+  color: var(--ifm-color-primary-dark) !important; /* Darker indigo */
+  background: rgba(57, 73, 171, 0.1);
+  border-color: var(--ifm-color-primary);
+}
+
+.homepage-section {
+    background: var(--ifm-background-surface-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Add subtle border */
+    transition: all 0.3s ease;
+}
+
+.homepage-section:hover {
+    background: rgba(57, 73, 171, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(57, 73, 171, 0.1);
+    border-color: #3949ab; /* Indigo border on hover */
+}
+
+.communitySection.homepage-section,
+.featureCard.homepage-section {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.communitySection.homepage-section:hover,
+.featureCard.homepage-section:hover {
+    border-color: #3949ab;
+}
+
+/* Footer Icons Light Mode */
+.integration-icon {
+  filter: brightness(0) invert(0); /* Black icons */
+}
+
+.integration-item:hover .integration-icon {
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg); /* Indigo on hover */
+}
+
+.footer-community-icon {
+  filter: brightness(0) invert(0); /* Black icons */
+}
+
+.footer-community-icon-link:hover {
+  background-color: rgba(57, 73, 171, 0.3);
+  transform: translateY(-1px);
+}
+
+.footer-community-icon-link:hover .footer-community-icon {
+  filter: invert(35%) sepia(100%) saturate(800%) hue-rotate(240deg); /* Indigo on hover */
+}
