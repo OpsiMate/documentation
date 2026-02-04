@@ -40,7 +40,7 @@ Examples include:
 
 Providers are always the **first thing** you set up.
 
-👉 Learn more: [Adding Providers](/docs/docs/providers-services/providers/add-provider)
+👉 Learn more: [Adding Providers](/docs/providers-services/providers/add-provider)
 
 ### What provider types does OpsiMate support?
 Currently, OpsiMate supports:
@@ -146,7 +146,7 @@ TV Mode is a **full-screen alert display** designed for:
 
 It shows active and dismissed alerts in real time.
 
-👉 Learn more: [TV Mode View](/docs/docs/alerts/tv-mode-view)
+👉 Learn more: [TV Mode View](/docs/alerts/tv-mode-view)
 
 ## Access & Control
 
