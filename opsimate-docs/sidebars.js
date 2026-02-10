@@ -1,32 +1,52 @@
-/**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
-
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
- */
-
+// sidebars.js
 // @ts-check
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
-    'intro',
-    'core-features',
+    // Getting Started
     {
       type: 'category',
       label: 'Getting Started',
-      collapsed: true,
+      collapsed: false,
       items: [
-        'getting-started/deploy',
-        'getting-started/configuration',
-        'getting-started/system-requirements',
+        'getting-started/introduction',
+        'getting-started/quick-start',
       ],
     },
 
+    // Providers & Services
+    {
+      type: 'category',
+      label: 'Providers & Services',
+      collapsed: true,
+      items: [
+        'providers-services/overview',
+        {
+          type: 'category',
+          label: 'Providers',
+          collapsed: true,
+          items: [
+            'providers-services/providers/add-provider',
+            'providers-services/providers/server-provider',
+            'providers-services/providers/kubernetes-provider',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Services',
+          collapsed: true,
+          items: [
+            'providers-services/services/add-services',
+            'providers-services/services/container-services',
+            'providers-services/services/systemd-services',
+            'providers-services/services/kubernetes-pods',
+          ],
+        },
+      ],
+    },
+
+    // Integrations
     {
       type: 'category',
       label: 'Integrations',
@@ -35,33 +55,54 @@ const sidebars = {
         'integrations/overview',
         'integrations/custom-alerts',
         'integrations/grafana',
+        'integrations/datadog',
         'integrations/gcp',
         'integrations/uptime-kuma',
-        'integrations/datadog',
         'integrations/zabbix',
       ],
     },
+
+    // Dashboards
     {
       type: 'category',
-      label: 'Dashboard',
+      label: 'Dashboards',
       collapsed: true,
       items: [
         'dashboards/saved-dashboards',
       ],
     },
+
+    // Alerts
     {
       type: 'category',
       label: 'Alerts',
       collapsed: true,
-      items: ['alerts/adding-alerts', 'alerts/alert-management', 'alerts/archived-alerts', 'alerts/tv-mode'],
+      items: [
+        'alerts/adding-alerts',
+        'alerts/alert-management',
+        'alerts/archived-alerts',
+        'alerts/tv-mode-view',
+      ],
     },
+
+    // User Management
     {
       type: 'category',
-      label: 'User Management & Security',
+      label: 'User Management',
       collapsed: true,
-      items: ['user-management/register-login', 'user-management/admin-panel', 'user-management/audit-logs'],
+      items: [
+        'user-management/register-login',
+        'user-management/admin-panel',
+        'user-management/audit-logs',
+      ],
     },
+
+    // Single-page sections (not collapsible)
     'development',
+    'contributing/index',
+    'glossary/index',
+    'faq/index',
+    'legal/privacy',
   ],
 };
 
