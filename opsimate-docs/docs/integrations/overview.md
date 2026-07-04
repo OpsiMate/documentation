@@ -16,7 +16,7 @@ Alerts that arrive via integrations are shown in the **alerts table**, together 
 
 ### Grafana
 
-Visualization and dashboarding platform for metrics and monitoring data.
+Push-based alerts from Grafana into OpsiMate via Webhook contact points.
 
 ### GCP
 
