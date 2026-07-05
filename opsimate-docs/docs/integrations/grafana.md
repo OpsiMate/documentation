@@ -1,34 +1,67 @@
 ---
 sidebar_position: 2
-tags: [Links, Monitoring Data, Alerts]
+tags: [Alerts]
 ---
 
 # Grafana Integration
 
-**Grafana** is an open-source analytics and interactive visualization platform. It provides charts, graphs, and alerts for monitoring data from various sources.
+The **Grafana integration** lets Grafana push alert state changes to OpsiMate with a Grafana **Webhook** contact point.
 
-## Configuration Parameters
+OpsiMate does not poll Grafana for alerts, and Grafana alert ingestion does not require a Grafana API key.
 
-Required credentials to connect to Grafana:
+## Webhook URL
 
-- **Grafana URL**: Your Grafana instance URL (e.g., `https://grafana.company.com`)
-- **API Key**: Generated from Grafana with viewer role
+Configure your Grafana contact point to send alerts to your OpsiMate server:
 
-### How to Generate an API Token (Service Account)
+```text
+http://localhost:3001/api/v1/alerts/custom/grafana?api_token={your_api_token}
+```
 
-1. In Grafana, log in with an account that can manage **service accounts**.
-2. In the left menu, go to **Administration → Users and access → Service accounts**.
-3. Click **New service account**, give it a name (for example `opsimate-alerts`), and create it.
-4. Open the new service account and click **Generate token**.
-5. Choose a **Viewer**-level scope (or the minimal permissions you need) and an expiration time.
-6. Copy the generated token **once** and paste it into the **API Key** field in OpsiMate’s configuration.
-7. Save your settings in OpsiMate.
+Replace `{your_api_token}` with the API token configured in your OpsiMate server.
+
+## API Token Configuration
+
+The API token used in the webhook URL is managed by OpsiMate through an environment variable:
+
+- **Env var**: `API_TOKEN`
+- **Default value**: `opsimate`
+
+This value is also used as the default for the `api_token` query parameter in the webhook URL.
+
+If you are using the **simple deployment** (via the provided `docker-compose.yml`), the `API_TOKEN` environment variable is already defined there for you.
+
+Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the default), and use the same value in the Grafana webhook URL.
+
+## Setting Up the Webhook in Grafana
+
+To send Grafana alerts to OpsiMate via webhook:
+
+1. In Grafana, go to **Alerting > Contact points**.
+2. Click **Add contact point**.
+3. Give the contact point a name, for example `opsimate-webhook`.
+4. Set **Integration** to **Webhook**.
+5. Set the **URL** to your OpsiMate endpoint, for example:
+   - `http://your-opsimate-host/api/v1/alerts/custom/grafana?api_token={your_api_token}`
+6. Keep the HTTP method as `POST` and save the contact point.
+7. In **Alerting > Notification policies**, route the alerts you want in OpsiMate to this contact point.
+8. Make sure resolved notifications are sent too, so OpsiMate can archive alerts when they clear.
 
 ## Alerts
-- OpsiMate **pulls alerts from Grafana**, so alert rules defined in Grafana automatically surface inside OpsiMate.
-- Receive Grafana alerts in OpsiMate
+
+- **Firing** Grafana alerts create or update alerts in OpsiMate.
+- **Resolved** Grafana alerts are archived automatically in OpsiMate.
+- OpsiMate keys each alert by Grafana's per-alert `fingerprint`. If Grafana omits the fingerprint, OpsiMate derives a stable ID from the alert labels.
+- Non-internal Grafana labels are preserved as OpsiMate alert tags.
+- Internal Grafana labels such as `__alert_rule_uid__`, `__grafana_receiver__`, `datasource_uid`, `grafana_folder`, and `ref_id` are not stored as tags.
+
+## Important Disclaimer
+
+Grafana sends alerts via webhook only to HTTP endpoints it can reach.
+
+- If Grafana runs outside your machine, it cannot call `localhost` on your OpsiMate server directly.
+- For production use, deploy OpsiMate behind a reachable URL, reverse proxy, or secure tunnel so Grafana can reach the webhook endpoint.
 
 ## Official Resources
 
 - **Grafana Website**: [https://grafana.com](https://grafana.com)
-- **Documentation**: [https://grafana.com/docs](https://grafana.com/docs)
+- **Webhook contact points**: [Grafana contact point documentation](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/)
