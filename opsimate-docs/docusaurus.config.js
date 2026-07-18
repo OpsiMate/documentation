@@ -2,7 +2,7 @@
 module.exports = {
   title: 'OpsiMate',
   tagline: 'One console for servers, Docker, and Kubernetes',
-  url: 'https://your-site.com',
+  url: 'https://docs.opsimate.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'OpsiMate',
@@ -46,7 +46,7 @@ module.exports = {
         { type: 'doc', docId: 'integrations/overview', position: 'left', label: 'Integrations' },
         { type: 'doc', docId: 'user-management/register-login', position: 'left', label: 'User Management' },
         { 
-          href: 'https://www.opsimate.com/', 
+          href: 'https://www.opsimate.dev/', 
           label: 'Website', 
           position: 'left' 
          },
@@ -155,7 +155,7 @@ module.exports = {
           items: [
             {
               label: 'Main Website',
-              href: 'https://www.opsimate.com/',
+              href: 'https://www.opsimate.dev/',
             },
             {
               label: 'Documentation',
