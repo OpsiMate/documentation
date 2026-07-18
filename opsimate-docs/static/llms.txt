@@ -1,0 +1,19 @@
+# OpsiMate
+
+> OpsiMate is an open-source, all-in-one platform for monitoring and managing infrastructure: it centralizes alerts and incidents from Grafana, Prometheus Alertmanager, Datadog, Zabbix, Uptime Kuma and custom webhooks, and adds dashboards, on-call schedules with automatic rotation, alert enrichment, mute policies, and service management (Docker containers, systemd services, Kubernetes pods) in one place.
+
+OpsiMate is self-hosted (Docker, Docker Compose, Kubernetes/Helm) and free. The server is Node.js/TypeScript with SQLite; the client is React. Alerts arrive by webhook from existing monitoring tools, get normalized (severity, owning team), and can be silenced, resolved, assigned, commented on, enriched, and routed to the on-call person.
+
+## Docs
+
+- [Getting started / deployment](https://docs.opsimate.dev/docs/getting-started/deploy): install with Docker, Compose, or Helm
+- [Integrations overview](https://docs.opsimate.dev/docs/integrations/overview): Grafana, Datadog, Zabbix, GCP, Uptime Kuma, custom webhook alerts
+- [Alerts](https://docs.opsimate.dev/docs/alerts/adding-alerts): sending, silencing, resolving, and managing alerts
+- [Providers & services](https://docs.opsimate.dev/docs/providers-services/overview): managing VMs, containers, systemd services, and Kubernetes pods
+- [Dashboards](https://docs.opsimate.dev/docs/dashboards/overview): saved filtered views of alerts and services
+
+## Links
+
+- [Website](https://www.opsimate.dev/)
+- [Live demo (no signup, runs fully in the browser)](https://demo.opsimate.dev/)
+- [Source code on GitHub](https://github.com/OpsiMate/OpsiMate)
