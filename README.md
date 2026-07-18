@@ -1,5 +1,5 @@
 <h1 align="center">OpsiMate - documentation repo!</h1>
-<p align="center"><b>The official documentation of OpsiMate - https://opsimate.vercel.app/</b></p>
+<p align="center"><b>The official documentation of OpsiMate - https://docs.opsimate.dev/</b></p>
 <p align="center"><b>One console for servers, Docker, and Kubernetes—discover, monitor, and act.</b></p>
 <p align="center">
   Built for DevOps/NOC/IT teams that need a single place to see service health,
@@ -25,9 +25,9 @@
 </p>
 
 <p align="center">
-  <a href="https://opsimate.vercel.app/getting-started/deploy">Get Started</a> ·
-  <a href="https://opsimate.vercel.app/">Docs</a> ·
-  <a href="https://www.opsimate.com/">Website</a> ·
+  <a href="https://docs.opsimate.dev/getting-started/deploy">Get Started</a> ·
+  <a href="https://docs.opsimate.dev/">Docs</a> ·
+  <a href="https://www.opsimate.dev/">Website</a> ·
   <a href="https://github.com/OpsiMate/OpsiMate/issues/new?labels=bug&template=bug_report.md">Report Bug</a>
 </p>
 
@@ -67,10 +67,10 @@ docker run -p 3000:3000 --env-file .env opsimate-docs
 
 ## Support
 
-- **[Documentation](https://opsimate.vercel.app/)** - Comprehensive guides and API reference
+- **[Documentation](https://docs.opsimate.dev/)** - Comprehensive guides and API reference
 - **[GitHub Issues](https://github.com/opsimate/opsimate/issues)** - Bug reports and feature requests
 - **[Slack Community](https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA)** - Join our discussions and get help
-- **[Website](https://www.opsimate.com/)** - Learn more about OpsiMate
+- **[Website](https://www.opsimate.dev/)** - Learn more about OpsiMate
 
 ---
 
