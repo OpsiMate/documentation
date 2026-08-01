@@ -1,0 +1,39 @@
+version: 2
+
+updates:
+  # GitHub Actions used across all workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "ci"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  # Node dependencies (root workspace covers opsimate-docs)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      # Batch low-risk minor/patch bumps into one PR to cut noise;
+      # majors still open individually so breaking changes are reviewed.
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Docs site Docker image
+  - package-ecosystem: "docker"
+    directory: "/opsimate-docs"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "ci(docker)"
