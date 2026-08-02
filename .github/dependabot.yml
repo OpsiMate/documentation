@@ -32,7 +32,7 @@ updates:
 
   # Docs site Docker image
   - package-ecosystem: "docker"
-    directory: "/opsimate-docs"
+    directory: "/"
     schedule:
       interval: "weekly"
     commit-message:

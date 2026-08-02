@@ -1,0 +1,16 @@
+# Without this, `COPY . .` copies the host's node_modules over the ones
+# installed by `npm ci` in the image -- host-platform binaries and all.
+node_modules
+**/node_modules
+
+# Build artefacts, regenerated in the container
+opsimate-docs/build
+opsimate-docs/.docusaurus
+opsimate-docs/.cache-loader
+
+.git
+.github
+*.log
+.DS_Store
+.env
+.env.local
