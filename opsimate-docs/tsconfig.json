@@ -2,7 +2,16 @@
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": "."
+    // Re-anchors @docusaurus/tsconfig's @site/* alias to this directory; an
+    // inherited baseUrl would otherwise resolve against the package's own
+    // location inside node_modules.
+    "baseUrl": ".",
+    // TypeScript 6 deprecates baseUrl and 7 removes it, but @docusaurus/tsconfig
+    // sets it upstream too, so we cannot drop it unilaterally -- the deprecation
+    // fires on the inherited option even if we remove ours. Remove this escape
+    // hatch (and the baseUrl above) once Docusaurus ships a baseUrl-free
+    // tsconfig; until then TS 7 is blocked on them, not on us.
+    "ignoreDeprecations": "6.0"
   },
   "exclude": [".docusaurus", "build"]
 }
