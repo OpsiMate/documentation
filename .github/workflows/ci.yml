@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          # Matches opsimate-docs/dockerfile. Docusaurus 3.10 requires >=20,
+          # Matches the Dockerfile. Docusaurus 3.10 requires >=20,
           # so this must stay on a supported LTS line.
           node-version: '24'
           cache: 'npm'

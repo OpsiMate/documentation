@@ -30,14 +30,11 @@ jobs:
         with:
           node-version: '24'
           cache: 'npm'
-          cache-dependency-path: 'opsimate-docs/package-lock.json'
 
       - name: Install dependencies
-        working-directory: ./opsimate-docs
         run: npm ci
 
       - name: Build documentation
-        working-directory: ./opsimate-docs
         run: npm run build
         env:
           # Fail on broken links

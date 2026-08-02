@@ -53,10 +53,11 @@ You can build and run the OpsiMate documentation inside a Docker container for a
 
 ### Build the Docker image
 
-```bash
-cd opsimate-docs
-docker build -t opsimate-docs .
+Run this from the repository root — the image builds the whole npm workspace,
+so it needs the root `package-lock.json` in its build context.
 
+```bash
+docker build -t opsimate-docs .
 ```
 
 ### Run the Container
