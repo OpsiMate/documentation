@@ -71,7 +71,7 @@ Ready to set up your infrastructure monitoring?
 
 1. **[Add Providers](providers/add-provider)** - Connect your infrastructure
 2. **[Discover Services](services/add-services)** - Find and import your applications  
-3. **[Monitor Everything](../dashboards/overview)** - Keep your services healthy
+3. **[Monitor Everything](../dashboards/saved-dashboards)** - Keep your services healthy
 
 :::tip Pro Tip
 Start with one provider and let OpsiMate discover its services automatically. You can always add more providers and manually add specific services later!

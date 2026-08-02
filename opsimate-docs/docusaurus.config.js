@@ -8,8 +8,17 @@ module.exports = {
   organizationName: 'OpsiMate',
   projectName: 'documentation',
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  // 'throw' so a broken link fails CI instead of scrolling past in build
+  // output. Two links to a page deleted months earlier survived this way.
+  onBrokenLinks: 'throw',
+
+  markdown: {
+    hooks: {
+      // Moved from the top-level onBrokenMarkdownLinks, which Docusaurus 3.10
+      // deprecates and v4 removes.
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   presets: [
     [

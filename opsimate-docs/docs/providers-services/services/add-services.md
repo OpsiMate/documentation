@@ -33,7 +33,7 @@ Based on the provider, you can select the services that are relevant to that spe
 
 After adding your services:
 
-1. **[Monitor Services](../../dashboards/overview)** - View service status and metrics
+1. **[Monitor Services](../../dashboards/saved-dashboards)** - View service status and metrics
 2. **[Set Up Alerts](../../alerts/adding-alerts)** - Get notified of issues
 
 :::tip Pro Tip
