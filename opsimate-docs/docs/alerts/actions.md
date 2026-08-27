@@ -44,11 +44,6 @@ resolve to the same value.
 ### Tags
 Tag values are available under three prefixes, all equivalent:
  
-```
-{{label.env}}
-{{tag.env}}
-{{alert.tags.env}}
-```
 
 ## Running an action from an alert
 In the alert details panel there's a collapsible Actions section (with a count). Expanding it shows a button per action. Clicking one opens a dialog. The dialog builds a preview, lets you edit the fields, and you hit Send. Success or failure appears as a notification. There's also a Manage link to the Actions page, and if nothing's configured you get a prompt to create one.
