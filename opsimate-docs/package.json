@@ -16,7 +16,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docsearch/css": "^4.7.0",
+    "@docsearch/css": "^5.0.4",
     "@docsearch/js": "^5.0.4",
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
