@@ -33,6 +33,11 @@ module.exports = {
         },
         blog: false,
         theme: { customCss: require.resolve('./src/css/custom.css') },
+        sitemap: {
+          // /search is the Algolia results page -- it has no content of its
+          // own, and Google reports it as "Crawled - currently not indexed".
+          ignorePatterns: ['/search'],
+        },
         // REMOVE gtag config here - we're using custom component instead
       },
     ],
