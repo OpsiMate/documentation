@@ -42,8 +42,13 @@ resolve to the same value.
 | `{{runbookUrl}}` | Link to the runbook, if set |
 
 ### Tags
-Tag values are available under three prefixes, all equivalent:
- 
+Tag values are available under three prefixes, all equivalent. Replace `env` with your tag's name:
+
+| Variable | Description |
+| --- | --- |
+| `{{label.env}}` | Tag value, `label.` prefix |
+| `{{tag.env}}` | Tag value, `tag.` prefix |
+| `{{alert.tags.env}}` | Tag value, full path |
 
 ## Running an action from an alert
 In the alert details panel there's a collapsible Actions section (with a count). Expanding it shows a button per action. Clicking one opens a dialog. The dialog builds a preview, lets you edit the fields, and you hit Send. Success or failure appears as a notification. There's also a Manage link to the Actions page, and if nothing's configured you get a prompt to create one.

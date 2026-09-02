@@ -53,7 +53,7 @@ const sidebars = {
       type: 'category',
       label: 'Alerts',
       collapsed: true,
-      items: ['alerts/adding-alerts', 'alerts/alert-management', 'alerts/archived-alerts', 'alerts/tv-mode'],
+      items: ['alerts/adding-alerts', 'alerts/alert-management', 'alerts/archived-alerts', 'alerts/tv-mode', 'alerts/actions'],
     },
     {
       type: 'category',
