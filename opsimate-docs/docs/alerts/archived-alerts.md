@@ -4,7 +4,8 @@ sidebar_position: 3
 
 # Archived Alerts
 
-The **Archived Alerts** view is where you can see alerts that have **ended** or were **deleted/dismissed**.
+Open the **Resolved** tab on the Alerts page to review resolved alerts. This guide
+refers to that view as **Archived Alerts**.
 
 Instead of losing context once an alert is no longer active, OpsiMate keeps a history so you can review what happened and learn from past incidents.
 
@@ -28,6 +29,11 @@ Use archived alerts to:
 - Support post-incident reviews and long-term reliability improvements
 
 You can filter and search archived alerts to quickly find the time ranges, services, or integrations you care about.
+
+## Restore an Alert to the Active List
+
+Select an alert in the **Resolved** tab to open its details panel, then choose
+**Unresolve**. The alert returns to the active list with **Firing** status.
 
 ---
 

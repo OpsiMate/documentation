@@ -34,8 +34,10 @@ the silence early. The alert remains available; dashboard status filters control
 whether it is shown. See [Silences and Mute Policies](./silences-and-mute-policies.md)
 for durations, status indicators, and rules that match multiple alerts.
 
-Use **Resolve** when the incident is finished. Resolved alerts have an **Unresolve**
-action if they need to return to the active list.
+Use **Resolve** when the incident is finished. To restore a resolved alert, open
+the **Resolved** tab on the Alerts page, select the alert, and choose **Unresolve**
+in its details panel. This returns it to the active list with **Firing** status.
+See [Archived Alerts](./archived-alerts.md) for more about reviewing resolved alerts.
 
 ### Grouping Alerts
 
