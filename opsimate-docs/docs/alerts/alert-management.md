@@ -27,13 +27,17 @@ View currently active alerts:
 - Associated services and tags
 - Time since alert started
 
-### Dismissing and Restoring Alerts
+### Silencing and Resolving Alerts
 
-You can temporarily hide alerts that you’ve reviewed by **dismissing** them:
+Use **Silence** to pause an alert for a chosen duration, and **Unsilence** to end
+the silence early. The alert remains available; dashboard status filters control
+whether it is shown. See [Silences and Mute Policies](./silences-and-mute-policies.md)
+for durations, status indicators, and rules that match multiple alerts.
 
-- Click the **X icon** on an alert row to move it to a dismissed state.
-- Dismissed alerts are removed from the active alerts list.
-- If you dismissed an alert by mistake, you can **restore** it back to the active list.
+Use **Resolve** when the incident is finished. To restore a resolved alert, open
+the **Resolved** tab on the Alerts page, select the alert, and choose **Unresolve**
+in its details panel. This returns it to the active list with **Firing** status.
+See [Archived Alerts](./archived-alerts.md) for more about reviewing resolved alerts.
 
 ### Grouping Alerts
 
