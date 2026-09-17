@@ -16,12 +16,10 @@ Configure your Uptime Kuma notification to send alerts to your OpsiMate server.
 Use your OpsiMate alerts webhook endpoint, for example:
 
 ```text
-http://localhost:3001/api/v1/alerts/custom/uptime-kuma?api_token={your_api_token}
+http://localhost:3001/api/v1/alerts/custom/uptimekuma?api_token={your_api_token}
 ```
 
 Replace `{your_api_token}` with the API token configured in your OpsiMate server.
-
-> The exact path segment (for example `uptime-kuma`) should match how the Uptime Kuma integration is configured in your OpsiMate backend.
 
 ## API Token Configuration
 
@@ -44,7 +42,7 @@ To send alerts from Uptime Kuma to OpsiMate via webhook:
 2. Click **Add New Notification**.
 3. Choose **Webhook** as the notification type.
 4. Set the **URL** to your OpsiMate endpoint, for example:
-   - `http://your-opsimate-host/api/v1/alerts/custom/uptime-kuma?api_token={your_api_token}`
+   - `http://your-opsimate-host/api/v1/alerts/custom/uptimekuma?api_token={your_api_token}`
 5. Keep the **HTTP method** as `POST`.
 6. (Optional) Adjust the **payload/template** only if you have customized parsing on the OpsiMate side; otherwise, use the default JSON payload from Uptime Kuma.
 7. Save the notification.
