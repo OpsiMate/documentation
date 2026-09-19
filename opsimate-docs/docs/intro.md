@@ -4,7 +4,7 @@ slug: /
 sidebar_position: 1
 ---
 
-# Wellcome To OpsiMate
+# Welcome to OpsiMate
 
 OpsiMate is an **open source alert management platform** that consolidates alerts from every monitoring tool, cloud provider, and service into **one unified dashboard**.
 
@@ -32,7 +32,7 @@ Ready to consolidate your alerts into a single pane of glass?
 2. **📚 [Explore Features](./core-features)** – Learn how alert routing, grouping, and dashboards work
 
 :::info 👥 Join Our Community
-Have questions? Join our [Slack Community](https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA) or check out our [GitHub](https://github.com/Fifaboyz/OpsiMate) repository.
+Have questions? Join our [Slack Community](https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA) or check out our [GitHub](https://github.com/OpsiMate/OpsiMate) repository.
 :::
 
 ---
