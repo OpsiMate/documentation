@@ -16,16 +16,16 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docsearch/css": "^5.0.4",
-    "@docsearch/js": "^5.0.4",
+    "@docsearch/css": "^5.1.0",
+    "@docsearch/js": "^5.1.0",
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
     "@mdx-js/react": "^3.1.1",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.9.2",
