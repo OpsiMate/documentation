@@ -6,35 +6,85 @@ sidebar_position: 3
 
 # Configuration
 
-OpsiMate uses a YAML configuration file to manage application settings. This guide covers all available configuration options.
+The OpsiMate server reads its settings either from a YAML configuration file or from built-in defaults plus a few environment variables. This page covers which mode you are in, every key the server actually uses, and the variables that apply either way.
 
-## Basic Configuration
+## How the configuration is loaded
 
-### Minimal Configuration
+The `CONFIG_FILE` environment variable decides the mode:
 
-```yaml title="configfile.yml"
-# OpsiMate Configuration
-# Simple configuration file with essential settings
+| Situation | What the server uses |
+| --- | --- |
+| `CONFIG_FILE` points to an existing file | That file, for `server`, `database`, `security` and `mailer`. The matching environment variables are **not** read. |
+| `CONFIG_FILE` is unset, or names a file that does not exist | Built-in defaults, plus the environment variables below. |
 
-# Server configuration
+Container deployments are always in file mode. `docker-compose.yml` and the Helm chart mount a `config.yml` at `/app/config/config.yml` and point `CONFIG_FILE` there; the all-in-one image also bakes this repository's `default-config.yml` into `/app/config/default-config.yml`, and its entrypoint falls back to that copy when no `config.yml` is mounted. Either way, `API_TOKEN` and the `SMTP_*` variables are ignored in a container — edit `config.yml` instead.
+
+Two things behave differently from that rule:
+
+- `PORT` and `HOST` override the listening address even when a file is loaded.
+- Directory login is layered on top of the file: any `LDAP_*` variable overrides the same key in the `ldap:` section.
+
+A loaded file must contain `server.port`, `database.path` and `security.private_keys_path`. Without any of them the server logs `Invalid config file: <path>` and refuses to start, rather than booting against the wrong database.
+
+## Configuration file
+
+```yaml title="config.yml"
+# OpsiMate configuration — only the keys the server reads
+
 server:
-  port: 3001  # Backend API server port
-  host: "localhost"  # Use "0.0.0.0" for Docker
+  port: 3001                  # Backend API port
+  host: "0.0.0.0"             # Use "localhost" for a plain local run
 
-# Client configuration  
-client:
-  port: 8080  # Frontend development server port
-  api_url: "http://localhost:3001/api/v1"  # Backend API URL
-
-# Database configuration
 database:
-  path: "/app/data/database/opsimate.db"  # SQLite database file path (mounted volume)
+  path: "/app/data/database/opsimate.db"      # SQLite file (a mounted volume in Docker)
 
-# Security configuration
 security:
-  private_keys_path: "/app/data/private-keys"  # SSH private keys directory (mounted volume)
+  private_keys_path: "/app/data/private-keys" # SSH private keys directory
+  api_token: "change-me"      # Token monitoring tools send with webhook requests
 
+# mailer: ...  see "Email (SMTP) Configuration" below
+# ldap:   ...  see "Directory login (LDAP)" below
 ```
+
+`security.api_token` is the shared secret external systems present when they push alerts: the webhook endpoints accept it as an `x-api-token` header or an `api_token` query parameter. The built-in value is `opsimate`, so change it for anything that is not a demo.
+
+A fully commented file, including the mailer and directory-login sections, ships with the repository as [default-config.yml](https://github.com/OpsiMate/OpsiMate/blob/main/default-config.yml). `scripts/start-docker.sh` downloads that file as `config.yml` when you don't have one yet, and the all-in-one image uses it as the fallback described above.
+
+## Key reference
+
+| Key | Default | What it does |
+| --- | --- | --- |
+| `server.port` | `3001` | Port the API listens on. **Required in a loaded file.** |
+| `server.host` | `SERVER_HOST`, else `0.0.0.0` | Address to bind. `0.0.0.0` is what a container needs. |
+| `database.path` | `../../data/database/opsimate.db` | Where the SQLite database lives. **Required in a loaded file.** |
+| `security.private_keys_path` | `../../data/private-keys` | Where SSH private keys used by actions are stored. **Required in a loaded file.** |
+| `security.api_token` | `API_TOKEN`, else `opsimate` | Shared token for inbound webhooks. |
+| `mailer` | `enabled: false` | Email settings; see the SMTP section below. |
+| `ldap` | disabled | Directory login; see below. |
+
+The defaults in the table are the ones a plain checkout falls back to. [default-config.yml](https://github.com/OpsiMate/OpsiMate/blob/main/default-config.yml), which the containers start from, puts `database.path` and `security.private_keys_path` under `/app/data/...` instead, because the database and the keys have to sit on mounted volumes to survive a restart.
+
+## Environment variables that always apply
+
+These are read regardless of which mode you are in:
+
+| Variable | Purpose |
+| --- | --- |
+| `PORT` | Overrides `server.port`, from the file or the defaults. |
+| `HOST` | Overrides `server.host`. |
+| `JWT_SECRET` | Signs login sessions. The fallback (`changeme-secret`) is a public placeholder that ships in this repository — set your own, or anyone with the repo can mint a session. |
+| `ENCRYPTION_KEY` | Encrypts the credentials stored for integrations. In production (`NODE_ENV=production`) the server logs a warning at every boot when it is unset, because stored credentials are then protected by the same kind of public fallback. The server keeps running rather than refusing to start, so existing deployments can rotate the key on their own schedule. |
+| `METRICS_TOKEN` | Optional bearer token for the Prometheus `GET /metrics` endpoint. Unset means `/metrics` is open; set means scrapers must send `Authorization: Bearer <token>`. |
+
+The SMTP variables (`EMAIL_ENABLED`, `SMTP_*`, `APP_BASE_URL`) are listed with the mailer below, and apply only when no configuration file is loaded.
+
+## Directory login (LDAP)
+
+An `ldap:` section in the same file, or any `LDAP_*` variable, turns on sign-in against a directory such as Active Directory or OpenLDAP. The variables are layered on top of the section, which is how Docker and Helm installs usually configure it.
+
+Directory users sign in with their email and directory password; their OpsiMate account is created on first login and its role follows their group membership afterwards. Local accounts keep signing in locally, including while the directory is unreachable.
+
+An enabled but incomplete section is switched off with a warning at boot rather than failing the start. The full key list — URL, service-account bind, search filter, group mapping and TLS options — is in the [configuration example README](https://github.com/OpsiMate/OpsiMate/blob/main/configuration_example/README.md); it is long enough that it does not belong on this page.
 
 ## Email (SMTP) Configuration
 
@@ -83,10 +133,9 @@ After restarting, check the server logs for `MailClient: SMTP transporter is rea
 
 After configuring OpsiMate:
 
-1. **Restart the container** to apply changes
-2. **Add providers** - [Learn how](../providers-services/providers/add-provider)
-3. **Set up monitoring** - [Configure alerts](../alerts/adding-alerts.md)
-4. **Start discovering services** - [Quick start guide](../providers-services/services/add-services)
+1. **Restart the server** to apply the changes
+2. **Connect a monitoring tool** — [Integrations overview](../integrations/overview.md)
+3. **Work your alerts** — [Alert management](../alerts/alert-management.md)
 
 ## Support
 
