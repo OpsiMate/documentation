@@ -84,7 +84,7 @@ On the next fetch, the alert arrives with an `owning_team=platform` label, a Run
 
 ## Match criteria
 
-An alert matches when its name matches every name criterion and at least one label matcher group matches. All criteria are evaluated against the alert name and its current tags, including tags added by higher-priority rules.
+An alert matches when its name matches any name criterion and at least one label matcher group matches. All criteria are evaluated against the alert name and its current tags, including tags added by higher-priority rules.
 
 | Criteria | How it matches |
 | --- | --- |
@@ -239,6 +239,6 @@ Remove an enrichment when it is no longer needed, when it was created for a temp
 3. Select the trash icon on the rule's row.
 4. Confirm the deletion in the dialog.
 
-The rule is removed immediately, and matching alerts stop being enriched on the next fetch. Alerts that were already enriched keep the fields, links, and summary that the rule applied, because enrichments are not written back to the alert source. To stop an alert being enriched without deleting the rule, edit the rule and narrow its match criteria instead.
+The rule is removed immediately, and matching alerts stop being enriched on the next fetch. Because enrichments are applied at fetch time and are not written back to the alert source, alerts that were previously enriched by this rule lose the fields, links, and summary it applied.
 
 Every deletion is recorded in the audit log with the acting user, the rule name, and a summary of the change. For audit details, see [Audit Logs](../user-management/audit-logs.md).
