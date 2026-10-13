@@ -25,7 +25,7 @@ An alert's own status is shown in its row: **Firing**, **Silenced until …**, o
 
 **Search.** The search box matches alert name, status, summary, tags, the latest comment, and the integration the alert came from. It runs on the server as you type.
 
-**AI search.** When an admin has enabled AI, a sparkle button appears next to the search box. Switch to it, describe what you want in plain language ("critical CPU alerts from the last two hours owned by nobody"), and press **Apply** — OpsiMate turns that into real filters, search text and a time range, and replaces your current view with them. The button only appears if the AI is configured and reachable; otherwise use search and filters. **Filters applied** confirms what happened.
+**AI search.** When an admin has enabled AI, a sparkle button appears next to the search box. Switch to it, describe what you want in plain language ("critical CPU alerts from the last two hours owned by nobody"), and press **Apply** — OpsiMate turns that into real filters, search text and a time range, and replaces your current view with them. The button only appears when AI is enabled with an API key and model ID configured; otherwise use search and filters. **Filters applied** confirms what happened.
 
 **Filter panel.** **Filters** opens a panel with a section per field: **Status**, **Severity**, **Type**, **Alert Name**, **Owner**, and one section for each tag key. Each value shows how many alerts match it. Pick values to include them (**Filter**) or exclude them (**Filter out**, shown as `≠` on the active chip), load more values with **Load 5 more...**, and clear everything with **Reset all filters**.
 
@@ -43,18 +43,18 @@ The filters you set are also what a [saved dashboard](../dashboards/saved-dashbo
 
 ## Unread alerts
 
-Alerts you have not seen yet are drawn in **bold**. Opening an alert marks it as read, and it goes back to normal weight. There is no bulk mark-as-read; reading is what happens when you look.
+Alerts nobody has opened yet are drawn in **bold**. Opening an alert marks it as read, and it goes back to normal weight. Read state is shared, not per user: once anyone opens an alert, it is read for everyone. When the source sends the alert again, it becomes unread and bold again. There is no bulk mark-as-read; reading is what happens when you look.
 
 ## The details panel
 
-Click a row to open the panel on the right. It has two tabs, **Details** and **Comments**, and the details tab shows, in order:
+Click a row to open the panel on the right. It has two tabs, **Details** and **Comments**, and the details tab shows, in order (apart from the identity block and **Labels**, a section only appears when it has something to show):
 
 | Section | What's in it |
 | --- | --- |
-| Identity block | Alert name, status, severity and timestamps, plus the **Owner** picker. |
+| Identity block | The source integration's avatar, the alert name and the **Owner** picker, with icon-only badges for severity, fix, status and enrichment (hover for the label). |
 | **Summary** | The alert's own summary text. |
 | **Team** | The team behind the alert and **who is on call right now**, with a phone link. If no on-call schedule matches, it says so. |
-| **Root cause** | The stored analysis for this alert, labelled "AI analysis" or "via API" depending on where it came from. |
+| **Root cause** | A root-cause analysis pushed for this alert by an external tool through the API, labelled "via API". |
 | **Latest comment** | The most recent note, with a jump to the full thread. |
 | **History** | The timeline of everything that happened to this alert. |
 | **Labels** | The labels OpsiMate received with the alert. |
@@ -80,7 +80,7 @@ The **Comments** tab is a thread per alert: add a comment, and edit or delete yo
 
 On the **Active** view, tick rows to select them. Once every visible row is selected and more alerts match your filters, the bar offers **Select all N matching**, which extends the selection to **every alert that matches the current filters** — not just the page you can see.
 
-The selection bar then offers: **Assign Owner**, **Silence all**, **Unsilence all**, **Resolve**, **Comment**, and **Delete** (which applies to the selected rows only). **Clear selection** puts the table back to normal.
+The selection bar then offers: **Assign Owner**, **Silence all**, **Unsilence all**, **Resolve**, **Comment**, and **Delete** (which applies to the selected rows only). **Silence all** appears only when none of the selected alerts is silenced, and **Unsilence all** only when all of them are; a mixed selection gets neither. **Clear selection** puts the table back to normal.
 
 ## Silencing and Resolving Alerts
 
