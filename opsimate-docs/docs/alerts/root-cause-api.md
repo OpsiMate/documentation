@@ -16,7 +16,7 @@ Use the alert `id` your system sent when it created the alert. The custom-alerts
 { "success": true, "data": { "alertId": "incident-4711", "status": "firing" } }
 ```
 
-The id is yours to choose, so it is normally your own incident or ticket reference. An analysis can be pushed whether the alert is still active or already resolved — resolving an alert keeps its root cause, and only permanently deleting the alert drops it.
+The id is yours to choose, so it is normally your own incident or ticket reference. An analysis can be pushed whether the alert is still active or already resolved — resolving an alert keeps its root cause. It is dropped when the alert is permanently deleted, or when the **Root cause analyses** data-retention policy purges it (the policy is off until an admin enables it; its default window is 365 days).
 
 ## Push an analysis
 
@@ -41,7 +41,7 @@ curl -X PUT "https://opsimate.example.com/api/v1/alerts/incident-4711/root-cause
 | `feedbackUpUrl` | no | A valid URL, at most 2,048 characters. |
 | `feedbackDownUrl` | no | A valid URL, at most 2,048 characters. |
 
-Both URLs are optional, and they may embed a secret: they are stored server-side and **never** returned by any read endpoint. OpsiMate sends no authentication headers with the callback, so whatever your endpoint needs has to travel in the URL.
+Both URLs are optional and are stored exactly as given — a push is only rejected if they are not valid URLs; the safety rules under [The callback](#the-callback) apply when the callback fires. They may embed a secret: they are stored server-side and **never** returned by any read endpoint. OpsiMate sends no authentication headers with the callback, so whatever your endpoint needs has to travel in the URL.
 
 A successful push returns the stored analysis, with `source` telling you it came from the API and the rating fields empty until someone votes:
 
@@ -64,7 +64,9 @@ A successful push returns the stored analysis, with `source` telling you it came
 }
 ```
 
-**Pushing again replaces the content and clears the rating.** A 👍 collected on the previous analysis must not silently endorse the new one, so the verdict starts empty whenever the content changes.
+**Pushing again replaces the content and the feedback URLs, and clears the rating.** A URL you leave out of the new push is cleared, not kept. A 👍 collected on the previous analysis must not silently endorse the new one, so the verdict starts empty on every push — even one with identical content.
+
+If no alert with that id exists, active or resolved, the push returns `404` (`Alert not found`); an invalid body returns `400`.
 
 ## Read it back
 
@@ -122,18 +124,19 @@ Delivery is deliberately best-effort:
 - there is **no retry** — a failure is logged and reported as `callbackDelivered: false`;
 - no authentication headers are attached.
 
-**URL safety.** Only `http` and `https` are accepted. Link-local addresses are refused — `169.254.0.0/16`, which includes the cloud instance metadata service, and IPv6 link-local `fe80::/…`. Private and loopback addresses are allowed, so an analyzer collector on your internal network is fine.
+**URL safety.** These rules are checked when the callback fires, not when you push: an unsafe URL is still stored, and the rating then reports `callbackDelivered: false`. Only `http` and `https` targets are called. Link-local addresses are refused — `169.254.0.0/16`, which includes the cloud instance metadata service, and IPv6 link-local `fe80::/…`. Private and loopback addresses are allowed, so an analyzer collector on your internal network is fine.
 
 ## Authentication summary
 
 | Action | Credential |
 | --- | --- |
-| `PUT` / `GET` root cause | Your API token — `x-api-token` header, `api_token` query parameter, or a user's bearer token. A logged-in **Viewer** is rejected with `403`. |
+| `PUT` root cause | Your API token — `x-api-token` header, `api_token` query parameter, or a user's bearer token. A logged-in **Viewer** is rejected with `403`. |
+| `GET` root cause | The same credentials. A **Viewer** can read. |
 | `POST` rating | A logged-in user session. An API token alone is `401`. |
 
 ## What operators see
 
-In the alert's details panel a **Root cause** section appears once an analysis exists: the text, labelled **via API** when you pushed it (versus **AI analysis** when OpsiMate's own AI produced it) with how long ago, and 👍 / 👎 buttons underneath. A 👎 first asks **"What went wrong?"** — an optional note the operator can skip — and after a verdict the section shows who rated it and when. Ratings can be changed at any time. The section is simply absent when no analysis has been pushed.
+In the alert's details panel a **Root cause** section appears once an analysis exists: the text, labelled **via API** with how long ago (an **AI analysis** label is reserved for a future OpsiMate feature; nothing produces it yet), and 👍 / 👎 buttons underneath. A 👎 first asks **"What went wrong?"** — an optional note the operator can skip — and after a verdict the section shows who rated it and when. Ratings can be changed at any time. The section is simply absent when no analysis has been pushed.
 
 Rating needs an account that can edit: the server rejects a **Viewer** with `403 Forbidden`, so a verdict comes from an admin, editor or operation user.
 
@@ -142,5 +145,3 @@ Rating needs an account that can edit: the server rejects a **Viewer** with `403
 - [Custom Alerts](../integrations/custom-alerts.md) — pushing alerts in, and where the `alertId` comes from
 - [Alert Management](./alert-management.md) — the details panel the analysis shows up in
 - [Silences and Mute Policies](./silences-and-mute-policies.md) — pausing an alert while you work on it
-
-OpsiMate's own AI can also write the analysis for you; it is configured under **Settings → AI (Beta)** in the app, which carries the same guide as this page.
