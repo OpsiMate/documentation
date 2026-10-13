@@ -3,7 +3,7 @@ sidebar_position: 5
 tags: [Alerts]
 ---
 
-# DataDog Integration
+# Datadog Integration
 
 The **Datadog integration** lets Datadog push monitor alerts to OpsiMate with a Datadog **Webhook**.
 
@@ -49,7 +49,7 @@ Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the d
    ```json
    {
      "alert_id": "$ALERT_ID",
-     "id": "$ID",
+     "id": "$ALERT_CYCLE_KEY",
      "title": "$EVENT_TITLE",
      "message": "$EVENT_MSG",
      "alert_status": "$ALERT_STATUS",
@@ -67,7 +67,7 @@ Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the d
    }
    ```
 
-6. If you want priority-based severity (see [Severity](#severity)), also add `"priority": "$PRIORITY"` to the payload.
+6. If you want priority-based severity (see [Severity](#severity)), also add `"priority": "$ALERT_PRIORITY"` to the payload. Use `$ALERT_PRIORITY` (the monitor priority, P1–P5), not `$PRIORITY`, which is the event priority (`normal` / `low`).
 7. Save the webhook.
 
 ## Attaching the Webhook to Monitors
@@ -79,7 +79,7 @@ Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the d
 ## How the Payload Is Read
 
 - `id`, `title` and `date` are required. A body without them is rejected with HTTP 400.
-- `id` identifies the alert. A later notification with the same `id` updates that alert.
+- `id` identifies the alert. A later notification with the same `id` updates that alert. `$ALERT_CYCLE_KEY` stays the same from the time an alert triggers until it resolves, so the recovery notification matches the original alert. Don't use `$ID` here: it is a new event ID on every notification, so recoveries would never resolve the alert.
 - `title` becomes the alert name and `message` becomes the summary.
 - `link` becomes a **View in Datadog** link on the alert.
 
@@ -94,7 +94,7 @@ Every `key:value` entry in `$TAGS` becomes an alert tag. Entries without exactly
 ### Severity
 
 - A `severity:critical` (or `severity:warning` / `severity:info`) tag on the monitor wins.
-- Otherwise the monitor's priority is used: P1 → critical, P2–P3 → warning, P4–P5 → info.
+- Otherwise the monitor's priority (`$ALERT_PRIORITY`) is used: P1 → critical, P2–P3 → warning, P4–P5 → info.
 - Unknown or missing values → warning.
 
 ## The Configure Form
@@ -110,8 +110,8 @@ Datadog sends webhooks only to HTTP endpoints it can reach.
 
 ## Official Resources
 
-- **DataDog Website**: [https://www.datadoghq.com/](https://www.datadoghq.com/)
+- **Datadog Website**: [https://www.datadoghq.com/](https://www.datadoghq.com/)
 - **Documentation**: [https://docs.datadoghq.com/](https://docs.datadoghq.com/)
-- **API Documentation**: [https://docs.datadoghq.com/api/](https://docs.datadoghq.com/)
+- **API Documentation**: [https://docs.datadoghq.com/api/](https://docs.datadoghq.com/api/)
 - **Getting Started**: [https://docs.datadoghq.com/getting_started/](https://docs.datadoghq.com/getting_started/)
 - **Webhooks integration**: [https://docs.datadoghq.com/integrations/webhooks/](https://docs.datadoghq.com/integrations/webhooks/)
