@@ -17,7 +17,7 @@ The `CONFIG_FILE` environment variable decides the mode:
 | `CONFIG_FILE` points to an existing file | That file, for `server`, `database`, `security` and `mailer`. The matching environment variables are **not** read. |
 | `CONFIG_FILE` is unset, or names a file that does not exist | Built-in defaults, plus the environment variables below. |
 
-Container deployments are always in file mode. `docker-compose.yml` and the Helm chart mount a `config.yml` at `/app/config/config.yml` and point `CONFIG_FILE` there; the all-in-one image also bakes this repository's `default-config.yml` into `/app/config/default-config.yml`, and its entrypoint falls back to that copy when no `config.yml` is mounted. Either way, `API_TOKEN` and the `SMTP_*` variables are ignored in a container — edit `config.yml` instead.
+The shipped container deployments run in file mode. `docker-compose.yml` and the Helm chart mount a `config.yml` at `/app/config/config.yml` and point `CONFIG_FILE` there; the all-in-one image also bakes this repository's `default-config.yml` into `/app/config/default-config.yml`, and its entrypoint falls back to that copy when no `config.yml` is mounted. Either way, `API_TOKEN` and the `SMTP_*` variables are ignored in those deployments — edit `config.yml` instead. A bare `docker run opsimate/backend` without `CONFIG_FILE` is the exception: it runs on the built-in defaults and does read those variables.
 
 Two things behave differently from that rule:
 
@@ -39,14 +39,16 @@ database:
   path: "/app/data/database/opsimate.db"      # SQLite file (a mounted volume in Docker)
 
 security:
-  private_keys_path: "/app/data/private-keys" # SSH private keys directory
+  private_keys_path: "/app/data/private-keys" # Uploaded secrets (SSH keys, kubeconfigs)
   api_token: "change-me"      # Token monitoring tools send with webhook requests
 
 # mailer: ...  see "Email (SMTP) Configuration" below
 # ldap:   ...  see "Directory login (LDAP)" below
 ```
 
-`security.api_token` is the shared secret external systems present when they push alerts: the webhook endpoints accept it as an `x-api-token` header or an `api_token` query parameter. The built-in value is `opsimate`, so change it for anything that is not a demo.
+`security.api_token` is the shared secret external systems present when they push alerts: the webhook endpoints accept it as an `x-api-token` header or an `api_token` query parameter. Without a file, the server takes it from `API_TOKEN` and falls back to `opsimate`; `default-config.yml` also sets `opsimate`. Change it for anything that is not a demo.
+
+In file mode nothing fills in a missing `api_token`: if the loaded file has no `security.api_token`, every request that authenticates with an API token is rejected. Keep the key in your file. The Helm chart's default `config.configYml` does not include it, and the chart's `API_TOKEN` secret (`secrets.apiToken`) is ignored because a config file is loaded — Helm users must add `api_token` under `security` in `config.configYml`.
 
 A fully commented file, including the mailer and directory-login sections, ships with the repository as [default-config.yml](https://github.com/OpsiMate/OpsiMate/blob/main/default-config.yml). `scripts/start-docker.sh` downloads that file as `config.yml` when you don't have one yet, and the all-in-one image uses it as the fallback described above.
 
@@ -57,8 +59,8 @@ A fully commented file, including the mailer and directory-login sections, ships
 | `server.port` | `3001` | Port the API listens on. **Required in a loaded file.** |
 | `server.host` | `SERVER_HOST`, else `0.0.0.0` | Address to bind. `0.0.0.0` is what a container needs. |
 | `database.path` | `../../data/database/opsimate.db` | Where the SQLite database lives. **Required in a loaded file.** |
-| `security.private_keys_path` | `../../data/private-keys` | Where SSH private keys used by actions are stored. **Required in a loaded file.** |
-| `security.api_token` | `API_TOKEN`, else `opsimate` | Shared token for inbound webhooks. |
+| `security.private_keys_path` | `../../data/private-keys` | Directory where uploaded secrets (SSH private keys and kubeconfig files) are stored. **Required in a loaded file.** |
+| `security.api_token` | `API_TOKEN`, else `opsimate` (defaults mode only) | Shared token for inbound webhooks. In file mode there is no fallback — set it in the file. |
 | `mailer` | `enabled: false` | Email settings; see the SMTP section below. |
 | `ldap` | disabled | Directory login; see below. |
 
@@ -90,7 +92,7 @@ An enabled but incomplete section is switched off with a warning at boot rather 
 
 Email is disabled by default. To enable welcome and password-reset emails, add a top-level `mailer` section to the YAML file selected by the server's `CONFIG_FILE` environment variable. Keep the existing server, database, and security sections.
 
-```yaml title="configfile.yml"
+```yaml title="config.yml"
 mailer:
   enabled: true
   host: "smtp.example.com"
