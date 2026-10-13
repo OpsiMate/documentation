@@ -58,21 +58,14 @@ The dashboard picker next to the time range (**All alerts** by default) limits e
 
 ## By Alert Tab
 
-One row per alert name, with:
-
-- Episodes
-- Firing now
-- MTTR
-- MTBF
-- Re-fire rate
-- Worst severity
-- Last seen
+One row per alert name, with the columns **Alert name**, **Episodes**, **MTTR**, **MTBF**, **Re-fire** and **Last seen**. The name cell also shows the alert's worst severity and a **firing** badge when it is firing now.
 
 ## Tags Tab
 
 Pick a tag key (for example `env` or `team`) to see each of its values:
 
-- Episodes, resolved count, MTTR and firing now per value
+- **Distinct values**, **Tagged episodes**, **Tag coverage** and **Firing now** cards for the key
+- A table with **Value** (with its worst-severity badge), **Episodes**, **MTTR** and **Firing** per value
 - A volume chart of episodes by value
 - Per-value MTTR and MTTA trends
 
@@ -99,6 +92,6 @@ Authenticate like the other API endpoints, with your login token or the instance
 **Example:**
 
 ```bash
-curl -H "X-API-Token: opsimate" \
+curl -H "X-API-Token: <your-api-token>" \
   "https://your-opsimate-instance.com/api/v1/alerts/analytics?from=2026-10-06T00:00:00Z&to=2026-10-13T00:00:00Z&tz=UTC&tagKey=env"
 ```
