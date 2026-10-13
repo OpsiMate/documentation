@@ -10,7 +10,7 @@ Set up an enrichment to add tags, links, or a rewritten summary to alerts that m
 
 Ensure the following are in place:
 
-1. OpsiMate is installed and running, and you are signed in as an admin or a user with permission to configure features. If you have not installed it yet, see [Deploy](../getting-started/deploy.md).
+1. OpsiMate is installed and running, and you are signed in with any role except Viewer. Viewers can see enrichments but cannot create, edit, or delete them. If you have not installed it yet, see [Deploy](../getting-started/deploy.md).
 
 2. Alerts must already be flowing into OpsiMate, so that there is something to enrich. If you have not connected a source yet, see [Integrations Overview](../integrations/overview.md).
 
@@ -58,7 +58,7 @@ The new rule appears in the table and takes effect on the next fetch. No reload 
 To confirm a rule is applying, open a matching alert. A violet sparkle icon appears in the details panel, next to the severity and status icons. Hover over it to see the names of the rules that enriched the alert.
 
 :::tip
-The sparkle icon only appears when at least one rule actually enriched the alert. If you do not see it after creating a rule, the alert did not match the criteria, or a higher-priority rule already set the same field first.
+The sparkle icon only appears when at least one rule actually enriched the alert. If you do not see it after creating a rule, the alert did not match the criteria. The icon lists every rule that matched, even one whose fields were already claimed by a higher-priority rule.
 :::
 
 ### Worked example: enrich a disk full alert
@@ -203,8 +203,6 @@ Attach a Kubernetes runbook to any alert whose name mentions kubelet:
 | --- | --- |
 | Name | `kubelet runbook` |
 | Alert name contains | `kubelet` |
-| Key | `runbook` |
-| Value | `{{runbookUrl}}` |
 | Link label | `Runbook` |
 | Link URL | `https://wiki.example.com/runbooks/kubelet` |
 | Priority | `10` |
@@ -220,15 +218,18 @@ Tag every database alert with the owning team, pulled from a label:
 | Value | `{{label.team}}` |
 | Priority | `5` |
 
-Collapse vendor severity onto the fixed scale:
+Promote every production database alert to critical, whatever severity the source sent:
 
 | Setting | Value |
 | --- | --- |
-| Name | `normalize severity` |
-| Apply to all alerts | enabled |
+| Name | `prod db critical` |
+| Alert name contains | `database`, `postgres`, `mysql` |
+| Label matcher | `env = production` |
 | Key | `severity` |
-| Value | `{{severity}}` |
+| Value | `critical` |
 | Priority | `1` |
+
+Severity is already normalized when an alert arrives, so a rule that sets `severity` to `{{severity}}` changes nothing. Set a literal level, or copy a vendor label such as `{{label.priority}}` and let normalization map it.
 
 ## Clean up
 
