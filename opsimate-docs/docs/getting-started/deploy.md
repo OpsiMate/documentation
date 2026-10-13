@@ -49,7 +49,7 @@ curl -fsSL https://raw.githubusercontent.com/OpsiMate/OpsiMate/main/default-conf
 mkdir -p data/database data/private-keys
 ```
 
-**3. Pull the published images, then start.** Pull first: the compose file also carries `build:` definitions, and without the images present Compose would start building them locally.
+**3. Pull the published images, then start.** This matches what the installer does.
 
 ```bash
 docker compose pull backend frontend
@@ -98,7 +98,7 @@ Simply fill in your email, full name, and password to create the initial admin a
 The defaults are chosen to make a first run easy, not to be left in place:
 
 - Set **`JWT_SECRET`** and **`ENCRYPTION_KEY`** in the backend's environment. Both fall back to placeholder values published in this repository if you don't set them, which means anyone with the repository can mint sessions and read stored integration credentials.
-- Change **`security.api_token`** in `config.yml` from `opsimate` — it is the shared token every monitoring tool sends with its webhook.
+- Change **`security.api_token`** in `config.yml` from `opsimate` — it is the shared token every monitoring tool sends with its webhook. On Helm, set `api_token` under `security` in `config.configYml`; `secrets.apiToken` is ignored because the chart loads a config file.
 - The API also exposes `GET /metrics`; set **`METRICS_TOKEN`** if that endpoint should not be open.
 
 Details in the [configuration guide](configuration).
@@ -129,7 +129,7 @@ The chart README has the full values table, the production and EKS examples, and
 
 ### Terraform (AWS EKS)
 
-[`infrastructure/terraform`](https://github.com/OpsiMate/OpsiMate/tree/main/infrastructure/terraform) provisions the AWS side of a cluster: a VPC spanning two availability zones with public and private subnets and a NAT gateway, an EKS cluster with a managed node group, the IAM roles the cluster and nodes need, an EBS CSI driver role so persistent volumes work, and the security groups. `terraform init && terraform plan && terraform apply`, then point `kubectl` at the cluster with `aws eks update-kubeconfig` and install the Helm chart above into it.
+[`infrastructure/terraform`](https://github.com/OpsiMate/OpsiMate/tree/main/infrastructure/terraform) provisions the AWS side of a cluster: a VPC with public and private subnets across the availability zones in `var.availability_zones` (two in the example `terraform.tfvars`) and a NAT gateway, an EKS cluster with a managed node group, the IAM roles the cluster and nodes need, an EBS CSI driver role so persistent volumes work, and the security groups. The variables have no defaults, so first create a `terraform.tfvars` in that directory — the README has an example to copy — and run `terraform init && terraform plan && terraform apply`. Then point `kubectl` at the cluster with `aws eks update-kubeconfig` and install the Helm chart above into it.
 
 Full details, variables and outputs:
 [infrastructure/terraform/README.md](https://github.com/OpsiMate/OpsiMate/blob/main/infrastructure/terraform/README.md)
