@@ -24,7 +24,6 @@ OpsiMate is lightweight and runs efficiently on minimal hardware.
 
 - **Port 8080**: Web interface
 - **Port 3001**: API server  
-- **Port 22**: SSH access to monitored servers
 - Internet access for Docker images
 
 :::tip Ready to Deploy?
