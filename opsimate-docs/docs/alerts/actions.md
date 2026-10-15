@@ -27,7 +27,8 @@ With the switch on:
 - The run is reported as **sent** as soon as the request has been handed to the network. The receiver's status code is not waited for; when it arrives, it is only written to the server log.
 - Anything that fails before that point still fails the run: a wrong host, a refused port, a TLS error or a connection that does not open within 10 seconds.
 - **Send test** behaves the same way: it confirms the request went out, not what the receiver answered.
-- OpsiMate keeps the connection open for the answer for up to 5 minutes, then drops it.
+- OpsiMate keeps the connection open for the answer for up to 5 minutes, then drops it. Each run opens its own connection.
+- Redirects are not followed in this mode; a 3xx answer is logged with its `Location`.
 - In metrics, these runs count as `opsimate_actions_run_total{outcome="sent"}` instead of `success`.
 
 In the API this is `config.fireAndForget: true` on an action of type `http`.
