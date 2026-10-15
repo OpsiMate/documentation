@@ -16,7 +16,21 @@ Each action can be limited to certain alerts by name or criteria.
 | Slack | Webhook URL | Channel, Message template |
 | Teams | Webhook URL | Title template, Message template |
 | Jira | Base URL, Email, API token, Project key, Issue type | Summary template, Description template |
-| HTTP | URL, Method | Headers, Body template |
+| HTTP | URL, Method | Headers, Body template, Don't wait for a response |
+
+### HTTP: Don't wait for a response
+
+By default an HTTP action waits for the receiver's answer (up to 10 seconds) and reports its status code. Switch on **Don't wait for a response** for endpoints that answer only once their work is done, for example a job runner that keeps the connection open until the job finishes.
+
+With the switch on:
+
+- The run is reported as **sent** as soon as the request has been handed to the network. The receiver's status code is not waited for; when it arrives, it is only written to the server log.
+- Anything that fails before that point still fails the run: a wrong host, a refused port, a TLS error or a connection that does not open within 10 seconds.
+- **Send test** behaves the same way: it confirms the request went out, not what the receiver answered.
+- OpsiMate keeps the connection open for the answer for up to 5 minutes, then drops it.
+- In metrics, these runs count as `opsimate_actions_run_total{outcome="sent"}` instead of `success`.
+
+In the API this is `config.fireAndForget: true` on an action of type `http`.
 
 ## Variable substitution in action payloads
 Templates use: `{{name}}`
