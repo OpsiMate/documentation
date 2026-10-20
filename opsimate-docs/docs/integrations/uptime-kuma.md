@@ -47,7 +47,7 @@ To send alerts from Uptime Kuma to OpsiMate via webhook:
 6. Set the **Content Type** to `application/json` (the default). Keep Uptime Kuma's default payload format; a custom body or template is rejected with **400 Bad Request** by the server validator.
 7. (Optional) Check **Default enabled** / **Apply to all existing monitors** if you want all monitors to forward alerts to OpsiMate.
 8. Click **Test** to verify connectivity:
-   - Uptime Kuma sends a test payload (`{ heartbeat: null, monitor: null, msg }`).
+   - Uptime Kuma sends a test payload (`{"heartbeat": null, "monitor": null, "msg": "Testing..."}`).
    - OpsiMate creates a firing alert named **Test Alert** (*"Test Alert by UptimeKuma was created successfully"*) so you can confirm the webhook works.
    - Manually resolve this test alert in OpsiMate afterwards.
 9. Click **Save** to save the notification.
@@ -66,7 +66,7 @@ When Uptime Kuma pushes notifications, each monitor maps to an alert in OpsiMate
 | **Summary** | `heartbeat.msg`, else the top-level `msg` |
 | **Tags** | each monitor tag becomes `name: value` (`unknown` when the tag has no value) |
 | **Started at** | `heartbeat.time` |
-| **Test button** | Uptime Kuma sends `{ heartbeat: null, monitor: null, msg }`; OpsiMate creates a firing alert named **Test Alert** ("Test Alert by UptimeKuma was created successfully") so you can see the connection works. Resolve it by hand afterwards. |
+| **Test button** | Uptime Kuma sends `{"heartbeat": null, "monitor": null, "msg": "Testing..."}`; OpsiMate creates a firing alert named **Test Alert** ("Test Alert by UptimeKuma was created successfully") so you can see the connection works. Resolve it by hand afterwards. |
 
 ### Auto-Resolve
 
