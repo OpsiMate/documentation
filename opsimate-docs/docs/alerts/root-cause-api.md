@@ -16,7 +16,13 @@ Use the alert `id` your system sent when it created the alert. The custom-alerts
 { "success": true, "data": { "alertId": "incident-4711", "status": "firing" } }
 ```
 
-The id is yours to choose, so it is normally your own incident or ticket reference. An analysis can be pushed whether the alert is still active or already resolved — resolving an alert keeps its root cause. It is dropped when the alert is permanently deleted, or when the **Root cause analyses** data-retention policy purges it (the policy is off until an admin enables it; its default window is 365 days).
+The id is yours to choose, so it is normally your own incident or ticket reference. An analysis can be pushed whether the alert is still active or already resolved — resolving an alert keeps its root cause; firing again under the same id hides it. It is dropped when the alert is permanently deleted, or when the **Root cause analyses** data-retention policy purges it (the policy is off until an admin enables it; its default window is 365 days).
+
+## One analysis per episode
+
+An analysis explains one firing episode. When a resolved alert fires again under the same id, the previous analysis is hidden: `GET /api/v1/alerts/{alertId}/root-cause` returns `200` with `rootCause: null`, and `POST /api/v1/alerts/{alertId}/root-cause/rating` returns `404` (`No root cause for this alert`). Push a new analysis with `PUT` for the new episode — it replaces the hidden analysis and its feedback URLs, and clears the rating.
+
+Unresolving an alert from the UI is not a re-fire and keeps its analysis. Repeated firing pushes while the alert is still firing also keep it.
 
 ## Push an analysis
 
@@ -89,7 +95,7 @@ POST /api/v1/alerts/{alertId}/root-cause/rating
 - `rating` is `"up"` or `"down"`.
 - `comment` is optional, at most 2,000 characters, and is stored **only** with `"down"` — the server drops it for `"up"`.
 - Rating is a human action: it needs a logged-in user. A call with only an API token gets `401` (`Rating requires a user session`).
-- If the alert has no analysis, `404` (`No root cause for this alert`).
+- If the alert has no analysis, or its previous analysis was hidden after it fired again, `404` (`No root cause for this alert`).
 - Re-rating overwrites the previous verdict, and a new rating without a comment clears the old comment.
 
 The response tells you whether the callback got through:
@@ -136,7 +142,7 @@ Delivery is deliberately best-effort:
 
 ## What operators see
 
-In the alert's details panel a **Root cause** section appears once an analysis exists: the text, labelled **via API** with how long ago (an **AI analysis** label is reserved for a future OpsiMate feature; nothing produces it yet), and 👍 / 👎 buttons underneath. A 👎 first asks **"What went wrong?"** — an optional note the operator can skip — and after a verdict the section shows who rated it and when. Ratings can be changed at any time. The section is simply absent when no analysis has been pushed.
+In the alert's details panel a **Root cause** section appears once an analysis exists: the text, labelled **via API** with how long ago (an **AI analysis** label is reserved for a future OpsiMate feature; nothing produces it yet), and 👍 / 👎 buttons underneath. A 👎 first asks **"What went wrong?"** — an optional note the operator can skip — and after a verdict the section shows who rated it and when. Ratings can be changed at any time. The section is absent when no analysis has been pushed, and disappears when a resolved alert fires again until a new analysis arrives.
 
 Rating needs an account that can edit: the server rejects a **Viewer** with `403 Forbidden`, so a verdict comes from an admin, editor or operation user.
 
