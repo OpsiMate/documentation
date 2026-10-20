@@ -39,14 +39,41 @@ Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the d
 To send alerts from Uptime Kuma to OpsiMate via webhook:
 
 1. In **Uptime Kuma**, go to **Settings → Notifications**.
-2. Click **Add New Notification**.
+2. Click **Setup Notification**.
 3. Choose **Webhook** as the notification type.
-4. Set the **URL** to your OpsiMate endpoint, for example:
+4. Set the **Friendly Name** to `OpsiMate` (or a name of your choice).
+5. Set the **Post URL** to your OpsiMate endpoint, for example:
    - `http://your-opsimate-host/api/v1/alerts/custom/uptimekuma?api_token={your_api_token}`
-5. Keep the **HTTP method** as `POST`.
-6. (Optional) Adjust the **payload/template** only if you have customized parsing on the OpsiMate side; otherwise, use the default JSON payload from Uptime Kuma.
-7. Save the notification.
-8. Attach this notification to the monitors you want to forward to OpsiMate.
+6. Set the **Content Type** to `application/json` (the default). Keep Uptime Kuma's default payload format; a custom body or template is rejected with **400 Bad Request** by the server validator.
+7. (Optional) Check **Default enabled** / **Apply to all existing monitors** if you want all monitors to forward alerts to OpsiMate.
+8. Click **Test** to verify connectivity:
+   - Uptime Kuma sends a test payload (`{ heartbeat: null, monitor: null, msg }`).
+   - OpsiMate creates a firing alert named **Test Alert** (*"Test Alert by UptimeKuma was created successfully"*) so you can confirm the webhook works.
+   - Manually resolve this test alert in OpsiMate afterwards.
+9. Click **Save** to save the notification.
+10. If not applied globally, edit individual monitors in Uptime Kuma and enable the OpsiMate notification under **Notifications**.
+
+## What OpsiMate Shows
+
+When Uptime Kuma pushes notifications, each monitor maps to an alert in OpsiMate. Alerts are updated in place on every heartbeat.
+
+| Field | Value / Mapping |
+|---|---|
+| **Alert id** | `UPTIMEKUMA_<monitor.id>` — one alert per monitor, updated in place on every heartbeat |
+| **Firing** | `heartbeat.status` `0` (down) or `2` (pending) |
+| **Resolved** | `heartbeat.status` `1` (up) resolves the alert, which moves to the **Resolved** list |
+| **Name** | the monitor's `pathName`, else `name` |
+| **Summary** | `heartbeat.msg`, else the top-level `msg` |
+| **Tags** | each monitor tag becomes `name: value` (`unknown` when the tag has no value) |
+| **Started at** | `heartbeat.time` |
+| **Test button** | Uptime Kuma sends `{ heartbeat: null, monitor: null, msg }`; OpsiMate creates a firing alert named **Test Alert** ("Test Alert by UptimeKuma was created successfully") so you can see the connection works. Resolve it by hand afterwards. |
+
+### Auto-Resolve
+
+Alerts auto-resolve when the monitor comes back up:
+
+- When Uptime Kuma reports `heartbeat.status` `1` (up), OpsiMate automatically marks the alert as resolved.
+- The alert automatically moves from the active queue to the **Resolved** list.
 
 ## Important Disclaimer
 
