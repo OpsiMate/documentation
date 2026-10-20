@@ -22,7 +22,7 @@ The id is yours to choose, so it is normally your own incident or ticket referen
 
 An analysis explains one firing episode. When a resolved alert fires again under the same id, the previous analysis is hidden: `GET /api/v1/alerts/{alertId}/root-cause` returns `200` with `rootCause: null`, and `POST /api/v1/alerts/{alertId}/root-cause/rating` returns `404` (`No root cause for this alert`). Push a new analysis with `PUT` for the new episode — it replaces the hidden analysis and its feedback URLs, and clears the rating.
 
-Unresolving an alert from the UI is not a re-fire and keeps its analysis. Repeated firing pushes while the alert is still firing also keep it.
+Unresolving an alert from the UI is not a re-fire and keeps its analysis. Repeated firing requests to `/api/v1/alerts/custom` while the alert is still firing also keep it.
 
 ## Push an analysis
 
