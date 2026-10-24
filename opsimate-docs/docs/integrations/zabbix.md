@@ -36,7 +36,7 @@ Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the d
 
 ### Step 1: Create a New Media Type
 
-1. In **Zabbix**, go to **Administration → Media types**.
+1. In **Zabbix**, go to **Alerts → Media types** (**Administration → Media types** in Zabbix 6.x and earlier).
 2. Click **Create media type**.
 3. Set the following:
    - **Name**: `OpsiMate`
@@ -119,7 +119,7 @@ Set `zabbix_url` to your actual Zabbix server URL so alerts in OpsiMate can link
 
 ### Step 4: Assign Media Type to Users
 
-1. Go to **Administration → Users**.
+1. Go to **Users → Users** (**Administration → Users** in Zabbix 6.x and earlier).
 2. Select the user that should receive notifications.
 3. Go to the **Media** tab.
 4. Click **Add** and select **OpsiMate** as the media type.
@@ -129,16 +129,24 @@ Set `zabbix_url` to your actual Zabbix server URL so alerts in OpsiMate can link
 
 ### Step 5: Create an Action
 
-1. Go to **Configuration → Actions → Trigger actions**.
+1. Go to **Alerts → Actions → Trigger actions** (**Configuration → Actions → Trigger actions** in Zabbix 6.x and earlier).
 2. Create or edit an action.
 3. In the **Operations** tab, add an operation that sends a message via the **OpsiMate** media type.
-4. Save the action.
+4. In the **Recovery operations** tab, add the same operation that sends a message via the **OpsiMate** media type. Zabbix only sends the recovery message from Recovery operations, and OpsiMate's auto-resolve depends on it.
+5. Save the action.
 
 ## Features
 
-- **Auto-resolve**: Alerts are automatically archived when resolved in Zabbix
+- **Auto-resolve**: Alerts are automatically resolved in OpsiMate when resolved in Zabbix
 - **Deep links**: Click alerts in OpsiMate to jump directly to Zabbix
 - **Rich tags**: Host, severity, and custom tags are preserved
+
+## Test it
+
+1. Trigger a test problem in Zabbix.
+2. Verify that the alert appears on the **Alerts** page in OpsiMate.
+3. Resolve the problem in Zabbix.
+4. Verify that the alert moves to **Resolved**.
 
 ## Important Disclaimer
 
