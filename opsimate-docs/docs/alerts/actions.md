@@ -29,7 +29,7 @@ With the switch on:
 - **Send test** behaves the same way: it confirms the request went out, not what the receiver answered.
 - OpsiMate keeps the connection open for the answer for up to 5 minutes, then drops it. Each run opens its own connection.
 - Redirects are not followed in this mode; a 3xx answer is logged with its `Location`.
-- In metrics, these runs count as `opsimate_actions_run_total{outcome="sent"}` instead of `success`.
+- In [metrics](../getting-started/metrics.md), these runs count as `opsimate_actions_run_total{outcome="sent"}` instead of `success`.
 
 In the API this is `config.fireAndForget: true` on an action of type `http`.
 

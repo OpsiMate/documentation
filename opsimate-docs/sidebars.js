@@ -23,6 +23,7 @@ const sidebars = {
       items: [
         'getting-started/deploy',
         'getting-started/configuration',
+        'getting-started/metrics',
         'getting-started/system-requirements',
       ],
     },

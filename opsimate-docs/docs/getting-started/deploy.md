@@ -99,7 +99,7 @@ The defaults are chosen to make a first run easy, not to be left in place:
 
 - Set **`JWT_SECRET`** and **`ENCRYPTION_KEY`** in the backend's environment. Both fall back to placeholder values published in this repository if you don't set them, which means anyone with the repository can mint sessions and read stored integration credentials.
 - Change **`security.api_token`** in `config.yml` from `opsimate` — it is the shared token every monitoring tool sends with its webhook. On Helm, set `api_token` under `security` in `config.configYml`; `secrets.apiToken` is ignored because the chart loads a config file.
-- The API also exposes `GET /metrics`; set **`METRICS_TOKEN`** if that endpoint should not be open.
+- The API also exposes `GET /metrics`; set **`METRICS_TOKEN`** if that endpoint should not be open. See [Prometheus metrics](./metrics.md).
 
 Details in the [configuration guide](configuration).
 :::
