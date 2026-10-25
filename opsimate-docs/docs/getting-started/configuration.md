@@ -100,12 +100,32 @@ mailer:
   secure: false
   from: "OpsiMate <opsimate@example.com>"
   mailLinkBaseUrl: "https://opsimate.example.com"
+  # replyTo: "support@example.com"        # optional Reply-To on every email
+  # tls:
+  #   rejectUnauthorized: false           # only for a self-signed certificate
+  # templates:
+  #   welcomeTemplate:
+  #     subject: "Welcome to OpsiMate!"   # default subject of the welcome email
+  #     content: "<p>Custom greeting here</p>"  # replaces the greeting paragraph (HTML)
   auth:
     user: "your-smtp-username"
     pass: "your-smtp-password"
 ```
 
 Replace the example values with your SMTP provider's settings. Set `from` to a sender address your provider allows, and set `mailLinkBaseUrl` to the public URL of your OpsiMate frontend, without a trailing slash. Password-reset emails require this URL to build the reset link.
+
+Four optional keys refine what is sent:
+
+| Key | What it does | Default |
+| --- | --- | --- |
+| `replyTo` | Reply-To address added to every email OpsiMate sends. Left out when unset. | unset |
+| `tls.rejectUnauthorized` | Passed to the SMTP connection. With no `tls` section, Nodemailer's defaults apply and a certificate that cannot be verified is rejected. Set `false` **only** for an SMTP server with a self-signed certificate — it turns off certificate checking. | Nodemailer default |
+| `templates.welcomeTemplate.subject` | Subject line of the welcome email. | `Welcome to OpsiMate!` |
+| `templates.welcomeTemplate.content` | Replaces the greeting paragraph of the welcome email. Inserted as HTML, so plain text or simple HTML both work; the Documentation / Slack / GitHub links below the greeting are always kept. | the built-in greeting |
+
+The welcome email is sent once, when the **first admin** registers. Users an admin adds later in Settings → Users do not get one.
+
+All four keys are YAML-only: there is no environment variable for `replyTo`, `tls`, or the welcome template, just as there is none for `secure`.
 
 Use `secure: false` with port 587 for STARTTLS, or `secure: true` with port 465 for TLS from the start, according to your provider's instructions. See the [Nodemailer SMTP options](https://nodemailer.com/smtp#general-options) for details.
 
@@ -125,7 +145,18 @@ When `CONFIG_FILE` is unset or points to a file that does not exist, the server 
 | `SMTP_FROM` | Sender address, equivalent to `mailer.from`. |
 | `APP_BASE_URL` | Public frontend URL, equivalent to `mailer.mailLinkBaseUrl`. |
 
-These variables do **not** override a loaded YAML configuration. If your deployment sets `CONFIG_FILE` to an existing file, configure `mailer` in that file instead. There is no SMTP environment variable for `secure`; use YAML when your provider requires `secure: true`.
+These variables do **not** override a loaded YAML configuration. If your deployment sets `CONFIG_FILE` to an existing file, configure `mailer` in that file instead. There is no SMTP environment variable for `secure`; use YAML when your provider requires `secure: true`. The same goes for `replyTo`, `tls` and the welcome template: YAML-only.
+
+## Login
+
+A top-level `login.default_email_domain` key lets people sign in with a bare name: `dana` signs in as `dana@company.com`. A leading `@` in the value is ignored and the value is lower-cased.
+
+```yaml
+login:
+  default_email_domain: "company.com"
+```
+
+When the key is not in the file, the server reads `LOGIN_DEFAULT_EMAIL_DOMAIN` from the environment, in either mode (YAML or environment-only). Unset means login takes the full email only. The same domain completes a bare `owner` name sent by an integration; see [configuration_example](https://github.com/OpsiMate/OpsiMate/blob/main/configuration_example/README.md).
 
 ### Check the Connection
 
