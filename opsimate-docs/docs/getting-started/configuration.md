@@ -62,6 +62,7 @@ A fully commented file, including the mailer and directory-login sections, ships
 | `security.private_keys_path` | `../../data/private-keys` | Directory where uploaded secrets (SSH private keys and kubeconfig files) are stored. **Required in a loaded file.** |
 | `security.api_token` | `API_TOKEN`, else `opsimate` (defaults mode only) | Shared token for inbound webhooks. In file mode there is no fallback — set it in the file. |
 | `mailer` | `enabled: false` | Email settings; see the SMTP section below. |
+| `login.default_email_domain` | `LOGIN_DEFAULT_EMAIL_DOMAIN`, else none | Optional domain appended to a bare username at sign-in (e.g. `dana` becomes `dana@company.com`) and used to complete a bare `owner` name in integrations. |
 | `ldap` | disabled | Directory login; see below. |
 
 The defaults in the table are the ones a plain checkout falls back to. [default-config.yml](https://github.com/OpsiMate/OpsiMate/blob/main/default-config.yml), which the containers start from, puts `database.path` and `security.private_keys_path` under `/app/data/...` instead, because the database and the keys have to sit on mounted volumes to survive a restart.
@@ -77,6 +78,7 @@ These are read regardless of which mode you are in:
 | `JWT_SECRET` | Signs login sessions. The fallback (`changeme-secret`) is a public placeholder that ships in this repository — set your own, or anyone with the repo can mint a session. |
 | `ENCRYPTION_KEY` | Encrypts the credentials stored for integrations. In production (`NODE_ENV=production`) the server logs a warning at every boot when it is unset, because stored credentials are then protected by the same kind of public fallback. The server keeps running rather than refusing to start, so existing deployments can rotate the key on their own schedule. |
 | `METRICS_TOKEN` | Optional bearer token for the Prometheus `GET /metrics` endpoint. Unset means `/metrics` is open; set means scrapers must send `Authorization: Bearer <token>`. |
+| `LOGIN_DEFAULT_EMAIL_DOMAIN` | Appends this domain to bare usernames at login and bare integration owner names when `login.default_email_domain` is not set in the configuration file. A value in the file takes precedence. |
 
 The SMTP variables (`EMAIL_ENABLED`, `SMTP_*`, `APP_BASE_URL`) are listed with the mailer below, and apply only when no configuration file is loaded.
 
@@ -99,10 +101,17 @@ mailer:
   port: 587
   secure: false
   from: "OpsiMate <opsimate@example.com>"
+  # replyTo: "ops@example.com"
   mailLinkBaseUrl: "https://opsimate.example.com"
   auth:
     user: "your-smtp-username"
     pass: "your-smtp-password"
+  # tls:
+  #   rejectUnauthorized: true
+  # templates:
+  #   welcomeTemplate:
+  #     subject: "Welcome to OpsiMate!"
+  #     content: "Welcome aboard! We're happy to have you as part of the OpsiMate community."
 ```
 
 Replace the example values with your SMTP provider's settings. Set `from` to a sender address your provider allows, and set `mailLinkBaseUrl` to the public URL of your OpsiMate frontend, without a trailing slash. Password-reset emails require this URL to build the reset link.
@@ -110,6 +119,19 @@ Replace the example values with your SMTP provider's settings. Set `from` to a s
 Use `secure: false` with port 587 for STARTTLS, or `secure: true` with port 465 for TLS from the start, according to your provider's instructions. See the [Nodemailer SMTP options](https://nodemailer.com/smtp#general-options) for details.
 
 Email requires `enabled: true`, a host, a port, and both authentication fields. When a loaded YAML file enables email but omits any of those SMTP fields, OpsiMate disables email and logs a warning. Keep credentials out of version control, and restart the server after changing its configuration.
+
+### Additional Mailer Settings
+
+The server also reads these YAML-only settings under `mailer`:
+
+- **`replyTo`**: An optional Reply-To address added to every email OpsiMate sends. Left out when unset.
+- **`tls.rejectUnauthorized`**: Passed to the SMTP connection as its TLS options. Without a `tls` section, Nodemailer defaults apply and any certificate that cannot be verified is rejected. Set `rejectUnauthorized: false` only for an SMTP server with a self-signed certificate.
+- **`templates.welcomeTemplate.subject`**: Subject of the welcome email (default: `Welcome to OpsiMate!`).
+- **`templates.welcomeTemplate.content`**: Replaces the greeting paragraph of the welcome email, which by default says `Hey <name> 👋, Welcome aboard! 🚀`. It is inserted as HTML, so plain text or simple HTML both work. The Documentation, Slack, and GitHub links below the greeting are always kept.
+
+:::note
+The welcome email is sent once, when the first administrator registers. Users added later by an administrator in **Settings → Users** do not receive a welcome email.
+:::
 
 ### Environment Variables
 
@@ -125,7 +147,7 @@ When `CONFIG_FILE` is unset or points to a file that does not exist, the server 
 | `SMTP_FROM` | Sender address, equivalent to `mailer.from`. |
 | `APP_BASE_URL` | Public frontend URL, equivalent to `mailer.mailLinkBaseUrl`. |
 
-These variables do **not** override a loaded YAML configuration. If your deployment sets `CONFIG_FILE` to an existing file, configure `mailer` in that file instead. There is no SMTP environment variable for `secure`; use YAML when your provider requires `secure: true`.
+These variables do **not** override a loaded YAML configuration. If your deployment sets `CONFIG_FILE` to an existing file, configure `mailer` in that file instead. There is no SMTP environment variable for `secure`, `replyTo`, `tls`, or the welcome template keys; use YAML when configuring them or when your provider requires `secure: true`.
 
 ### Check the Connection
 
