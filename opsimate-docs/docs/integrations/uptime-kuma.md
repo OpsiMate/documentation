@@ -44,9 +44,10 @@ To send alerts from Uptime Kuma to OpsiMate via webhook:
 4. Paste your OpsiMate webhook URL into the **Post URL** field, for example:
    - `http://your-opsimate-host/api/v1/alerts/custom/uptimekuma?api_token={your_api_token}`
 5. Keep the **HTTP method** as `POST`.
-6. Keep **Content Type** set to **JSON** (the default) and use Uptime Kuma's default payload. OpsiMate strictly validates the incoming body (`heartbeat`, `monitor`, and `msg` fields via `UptimeKumaWebhookPayloadSchema`), so custom payload bodies are rejected with HTTP **400**.
+6. Set **Request Body** to **application/json**. This field is required, and a new notification has no preselected value. Use Uptime Kuma's default payload. OpsiMate validates incoming payloads via `UptimeKumaWebhookPayloadSchema`: requests with malformed `heartbeat` or `monitor` fields are rejected with HTTP **400**, while payloads that omit both fields (such as `{}`) return HTTP **200** and create a firing **Test Alert** (extra keys on the default payload are accepted).
 7. Click **Test** to verify the connection (see note below on how the test alert behaves).
 8. Optionally enable **Default enabled** and **Apply to all existing monitors**, then click **Save** to finish setup.
+9. If you leave both options off, attach the notification to each monitor that should send alerts. Open the monitor's edit page, enable **OpsiMate** under **Notifications**, and click **Save**.
 
 ## What OpsiMate Shows
 
@@ -54,9 +55,9 @@ When Uptime Kuma sends a webhook, OpsiMate maps the payload to an alert as follo
 
 | Field / Behavior | How OpsiMate Maps It |
 |---|---|
-| **Alert ID** | `UPTIMEKUMA_<monitor.id>` — one alert per monitor, updated in place on every heartbeat |
+| **Alert ID** | `UPTIMEKUMA_<monitor.id>` — one alert per monitor, updated in place when Uptime Kuma sends a webhook (on status changes and configured DOWN resends) |
 | **Firing** | `heartbeat.status` `0` (down) or `2` (pending) |
-| **Resolved** | `heartbeat.status` `1` (up) automatically resolves the alert and moves it to the **Resolved** list |
+| **Resolved** | `heartbeat.status` `1` (up) automatically resolves the alert and moves it to the **Resolved** list. This does not apply when the monitor recovers from maintenance: Uptime Kuma sends no up notification in that case, so resolve the alert manually |
 | **Name** | The monitor's `pathName`, otherwise `name` |
 | **Summary** | `heartbeat.msg`, otherwise the top-level `msg` |
 | **Tags** | Each monitor tag becomes `name: value` (or `unknown` when the tag has no value) |
