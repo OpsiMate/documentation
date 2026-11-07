@@ -39,14 +39,29 @@ Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the d
 To send alerts from Uptime Kuma to OpsiMate via webhook:
 
 1. In **Uptime Kuma**, go to **Settings → Notifications**.
-2. Click **Add New Notification**.
-3. Choose **Webhook** as the notification type.
-4. Set the **URL** to your OpsiMate endpoint, for example:
+2. Click **Setup Notification**.
+3. Set **Notification Type** to **Webhook** and **Friendly Name** to `OpsiMate`.
+4. Paste your OpsiMate webhook URL into the **Post URL** field, for example:
    - `http://your-opsimate-host/api/v1/alerts/custom/uptimekuma?api_token={your_api_token}`
 5. Keep the **HTTP method** as `POST`.
-6. (Optional) Adjust the **payload/template** only if you have customized parsing on the OpsiMate side; otherwise, use the default JSON payload from Uptime Kuma.
-7. Save the notification.
-8. Attach this notification to the monitors you want to forward to OpsiMate.
+6. Keep **Content Type** set to **JSON** (the default) and use Uptime Kuma's default payload. OpsiMate strictly validates the incoming body (`heartbeat`, `monitor`, and `msg` fields via `UptimeKumaWebhookPayloadSchema`), so custom payload bodies are rejected with HTTP **400**.
+7. Click **Test** to verify the connection (see note below on how the test alert behaves).
+8. Optionally enable **Default enabled** and **Apply to all existing monitors**, then click **Save** to finish setup.
+
+## What OpsiMate Shows
+
+When Uptime Kuma sends a webhook, OpsiMate maps the payload to an alert as follows:
+
+| Field / Behavior | How OpsiMate Maps It |
+|---|---|
+| **Alert ID** | `UPTIMEKUMA_<monitor.id>` — one alert per monitor, updated in place on every heartbeat |
+| **Firing** | `heartbeat.status` `0` (down) or `2` (pending) |
+| **Resolved** | `heartbeat.status` `1` (up) automatically resolves the alert and moves it to the **Resolved** list |
+| **Name** | The monitor's `pathName`, otherwise `name` |
+| **Summary** | `heartbeat.msg`, otherwise the top-level `msg` |
+| **Tags** | Each monitor tag becomes `name: value` (or `unknown` when the tag has no value) |
+| **Started at** | `heartbeat.time` |
+| **Test button** | Clicking **Test** in Uptime Kuma sends `{ heartbeat: null, monitor: null, msg }`; OpsiMate creates a firing alert named **Test Alert** (`"Test Alert by UptimeKuma was created successfully"`) so you can confirm the webhook connection works. Because no monitor up-heartbeat follows a test ping, resolve **Test Alert** manually in OpsiMate afterwards. |
 
 ## Important Disclaimer
 
