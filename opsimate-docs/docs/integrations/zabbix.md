@@ -34,7 +34,29 @@ Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the d
 
 ## Setting Up the Webhook in Zabbix
 
-### Step 1: Create a New Media Type
+The quickest way is to import the ready-made media type. Writing it by hand is described below as an alternative.
+
+### Option A: Import the OpsiMate media type (recommended)
+
+The OpsiMate repository ships an official-style Zabbix media type: [`infrastructure/zabbix/media_opsimate.yaml`](https://github.com/OpsiMate/OpsiMate/blob/main/infrastructure/zabbix/media_opsimate.yaml) (Zabbix 7.0 and later). Its [README](https://github.com/OpsiMate/OpsiMate/blob/main/infrastructure/zabbix/README.md) documents every parameter.
+
+1. Download the file: [media_opsimate.yaml](https://raw.githubusercontent.com/OpsiMate/OpsiMate/main/infrastructure/zabbix/media_opsimate.yaml).
+2. In **Zabbix**, go to **Alerts → Media types** (**Administration → Media types** on older versions) and click **Import**. Select the file and import.
+3. Open the imported **OpsiMate** media type and set two parameters:
+
+   | Parameter | Value |
+   |---|---|
+   | `opsimate_url` | Your OpsiMate server base URL, for example `http://opsimate.example.com:3001`. The webhook path is appended automatically. |
+   | `opsimate_token` | The value of your server's `API_TOKEN` (default `opsimate`). Sent as the `x-api-token` header, not in the URL. |
+
+   `zabbix_url` defaults to the `{$ZABBIX.URL}` global macro; set that macro to your Zabbix frontend URL so alerts in OpsiMate link back to the problem.
+4. Enable the media type (it is imported disabled), then continue with [assigning it to a user](#step-4-assign-media-type-to-users) and [creating an action](#step-5-create-an-action) below.
+
+What the media type does for you: it validates the two parameters before sending, drops any macro Zabbix left unexpanded, skips acknowledgement updates (they would otherwise overwrite the alert summary), and turns HTTP errors into readable messages in the Zabbix action log (for example a 401 says the token was rejected). Use the **Test** button on the media type to check the connection: it creates a firing **Test Alert** in OpsiMate, which you resolve by hand.
+
+### Option B: Create the media type by hand
+
+#### Step 1: Create a New Media Type
 
 1. In **Zabbix**, go to **Administration → Media types**.
 2. Click **Create media type**.
@@ -42,7 +64,7 @@ Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the d
    - **Name**: `OpsiMate`
    - **Type**: `Webhook`
 
-### Step 2: Add the Webhook Script
+#### Step 2: Add the Webhook Script
 
 Copy this JavaScript code into the **Script** field:
 
@@ -51,7 +73,8 @@ try {
     var params = JSON.parse(value);
     var req = new HttpRequest();
     req.addHeader('Content-Type: application/json');
-    
+    req.addHeader('x-api-token: ' + params.token);
+
     var payload = {
         event_id: params.event_id,
         event_name: params.event_name,
@@ -73,26 +96,27 @@ try {
         zabbix_url: params.zabbix_url,
         trigger_url: params.trigger_url
     };
-    
+
     var response = req.post(params.URL, JSON.stringify(payload));
-    
+
     if (req.getStatus() != 200) {
-        throw 'HTTP error: ' + req.getStatus();
+        throw 'HTTP error: ' + req.getStatus() + ' ' + response;
     }
-    
+
     return 'OK';
 } catch (error) {
     throw 'OpsiMate webhook error: ' + error;
 }
 ```
 
-### Step 3: Add Parameters
+#### Step 3: Add Parameters
 
 Add the following parameters in the **Parameters** section of the media type:
 
 | Parameter Name | Value (Zabbix Macro) |
 |----------------|----------------------|
-| `URL` | `http://localhost:3001/api/v1/alerts/custom/zabbix?api_token={your_api_token}` |
+| `URL` | `http://localhost:3001/api/v1/alerts/custom/zabbix` |
+| `token` | `{your_api_token}` |
 | `event_id` | `{EVENT.ID}` |
 | `event_name` | `{EVENT.NAME}` |
 | `host_name` | `{HOST.NAME}` |
@@ -131,7 +155,7 @@ Set `zabbix_url` to your actual Zabbix server URL so alerts in OpsiMate can link
 
 1. Go to **Configuration → Actions → Trigger actions**.
 2. Create or edit an action.
-3. In the **Operations** tab, add an operation that sends a message via the **OpsiMate** media type.
+3. In the **Operations** tab, add an operation that sends a message via the **OpsiMate** media type, and a **Recovery operation** that does the same, so OpsiMate resolves the alert when the problem clears.
 4. Save the action.
 
 ## Features
