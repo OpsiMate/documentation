@@ -96,7 +96,7 @@ An alert matches when its name matches any name criterion and at least one label
 
 Label equality compares the complete value and is case-sensitive. A label `contains` condition compares a substring case-insensitively. A missing label does not satisfy a matcher. An enrichment with no criteria matches nothing, so supply criteria or explicitly select **Apply to all alerts**.
 
-These matcher rules are the same ones used by mute policies and actions, so a rule that works in one place behaves the same way in the others.
+Name and label criteria match the same way for mute policies, enrichments and actions. The one difference is the case with no criteria: an action with no criteria shows on every alert, while a mute policy or enrichment with no criteria matches nothing.
 
 ## Effects
 
