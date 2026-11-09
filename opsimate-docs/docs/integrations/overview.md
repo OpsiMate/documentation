@@ -34,6 +34,10 @@ Self-hosted monitoring tool that can push uptime and incident alerts into OpsiMa
 
 Enterprise-class monitoring solution that can push alerts into OpsiMate via webhooks with auto-resolve and deep linking support.
 
+### Vector
+
+Observability data pipeline. A `filter` and a `remap` turn the log events that matter into OpsiMate alerts through Vector's `http` sink.
+
 ## Getting Started
 
 1. Navigate to **My Integrations** page
@@ -52,3 +56,4 @@ Select an integration to learn how to set it up:
 - [Setting up GCP Integration](/docs/integrations/gcp)
 - [Setting up Uptime Kuma Integration](/docs/integrations/uptime-kuma)
 - [Setting up Zabbix Integration](/docs/integrations/zabbix)
+- [Setting up Vector Integration](/docs/integrations/vector)
