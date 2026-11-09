@@ -82,20 +82,20 @@ export default function Home() {
   const features = [
     { icon: GettingStartedIcon, title: 'Getting Started', description: 'Deploy and configure OpsiMate with our comprehensive setup guide', to: '/docs/getting-started/deploy' },
     { icon: AlertsIcon, title: 'Alerts', description: 'Configure intelligent alerts and manage notifications effectively', to: '/docs/alerts/adding-alerts' },
-    { icon: IntegrationsIcon, title: 'Integrations', description: 'Connect with Grafana, Kibana, Datadog and other monitoring tools', to: '/docs/integrations/overview' },
+    { icon: IntegrationsIcon, title: 'Integrations', description: 'Connect Grafana, Datadog, Google Cloud, Uptime Kuma, Zabbix or any tool via webhook', to: '/docs/integrations/overview' },
     { icon: UserManagementIcon, title: 'User Management & Security', description: 'Manage users, admin panels, and audit logs for secure operations', to: '/docs/user-management/register-login' },
     { icon: DevelopmentIcon, title: 'Development', description: 'Extend and customize OpsiMate for your specific needs', to: '/docs/development' },
-    { icon: DashboardIcon, title: 'Core Features', description: 'View real-time metrics, manage services, and monitor system health from one centralized dashboard', to: '/docs/core-features' },
+    { icon: DashboardIcon, title: 'Core Features', description: 'One alert queue for every source: owners, comments, filters, mute policies and saved dashboards', to: '/docs/core-features' },
   ];
 
   return (
-    <Layout title="OpsiMate" description="Unified Service Monitoring & Management Platform">
+    <Layout title="OpsiMate" description="One alert queue for all your monitoring tools.">
       <main className={styles.hero}>
         <div className="container">
           <div className={styles.heroContent}>
            <h1 className={styles.heroTitle}>Welcome to OpsiMate</h1>
            <p className={styles.heroSubtitle}>
-             One platform to monitor, manage, and optimize your entire infrastructure
+             One alert queue for all your monitoring tools.
            </p>
          </div>
 
@@ -124,7 +124,7 @@ export default function Home() {
               </Link>
               <Link
                 className={styles.communityButton}
-                href="https://opsimate.slack.com"
+                href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA"
               >
                 <SlackIcon /> Slack Community
               </Link>

@@ -14,14 +14,14 @@ Stop switching between tools—see everything, respond faster, and eliminate ale
 
 Modern teams rely on dozens of monitoring tools, each with its own dashboard, rules, and noisy alerts. That leads to:
 
-- **Scattered visibility** across Grafana, Datadog, Kibana, cloud consoles, and more
+- **Scattered visibility** across Grafana, Datadog, Zabbix, cloud consoles, and more
 - **Slow incident response** because context is spread across multiple systems
 - **Alert fatigue** from duplicate, low-signal, or poorly routed alerts
 
 OpsiMate brings everything together so you can:
 
 - **Centralize alerts** from all your observability and infrastructure tools
-- **Route and group alerts intelligently** by service, team, or severity
+- **Filter, search and group alerts** by severity, source, tag or team
 - **Act quickly** using a single, focused alerts workspace instead of 5–10 dashboards
 
 ## 🌱 Getting Started
@@ -29,7 +29,7 @@ OpsiMate brings everything together so you can:
 Ready to consolidate your alerts into a single pane of glass?
 
 1. **📝 [Installation Guide](./getting-started/deploy)** – Deploy OpsiMate in your environment
-2. **📚 [Explore Features](./core-features)** – Learn how alert routing, grouping, and dashboards work
+2. **📚 [Explore Features](./core-features)** – Learn how filtering, grouping, and saved dashboards work
 
 :::info 👥 Join Our Community
 Have questions? Join our [Slack Community](https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA) or check out our [GitHub](https://github.com/OpsiMate/OpsiMate) repository.
