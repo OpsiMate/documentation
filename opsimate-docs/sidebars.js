@@ -39,6 +39,7 @@ const sidebars = {
         'integrations/uptime-kuma',
         'integrations/datadog',
         'integrations/zabbix',
+        'integrations/vector',
       ],
     },
     {
