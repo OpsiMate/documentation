@@ -1,10 +1,6 @@
 <h1 align="center">OpsiMate - documentation repo!</h1>
 <p align="center"><b>The official documentation of OpsiMate - https://docs.opsimate.dev/</b></p>
-<p align="center"><b>One console for servers, Docker, and Kubernetes—discover, monitor, and act.</b></p>
-<p align="center">
-  Built for DevOps/NOC/IT teams that need a single place to see service health,
-  jump to dashboards, and perform safe start/stop/restart operations.
-</p>
+<p align="center"><b>One alert queue for all your monitoring tools.</b></p>
 
 <p align="center">
   <a href="https://img.shields.io/github/commit-activity/m/OpsiMate/OpsiMate">
