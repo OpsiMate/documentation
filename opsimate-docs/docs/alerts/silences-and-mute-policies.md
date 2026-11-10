@@ -98,7 +98,7 @@ Use one of the following credentials for API requests:
 
 A logged-in **Viewer** can read data but cannot perform write operations; write requests return `403 Forbidden`. Daily silence reset settings are admin-only, and requests authenticated with an API token are rejected with `403 Forbidden`.
 
-When using an API token, there is no acting user. Silences created this way have no owner, and a supplied comment is not stored.
+When using an API token, there is no acting user. Silences created using an API token are not assigned a new owner. If the silence already has an owner, the existing owner is preserved, and a supplied comment is not stored.
 
 ### Silence an alert
 
@@ -108,7 +108,7 @@ PATCH /api/v1/alerts/{alertId}/silence
 
 Silences an alert until a specified time, or indefinitely if `silencedUntil` is `null` or omitted. Re-silencing an alert replaces its existing `silencedUntil` value, restarting the timer.
 
-```javascript
+```bash
 curl -X PATCH "https://opsimate.example.com/api/v1/alerts/incident-4711/silence" \
   -H "Content-Type: application/json" \
   -H "x-api-token: <your API token>" \
@@ -165,7 +165,7 @@ curl -X POST "https://opsimate.example.com/api/v1/alerts/bulk" \
 
 | Field | Required | Limits |
 | --- | --- | --- |
-| `action` | yes |This section documents `silence` and `unsilence`. The endpoint also accepts `resolve`, `assignOwner`, and `comment`. |
+| `action` | yes | This section documents `silence` and `unsilence`. The endpoint also accepts `resolve`, `assignOwner`, and `comment`. |
 | `ids` | one of `ids` or `query` | Array of 1–10,000 alert IDs. |
 | `query` | one of `ids` or `query` | Object with `filters`, `from`, `to`, and `search`, using the same format as the alert list. |
 | `silencedUntil` | for `silence` | A date string accepted by `Date.parse`; stored in UTC. `null` or omitted means indefinite silence until explicitly unsilenced. |
@@ -282,11 +282,11 @@ curl -X POST "https://opsimate.example.com/api/v1/mute-policies" \
 | Field | Required | Limits |
 | --- | --- | --- |
 | `name` | yes | Maximum 200 characters. |
-| `nameContainsAny` | no | Up to 20 name substrings. |
-| `nameContains` | no | Legacy name-substring field; `nameContainsAny` takes priority when both are supplied. |
+| `nameContainsAny` | no | Up to 20 name substrings; each substring can contain at most 500 characters. |
+| `nameContains` | no | Legacy name-substring field; maximum 500 characters. `nameContainsAny` takes priority when both are supplied. |
 | `labelMatcherGroups` | no | Up to 20 groups, each with up to 20 matchers. |
-| `labelMatcherGroups[].[].key` | for each matcher | Label key to match. |
-| `labelMatcherGroups[].[].value` | depends on `op` | Required for `equals` and `contains`; omit for `exists`. |
+| `labelMatcherGroups[].[].key` | for each matcher | Label key to match; maximum 200 characters. |
+| `labelMatcherGroups[].[].value` | depends on `op` | Maximum 500 characters. Required for `equals` and `contains`; omit for `exists`. |
 | `labelMatcherGroups[].[].op` | no | `equals` (default), `contains`, or `exists`. |
 | `matchAll` | no | Boolean; when `true`, the policy matches all alerts. |
 | `startsAt` | no | ISO datetime with a time-zone offset; starts the one-time window. |
@@ -296,7 +296,7 @@ curl -X POST "https://opsimate.example.com/api/v1/mute-policies" \
 | `schedule.startTime` | for a schedule | `HH:MM`, 24-hour server local time. |
 | `schedule.endTime` | for a schedule | `HH:MM`, 24-hour server local time; must be later than `startTime`. |
 | `reason` | no | Maximum 1,000 characters. |
-
+`startsAt` must be earlier than `endsAt` when both are provided.
 At least one name substring or label matcher is required unless `matchAll` is `true`. A recurring `schedule` cannot be combined with `startsAt` or `endsAt`. Within each label matcher group, all matchers must match; any matching group is sufficient.
 
 A successful create returns `201` with `{ "success": true, "data": ... , "message": ... }`. Invalid input returns `400`.
@@ -322,7 +322,7 @@ A successful request returns `200` with `{ "success": true, "data": ... }`. If t
 PUT /api/v1/mute-policies/{id}
 ```
 
-Updates an existing mute policy. Send only the fields you want to change.
+Updates an existing mute policy. Send the fields you want to change. Note that `nameContains` and `nameContainsAny` are treated as a pair: updating either field replaces both together. The same applies to the label matcher fields: updating the label matcher configuration replaces the existing configuration rather than updating only one field. The merged policy is validated against the same rules as policy creation. For example, adding `schedule` to a policy that already has `startsAt` and `endsAt` returns `400 Bad Request` unless you also set `startsAt` and `endsAt` to `null`.
 
 ```bash
 curl -X PUT "https://opsimate.example.com/api/v1/mute-policies/12" \
@@ -333,7 +333,7 @@ curl -X PUT "https://opsimate.example.com/api/v1/mute-policies/12" \
   }'
 ```
 
-The request accepts the same policy fields described in [Create a mute policy](#create-a-mute-policy). A successful request returns `200` with `{ "success": true, "data": ... }`. If the policy does not exist, the API returns `404` (`Mute policy not found`).
+The request accepts the same policy fields described in [Create a mute policy](#create-a-mute-policy). A successful request returns `200` with `{ "success": true, "data": ... , "message": ... }`. If the policy does not exist, the API returns `404` (`Mute policy not found`).
 
 #### Delete a mute policy
 
