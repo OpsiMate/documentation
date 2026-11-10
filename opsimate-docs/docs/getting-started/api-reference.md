@@ -15,7 +15,7 @@ Every OpsiMate server serves its own interactive API reference. It lives on the 
 
 The server bundles the Swagger UI files instead of loading them from a CDN, so the page also works on installs with no internet access.
 
-Both URLs are public. The document lists routes and request and response shapes, never data, and every call you make from the page still needs a valid token.
+Both URLs are public. The document lists routes and request and response shapes, never data. Calls to protected routes still need a valid token. Sign-in, creating the first admin and checking whether any user exists need no token.
 
 ## Try it out
 
@@ -34,7 +34,7 @@ Protected routes accept either of these:
 
 If a request carries both, the server uses the API token. Admin-only routes need the JWT of a signed-in admin, because the API token has no user behind it. Routes that act as a person, such as commenting on an alert, also need a JWT.
 
-Every JSON response is `{ "success": true, "data": ... }` or `{ "success": false, "error": "..." }`.
+Every JSON response has `"success": true` or `"success": false`, and a failed call puts its message in `error`. Most successful calls return their result in `data`, but not all of them. Sign-in also returns a top-level `token`, `GET /api/v1/users/exists` returns `exists`, and removing an integration or resolving an alert returns only `message`. The reference shows the exact shape of each response.
 
 ## Turn it off
 
