@@ -79,6 +79,7 @@ These are read regardless of which mode you are in:
 | `ENCRYPTION_KEY` | Encrypts the credentials stored for integrations. In production (`NODE_ENV=production`) the server logs a warning at every boot when it is unset, because stored credentials are then protected by the same kind of public fallback. The server keeps running rather than refusing to start, so existing deployments can rotate the key on their own schedule. |
 | `LOGIN_DEFAULT_EMAIL_DOMAIN` | Default domain for login names typed without `@`; see `login.default_email_domain` above. Read in both modes, but a `login.default_email_domain` value in the loaded file wins over it. |
 | `METRICS_TOKEN` | Optional bearer token for the Prometheus `GET /metrics` endpoint. Unset means `/metrics` is open; set means scrapers must send `Authorization: Bearer <token>`. |
+| `API_DOCS_ENABLED` | Set to `false` to turn off the [API reference](api-reference.md) at `/api/docs/` and `/api/openapi.json`. Any other value, or unset, leaves it on. |
 
 The SMTP variables (`EMAIL_ENABLED`, `SMTP_*`, `APP_BASE_URL`) are listed with the mailer below, and apply only when no configuration file is loaded.
 
@@ -158,6 +159,7 @@ After configuring OpsiMate:
 1. **Restart the server** to apply the changes
 2. **Connect a monitoring tool** — [Integrations overview](../integrations/overview.md)
 3. **Work your alerts** — [Alert management](../alerts/alert-management.md)
+4. **Call the API** — [API reference](api-reference.md)
 
 ## Support
 

@@ -40,7 +40,7 @@ pnpm run dev
 ```
 
 The Client will be available at `http://localhost:8080`
-The Server will be available at `http://localhost:3001`
+The Server will be available at `http://localhost:3001`. Its API reference is at `http://localhost:3001/api/docs/`; see [API reference](getting-started/api-reference.md).
 
 ## Development Commands
 

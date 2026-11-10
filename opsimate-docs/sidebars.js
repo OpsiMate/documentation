@@ -24,6 +24,7 @@ const sidebars = {
         'getting-started/deploy',
         'getting-started/configuration',
         'getting-started/system-requirements',
+        'getting-started/api-reference',
       ],
     },
 
