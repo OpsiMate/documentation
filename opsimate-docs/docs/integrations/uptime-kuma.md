@@ -64,6 +64,12 @@ When Uptime Kuma sends a webhook, OpsiMate maps the payload to an alert as follo
 | **Started at** | `heartbeat.time` |
 | **Test button** | Clicking **Test** in Uptime Kuma sends `{ heartbeat: null, monitor: null, msg }`; OpsiMate creates a firing alert named **Test Alert** (`"Test Alert by UptimeKuma was created successfully"`) so you can confirm the webhook connection works. Because no monitor up-heartbeat follows a test ping, resolve **Test Alert** manually in OpsiMate afterwards. |
 
+## Severity
+
+- Add a tag named `severity` to the monitor (**Edit monitor → Tags**) with the value `critical`, `warning` or `info`. A `severity` tag with no value counts as unrecognized, so the alert gets `warning`.
+- Allowed values are `critical`, `warning` and `info`. Common synonyms (`P1`, `error`, `high`, `disaster`, `low`, ...) are mapped automatically, case-insensitive.
+- Unknown or missing values → `warning`.
+
 ## Important Disclaimer
 
 Uptime Kuma sends webhooks to **publicly reachable HTTP endpoints**.

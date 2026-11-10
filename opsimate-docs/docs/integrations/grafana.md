@@ -54,6 +54,12 @@ To send Grafana alerts to OpsiMate via webhook:
 - Non-internal Grafana labels are preserved as OpsiMate alert tags.
 - Internal Grafana labels such as `__alert_rule_uid__`, `__grafana_receiver__`, `datasource_uid`, `grafana_folder`, and `ref_id` are not stored as tags.
 
+## Severity
+
+- Add a `severity` label to the Grafana alert rule (edit the rule → **Labels**), for example `severity=critical`.
+- Allowed values are `critical`, `warning` and `info`. Common synonyms (`P1`, `error`, `high`, `disaster`, `low`, ...) are mapped automatically, case-insensitive.
+- Unknown or missing values → `warning`.
+
 ## Important Disclaimer
 
 Grafana sends alerts via webhook only to HTTP endpoints it can reach.
