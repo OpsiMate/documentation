@@ -44,15 +44,30 @@ To send Grafana alerts to OpsiMate via webhook:
    - `http://your-opsimate-host/api/v1/alerts/custom/grafana?api_token={your_api_token}`
 6. Keep the HTTP method as `POST` and save the contact point.
 7. In **Alerting > Notification policies**, route the alerts you want in OpsiMate to this contact point.
-8. Make sure resolved notifications are sent too, so OpsiMate can archive alerts when they clear.
+8. Make sure resolved notifications are sent too, so OpsiMate can resolve alerts when they clear.
 
 ## Alerts
 
 - **Firing** Grafana alerts create or update alerts in OpsiMate.
-- **Resolved** Grafana alerts are archived automatically in OpsiMate.
+- **Resolved** Grafana alerts are resolved automatically in OpsiMate and move to the **Resolved** list.
+- If Grafana sends a resolved notification for an alert OpsiMate never saw firing, OpsiMate still records it in the **Resolved** list, so the incident isn't lost. Sending the same resolve twice does nothing the second time.
 - OpsiMate keys each alert by Grafana's per-alert `fingerprint`. If Grafana omits the fingerprint, OpsiMate derives a stable ID from the alert labels.
 - Non-internal Grafana labels are preserved as OpsiMate alert tags.
 - Internal Grafana labels such as `__alert_rule_uid__`, `__grafana_receiver__`, `datasource_uid`, `grafana_folder`, and `ref_id` are not stored as tags.
+
+## What OpsiMate Shows
+
+Each Grafana alert becomes an OpsiMate alert with these fields:
+
+| Field | Taken from |
+| --- | --- |
+| **Name** | The `rulename` label, else the `alertname` label, else the `summary` annotation, else `Grafana alert` |
+| **Summary** | The `summary` annotation, else the `description` annotation |
+| **Links** | **View in Grafana** (`generatorURL`), **Dashboard** (`dashboardURL`), **Panel** (`panelURL`) and **Runbook** (the `runbook_url` annotation) |
+
+The links are shown as buttons on the alert. Empty or non-http(s) URLs are skipped, and when Grafana repeats the same URL in several fields it is shown only once.
+
+To fill the summary and the **Runbook** button, add a `summary` annotation and a `runbook_url` annotation to the Grafana alert rule.
 
 ## Important Disclaimer
 
