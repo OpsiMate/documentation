@@ -20,13 +20,6 @@ OpsiMate is your alerts command center – bringing every signal from every sour
 - Analyze trends and recurring patterns over time
 - Generate reports to understand reliability, MTTR, and noisy sources
 
-## 📺 TV Mode Dashboards
-
-**Your alerts on the big screen**
-- Display alerts on wall-mounted TVs in NOC or office spaces
-- Create dedicated views for managers, NOC teams, and on-call engineers
-- Build multiple dashboards for different stakeholders and contexts
-
 ## 👥 Simple for Everyone
 
 **A view that works for technical and non-technical users**
