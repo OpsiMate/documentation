@@ -63,8 +63,8 @@ OpsiMate is your alerts command center – bringing every signal from every sour
 Ready to explore OpsiMate's capabilities? Start with:
 
 1. **[Deploy OpsiMate](getting-started/deploy)** - Set up your monitoring platform
-2. **[Add Providers](providers-services/providers/add-provider)** - Connect your infrastructure
-3. **[Configure Services](providers-services/services/add-services)** - Set up service monitoring
+2. **[Add Providers](integrations/overview)** - Connect your infrastructure
+3. **[Configure Services](integrations/overview)** - Set up service monitoring
 4. **[Create Alerts](alerts/adding-alerts)** - Get notified of issues
 
 :::tip
