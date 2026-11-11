@@ -16,7 +16,7 @@ The Alerts page is the working queue for everything OpsiMate receives: one table
 At the top of the page you pick what the table shows, and each option carries a count:
 
 - **Active** — alerts that are still open. This is the working view, and the only one with row checkboxes.
-- **Resolved** — alerts that have been closed out. See [Archived Alerts](./archived-alerts.md).
+- **Resolved** — alerts that have been closed out. See [Resolved Alerts](./archived-alerts.md).
 - **All** — both at once.
 
 An alert's own status is shown in its row: **Firing**, **Silenced until …**, or **Muted**.
@@ -92,11 +92,11 @@ for durations, status indicators, and rules that match multiple alerts.
 Use **Resolve** when the incident is finished. To restore a resolved alert, open
 the **Resolved** tab on the Alerts page, select the alert, and choose **Unresolve**
 in its details panel. This returns it to the active list with **Firing** status.
-See [Archived Alerts](./archived-alerts.md) for more about reviewing resolved alerts.
+See [Resolved Alerts](./archived-alerts.md) for more about reviewing resolved alerts.
 
 ## Next steps
 
 - [Adding Alerts](./adding-alerts.md) — how alerts get into OpsiMate
 - [Silences and Mute Policies](./silences-and-mute-policies.md) — pausing noise on purpose
 - [Actions](./actions.md) — what OpsiMate can do about an alert
-- [Archived Alerts](./archived-alerts.md) — reviewing what was resolved
+- [Resolved Alerts](./archived-alerts.md) — reviewing what was resolved
