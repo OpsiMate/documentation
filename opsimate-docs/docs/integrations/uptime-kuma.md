@@ -5,11 +5,13 @@ tags: [Alerts]
 
 # Uptime Kuma Integration
 
-The **Uptime Kuma integration** lets you send alerts from Uptime Kuma into OpsiMate using **webhook-based push notifications**.
+The **Uptime Kuma integration** lets you send alerts from Uptime Kuma into OpsiMate using **push notifications**: Uptime Kuma 3.0 and later ship a built-in **OpsiMate** notification type, and any version can use a generic **Webhook** notification.
 
 Instead of OpsiMate pulling status from Uptime Kuma, your Uptime Kuma notifications **push alerts** directly to OpsiMate.
 
 ## Webhook URL
+
+This URL is for the **Webhook** notification type. The built-in **OpsiMate** type (see below) asks for the server URL and the token as separate fields instead.
 
 Configure your Uptime Kuma notification to send alerts to your OpsiMate server.
 
@@ -34,9 +36,25 @@ If you are using the **simple deployment** (via the provided `docker-compose.yml
 
 Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the default), and use the same value in the Uptime Kuma webhook URL.
 
+## Built-in OpsiMate Notification (Uptime Kuma 3.0 and later)
+
+Uptime Kuma 3.0 ships an **OpsiMate** notification type, so there is no webhook URL to assemble. Versions up to 2.5.x do not have it; use the [webhook steps](#setting-up-the-webhook-in-uptime-kuma) instead.
+
+1. In **Uptime Kuma**, go to **Settings → Notifications** and click **Setup Notification**.
+2. Set **Notification Type** to **OpsiMate** and **Friendly Name** to `OpsiMate`.
+3. **OpsiMate URL**: the base URL of the OpsiMate server (the API port, `3001` by default, not the web UI), for example `https://opsimate.example.com:3001`.
+4. **API Token**: the value of `API_TOKEN` on your OpsiMate server (default `opsimate`). It is sent as the `x-api-token` header, so it never appears in a URL.
+5. Click **Test**, then **Save**. Enable **Default enabled** and **Apply to all existing monitors**, or attach the notification to each monitor, exactly as in the webhook steps 8 and 9 below.
+
+The notification posts Uptime Kuma's standard `{ heartbeat, monitor, msg }` payload to `<OpsiMate URL>/api/v1/alerts/custom/uptimekuma`, so everything under [What OpsiMate Shows](#what-opsimate-shows) applies unchanged.
+
+:::note
+The OpsiMate notification type was merged into Uptime Kuma on November 10, 2026 and is on its `master` branch (`3.0.0-beta.0`) and nightly images. The latest release at the time of writing, 2.5.9, does not include it.
+:::
+
 ## Setting Up the Webhook in Uptime Kuma
 
-To send alerts from Uptime Kuma to OpsiMate via webhook:
+Use the **Webhook** notification type on Uptime Kuma 2.x, or whenever you prefer a generic webhook. To send alerts from Uptime Kuma to OpsiMate via webhook:
 
 1. In **Uptime Kuma**, go to **Settings → Notifications**.
 2. Click **Setup Notification**.
