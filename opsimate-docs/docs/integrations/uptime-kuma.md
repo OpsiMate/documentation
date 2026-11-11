@@ -43,7 +43,7 @@ Uptime Kuma 3.0 ships an **OpsiMate** notification type, so there is no webhook 
 1. In **Uptime Kuma**, go to **Settings → Notifications** and click **Setup Notification**.
 2. Set **Notification Type** to **OpsiMate** and **Friendly Name** to `OpsiMate`.
 3. **OpsiMate URL**: the base URL of the OpsiMate server (the API port, `3001` by default, not the web UI), for example `https://opsimate.example.com:3001`.
-4. **API Token**: your OpsiMate server's API token, the same value the webhook URL would carry: `API_TOKEN` in the Docker Compose / environment setup, or `security.api_token` when the server runs from a config file (default `opsimate`). It is sent as the `x-api-token` header, so it never appears in a URL.
+4. **API Token**: your OpsiMate server's API token, the same value the webhook URL would carry. In file mode (Docker Compose, Helm and the all-in-one image all load a `config.yml`) that is `security.api_token` in the file, and there is no fallback, so the key must be present. Without a config file it is the `API_TOKEN` environment variable, default `opsimate`. See [Configuration](../getting-started/configuration.md). It is sent as the `x-api-token` header, so it never appears in a URL.
 5. Click **Test**, then **Save**. Enable **Default enabled** and **Apply to all existing monitors**, or attach the notification to each monitor, exactly as in the webhook steps 8 and 9 below.
 
 The notification posts Uptime Kuma's standard `{ heartbeat, monitor, msg }` payload to `<OpsiMate URL>/api/v1/alerts/custom/uptimekuma`, so everything under [What OpsiMate Shows](#what-opsimate-shows) applies unchanged.
