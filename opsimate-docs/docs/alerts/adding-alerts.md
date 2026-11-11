@@ -29,12 +29,14 @@ Once your integrations are configured, you can view alerts from the **Alerts tab
 
 ## Alert States
 
-An alert is in one of two states:
-- **Firing**: the alert is active at its source
+An alert is in one of two states in OpsiMate:
+- **Firing**: the alert is open. An alert you unresolve returns to Firing, even if its source still reports it as resolved.
 - **Resolved**: the incident is over, and the alert moved to the resolved alerts
 
-Two flags can be set on a firing alert:
-- **Silenced**: paused on purpose for a chosen duration. It is still firing at its source. See [Silences and Mute Policies](./silences-and-mute-policies.md).
-- **Unread**: nobody has opened the alert yet, so it is drawn in **bold**. See [Alert Management](./alert-management.md).
+The status shown for a firing alert can also be:
+- **Silenced**: paused on purpose for a chosen duration. It is still firing. See [Silences and Mute Policies](./silences-and-mute-policies.md).
+- **Muted**: it matches an active mute policy. A dashboard filtered to **Firing** hides muted alerts. Include **Muted** in the status filter to see them.
+
+An alert is **unread** when nobody has opened it since its source last sent it, so it is drawn in **bold**. See [Alert Management](./alert-management.md).
 
 The system updates alert states from what your integrations send. A [custom webhook](/docs/integrations/custom-alerts) resolves an alert by sending its `id` with `"status": "resolved"`.
