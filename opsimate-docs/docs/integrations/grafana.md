@@ -46,7 +46,7 @@ To send Grafana alerts to OpsiMate via webhook:
 7. In **Alerting > Notification policies**, route the alerts you want in OpsiMate to this contact point.
 8. Make sure resolved notifications are sent too, so OpsiMate can archive alerts when they clear.
 
-Where the token goes matters. Grafana stores a webhook's **URL** and **Extra Headers** in plain text and shows them back unmasked, so a token in either is visible to anyone who can read the contact point. The one webhook field Grafana encrypts and masks is **Authentication Header Credentials**, sent as `Authorization: <scheme> <credentials>`. OpsiMate accepts its API token there as `Authorization: Bearer <token>` (from OpsiMate/OpsiMate#1420, released November 2026), so put the token in that field and leave the URL bare. On an older OpsiMate server the token has to travel in the URL or in an `x-api-token` extra header; both are readable by contact-point readers, so restrict who can view contact points.
+Where the token goes matters. Grafana stores a webhook's **URL** and **Extra Headers** in plain text and shows them back unmasked, so a token in either is visible to anyone who can read the contact point. The one webhook field Grafana encrypts and masks is **Authentication Header Credentials**, sent as `Authorization: <scheme> <credentials>`. OpsiMate accepts its API token there as `Authorization: Bearer <token>` from **OpsiMate 0.1.7** (OpsiMate/OpsiMate#1420, image tag `0.1.7` and later), so put the token in that field and leave the URL bare. On an older OpsiMate server the token has to travel in the URL or in an `x-api-token` extra header; both are readable by contact-point readers, so restrict who can view contact points.
 
 ## Provisioning the Contact Point as Code
 
