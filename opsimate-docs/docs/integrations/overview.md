@@ -16,11 +16,11 @@ Alerts that arrive via integrations are shown in the **alerts table**, together 
 
 | Integration | Endpoint | Description |
 | --- | --- | --- |
-| [Google Cloud Platform](/docs/integrations/gcp) | `/api/v1/alerts/custom/gcp` | Alerts from Google Cloud Monitoring and Pub/Sub delivered to OpsiMate via webhooks. |
+| [Google Cloud Platform](/docs/integrations/gcp) | `/api/v1/alerts/custom/gcp` | Alerts from Google Cloud Monitoring delivered to OpsiMate via webhooks. |
 | [Uptime Kuma](/docs/integrations/uptime-kuma) | `/api/v1/alerts/custom/uptimekuma` | Self-hosted uptime and status monitoring tool that pushes alerts to OpsiMate via webhooks. |
 | [Grafana](/docs/integrations/grafana) | `/api/v1/alerts/custom/grafana` | Alerting and notification system that sends alerts to OpsiMate through webhook contact points. |
 | [Datadog](/docs/integrations/datadog) | `/api/v1/alerts/custom/datadog` | Cloud monitoring and analytics platform that forwards alerts and event data to OpsiMate via webhooks. |
-| [Zabbix](/docs/integrations/zabbix) | `/api/v1/alerts/custom/zabbix` | Enterprise-class monitoring solution that pushes alerts to OpsiMate via webhooks with auto-resolve support. |
+| [Zabbix](/docs/integrations/zabbix) | `/api/v1/alerts/custom/zabbix` | Enterprise-class monitoring solution that pushes alerts to OpsiMate via webhooks. |
 | [Custom Webhook](/docs/integrations/custom-alerts) | `/api/v1/alerts/custom` | Generic webhook receiver for sending alerts from any tool that supports custom webhooks. |
 
 > **Note:** Coralogix appears in the application as **Coming Soon** and cannot currently be configured. Check back later for support documentation.
