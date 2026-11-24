@@ -55,11 +55,11 @@ mkdir -p data/database data/private-keys
 **3. Create the session-signing secret.** The compose file reads `JWT_SECRET` from a `.env` file next to it, and the backend refuses to start without a private value of at least 32 bytes (the installer does this step for you):
 
 ```bash
-touch .env && chmod 600 .env
-echo "JWT_SECRET=$(openssl rand -hex 32)" >> .env
+printf 'JWT_SECRET=%s\n' "$(openssl rand -hex 32)" > .env
+chmod 600 .env
 ```
 
-Keep `.env` private and keep the same value across restarts and upgrades; changing it signs everyone out.
+If you already have a `.env`, add the `JWT_SECRET=...` line to it on its own line instead of overwriting the file. Keep `.env` private and keep the same value across restarts and upgrades; changing it signs everyone out.
 
 **4. Pull the published images, then start.** This matches what the installer does.
 
@@ -136,7 +136,14 @@ helm install opsimate . -n opsimate --create-namespace \
   --set service.backend.type=LoadBalancer
 ```
 
-The chart refuses to render without `secrets.jwtSecret` (or `secrets.existingSecret` naming a Secret that holds `JWT_SECRET` and `API_TOKEN`). Upgrade with `--reuse-values` so the secret carries over.
+The chart refuses to render without `secrets.jwtSecret` (or `secrets.existingSecret` naming a Secret that holds `JWT_SECRET` and `API_TOKEN`). A release installed before the secret existed has no value to reuse, so the first upgrade must supply one; after that, `--reuse-values` carries it over:
+
+```bash
+# First upgrade from a release without the secret (skip --set if existingSecret already holds JWT_SECRET)
+helm upgrade opsimate . -n opsimate --reuse-values --set secrets.jwtSecret="$OPSIMATE_JWT_SECRET"
+# Every later upgrade
+helm upgrade opsimate . -n opsimate --reuse-values
+```
 
 Then open `http://localhost:8080`; the frontend calls the backend on `localhost:3001`.
 
