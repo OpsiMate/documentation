@@ -75,7 +75,7 @@ These are read regardless of which mode you are in:
 | --- | --- |
 | `PORT` | Overrides `server.port`, from the file or the defaults. |
 | `HOST` | Overrides `server.host`. |
-| `JWT_SECRET` | Signs login sessions. **Required**: the server refuses to start unless it is set to a private value of at least 32 bytes (`openssl rand -hex 32`). There is no fallback since 0.1.8; the installer writes one into `.env`, and Helm takes it from `secrets.jwtSecret`. Keep the same value across restarts and upgrades, because changing it signs everyone out. |
+| `JWT_SECRET` | Signs login sessions. **Required**: the server refuses to start unless it is set to a private value of at least 32 bytes (`openssl rand -hex 32`). There is no fallback since 0.1.9; the installer writes one into `.env`, and Helm takes it from `secrets.jwtSecret`. Keep the same value across restarts and upgrades, because changing it signs everyone out. |
 | `ENCRYPTION_KEY` | Encrypts the credentials stored for integrations. In production (`NODE_ENV=production`) the server logs a warning at every boot when it is unset, because stored credentials are then protected by the same kind of public fallback. The server keeps running rather than refusing to start, so existing deployments can rotate the key on their own schedule. |
 | `LOGIN_DEFAULT_EMAIL_DOMAIN` | Default domain for login names typed without `@`; see `login.default_email_domain` above. Read in both modes, but a `login.default_email_domain` value in the loaded file wins over it. |
 | `METRICS_TOKEN` | Optional bearer token for the Prometheus `GET /metrics` endpoint. Unset means `/metrics` is open; set means scrapers must send `Authorization: Bearer <token>`. |
