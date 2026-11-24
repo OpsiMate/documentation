@@ -55,11 +55,11 @@ mkdir -p data/database data/private-keys
 **3. Create the session-signing secret.** The compose file reads `JWT_SECRET` from a `.env` file next to it, and the backend refuses to start without a private value of at least 32 bytes (the installer does this step for you):
 
 ```bash
-printf 'JWT_SECRET=%s\n' "$(openssl rand -hex 32)" > .env
-chmod 600 .env
+touch .env && chmod 600 .env
+grep -q '^JWT_SECRET=' .env || printf '\nJWT_SECRET=%s\n' "$(openssl rand -hex 32)" >> .env
 ```
 
-If you already have a `.env`, add the `JWT_SECRET=...` line to it on its own line instead of overwriting the file. Keep `.env` private and keep the same value across restarts and upgrades; changing it signs everyone out.
+The second line is safe to run again: it leaves an existing `JWT_SECRET` alone and only adds one when the file has none, always on its own line. Keep `.env` private and keep the same value across restarts and upgrades; changing it signs everyone out.
 
 **4. Pull the published images, then start.** This matches what the installer does.
 
