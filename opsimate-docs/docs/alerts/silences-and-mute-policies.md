@@ -98,7 +98,7 @@ Use one of the following credentials for API requests:
 
 A logged-in **Viewer** can read data but cannot perform write operations; write requests return `403 Forbidden`. Daily silence reset settings are admin-only, and requests authenticated with an API token are rejected with `403 Forbidden`.
 
-When using an API token, there is no acting user. Silences created using an API token are not assigned a new owner. If the silence already has an owner, the existing owner is preserved, and a supplied comment is not stored.
+When using an API token, there is no acting user. Silences created using an API token are not assigned a new owner; if the silence already has an owner, the existing owner is preserved. Comments supplied with API-token requests are never stored.
 
 ### Silence an alert
 
@@ -296,6 +296,7 @@ curl -X POST "https://opsimate.example.com/api/v1/mute-policies" \
 | `schedule.startTime` | for a schedule | `HH:MM`, 24-hour server local time. |
 | `schedule.endTime` | for a schedule | `HH:MM`, 24-hour server local time; must be later than `startTime`. |
 | `reason` | no | Maximum 1,000 characters. |
+
 `startsAt` must be earlier than `endsAt` when both are provided.
 At least one name substring or label matcher is required unless `matchAll` is `true`. A recurring `schedule` cannot be combined with `startsAt` or `endsAt`. Within each label matcher group, all matchers must match; any matching group is sufficient.
 
