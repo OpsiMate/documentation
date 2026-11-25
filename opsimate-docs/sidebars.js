@@ -1,24 +1,17 @@
-/**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
-
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
- */
-
 // @ts-check
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
-    'intro',
-    'core-features',
     {
       type: 'category',
-      label: 'Getting Started',
+      label: 'Overview',
+      collapsed: false,
+      items: ['intro', 'core-features'],
+    },
+    {
+      type: 'category',
+      label: 'Get Started',
       collapsed: true,
       items: [
         'getting-started/deploy',
@@ -26,10 +19,9 @@ const sidebars = {
         'getting-started/system-requirements',
       ],
     },
-
     {
       type: 'category',
-      label: 'Integrations',
+      label: 'Integrate',
       collapsed: true,
       items: [
         'integrations/overview',
@@ -44,29 +36,45 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Dashboard',
+      label: 'Monitor',
       collapsed: true,
       items: [
+        'alerts/adding-alerts',
+        'alerts/alert-management',
+        'alerts/archived-alerts',
+        'alerts/tv-mode',
         'dashboards/saved-dashboards',
+        'alerts/insights',
       ],
     },
     {
       type: 'category',
-      label: 'Alerts',
+      label: 'Respond',
       collapsed: true,
-      items: ['alerts/adding-alerts', 'alerts/alert-management', 'alerts/archived-alerts', 'alerts/tv-mode', 'alerts/actions', 'alerts/silences-and-mute-policies', 'alerts/enrichments', 'alerts/root-cause-api', 'alerts/insights'],
+      items: [
+        'alerts/actions',
+        'alerts/silences-and-mute-policies',
+        'alerts/enrichments',
+      ],
     },
     {
       type: 'category',
-      label: 'User Management & Security',
+      label: 'Configure',
       collapsed: true,
       items: [
         'user-management/register-login',
         'user-management/admin-panel',
         'user-management/audit-logs',
-        'user-management/ldap', 'user-management/ai'],
+        'user-management/ldap',
+        'user-management/ai',
+      ],
     },
-    'development',
+    {
+      type: 'category',
+      label: 'Develop',
+      collapsed: true,
+      items: ['development', 'alerts/root-cause-api'],
+    },
   ],
 };
 
