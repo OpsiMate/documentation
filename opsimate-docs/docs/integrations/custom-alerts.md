@@ -14,11 +14,26 @@ opsimate
 
 ## Authentication
 
-All requests require an API token passed as a query parameter:
+All requests require the API token, for example as a query parameter:
 
 ```
 ?api_token=opsimate
 ```
+
+:::info Where the API token comes from
+
+- **With a config file** (`CONFIG_FILE` points to an existing file): the token is `security.api_token` in `config.yml`, and the `API_TOKEN` environment variable is ignored. The shipped `docker-compose.yml`, the Helm chart and the all-in-one image all run this way. With `docker-compose.yml` and the all-in-one image, the `default-config.yml` they start from sets it to `opsimate`. The Helm chart's `config.configYml` does not set it, and its `API_TOKEN` secret is ignored, so on Helm add `api_token` under `security` in `config.configYml`.
+- **Without a config file**: the token comes from the `API_TOKEN` environment variable, and falls back to `opsimate`.
+
+Change the default for anything that is not a demo. See [Configuration](/docs/getting-started/configuration).
+
+Send the token in any of these ways:
+
+- the `api_token` query parameter: `?api_token=YOUR_TOKEN`
+- the `X-API-Token` header: `X-API-Token: YOUR_TOKEN`
+- the `Authorization` header: `Authorization: Bearer YOUR_TOKEN`
+
+:::
 
 ## Endpoints
 
@@ -96,6 +111,31 @@ curl -X POST "https://your-opsimate-instance.com/api/v1/alerts/custom?api_token=
     "endsAt": "2024-01-15T11:00:00Z"
   }'
 ```
+
+#### Resolve with the full alert
+
+You can also send the full alert with `"status": "resolved"`. It counts as full when it would be a valid firing alert, so it needs `alertName` and `tags`. If the alert is firing, the fields you send update it as it moves to the resolved alerts, so the Resolved list shows what your source said last:
+
+```json
+{
+  "id": "alert-123",
+  "status": "resolved",
+  "alertName": "High CPU Usage",
+  "tags": {
+    "service": "api-server"
+  },
+  "severity": "info",
+  "summary": "Recovered: CPU back under 60%"
+}
+```
+
+After this request, the resolved alert shows severity `info` and the summary "Recovered: CPU back under 60%".
+
+- These fields are updated when sent: `alertName`, `summary`, `severity`, `team`, `tags`, `links`, and the deprecated `alertUrl` and `runbookUrl`.
+- A field you leave out keeps its stored value. A resolve can't blank the summary or reset the severity to the default.
+- `tags` replaces the stored tags as a whole. The `fix` and `team` tags are kept unless the resolve sends one.
+- `startsAt`, the owner and the silence state never change on a resolve. `endsAt` still sets the resolve time.
+- A body with only `id` and `status` (or one that is missing `alertName` or `tags`) resolves the alert and changes nothing else.
 
 ### Resolve an Alert with DELETE (deprecated for senders)
 
@@ -192,7 +232,7 @@ curl -X DELETE "https://your-opsimate-instance.com/api/v1/alerts/resolved/alert-
 | `id` | string | **Required** | Unique identifier for the alert |
 | `alertName` | string | **Required** | Display name of the alert. Not needed to resolve. |
 | `tags` | object (string → string) | **Required** | Key-value pairs for categorization and filtering. Not needed to resolve. |
-| `status` | string | Optional | `"resolved"` resolves the alert. Anything else, or no value, fires it. |
+| `status` | string | Optional | `"resolved"` resolves the alert. Anything else, or no value, fires it. With `"resolved"` and the full alert, the other fields you send update the stored alert. See [Resolve with the full alert](#resolve-with-the-full-alert). |
 | `summary` | string | Optional | Detailed description of the alert |
 | `startsAt` | string | Optional | ISO 8601 timestamp when the alert started |
 | `updatedAt` | string | Optional | ISO 8601 timestamp of the last update |

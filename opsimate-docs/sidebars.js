@@ -17,6 +17,7 @@ const sidebars = {
         'getting-started/deploy',
         'getting-started/configuration',
         'getting-started/system-requirements',
+        'getting-started/api-reference',
       ],
     },
     {
@@ -42,7 +43,6 @@ const sidebars = {
         'alerts/adding-alerts',
         'alerts/alert-management',
         'alerts/archived-alerts',
-        'alerts/tv-mode',
         'dashboards/saved-dashboards',
         'alerts/insights',
       ],
@@ -67,6 +67,7 @@ const sidebars = {
         'user-management/audit-logs',
         'user-management/ldap',
         'user-management/ai',
+        'user-management/data-retention',
       ],
     },
     {

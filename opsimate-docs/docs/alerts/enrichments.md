@@ -94,7 +94,7 @@ An alert matches when its name matches any name criterion and at least one label
 | Name and label criteria together | Both the name condition and a label group must match. |
 | Apply to all alerts | Ignores name and label criteria. |
 
-Label equality compares the complete value and is case-sensitive. A label `contains` condition compares a substring case-insensitively. A missing label does not satisfy a matcher. An enrichment with no criteria matches nothing, so supply criteria or explicitly select **Apply to all alerts**.
+Label equality compares the complete value and is case-sensitive. A label `contains` condition compares a substring case-insensitively. An `exists` operator matches when the label is present on the alert, regardless of its value. A missing label does not satisfy an equality or `contains` matcher. An enrichment with no criteria matches nothing, so supply criteria or explicitly select **Apply to all alerts**.
 
 Name and label criteria match the same way for mute policies, enrichments and actions. The one difference is the case with no criteria: an action with no criteria shows on every alert, while a mute policy or enrichment with no criteria matches nothing.
 
@@ -114,7 +114,7 @@ Add buttons to the alert's **LINKS** section, next to any links the alert alread
 
 Available icon options: No icon, Grafana, Uptime Kuma, Google Cloud, Datadog, Zabbix, and Bell. Any unrecognized value renders the generic link icon.
 
-If the alert has no links of its own, its legacy source and runbook URLs are preserved alongside the new ones.
+Links are deduplicated by URL. If the alert has no links of its own, its legacy source and runbook URLs are preserved alongside the new ones.
 
 ### Summary template
 
@@ -124,7 +124,7 @@ When several rules match, each rule's summary template sees the previous rule's 
 
 ## Template variables
 
-Summary templates, field values, and link labels and URLs accept `{{...}}` placeholders. The same variables are used in action templates, so a template that works in one place works in the other.
+Summary templates, field values, and link labels and URLs accept `{{...}}` placeholders. Spaces inside braces are allowed, e.g. `{{ name }}`. The same variables are used in action templates, so a template that works in one place works in the other.
 
 | Variable | Value |
 | --- | --- |
@@ -136,11 +136,15 @@ Summary templates, field values, and link labels and URLs accept `{{...}}` place
 | `{{severity}}` | Normalized severity |
 | `{{service}}` | Service tag |
 | `{{startsAt}}` | Alert start time |
+| `{{startsAt.display}}` | Formatted start time |
 | `{{updatedAt}}` | Last updated time |
+| `{{updatedAt.display}}` | Formatted updated time |
 | `{{createdAt}}` | Creation time |
+| `{{createdAt.display}}` | Formatted creation time |
 | `{{url}}` | Alert URL |
 | `{{runbookUrl}}` | Runbook URL |
 | `{{label.<key>}}` | Any label on the alert, for example `{{label.team}}` |
+| `{{flag.<code>}}` | Country flag emoji, e.g. `{{flag.us}}` |
 
 Each variable also resolves under an `alert.*` alias, and each label under `tag.*` and `alert.tags.*`. Unknown placeholders are left in the output as-is.
 
@@ -152,7 +156,7 @@ When several rules match the same alert, they run from the highest priority to t
 
 If two rules set the same field, the higher-priority rule's value wins. The rule that runs second cannot see the field a first rule already claimed.
 
-Summary templates are an exception: they always run, and each rule sees the previous rule's output. This lets a lower-priority rule append to a summary that a higher-priority rule produced.
+Summary templates are an exception: they always run, and each rule sees the previous rule's output. This lets a lower-priority rule append to a summary that a higher-priority rule produced. Because each rule wraps the previous rule's output, the lowest-priority matching rule ends up outermost: a priority 10 rule with `[A] {{summary}}` followed by a priority 5 rule with `[B] {{summary}}` turns `original` into `[B] [A] original`. A summary template without `{{summary}}` replaces everything before it.
 
 A rule can match on a label that a higher-priority rule added in the same pass. This is how you build layered rules, where one rule classifies an alert and a second rule reacts to that classification.
 
@@ -183,7 +187,7 @@ The normalized value is written to the alert's `severity` field and to the `seve
 Use the **Enrichment** page to review, update, and remove rules.
 
 1. Open **Enrichment** in the sidebar.
-2. Find the rule in the table. The list is shown in execution order, highest priority first. Each row shows the rule in the **Name**, **Priority**, **Match**, and **Enrichment** columns. The **Match** column shows the criteria as badges, and the **Enrichment** column shows the effects as badges.
+2. Find the rule in the table. The list is shown in execution order, highest priority first. Each row shows the rule in the **Name**, **Priority**, **Match**, and **Enrichment** columns, with `Edited by <user> · <date>` under its name. The **Match** column shows the criteria as badges, and the **Enrichment** column shows the effects as badges.
 3. Use the search box to filter by name, match, or field when the list is long.
 4. Use the icons on the right of each row under **Actions** to act on a rule:
    - The copy icon **duplicates** the rule into a new one, with the name suffixed `(copy)`. Useful when a new rule is close to an existing one.
