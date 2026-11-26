@@ -25,16 +25,22 @@ Replace `{your_api_token}` with the API token configured in your OpsiMate server
 
 ## API Token Configuration
 
-The API token used in the webhook URL is managed by OpsiMate through an environment variable:
+:::info Where the API token comes from
 
-- **Env var**: `API_TOKEN`
-- **Default value**: `opsimate`
+- **With a config file** (`CONFIG_FILE` points to an existing file): the token is `security.api_token` in `config.yml`, and the `API_TOKEN` environment variable is ignored. The shipped `docker-compose.yml`, the Helm chart and the all-in-one image all run this way. With `docker-compose.yml` and the all-in-one image, the `default-config.yml` they start from sets it to `opsimate`. The Helm chart's `config.configYml` does not set it, and its `API_TOKEN` secret is ignored, so on Helm add `api_token` under `security` in `config.configYml`.
+- **Without a config file**: the token comes from the `API_TOKEN` environment variable, and falls back to `opsimate`.
 
-This value is also used as the default for the `api_token` query parameter in the webhook URL.
+Change the default for anything that is not a demo. See [Configuration](/docs/getting-started/configuration).
 
-If you are using the **simple deployment** (via the provided `docker-compose.yml`), the `API_TOKEN` environment variable is already defined there for you.
+Send the token in any of these ways:
 
-Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the default), and use the same value in the Uptime Kuma webhook URL.
+- the `api_token` query parameter: `?api_token=YOUR_TOKEN`
+- the `X-API-Token` header: `X-API-Token: YOUR_TOKEN`
+- the `Authorization` header: `Authorization: Bearer YOUR_TOKEN`
+
+:::
+
+Use the same value in the Uptime Kuma webhook URL.
 
 ## Built-in OpsiMate Notification (Uptime Kuma 3.0 and later)
 
@@ -81,6 +87,12 @@ When Uptime Kuma sends a webhook, OpsiMate maps the payload to an alert as follo
 | **Tags** | Each monitor tag becomes `name: value` (or `unknown` when the tag has no value) |
 | **Started at** | `heartbeat.time` |
 | **Test button** | Clicking **Test** in Uptime Kuma sends `{ heartbeat: null, monitor: null, msg }`; OpsiMate creates a firing alert named **Test Alert** (`"Test Alert by UptimeKuma was created successfully"`) so you can confirm the webhook connection works. Because no monitor up-heartbeat follows a test ping, resolve **Test Alert** manually in OpsiMate afterwards. |
+
+## Severity
+
+- Add a tag named `severity` to the monitor (**Edit monitor → Tags**) with the value `critical`, `warning` or `info`. A `severity` tag with no value counts as unrecognized, so the alert gets `warning`.
+- Allowed values are `critical`, `warning` and `info`. Common synonyms (`P1`, `error`, `high`, `disaster`, `low`, ...) are mapped automatically, case-insensitive.
+- Unknown or missing values → `warning`.
 
 ## Important Disclaimer
 
