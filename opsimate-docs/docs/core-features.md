@@ -11,20 +11,20 @@ OpsiMate is your alerts command center – bringing every signal from every sour
 **Centralize alerts from every source**
 - Connect alerts from monitoring tools and cloud providers through webhook integrations
 - Unify noisy, scattered alerts into a single queue, deduplicated by alert ID
-- Filter, search and group by severity, source, tag, team or time window, and save the view as a dashboard
+- Filter, search and group by severity, source, owner, tag or time window, and save the view as a dashboard
 - Describe the alerts you want in plain words, and AI search sets the filters for you
 
 ## 🧑‍💼 Ownership and Collaboration
 
 **Know who is on it**
 - Assign an owner to each alert, add comments, and follow a per-alert history timeline
-- Organize people into on-call teams, with role-based access (admin, editor, viewer)
+- Organize people into on-call teams, with role-based access (admin, editor, operation, viewer)
 
 ## ⚡ Actionable Alerts
 
 **Act without leaving the alert**
 - Run Slack, Teams, Jira or HTTP [actions](alerts/actions) from an alert
-- Add links and runbooks to alerts as they arrive, with [enrichment rules](alerts/enrichments)
+- Add links and runbooks to matching alerts with [enrichment rules](alerts/enrichments), applied whenever alerts are loaded
 - Keep the tags your source sends, or add your own with enrichment rules
 
 ## 🔕 Less Noise
@@ -43,12 +43,6 @@ OpsiMate is your alerts command center – bringing every signal from every sour
 **Study the past to build a better future**
 - Browse resolved alerts in the [Resolved view](alerts/archived-alerts)
 - Follow MTTR, MTTA, volume and re-fire trends on the [Insights](alerts/insights) page
-## 📺 TV Mode Dashboards
-
-**Your alerts on the big screen**
-- Display alerts on wall-mounted TVs in NOC or office spaces
-- Create dedicated views for managers, NOC teams, and on-call engineers
-- Build multiple dashboards for different stakeholders and contexts
 
 ## 👥 Simple for Everyone
 
