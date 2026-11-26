@@ -153,6 +153,12 @@ The links are shown as buttons on the alert. Empty or non-http(s) URLs are skipp
 
 To fill the summary and the **Runbook** button, add a `summary` annotation and a `runbook_url` annotation to the Grafana alert rule.
 
+## Severity
+
+- Add a `severity` label to the Grafana alert rule (edit the rule → **Labels**), for example `severity=critical`.
+- Allowed values are `critical`, `warning` and `info`. Common synonyms (`P1`, `error`, `high`, `disaster`, `low`, ...) are mapped automatically, case-insensitive.
+- Unknown or missing values → `warning`.
+
 ## Important Disclaimer
 
 Grafana sends alerts via webhook only to HTTP endpoints it can reach.

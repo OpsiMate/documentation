@@ -67,6 +67,12 @@ archived).
 A webhook payload without an `incident` object — or one missing `incident_id`,
 `state`, `started_at` or `url` — is rejected with **HTTP 400**.
 
+## Severity
+
+- Add a user label named `severity` to the alerting policy (**Policy → User labels**), for example `severity: critical`.
+- Allowed values are `critical`, `warning` and `info`. Common synonyms (`P1`, `error`, `high`, `disaster`, `low`, ...) are mapped automatically, case-insensitive.
+- Unknown or missing values → `warning`.
+
 ## Important Disclaimer
 
 GCP sends alerts via webhook only to **publicly reachable HTTP endpoints**.
