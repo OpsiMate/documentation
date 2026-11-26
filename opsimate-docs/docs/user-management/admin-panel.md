@@ -17,12 +17,12 @@ Settings is where administrators manage the people who use OpsiMate and configur
 | --- | --- |
 | **Users** | Team members, roles and directory (LDAP) login. |
 | **Audit Log** | Who changed what, and when. See [Audit Log](./audit-logs.md). |
-| **Data Retention** | How long alert and history data is kept. |
+| **Data Retention** | How long alert and history data is kept. See [Data Retention](./data-retention.md). |
 | **Alert Silences** | Silence and mute policies that apply across alerts. See [Silences and Mute Policies](../alerts/silences-and-mute-policies.md). |
 | **AI (Beta)** | AI provider configuration and the root-cause/MCP guides. See [AI (Beta)](./ai.md). |
 | **Callbacks** | Webhook callbacks sent to external endpoints when alert events happen. Only admins see this tab. |
 
-Data Retention and Callbacks do not have their own page yet; their settings are described inside those tabs.
+Callbacks does not have its own page yet; its settings are described inside the tab.
 
 ## Managing users
 
@@ -33,7 +33,8 @@ All user management happens in **Settings → Users**.
 1. Open **Settings** → **Users**.
 2. Click **Add User**.
 3. Fill in:
-   - **Email** — the address the user signs in with.
+   - **Username** — what the user signs in with.
+   - **Email (optional)** — used for email features such as password reset.
    - **Full Name** — shown throughout the UI.
    - **Password** — at least 6 characters, with no spaces.
    - **Role** — **Viewer** by default; Admin, Editor, Operation and Viewer are available.
@@ -51,16 +52,16 @@ Use the role dropdown in the user's row. The new role applies from the user's ne
 
 ### Editing a user
 
-The pencil icon opens the user's **Full Name** and **Email**. Changing the email changes the address they sign in with.
+The pencil icon opens the user's **Full Name**, **Username** and **Email (optional)**. Changing the username changes what they sign in with. For directory (LDAP) users, the username and email come from the directory and cannot be edited here.
 
 ### Resetting a password
 
 The key icon opens **Reset Password**: enter a **New Password** and **Confirm Password**. The new password must be at least 8 characters, contain no spaces, and match the confirmation.
 
-Two exceptions:
+Exceptions:
 
 - **Directory (LDAP) users** have no reset button — their password lives in the directory.
-- **Your own account** cannot be reset from this list. Use your profile settings instead.
+- **Your own account**: on your own row the role dropdown is disabled and the edit, reset and delete icons are hidden. Use your profile settings instead.
 
 ### Deleting a user
 
@@ -77,14 +78,14 @@ Your own row cannot be selected, so you cannot bulk-change or bulk-delete your o
 
 ### Searching
 
-The search box filters the table by **name or email**.
+The search box filters the table by **full name, username or email**.
 
 ### The Source column
 
 Each user is marked **Local** or **LDAP**:
 
 - **Local** — the account and its password live in OpsiMate.
-- **LDAP** — the account is provisioned on first directory login; the password lives in the directory, and the email comes from there and cannot be edited here.
+- **LDAP** — the account is provisioned on first directory login; the password lives in the directory, and the username and email come from there and cannot be edited here.
 
 For directory users as a whole, see [Directory Login (LDAP)](./ldap.md); the LDAP settings themselves sit at the bottom of the **Users** tab.
 
