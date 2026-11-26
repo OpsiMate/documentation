@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Integrations are how you **add alerts into OpsiMate**.
 
-Some integrations **pull alerts** from external systems (like monitoring or cloud platforms), while others **receive pushed alerts** directly from those tools.
+Every integration is a **webhook**: the external system **pushes** its alerts to an OpsiMate webhook URL. OpsiMate never polls a source for alerts.
 
 Alerts that arrive via integrations are shown in the **alerts table**, together with the **icon of the integration** they came from, so you always know which source generated each alert.
 

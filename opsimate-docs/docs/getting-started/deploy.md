@@ -23,8 +23,11 @@ curl -fsSL https://raw.githubusercontent.com/OpsiMate/OpsiMate/main/scripts/star
 This script will:
 - Download the latest OpsiMate Docker Compose configuration
 - Set up the necessary directories and permissions
+- Create a `.env` file with a private `JWT_SECRET`, the secret that signs login sessions, readable only by you
 - Start OpsiMate using Docker Compose
 - Verify that all services are running correctly
+
+Back up `.env` and keep it across restarts and upgrades: the backend refuses to start without `JWT_SECRET`, and changing it signs everyone out.
 
 :::tip What happens next?
 Once the script completes, OpsiMate will be running at `http://localhost:8080`. You'll be able to register your first admin user and start managing your infrastructure right away!
@@ -49,7 +52,16 @@ curl -fsSL https://raw.githubusercontent.com/OpsiMate/OpsiMate/main/default-conf
 mkdir -p data/database data/private-keys
 ```
 
-**3. Pull the published images, then start.** This matches what the installer does.
+**3. Create the session-signing secret.** The compose file reads `JWT_SECRET` from a `.env` file next to it, and the backend refuses to start without a private value of at least 32 bytes (the installer does this step for you):
+
+```bash
+touch .env && chmod 600 .env
+grep -q '^JWT_SECRET=' .env || printf '\nJWT_SECRET=%s\n' "$(openssl rand -hex 32)" >> .env
+```
+
+The second line is safe to run again: it leaves an existing `JWT_SECRET` alone and only adds one when the file has none, always on its own line. Keep `.env` private and keep the same value across restarts and upgrades; changing it signs everyone out.
+
+**4. Pull the published images, then start.** This matches what the installer does.
 
 ```bash
 docker compose pull backend frontend
@@ -97,7 +109,8 @@ Simply fill in your email, full name, and password to create the initial admin a
 :::warning Before going to production
 The defaults are chosen to make a first run easy, not to be left in place:
 
-- Set **`JWT_SECRET`** and **`ENCRYPTION_KEY`** in the backend's environment. Both fall back to placeholder values published in this repository if you don't set them, which means anyone with the repository can mint sessions and read stored integration credentials.
+- **`JWT_SECRET`** is required: the backend refuses to start without a private value of at least 32 bytes. The installer generates one into `.env`; Compose by hand and Helm need it set as shown on this page. Back it up: changing it signs everyone out.
+- Set **`ENCRYPTION_KEY`** in the backend's environment. It falls back to a placeholder value published in this repository if you don't set it, which means anyone with the repository can read stored integration credentials.
 - Change **`security.api_token`** in `config.yml` from `opsimate` — it is the shared token every monitoring tool sends with its webhook. On Helm, set `api_token` under `security` in `config.configYml`; `secrets.apiToken` is ignored because the chart loads a config file.
 - The API also exposes `GET /metrics`; set **`METRICS_TOKEN`** if that endpoint should not be open.
 
@@ -114,10 +127,22 @@ For local testing (Docker Desktop, Minikube) both services are exposed so the br
 
 ```bash
 cd infrastructure/helm
-helm lint .
+# The secret that signs login sessions: required, and every upgrade needs the same value
+export OPSIMATE_JWT_SECRET=$(openssl rand -hex 32)
+helm lint . --set secrets.jwtSecret="$OPSIMATE_JWT_SECRET"
 helm install opsimate . -n opsimate --create-namespace \
+  --set secrets.jwtSecret="$OPSIMATE_JWT_SECRET" \
   --set service.frontend.type=LoadBalancer \
   --set service.backend.type=LoadBalancer
+```
+
+The chart refuses to render without `secrets.jwtSecret` (or `secrets.existingSecret` naming a Secret that holds `JWT_SECRET` and `API_TOKEN`). A release installed before the secret existed has no value to reuse, so the first upgrade must supply one; after that, `--reuse-values` carries it over:
+
+```bash
+# First upgrade from a release without the secret (skip --set if existingSecret already holds JWT_SECRET)
+helm upgrade opsimate . -n opsimate --reuse-values --set secrets.jwtSecret="$OPSIMATE_JWT_SECRET"
+# Every later upgrade
+helm upgrade opsimate . -n opsimate --reuse-values
 ```
 
 Then open `http://localhost:8080`; the frontend calls the backend on `localhost:3001`.
