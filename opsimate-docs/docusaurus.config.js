@@ -1,7 +1,7 @@
 // docusaurus.config.js
 module.exports = {
   title: 'OpsiMate',
-  tagline: 'One console for servers, Docker, and Kubernetes',
+  tagline: 'One alert queue for all your monitoring tools.',
   url: 'https://docs.opsimate.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -104,35 +104,35 @@ module.exports = {
                     </div>
                     <span class="integration-name">Grafana</span>
                   </a>
-                  <a href="/docs/integrations/kibana" class="integration-item" aria-label="Kibana Integration">
-                    <div class="integration-icon-container">
-                      <img src="/img/kibana.svg" alt="Kibana" class="integration-icon" />
-                    </div>
-                    <span class="integration-name">Kibana</span>
-                  </a>
-                  <a href="/docs/providers-services/services/container-services" class="integration-item" aria-label="Docker Integration">
-                    <div class="integration-icon-container">
-                      <img src="/img/docker.svg" alt="Docker" class="integration-icon" />
-                    </div>
-                    <span class="integration-name">Docker</span>
-                  </a>
-                  <a href="/docs/providers-services/services/kubernetes-pods" class="integration-item" aria-label="Kubernetes Integration">
-                    <div class="integration-icon-container">
-                      <img src="/img/kubernetes.svg" alt="Kubernetes" class="integration-icon" />
-                    </div>
-                    <span class="integration-name">Kubernetes</span>
-                  </a>
-                  <a href="/docs/providers-services/services/systemd-services" class="integration-item" aria-label="Systemd Integration">
-                    <div class="integration-icon-container">
-                      <img src="/img/systemd.svg" alt="Systemd" class="integration-icon" />
-                    </div>
-                    <span class="integration-name">Systemd</span>
-                  </a>
                   <a href="/docs/integrations/datadog" class="integration-item" aria-label="Datadog Integration">
                     <div class="integration-icon-container">
                       <img src="/img/datadog.svg" alt="Datadog" class="integration-icon" />
                     </div>
                     <span class="integration-name">Datadog</span>
+                  </a>
+                  <a href="/docs/integrations/gcp" class="integration-item" aria-label="Google Cloud Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/gcp.svg" alt="Google Cloud" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Google Cloud</span>
+                  </a>
+                  <a href="/docs/integrations/uptime-kuma" class="integration-item" aria-label="Uptime Kuma Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/uptime-kuma.svg" alt="Uptime Kuma" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Uptime Kuma</span>
+                  </a>
+                  <a href="/docs/integrations/zabbix" class="integration-item" aria-label="Zabbix Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/zabbix.svg" alt="Zabbix" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Zabbix</span>
+                  </a>
+                  <a href="/docs/integrations/custom-alerts" class="integration-item" aria-label="Custom Webhook Integration">
+                    <div class="integration-icon-container">
+                      <img src="/img/webhook.svg" alt="Custom Webhook" class="integration-icon" />
+                    </div>
+                    <span class="integration-name">Custom Webhook</span>
                   </a>
                 </div>
               `,

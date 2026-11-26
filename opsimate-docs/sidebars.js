@@ -24,6 +24,7 @@ const sidebars = {
         'getting-started/deploy',
         'getting-started/configuration',
         'getting-started/system-requirements',
+        'getting-started/api-reference',
       ],
     },
 
@@ -54,7 +55,7 @@ const sidebars = {
       type: 'category',
       label: 'Alerts',
       collapsed: true,
-      items: ['alerts/adding-alerts', 'alerts/alert-management', 'alerts/archived-alerts', 'alerts/tv-mode', 'alerts/actions', 'alerts/silences-and-mute-policies', 'alerts/enrichments', 'alerts/root-cause-api', 'alerts/insights'],
+      items: ['alerts/adding-alerts', 'alerts/alert-management', 'alerts/archived-alerts', 'alerts/actions', 'alerts/silences-and-mute-policies', 'alerts/enrichments', 'alerts/root-cause-api', 'alerts/insights'],
     },
     {
       type: 'category',
