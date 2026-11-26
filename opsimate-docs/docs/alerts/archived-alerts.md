@@ -2,47 +2,42 @@
 sidebar_position: 3
 ---
 
-# Archived Alerts
+# Resolved Alerts
 
-Open the **Resolved** tab on the Alerts page to review resolved alerts. This guide
-refers to that view as **Archived Alerts**.
+When an alert is resolved, by its source or by someone in OpsiMate, it moves to the **Resolved** tab on the Alerts page. OpsiMate keeps it there so you can review what happened and learn from past incidents.
 
-Instead of losing context once an alert is no longer active, OpsiMate keeps a history so you can review what happened and learn from past incidents.
+## What You See in the Resolved View
 
-## What You See in Archived Mode
+In the **Resolved** tab, you can:
 
-In the Archived Alerts view, you can:
+- Browse alerts that are no longer firing
+- See when an alert started and when it was resolved
+- Review severity, source integration, and tags
+- Filter and search to find the time ranges, sources, or tags you care about
 
-- Browse alerts that are no longer active
-- See when an alert started and when it ended
-- Review severity, source integration, and affected services
-- Inspect labels and other metadata for deeper analysis
-
-This makes it easy to understand **what happened in the past**, not just what is happening right now.
+The API lists the same alerts with `GET /api/v1/alerts/resolved`.
 
 ## Analyzing Past Alerts
 
-Use archived alerts to:
+Use resolved alerts to:
 
-- Identify recurring problems and noisy services
+- Identify recurring problems and noisy sources
 - Spot patterns around specific integrations or environments
 - Support post-incident reviews and long-term reliability improvements
 
-You can filter and search archived alerts to quickly find the time ranges, services, or integrations you care about.
+For trends such as MTTR, MTTA and alert volume, see [Insights](./insights.md).
 
-## Restore an Alert to the Active List
+## Unresolve an Alert
 
 Select an alert in the **Resolved** tab to open its details panel, then choose
 **Unresolve**. The alert returns to the active list with **Firing** status.
 
----
+The API does the same with `PATCH /api/v1/alerts/resolved/{id}/unresolve`.
 
-## 🔮 Coming Soon: Alert Reports
+## Permanently Delete a Resolved Alert
 
-We are working on a feature to generate **alert reports** directly from your archived alerts:
+An admin can permanently delete a resolved alert, from the **Resolved** tab or with `DELETE /api/v1/alerts/resolved/{id}`. This can't be undone.
 
-- Export summary **PDF reports** of alerts for a given time range
-- Share alert history with managers or stakeholders
-- Use reports to support audits, reviews, and planning
+## Data Retention
 
-This will make it even easier to turn your alert history into clear, shareable insights.
+Resolved alerts are kept until you delete them. An admin can turn on a retention policy for resolved alerts in **Settings → Data Retention**. When it is on, OpsiMate purges resolved alerts older than the configured period (180 days by default).

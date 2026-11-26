@@ -21,16 +21,22 @@ Replace `{your_api_token}` with the API token configured in your OpsiMate server
 
 ## API Token Configuration
 
-The API token used in the webhook URL is managed by OpsiMate through an environment variable:
+:::info Where the API token comes from
 
-- **Env var**: `API_TOKEN`
-- **Default value**: `opsimate`
+- **With a config file** (`CONFIG_FILE` points to an existing file): the token is `security.api_token` in `config.yml`, and the `API_TOKEN` environment variable is ignored. The shipped `docker-compose.yml`, the Helm chart and the all-in-one image all run this way. With `docker-compose.yml` and the all-in-one image, the `default-config.yml` they start from sets it to `opsimate`. The Helm chart's `config.configYml` does not set it, and its `API_TOKEN` secret is ignored, so on Helm add `api_token` under `security` in `config.configYml`.
+- **Without a config file**: the token comes from the `API_TOKEN` environment variable, and falls back to `opsimate`.
 
-This value is also used as the default for the `api_token` query parameter in the webhook URL.
+Change the default for anything that is not a demo. See [Configuration](/docs/getting-started/configuration).
 
-If you are using the **simple deployment** (via the provided `docker-compose.yml`), the `API_TOKEN` environment variable is already defined there for you.
+Send the token in any of these ways:
 
-Make sure your OpsiMate server is started with `API_TOKEN` set (or rely on the default), and use the same value in the Grafana webhook URL.
+- the `api_token` query parameter: `?api_token=YOUR_TOKEN`
+- the `X-API-Token` header: `X-API-Token: YOUR_TOKEN`
+- the `Authorization` header: `Authorization: Bearer YOUR_TOKEN`
+
+:::
+
+Use the same value in the Grafana webhook URL.
 
 ## Setting Up the Webhook in Grafana
 
@@ -44,15 +50,121 @@ To send Grafana alerts to OpsiMate via webhook:
    - `http://your-opsimate-host/api/v1/alerts/custom/grafana?api_token={your_api_token}`
 6. Keep the HTTP method as `POST` and save the contact point.
 7. In **Alerting > Notification policies**, route the alerts you want in OpsiMate to this contact point.
-8. Make sure resolved notifications are sent too, so OpsiMate can archive alerts when they clear.
+8. Make sure resolved notifications are sent too, so OpsiMate can resolve alerts when they clear.
+
+Where the token goes matters. Grafana stores a webhook's **URL** and **Extra Headers** in plain text and shows them back unmasked, so a token in either is visible to anyone who can read the contact point. The one webhook field Grafana encrypts and masks is **Authentication Header Credentials**, sent as `Authorization: <scheme> <credentials>`. OpsiMate accepts its API token there as `Authorization: Bearer <token>` from **OpsiMate 0.1.7** (OpsiMate/OpsiMate#1420, image tag `0.1.7` and later), so put the token in that field and leave the URL bare. On an older OpsiMate server the token has to travel in the URL or in an `x-api-token` extra header; both are readable by contact-point readers, so restrict who can view contact points.
+
+## Provisioning the Contact Point as Code
+
+OpsiMate reads Grafana's **default** webhook payload, so there is no custom payload template to maintain. The contact point is a plain webhook, which makes it a few lines in Grafana's file provisioning or in Terraform.
+
+### File provisioning
+
+Drop this into Grafana's provisioning directory (for example `/etc/grafana/provisioning/alerting/opsimate.yaml`). `$OPSIMATE_API_TOKEN` is read from Grafana's environment at load time, so the token never sits in the file, and Grafana stores it encrypted.
+
+```yaml
+apiVersion: 1
+
+contactPoints:
+  - orgId: 1
+    name: OpsiMate
+    receivers:
+      - uid: opsimate
+        type: webhook
+        settings:
+          url: https://opsimate.example.com:3001/api/v1/alerts/custom/grafana
+          httpMethod: POST
+          authorization_scheme: Bearer
+          authorization_credentials: $OPSIMATE_API_TOKEN
+        # Keep resolve messages on: OpsiMate archives the alert when Grafana resolves it.
+        disableResolveMessage: false
+```
+
+Then route alerts to it. A `policies` block in a provisioning file **replaces the organisation's whole notification policy tree**, including every existing child route, so alerts routed elsewhere today would stop reaching those receivers. Export the current tree first (**Alerting > Notification policies > Export**, or `GET /api/v1/provisioning/policies`), add an OpsiMate route to it, and provision the merged result. The smallest safe shape adds one child route under your existing root receiver:
+
+```yaml
+policies:
+  - orgId: 1
+    receiver: <your existing root receiver>
+    group_by: ['grafana_folder', 'alertname']
+    routes:
+      - receiver: OpsiMate
+        object_matchers:
+          - ['team', '=', 'platform']
+        continue: true
+```
+
+Drop the `object_matchers` list to send everything, and keep `continue: true` so the alert also reaches the routes that handled it before.
+
+### Terraform
+
+With the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/contact_point):
+
+```hcl
+variable "opsimate_api_token" {
+  type      = string
+  sensitive = true
+}
+
+resource "grafana_contact_point" "opsimate" {
+  name = "OpsiMate"
+
+  webhook {
+    url                       = "https://opsimate.example.com:3001/api/v1/alerts/custom/grafana"
+    http_method               = "POST"
+    authorization_scheme      = "Bearer"
+    authorization_credentials = var.opsimate_api_token
+  }
+}
+```
+
+Two things to know before `terraform apply`:
+
+- `sensitive = true` only redacts the token from CLI output. It is written in clear text to the Terraform state and to saved plan files, so keep the state in a backend with encryption and access control and treat plan files the same way.
+- `grafana_notification_policy` manages the organisation's entire policy tree, exactly like the `policies` block above. If you already have routes, declare them all in that resource with OpsiMate as one `policy` block among them, or leave the resource out and attach the contact point to a route by hand.
+
+### Checking the connection
+
+Grafana's **Test** button on the contact point sends a sample firing alert. The same thing from a shell, which also confirms the token and the URL:
+
+```bash
+curl -sS -X POST "https://opsimate.example.com:3001/api/v1/alerts/custom/grafana" \
+  -H "x-api-token: $OPSIMATE_API_TOKEN" \
+  -H "content-type: application/json" \
+  -d '{"status":"firing","alerts":[{"status":"firing","labels":{"alertname":"Provisioning test","severity":"info"},"annotations":{"summary":"Grafana contact point works"},"startsAt":"2026-01-01T00:00:00Z","fingerprint":"provisioning-test"}]}'
+```
+
+A `200` with `success: true` means the alert is in OpsiMate's queue; resolve it there afterwards.
 
 ## Alerts
 
 - **Firing** Grafana alerts create or update alerts in OpsiMate.
-- **Resolved** Grafana alerts are archived automatically in OpsiMate.
+- **Resolved** Grafana alerts are resolved automatically in OpsiMate and move to the **Resolved** list.
+- If Grafana sends a resolved notification for an alert OpsiMate never saw firing, OpsiMate still records it in the **Resolved** list, so the incident isn't lost. Sending the same resolve twice does nothing the second time.
+- A resolved notification also updates the alert's name, summary, tags and links with what Grafana sent last.
 - OpsiMate keys each alert by Grafana's per-alert `fingerprint`. If Grafana omits the fingerprint, OpsiMate derives a stable ID from the alert labels.
 - Non-internal Grafana labels are preserved as OpsiMate alert tags.
 - Internal Grafana labels such as `__alert_rule_uid__`, `__grafana_receiver__`, `datasource_uid`, `grafana_folder`, and `ref_id` are not stored as tags.
+
+## What OpsiMate Shows
+
+Each Grafana alert becomes an OpsiMate alert with these fields:
+
+| Field | Taken from |
+| --- | --- |
+| **Name** | The `rulename` label, else the `alertname` label, else the `summary` annotation, else `Grafana alert` |
+| **Summary** | The `summary` annotation, else the `description` annotation |
+| **Links** | **View in Grafana** (`generatorURL`), **Dashboard** (`dashboardURL`), **Panel** (`panelURL`) and **Runbook** (the `runbook_url` annotation) |
+
+The links are shown as buttons on the alert. Empty or non-http(s) URLs are skipped, and when Grafana repeats the same URL in several fields it is shown only once.
+
+To fill the summary and the **Runbook** button, add a `summary` annotation and a `runbook_url` annotation to the Grafana alert rule.
+
+## Severity
+
+- Add a `severity` label to the Grafana alert rule (edit the rule → **Labels**), for example `severity=critical`.
+- Allowed values are `critical`, `warning` and `info`. Common synonyms (`P1`, `error`, `high`, `disaster`, `low`, ...) are mapped automatically, case-insensitive.
+- Unknown or missing values → `warning`.
 
 ## Important Disclaimer
 
