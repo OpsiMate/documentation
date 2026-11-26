@@ -65,7 +65,7 @@ const sidebars = {
         'user-management/register-login',
         'user-management/admin-panel',
         'user-management/audit-logs',
-        'user-management/ldap', 'user-management/ai'],
+        'user-management/ldap', 'user-management/ai', 'user-management/data-retention'],
     },
     'development',
   ],
