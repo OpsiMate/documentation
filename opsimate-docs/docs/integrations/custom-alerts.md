@@ -85,6 +85,18 @@ To resolve an alert, POST the same `id` with `"status": "resolved"`. A body with
 - `endsAt` sets the resolve time. It defaults to now.
 - If you send the full alert (`alertName`, `tags`, ...) with `"status": "resolved"` for an alert OpsiMate never saw firing, OpsiMate still records that episode, so the incident isn't lost.
 
+**cURL Example:**
+
+```bash
+curl -X POST "https://your-opsimate-instance.com/api/v1/alerts/custom?api_token=opsimate" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": "alert-123",
+    "status": "resolved",
+    "endsAt": "2024-01-15T11:00:00Z"
+  }'
+```
+
 #### Resolve with the full alert
 
 You can also send the full alert with `"status": "resolved"`. It counts as full when it would be a valid firing alert, so it needs `alertName` and `tags`. If the alert is firing, the fields you send update it as it moves to the resolved alerts, so the Resolved list shows what your source said last:
@@ -109,18 +121,6 @@ After this request, the resolved alert shows severity `info` and the summary "Re
 - `tags` replaces the stored tags as a whole. The `fix` and `team` tags are kept unless the resolve sends one.
 - `startsAt`, the owner and the silence state never change on a resolve. `endsAt` still sets the resolve time.
 - A body with only `id` and `status` (or one that is missing `alertName` or `tags`) resolves the alert and changes nothing else.
-
-**cURL Example:**
-
-```bash
-curl -X POST "https://your-opsimate-instance.com/api/v1/alerts/custom?api_token=opsimate" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "id": "alert-123",
-    "status": "resolved",
-    "endsAt": "2024-01-15T11:00:00Z"
-  }'
-```
 
 ### Resolve an Alert with DELETE (deprecated for senders)
 

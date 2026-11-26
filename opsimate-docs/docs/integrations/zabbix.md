@@ -164,6 +164,12 @@ Set `zabbix_url` to your actual Zabbix server URL so alerts in OpsiMate can link
 - **Deep links**: Click alerts in OpsiMate to jump directly to Zabbix
 - **Rich tags**: Host, severity, and custom tags are preserved
 
+## Severity
+
+- Nothing to configure. The trigger's severity (`{TRIGGER.SEVERITY}`) is sent automatically: Disaster and High → `critical`, Average and Warning → `warning`, Information → `info`. Not classified is not a recognized value, so it becomes `warning`. The trigger severity always wins over a `severity` event tag.
+- Allowed values are `critical`, `warning` and `info`. Common synonyms (`P1`, `error`, `high`, `disaster`, `low`, ...) are mapped automatically, case-insensitive.
+- Unknown or missing values → `warning`.
+
 ## Important Disclaimer
 
 Zabbix sends webhooks to **HTTP endpoints that must be reachable from the Zabbix server**.
