@@ -2,7 +2,7 @@
 
 > OpsiMate is an open-source alert management platform: one alert queue for all your monitoring tools. Alerts from Grafana, Datadog, Zabbix, Uptime Kuma, Google Cloud and any tool that can send a custom webhook land in one queue, deduplicated by ID, with an owner, a status and comments on each.
 
-OpsiMate is self-hosted (Docker, Docker Compose, Kubernetes/Helm) and free. The server is Node.js/TypeScript with SQLite, and the client is React. Alerts arrive by webhook from existing monitoring tools. You can filter, search and group them by severity, source, tag, team or time window, and save a view as a dashboard. Mute policies silence matching alerts without deleting anything. Enrichment rules add tags, links and runbooks to alerts as they arrive. Your own systems can push a root cause per alert through the API, and operators rate it. Insights shows MTTR, MTTA, volume and re-fire trends. OpsiMate also has on-call teams and role-based access (admin, editor, viewer).
+OpsiMate is self-hosted (Docker, Docker Compose, Kubernetes/Helm) and free. The server is Node.js/TypeScript with SQLite, and the client is React. Alerts arrive by webhook from existing monitoring tools. You can filter, search and group them by severity, source, owner, tag or time window, and save a view as a dashboard. Mute policies silence matching alerts without deleting anything. Enrichment rules add tags, links and runbooks to matching alerts whenever alerts are loaded. Your own systems can push a root cause per alert through the API, and operators rate it. Insights shows MTTR, MTTA, volume and re-fire trends. OpsiMate also has on-call teams and role-based access (admin, editor, operation, viewer).
 
 ## Docs
 
