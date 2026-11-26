@@ -135,6 +135,7 @@ A `200` with `success: true` means the alert is in OpsiMate's queue; resolve it 
 - **Firing** Grafana alerts create or update alerts in OpsiMate.
 - **Resolved** Grafana alerts are resolved automatically in OpsiMate and move to the **Resolved** list.
 - If Grafana sends a resolved notification for an alert OpsiMate never saw firing, OpsiMate still records it in the **Resolved** list, so the incident isn't lost. Sending the same resolve twice does nothing the second time.
+- A resolved notification also updates the alert's name, summary, tags and links with what Grafana sent last.
 - OpsiMate keys each alert by Grafana's per-alert `fingerprint`. If Grafana omits the fingerprint, OpsiMate derives a stable ID from the alert labels.
 - Non-internal Grafana labels are preserved as OpsiMate alert tags.
 - Internal Grafana labels such as `__alert_rule_uid__`, `__grafana_receiver__`, `datasource_uid`, `grafana_folder`, and `ref_id` are not stored as tags.
