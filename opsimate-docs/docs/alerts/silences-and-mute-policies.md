@@ -168,7 +168,7 @@ curl -X POST "https://opsimate.example.com/api/v1/alerts/bulk" \
 | `action` | yes | This section documents `silence` and `unsilence`. The endpoint also accepts `resolve`, `assignOwner`, and `comment`. |
 | `ids` | one of `ids` or `query` | Array of 1–10,000 alert IDs. |
 | `query` | one of `ids` or `query` | Object with `filters`, `from`, `to`, and `search`, using the same format as the alert list. |
-| `silencedUntil` | for `silence` | A date string accepted by `Date.parse`; stored in UTC. `null` or omitted means indefinite silence until explicitly unsilenced. |
+| `silencedUntil` | no | A date string accepted by `Date.parse`; stored in UTC. `null` or omitted means indefinite silence until explicitly unsilenced. |
 | `comment` | no | Maximum 5,000 characters. Not stored when authenticated with an API token. |
 
 A successful request returns `200` with `{ "success": true, "data": { "matched": 0, "succeeded": 0, "failed": 0 } }`. An unknown alert ID counts as a failure in `failed`; it does not make the entire request an error.
@@ -286,7 +286,7 @@ curl -X POST "https://opsimate.example.com/api/v1/mute-policies" \
 | `nameContains` | no | Legacy name-substring field; maximum 500 characters. `nameContainsAny` takes priority when both are supplied. |
 | `labelMatcherGroups` | no | Up to 20 groups, each with up to 20 matchers. |
 | `labelMatcherGroups[].[].key` | for each matcher | Label key to match; maximum 200 characters. |
-| `labelMatcherGroups[].[].value` | depends on `op` | Maximum 500 characters. Required for `equals` and `contains`; omit for `exists`. |
+| `labelMatcherGroups[].[].value` | yes | Maximum 500 characters. Always required; send an empty string (`""`) for `exists`. |
 | `labelMatcherGroups[].[].op` | no | `equals` (default), `contains`, or `exists`. |
 | `matchAll` | no | Boolean; when `true`, the policy matches all alerts. |
 | `startsAt` | no | ISO datetime with a time-zone offset; starts the one-time window. |
