@@ -22,15 +22,16 @@ All requests require the API token, for example as a query parameter:
 
 :::info Where the API token comes from
 
-- **With a config file** (`CONFIG_FILE` points to an existing file): the token is `security.api_token` in `config.yml`, and the `API_TOKEN` environment variable is ignored. The shipped `docker-compose.yml`, the Helm chart and the all-in-one image all run this way. The `default-config.yml` they start from sets it to `opsimate`.
+- **With a config file** (`CONFIG_FILE` points to an existing file): the token is `security.api_token` in `config.yml`, and the `API_TOKEN` environment variable is ignored. The shipped `docker-compose.yml`, the Helm chart and the all-in-one image all run this way. With `docker-compose.yml` and the all-in-one image, the `default-config.yml` they start from sets it to `opsimate`. The Helm chart's `config.configYml` does not set it, and its `API_TOKEN` secret is ignored, so on Helm add `api_token` under `security` in `config.configYml`.
 - **Without a config file**: the token comes from the `API_TOKEN` environment variable, and falls back to `opsimate`.
 
 Change the default for anything that is not a demo. See [Configuration](/docs/getting-started/configuration).
 
-Send the token in either of these ways:
+Send the token in any of these ways:
 
 - the `api_token` query parameter: `?api_token=YOUR_TOKEN`
 - the `X-API-Token` header: `X-API-Token: YOUR_TOKEN`
+- the `Authorization` header: `Authorization: Bearer YOUR_TOKEN`
 
 :::
 
