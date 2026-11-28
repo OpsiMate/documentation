@@ -14,6 +14,7 @@ const sidebars = {
       label: 'Get Started',
       collapsed: true,
       items: [
+        'getting-started/playground',
         'getting-started/deploy',
         'getting-started/configuration',
         'getting-started/system-requirements',
